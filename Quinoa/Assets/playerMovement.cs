@@ -5,6 +5,7 @@ public class playerMovement : MonoBehaviour {
     public static Rigidbody rb;
     public static float mouseMovementX,mouseMovementY; // mouse input variable which changes the rotation of the player
     public static float sensitivity; // mouse sensitivity
+    public float jumpHeight; //the amount of force to add to the player when jumping, this results in a certain jump height
 
     //direction variables of the player
     private float directionx, directiony, directionz;
@@ -12,7 +13,10 @@ public class playerMovement : MonoBehaviour {
     public float walkingSpeed;
 
     //placeholder strings for controlling the direction of the player; this is done to make the inputs rebindable
-    public string left, right, backward, forward;
+    public string left, right, backward, forward, jump, dodge;
+
+    //flag for checking if player has contact with the ground; this to avoid air-jumping
+    private bool touchingGround;
 
 	// Use this for initialization
 	void Start () {
@@ -28,11 +32,15 @@ public class playerMovement : MonoBehaviour {
 
         //two separate rotations, a global and local one to fix bugs
         transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); // rotate the camera when moving the mouse left and right
-        //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
-        
- 
+                                                                                                   //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
+        //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+
         //check for key presses and adapt movement of player
 
+        //rotate with mouse input
+        mouseMovementX = Input.GetAxis("Mouse X");
+        mouseMovementY = Input.GetAxis("Mouse Y");
 
         //move forward
         if (Input.GetKey(forward))
@@ -58,18 +66,45 @@ public class playerMovement : MonoBehaviour {
             directionx = 1;
         }
 
+        //the famous Unreal Tournament single-tap dodge
+        if(Input.GetKey(dodge))
+        {
+            Debug.Log("dodge" + rb.velocity.ToString());
+            rb.AddForce(rb.velocity);
+        }
+
+        //when no movement keys are pressed, the player is restored into a rest state
         if (Input.anyKey == false)
         {
             directionx = 0;
             directionz = 0;
         }
 
-        //rotate with mouse input
-        mouseMovementX = Input.GetAxis("Mouse X");
-        mouseMovementY = Input.GetAxis("Mouse Y");
+        if(Input.GetKeyDown(jump) && touchingGround)
+        {
+            rb.AddForce(Vector3.up*jumpHeight);
+        }
+        Debug.Log(rb.velocity);
+    }
 
+    void OnCollisionStay(Collision col)
+    {
+        if(col.gameObject.CompareTag("ground"))
+        {
+            touchingGround = true;
+        }
+        else
+        {
+            touchingGround = false;
+        }
+    }
 
-        print(Input.GetAxis("Mouse X").ToString());
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.CompareTag("ground"))
+        {
+            touchingGround = false;
+        }
     }
 
 
