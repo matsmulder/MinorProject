@@ -18,6 +18,9 @@ public class playerMovement : MonoBehaviour {
     //flag for checking if player has contact with the ground; this to avoid air-jumping
     private bool touchingGround;
 
+    //variables to tune the single-tap dodge move
+    public float dodgeSpeed, dodgeHeight;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -36,59 +39,74 @@ public class playerMovement : MonoBehaviour {
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
-        //check for key presses and adapt movement of player
+
 
         //rotate with mouse input
         mouseMovementX = Input.GetAxis("Mouse X");
         mouseMovementY = Input.GetAxis("Mouse Y");
-
-        //move forward
-        if (Input.GetKey(forward))
+        //check for key presses and adapt movement of player but only if the ground is touched
+        if (touchingGround)
         {
-            directionz = 1;
+            //move forward
+            if (Input.GetKey(forward))
+            {
+                directionz = 1;
+            }
+
+
+            //move left
+            if (Input.GetKey(left))
+            {
+                directionx = -1;
+            }
+
+
+            //move backward
+            if (Input.GetKey(backward))
+            {
+                directionz = -1;
+            }
+
+            //move right
+            if (Input.GetKey(right))
+            {
+                directionx = 1;
+            }
+
+            //stop moving in certain direction when a key is no longer pressed
+            if (Input.GetKeyUp(forward) || Input.GetKeyUp(left) || Input.GetKeyUp(backward) || Input.GetKeyUp(right))
+            {
+                directionx = 0;
+            }
+
+            //the famous Unreal Tournament single-tap dodge
+            if (Input.GetKeyDown(dodge))
+            {
+                rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
+            }
+
+            //when no movement keys are pressed, the player is restored into a rest state
+            if (Input.anyKey == false)
+            {
+                directionx = 0;
+                directionz = 0;
+                directiony = 0;
+                rb.velocity = Vector3.zero;
+                Debug.Log(rb.velocity);
+            }
+
+            if (Input.GetKeyDown(jump))
+            {
+                rb.AddForce(Vector3.up * jumpHeight);
+            }
         }
 
-        //move left
-        if (Input.GetKey(left))
-        {
-            directionx = -1;
-        }
-
-        //move backward
-        if (Input.GetKey(backward))
-        {
-            directionz = -1;
-        }
-
-        //move right
-        if (Input.GetKey(right))
-        {
-            directionx = 1;
-        }
-
-        //the famous Unreal Tournament single-tap dodge
-        if(Input.GetKey(dodge))
-        {
-            Debug.Log("dodge" + rb.velocity.ToString());
-            rb.AddForce(rb.velocity);
-        }
-
-        //when no movement keys are pressed, the player is restored into a rest state
-        if (Input.anyKey == false)
-        {
-            directionx = 0;
-            directionz = 0;
-        }
-
-        if(Input.GetKeyDown(jump) && touchingGround)
-        {
-            rb.AddForce(Vector3.up*jumpHeight);
-        }
-        Debug.Log(rb.velocity);
     }
 
+    //check for collision
     void OnCollisionStay(Collision col)
     {
+        //activate flag only when contact between ground and player is true
         if(col.gameObject.CompareTag("ground"))
         {
             touchingGround = true;
@@ -99,6 +117,7 @@ public class playerMovement : MonoBehaviour {
         }
     }
 
+    //check for exit collision to avoid to being able to move in the air
     void OnCollisionExit(Collision col)
     {
         if (col.gameObject.CompareTag("ground"))
