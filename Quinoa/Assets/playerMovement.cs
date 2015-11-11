@@ -3,6 +3,7 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
     public static Rigidbody rb;
+    private bool dodgeFlag; //flag holding information when a dodge is performed
     public static float mouseMovementX,mouseMovementY; // mouse input variable which changes the rotation of the player
     public static float sensitivity; // mouse sensitivity
     public float jumpHeight; //the amount of force to add to the player when jumping, this results in a certain jump height
@@ -23,6 +24,7 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
 	}
@@ -30,20 +32,26 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         transform.Translate(direction);
 
-        //two separate rotations, a global and local one to fix bugs
-        transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); // rotate the camera when moving the mouse left and right
+        // rotate the camera when moving the mouse left and right, up and down
+        transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); 
                                                                                                    //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
 
-
         //rotate with mouse input
         mouseMovementX = Input.GetAxis("Mouse X");
         mouseMovementY = Input.GetAxis("Mouse Y");
+
+        //this fixes unwanted rotation caused by contact with a ramp
+        if(mouseMovementX == 0)
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
         //check for key presses and adapt movement of player but only if the ground is touched
         if (touchingGround)
         {
@@ -79,21 +87,29 @@ public class playerMovement : MonoBehaviour {
                 directionx = 0;
             }
 
-            //the famous Unreal Tournament single-tap dodge
-            if (Input.GetKeyDown(dodge))
-            {
-                rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
-            }
 
             //when no movement keys are pressed, the player is restored into a rest state
-            if (Input.anyKey == false)
+            //also, when a dodge is finished, the player is restored to it's original movement
+            if (Input.anyKey == false || dodgeFlag || (!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(backward) && !Input.GetKey(right)))
             {
                 directionx = 0;
                 directionz = 0;
                 directiony = 0;
                 rb.velocity = Vector3.zero;
-                Debug.Log(rb.velocity);
+                dodgeFlag = false;
+                Debug.Log("dodge stop");
             }
+
+
+            //the famous Unreal Tournament single-tap dodge
+            if (Input.GetKeyDown(dodge))
+            {
+                Debug.Log("dodge");
+                rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
+                dodgeFlag = true;
+            }
+
+
 
             if (Input.GetKeyDown(jump))
             {
