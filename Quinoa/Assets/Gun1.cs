@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class Gun1 : MonoBehaviour {
+public class Gun1 : NetworkBehaviour {
     private Rigidbody rb; //the 3D model of the gun as rigidbody
     public Rigidbody prefabBullet; //the 3D model of the bullet as rigidbody
     public float bulletSpeed; //the travelling speed of the bullet
@@ -20,6 +21,9 @@ public class Gun1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
         if (Input.GetButton(fire)) //PLACEHOLDER, to be changed to left mouse button; left mouse button is still buggy
         {
             if (shootFlag)
