@@ -26,7 +26,7 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //Cursor.visible = false;
+        Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         //tf = GetComponent<Transform>();
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
