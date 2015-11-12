@@ -26,7 +26,8 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         //tf = GetComponent<Transform>();
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
@@ -55,6 +56,14 @@ public class playerMovement : MonoBehaviour {
         {
             rb.angularVelocity = Vector3.zero;
         }
+
+        //Set the mouse visible and unlocked when the esc key is pressed
+        if (Input.GetKey("escape"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         //check for key presses and adapt movement of player but only if the ground is touched
         if (touchingGround)
         {
