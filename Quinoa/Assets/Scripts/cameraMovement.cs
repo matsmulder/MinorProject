@@ -15,6 +15,7 @@ public class cameraMovement : NetworkBehaviour
         tf = GetComponent<Transform>();
         offset = transform.position - player.transform.position;
         Debug.Log(isLocalPlayer);
+
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class cameraMovement : NetworkBehaviour
         if (!isLocalPlayer)
         {
             // exit from update if this is not the local player
-            return;
+            //return;
         }
 
         transform.position = player.transform.position + offset;
