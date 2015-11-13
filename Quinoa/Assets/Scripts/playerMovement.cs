@@ -160,5 +160,9 @@ public class playerMovement : NetworkBehaviour {
         }
     }
 
-
+    void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 }
