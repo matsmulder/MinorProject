@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class playerMovement : MonoBehaviour {
+public class playerMovement : NetworkBehaviour {
     public static Rigidbody rb;
     //public static Transform tf;
 
@@ -35,6 +36,13 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!isLocalPlayer)
+        {
+            // exit from update if this is not the local player
+            return;
+        }
+
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         transform.Translate(direction);
