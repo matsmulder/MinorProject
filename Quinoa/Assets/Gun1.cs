@@ -7,6 +7,8 @@ public class Gun1 : MonoBehaviour {
     public float bulletSpeed; //the travelling speed of the bullet
     private Vector3 bulletDir;
 
+    public string fire; //rebindable control string to fire
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -14,18 +16,16 @@ public class Gun1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire1")) //PLACEHOLDER, to be changed to left mouse button; left mouse button is still buggy
+        if (Input.GetButtonDown(fire)) //PLACEHOLDER, to be changed to left mouse button; left mouse button is still buggy
         {
             //StartCoroutine(bullet());
             //instantiate bullet
             Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x,rb.position.y,rb.position.z + 2), cameraMovement.tf.rotation) as Rigidbody;
 
-            Ray shootDir = Camera.main.ScreenPointToRay(Input.mousePosition); //a ray in the looking direction
+            //make a ray from the viewpoint to the middle of the screen; this will determine the direction of the bullets
+            Ray shootDir = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth * 0.5f,Camera.main.pixelHeight * 0.5f,0));
             bulletDir = shootDir.direction;
-
-            clone.velocity = shootDir.direction;
-
-
+            clone.velocity = shootDir.direction * bulletSpeed;
         }
 	}
 
