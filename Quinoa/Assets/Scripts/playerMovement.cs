@@ -121,7 +121,7 @@ public class playerMovement : NetworkBehaviour {
                 directionz = 0;
                 directiony = 0;
                 rb.velocity = Vector3.zero;
-                dodgeFlag = false;
+                //dodgeFlag = false;
             }
 
 
@@ -129,11 +129,11 @@ public class playerMovement : NetworkBehaviour {
             if (Input.GetKeyDown(dodge))
             {
                 rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
-                dodgeFlag = true;
+               // dodgeFlag = true;
+                Debug.Log(touchingGround);
             }
 
-
-
+            //add upwards force upon pressing the jump key
             if (Input.GetKeyDown(jump))
             {
                 rb.AddForce(Vector3.up * jumpHeight);
@@ -141,6 +141,19 @@ public class playerMovement : NetworkBehaviour {
         }
 
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+
+        //velocity is set to zero upon collision with walls; add the tags of pickups, bullets etc as: !gameObject.CompareTag(tag)
+        //this fixes the dodge bug
+        if (dodgeFlag || !gameObject.CompareTag("bullet"))
+        {
+            rb.velocity = Vector3.zero;
+        }
+
+    }
+
 
     //check for collision
     void OnCollisionStay(Collision col)

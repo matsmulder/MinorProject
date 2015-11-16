@@ -44,7 +44,7 @@ public class cameraMovement : NetworkBehaviour
         }
 
 
-        if(Mathf.Abs(transform.rotation.eulerAngles.y - previousRotationY) >= 170)
+        if(Mathf.Abs(transform.rotation.eulerAngles.y - previousRotationY) >= 170) // bij een verticale mouse overshoot maakt de y-rotatie een sprong van ongeveer 180 graden
         {
             Vector3 tmp = transform.eulerAngles;
 
@@ -57,8 +57,6 @@ public class cameraMovement : NetworkBehaviour
                 tmp.x = 90;
             }
             transform.eulerAngles = tmp;
-            Debug.Log("overshoot");
-            Debug.Log(previousRotationX);
         }
 
         if(transform.rotation.eulerAngles.x == 90)
