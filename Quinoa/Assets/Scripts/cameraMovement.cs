@@ -16,7 +16,6 @@ public class cameraMovement : NetworkBehaviour
     {
         tf = GetComponent<Transform>();
         offset = transform.position - player.transform.position;
-        Debug.Log(isLocalPlayer);
         previousRotationY = 0;
         previousRotationX = 0;
 

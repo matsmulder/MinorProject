@@ -7,6 +7,13 @@ public class playerMovement : NetworkBehaviour {
     public Rigidbody playerPrefab;
     //public static Transform tf;
 
+    public float dodgeTimeout; // the time you have to wait before performing a dodge again
+    private float previousHeight; // variable to store the height position of the player
+    private bool lookupHeight; // flag for looking up the height position of the player
+    private bool touchingFix; // flag for accessing control statements without touching ground
+    public float thresholdHeight; // amount of difference between cached height an actual height triggers touchingFix
+    private float previousTime; //holds the time in seconds, used for tracking time without collision on ramps
+
     private bool dodgeFlag; //flag holding information when a dodge is performed
     public static float mouseMovementX,mouseMovementY; // mouse input variable which changes the rotation of the player
     public static float sensitivity; // mouse sensitivity
@@ -20,8 +27,9 @@ public class playerMovement : NetworkBehaviour {
     //placeholder strings for controlling the direction of the player; this is done to make the inputs rebindable
     public string left, right, backward, forward, jump, dodge;
 
-    //flag for checking if player has contact with the ground; this to avoid air-jumping
+    //flags for checking if player has contact with the ground; this to avoid air-jumping
     private bool touchingGround;
+    private bool touchingRamp;
 
     //variables to tune the single-tap dodge move
     public float dodgeSpeed, dodgeHeight;
@@ -35,7 +43,7 @@ public class playerMovement : NetworkBehaviour {
         rb = GetComponent<Rigidbody>();
         //tf = GetComponent<Transform>();
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
-
+        dodgeFlag = true;
         SpawnFlag = true;
     }
 	
@@ -78,8 +86,9 @@ public class playerMovement : NetworkBehaviour {
         }
 
         //check for key presses and adapt movement of player but only if the ground is touched
-        if (touchingGround)
+        if (touchingGround || touchingRamp || touchingFix)
         {
+            if (touchingFix) Debug.Log("yeah");
             //move forward
             if (Input.GetKey(forward))
             {
@@ -110,27 +119,30 @@ public class playerMovement : NetworkBehaviour {
             if (Input.GetKeyUp(forward) || Input.GetKeyUp(left) || Input.GetKeyUp(backward) || Input.GetKeyUp(right))
             {
                 directionx = 0;
+                directionz = 0;
             }
 
 
             //when no movement keys are pressed, the player is restored into a rest state
             //also, when a dodge is finished, the player is restored to it's original movement
-            if (Input.anyKey == false || dodgeFlag || (!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(backward) && !Input.GetKey(right)))
+            if ((!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(backward) && !Input.GetKey(right)))
             {
                 directionx = 0;
                 directionz = 0;
                 directiony = 0;
-                rb.velocity = Vector3.zero;
-                //dodgeFlag = false;
+                //rb.velocity = Vector3.zero;
             }
 
+            //save previous height position; this is useful for making the player jump or dodge when slightly above the ground
+            //(hopefully) solves the 'ramp bug': unable to jump/dodge on ramps
+            previousHeight = transform.position.y;
+            lookupHeight = true;
 
             //the famous Unreal Tournament single-tap dodge
-            if (Input.GetKeyDown(dodge))
+            if (Input.GetKeyDown(dodge) && dodgeFlag)
             {
                 rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
-               // dodgeFlag = true;
-                Debug.Log(touchingGround);
+                StartCoroutine(DodgeTimeout());
             }
 
             //add upwards force upon pressing the jump key
@@ -138,8 +150,32 @@ public class playerMovement : NetworkBehaviour {
             {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
-        }
 
+            if (touchingFix)
+            {
+                //previousTime = Time.fixedTime;
+               // Debug.Log(previousTime);
+            }
+
+            if (touchingGround) //|| (Time.fixedTime - previousTime > 0.2 && touchingFix)
+            {
+                touchingFix = false;
+            }
+
+        }
+        else
+        {
+            if(Mathf.Abs(previousHeight - transform.position.y) < thresholdHeight)
+            {
+                //previousTime = Time.fixedTime;
+                touchingFix = true;
+                Debug.Log("ramp, this one is for you");
+            }
+            else
+            {
+                //touchingFix = false;
+            }
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -147,7 +183,7 @@ public class playerMovement : NetworkBehaviour {
 
         //velocity is set to zero upon collision with walls; add the tags of pickups, bullets etc as: !gameObject.CompareTag(tag)
         //this fixes the dodge bug
-        if (dodgeFlag || !gameObject.CompareTag("bullet"))
+        if (!col.gameObject.CompareTag("bullet") && !col.gameObject.CompareTag("ramp"))
         {
             rb.velocity = Vector3.zero;
         }
@@ -163,9 +199,14 @@ public class playerMovement : NetworkBehaviour {
         {
             touchingGround = true;
         }
+
+        if(col.gameObject.CompareTag("ramp"))
+        {
+            touchingRamp = true;
+        }
         else
         {
-            touchingGround = false;
+            //touchingGround = false;
         }
     }
 
@@ -176,11 +217,23 @@ public class playerMovement : NetworkBehaviour {
         {
             touchingGround = false;
         }
+
+        if(col.gameObject.CompareTag("ramp"))
+        {
+            touchingRamp = false;
+        }
     }
 
     void OnDestroy()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    IEnumerator DodgeTimeout()
+    {
+        dodgeFlag = false;
+        yield return new WaitForSeconds(dodgeTimeout);
+        dodgeFlag = true;
     }
 }
