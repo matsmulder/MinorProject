@@ -4,6 +4,7 @@ using System.Collections;
 
 public class playerMovement : NetworkBehaviour {
     public static Rigidbody rb;
+    public Rigidbody playerPrefab;
     //public static Transform tf;
 
     private bool dodgeFlag; //flag holding information when a dodge is performed
@@ -25,6 +26,8 @@ public class playerMovement : NetworkBehaviour {
     //variables to tune the single-tap dodge move
     public float dodgeSpeed, dodgeHeight;
 
+    //flag for ability to spawn players
+    public static bool SpawnFlag;
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -32,7 +35,9 @@ public class playerMovement : NetworkBehaviour {
         rb = GetComponent<Rigidbody>();
         //tf = GetComponent<Transform>();
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
-	}
+
+        SpawnFlag = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
