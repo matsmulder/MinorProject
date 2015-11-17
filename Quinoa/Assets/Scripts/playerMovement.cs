@@ -10,7 +10,7 @@ public class playerMovement : NetworkBehaviour {
 
     public float dodgeTimeout; // the time you have to wait before performing a dodge again
     private float previousHeight; // variable to store the height position of the player
-    private bool lookupHeight; // flag for looking up the height position of the player
+    //private bool lookupHeight; // flag for looking up the height position of the player
     private bool touchingFix; // flag for accessing control statements without touching ground
     public float thresholdHeight; // amount of difference between cached height an actual height triggers touchingFix
     private float previousTime; //holds the time in seconds, used for tracking time without collision on ramps
@@ -150,8 +150,8 @@ public class playerMovement : NetworkBehaviour {
             //save previous height position; this is useful for making the player jump or dodge when slightly above the ground
             //(hopefully) solves the 'ramp bug': unable to jump/dodge on ramps
             previousHeight = transform.position.y;
-            lookupHeight = true;
 
+            //lookupHeight = true;
             //the famous Unreal Tournament single-tap dodge
             if (Input.GetKeyDown(dodge) && dodgeFlag)
             {
