@@ -50,6 +50,8 @@ public class playerMovement : NetworkBehaviour {
         dodgeFlag = true;
         SpawnFlag = true;
         currentHP = maxHP;
+
+        Debug.Log(rb.rotation.eulerAngles);
     }
 	
 	// Update is called once per frame

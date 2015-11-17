@@ -5,9 +5,8 @@ using System.Collections;
 public class cameraMovement : NetworkBehaviour
 {
 
-    public GameObject player; // player GameObject to allow interaction of camera and player
+    //public GameObject player; // player GameObject to allow interaction of camera and player
     public static Transform tf;
-    private Vector3 offset;
     private float previousRotationY;
     private float previousRotationX;
 
@@ -15,10 +14,13 @@ public class cameraMovement : NetworkBehaviour
     void Start()
     {
         tf = GetComponent<Transform>();
-        offset = transform.position - player.transform.position;
         previousRotationY = 0;
         previousRotationX = 0;
 
+        //fix camera orientation
+        //transform.rotation = playerMovement.rb.rotation;
+        //transform.Rotate(new Vector3(0, 90, 0));
+        //Debug.Log(transform.rotation.eulerAngles);
     }
 
     // Update is called once per frame
@@ -31,7 +33,6 @@ public class cameraMovement : NetworkBehaviour
             //return;
         }
 
-        transform.position = player.transform.position + offset;
 
         previousRotationY = transform.rotation.eulerAngles.y;
         previousRotationX = transform.rotation.eulerAngles.x;
@@ -58,10 +59,12 @@ public class cameraMovement : NetworkBehaviour
             transform.eulerAngles = tmp;
         }
 
-        if(transform.rotation.eulerAngles.x == 90)
-        {
+        //follow the player movement
+        transform.position = playerMovement.rb.position;
 
-        }
+        //follow player rotation
+        transform.Rotate(new Vector3(0, playerMovement.mouseMovementX * Time.deltaTime * playerMovement.sensitivity, 0), Space.World);
+        transform.rotation = playerMovement.rb.rotation;
     }
 
 }
