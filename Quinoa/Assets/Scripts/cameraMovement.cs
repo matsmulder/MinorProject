@@ -9,6 +9,7 @@ public class cameraMovement : NetworkBehaviour
     public static Transform tf;
     private float previousRotationY;
     private float previousRotationX;
+    private Vector3 tmp2;
 
     // Use this for initialization
     void Start()
@@ -62,9 +63,11 @@ public class cameraMovement : NetworkBehaviour
         //follow the player movement
         transform.position = playerMovement.rb.position;
 
-        //follow player rotation
-        transform.Rotate(new Vector3(0, playerMovement.mouseMovementX * Time.deltaTime * playerMovement.sensitivity, 0), Space.World);
-        transform.rotation = playerMovement.rb.rotation;
+
+        //lock rotation around y-axis to player rotation
+        tmp2 = playerMovement.rb.rotation.eulerAngles;
+        tmp2.x = transform.rotation.eulerAngles.x;
+        transform.eulerAngles = tmp2;
     }
 
 }
