@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System;
 
 public class playerMovement : NetworkBehaviour {
     public static Rigidbody rb;
@@ -13,6 +14,8 @@ public class playerMovement : NetworkBehaviour {
     private bool touchingFix; // flag for accessing control statements without touching ground
     public float thresholdHeight; // amount of difference between cached height an actual height triggers touchingFix
     private float previousTime; //holds the time in seconds, used for tracking time without collision on ramps
+    public float maxHP;         //Initial HP
+    private float currentHP;    //Current HP
 
     private bool dodgeFlag; //flag holding information when a dodge is performed
     public static float mouseMovementX,mouseMovementY; // mouse input variable which changes the rotation of the player
@@ -36,6 +39,7 @@ public class playerMovement : NetworkBehaviour {
 
     //flag for ability to spawn players
     public static bool SpawnFlag;
+
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,6 +49,7 @@ public class playerMovement : NetworkBehaviour {
         sensitivity = 120; // initialize at default sensitivity; to be tweakable live in the future
         dodgeFlag = true;
         SpawnFlag = true;
+        currentHP = maxHP;
     }
 	
 	// Update is called once per frame
@@ -72,8 +77,15 @@ public class playerMovement : NetworkBehaviour {
         mouseMovementX = Input.GetAxis("Mouse X");
         mouseMovementY = Input.GetAxis("Mouse Y");
 
+        //if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         //this fixes unwanted rotation caused by contact with a ramp
-        if(mouseMovementX == 0)
+        if (mouseMovementX == 0)
         {
             rb.angularVelocity = Vector3.zero;
         }
@@ -187,7 +199,24 @@ public class playerMovement : NetworkBehaviour {
         {
             rb.velocity = Vector3.zero;
         }
+        else if (col.gameObject.CompareTag("bullet"))
+        {
+            Debug.Log("You got hit, noob");
+            currentHP -= 10;
+            if (currentHP <= 0)
+            {
+                Debug.Log("U dead m4te");
+                respawn();
 
+            }
+        }
+
+    }
+
+    private void respawn()
+    {
+        Debug.Log("Respawning...");
+        transform.position = new Vector3(0, 0, 0);
     }
 
 
