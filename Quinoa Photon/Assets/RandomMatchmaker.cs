@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RandomMatchmaker : MonoBehaviour {
 
-    public GameObject player;
+    //public GameObject player;
     //public GameObject camera1;
     public Camera standby;
     SpawnSpot[] spawnSpots;
@@ -56,7 +56,10 @@ public class RandomMatchmaker : MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
 
 
-        GameObject player = PhotonNetwork.Instantiate("fpc", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
+        GameObject player = PhotonNetwork.Instantiate("player4", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
+        player.GetComponent<playerMovement>().enabled = true;
+        player.GetComponent<MouseLook>().enabled = true;
+        player.transform.FindChild("Main Camera").gameObject.SetActive(true);
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.enabled = false;
 
