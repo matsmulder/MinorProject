@@ -8,15 +8,28 @@ public class RandomMatchmaker : MonoBehaviour {
     public GameObject standby;
     SpawnSpot[] spawnSpots;
 
+    public bool offlineMode;
 	// Use this for initialization
 	void Start () {
 
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
-        PhotonNetwork.offlineMode = true;
-        PhotonNetwork.ConnectUsingSettings("0.1");
+        Connect();
 
         //PhotonNetwork.logLevel = PhotonLogLevel.Full;
 	}
+
+    void Connect()
+    {
+        if (offlineMode)
+        {
+            PhotonNetwork.offlineMode = true;
+            OnJoinedLobby();
+        }
+        else
+        {
+            PhotonNetwork.ConnectUsingSettings("0.1");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -59,6 +72,7 @@ public class RandomMatchmaker : MonoBehaviour {
         GameObject player = PhotonNetwork.Instantiate("player4", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
+        player.GetComponent<playerShooting>().enabled = true;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
