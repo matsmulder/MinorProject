@@ -3,9 +3,8 @@ using UnityEngine.Networking;
 using System.Collections;
 using System;
 
-public class playerMovement : Photon.PunBehaviour {
+public class playerMovement : MonoBehaviour {
     public static Rigidbody rb;
-    public Rigidbody playerPrefab;
     //public static Transform tf;
 
     public float dodgeTimeout; // the time you have to wait before performing a dodge again
@@ -50,29 +49,26 @@ public class playerMovement : Photon.PunBehaviour {
         dodgeFlag = true;
         SpawnFlag = true;
         currentHP = maxHP;
-
-        Debug.Log(rb.position);
-        Debug.Log(rb.rotation.eulerAngles);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(!photonView.isMine)
-        {
-            return;
-        }
+        //if(!photonView.isMine)
+        //{
+        //    return;
+       // }
        
 
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         transform.Translate(direction);
 
-        // rotate the camera when moving the mouse left and right, up and down
-        transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); 
+        // rotate the camera when moving the mouse left and right, up and down >>DEPRECATED<<
+        //transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); 
         
         //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
-        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+        //transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
 
         //rotate with mouse input
