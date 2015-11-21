@@ -68,7 +68,7 @@ public class playerMovement : MonoBehaviour {
         
         //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
-        //transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
 
         //rotate with mouse input

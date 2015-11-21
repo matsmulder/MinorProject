@@ -5,7 +5,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
-    public Camera standby;
+    public GameObject standby;
     SpawnSpot[] spawnSpots;
 
 	// Use this for initialization
@@ -61,7 +61,7 @@ public class RandomMatchmaker : MonoBehaviour {
         player.GetComponent<MouseLook>().enabled = true;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
-        standby.enabled = false;
+        standby.SetActive(false);
 
     }
 }

@@ -57,7 +57,6 @@ public class MouseLook : MonoBehaviour {
 	void Start ()
 	{
         // Make the rigid body not change rotation
-        Debug.Log(minimumY.ToString() + maximumY.ToString());
 		if (GetComponent<Rigidbody>())
 			GetComponent<Rigidbody>().freezeRotation = true;
 	}

@@ -24,7 +24,7 @@ Loading C:\Users\David\Documents\MinorProject\Quinoa Photon\multiplayer_Data\Man
 Platform assembly: C:\Users\David\Documents\MinorProject\Quinoa Photon\multiplayer_Data\Managed\websocket-sharp.dll (this message is harmless)
 Loading C:\Users\David\Documents\MinorProject\Quinoa Photon\multiplayer_Data\Managed\websocket-sharp.dll into Unity Child Domain
 Platform assembly: C:\Users\David\Documents\MinorProject\Quinoa Photon\multiplayer_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.242 seconds
+- Completed reload, in  0.193 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
@@ -35,17 +35,9 @@ ConnectUsingSettings() disabled the offline mode. No longer offline.
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 33e8 -> priority: 1 
-  Thread -> id: 2cfc -> priority: 1 
+  Thread -> id: 2ecc -> priority: 1 
+  Thread -> id: 26b8 -> priority: 1 
 Can't join random room!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--9090
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--9090
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
