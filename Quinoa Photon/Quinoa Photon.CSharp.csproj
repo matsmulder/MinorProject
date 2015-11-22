@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
+    <Compile Include="Assets\SelfDestruct.cs" />
     <Compile Include="Assets\SpawnSpot.cs" />
     <Compile Include="Assets\playerShooting.cs" />
   </ItemGroup>
