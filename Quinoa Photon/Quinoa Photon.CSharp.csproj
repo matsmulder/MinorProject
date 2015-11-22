@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Crosshair.cs" />
+    <Compile Include="Assets\FXmanager.cs" />
     <Compile Include="Assets\Health.cs" />
     <Compile Include="Assets\NetworkCharacter.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
