@@ -32,7 +32,6 @@ public class playerShooting : MonoBehaviour {
     {
         fireFlag = false;
         //////////////////////////////
-        laserBeam.enabled = true; //enable visibility of laser beam
 
         Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
         Transform hitTransform;
@@ -40,11 +39,12 @@ public class playerShooting : MonoBehaviour {
 
         hitTransform = FindClosestHitInfo(ray, out hitPoint);
 
-        laserBeam.SetPosition(1, hitTransform.position); //set the target point of the laser beam to the transform of the nearest hit point
+       
         laserBeam.SetPosition(0, transform.position); // position of the player
 
         if(hitTransform != null)
         {
+            laserBeam.SetPosition(1, hitTransform.position); //set the target point of the laser beam to the transform of the nearest hit point
             Debug.Log(hitTransform.name);
             Health h = hitTransform.GetComponent<Health>();
 
@@ -62,13 +62,14 @@ public class playerShooting : MonoBehaviour {
         }
 
 
-        
+        laserBeam.enabled = true; //enable visibility of laser beam
         ////////////////////////////////
         Debug.Log("shoot");
         yield return new WaitForSeconds(fireRate);
         fireFlag = true;
         ///////////////////////////////
         laserBeam.enabled = false; //disable visibility of laser beam
+        laserBeam.SetPosition(1, transform.position); //reset beam by taking the player position as second position
     }
 
     Transform FindClosestHitInfo(Ray ray, out Vector3 hitPoint)
