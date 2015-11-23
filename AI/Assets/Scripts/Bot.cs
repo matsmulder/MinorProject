@@ -8,6 +8,7 @@ public class Bot : MonoBehaviour{
     private float fieldofViewAngle = 110f;
     private bool playerInSight;
 
+    public float sensitivity;
     private int health;
     private int ammo;
     private bool dead;
@@ -44,25 +45,25 @@ public class Bot : MonoBehaviour{
 
         foreach (var obj in healths)
         {
-            HLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (health + 1);
+            HLVS = HLVS +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (health + 1);
         }
 
         foreach (var obj in ammos)
         {
-            ALVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (ammo + 1);
+            ALVS = ALVS+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (ammo + 1);
         }
 
         foreach (var obj in players)
         {
-            PLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
+            PLVS = PLVS+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
         }
         foreach (var obj in bots)
         {
             PLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
         }
         //((-obj.getTeam() * team + 1) / 2) *
-        double c1 = 0.33;
-        double c2 = 0.33;
+        double c1 = 0.5;
+        double c2 = 0.5;
         double c3 = 0.33;
         return c1 * PLVS + c2 * HLVS + c3 * ALVS;
     }
@@ -83,7 +84,7 @@ public class Bot : MonoBehaviour{
         {
             if (Vector3.Distance(map[i], this.transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f)) < l)
             {
-                if (Vector3.Angle(this.transform.forward, map[i]) < fieldofViewAngle / 2)
+                if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
                 {
                      double tempSV = SV(map[i]);
                      if (index < tempSV)
@@ -94,13 +95,14 @@ public class Bot : MonoBehaviour{
                 }
             }
         }
-        MoveBot(bestPoint+new Vector3(0, transform.lossyScale.y / 2, 0));
+        //bestPoint = transform.position + new Vector3(1, 0, 1);
+        MoveBot(bestPoint);
     }
 
     public void MoveBot(Vector3 point)
     {
-        transform.Rotate(new Vector3(0.0f,Vector2.Angle(new Vector2(point.x-this.transform.position.x,point.z-this.transform.position.z),new Vector2(this.transform.forward.x,this.transform.forward.z)),0.0f)*Time.deltaTime);
-        transform.Translate(new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z)*Time.deltaTime);
+        transform.Translate((new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z))*Time.deltaTime*sensitivity);
+        transform.Rotate(new Vector3(0.0f, Vector2.Angle(new Vector2(point.x - this.transform.position.x, point.z - this.transform.position.z), new Vector2(this.transform.forward.x, this.transform.forward.z)), 0.0f));
     }
 
     public void OnTriggerStay(Collider other)
