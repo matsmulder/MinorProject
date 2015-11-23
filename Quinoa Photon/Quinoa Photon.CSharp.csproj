@@ -85,6 +85,7 @@
     <Compile Include="Assets\Health.cs" />
     <Compile Include="Assets\NetworkCharacter.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\NoScope.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -119,12 +120,14 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
     <Compile Include="Assets\RandomMatchmaker.cs" />
+    <Compile Include="Assets\ScopeTexture.cs" />
     <Compile Include="Assets\Scripts\Gun1.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
     <Compile Include="Assets\SelfDestruct.cs" />
     <Compile Include="Assets\SpawnSpot.cs" />
+    <Compile Include="Assets\WeaponData.cs" />
     <Compile Include="Assets\playerShooting.cs" />
   </ItemGroup>
   <ItemGroup>

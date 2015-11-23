@@ -73,7 +73,7 @@ public class playerShooting : MonoBehaviour {
 
             if(fxManager != null)
             {
-                fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, hitPoint);
+                DoGunFX(hitPoint);
             }
         }
         else
@@ -81,7 +81,8 @@ public class playerShooting : MonoBehaviour {
             //nothing is hit
             if (fxManager != null)
             {
-                fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, Camera.main.transform.forward * shootingRange);
+                //fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, Camera.main.transform.forward * shootingRange);
+                DoGunFX(Camera.main.transform.forward * shootingRange);
             }
         }
 
@@ -94,6 +95,12 @@ public class playerShooting : MonoBehaviour {
         //laserBeam.enabled = false; //disable visibility of laser beam
         //laserBeam.SetPosition(1, transform.position); //reset beam by taking the player position as second position
     }
+
+    void DoGunFX(Vector3 hitPoint) {
+        WeaponData wd = gameObject.GetComponentInChildren<WeaponData>();
+        fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, wd.transform.position, hitPoint);
+    }
+
 
     Transform FindClosestHitInfo(Ray ray, out Vector3 hitPoint)
     {
