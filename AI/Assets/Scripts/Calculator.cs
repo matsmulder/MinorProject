@@ -95,12 +95,12 @@ public class Calculator:MonoBehaviour
         return mapGSV[map.IndexOf(point)];
     }
 
-    public double getGVSconstant()
+    public double getGSVconstant()
     {
         return c1;
     }
 
-    public double getLVSconstant()
+    public double getLSVconstant()
     {
         return c2;
     }

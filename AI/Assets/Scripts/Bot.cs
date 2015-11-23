@@ -69,12 +69,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-        double temp = calculator.getGVSconstant() * calculator.getGSV(point);
-        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-        //temp =+ calculator.getGVSconstant() * LSV(point);
-        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
-        return 0;
+        return calculator.getLSVconstant() * LSV(point) + calculator.getGSVconstant() * calculator.getGSV(point);
     }
 
     public void Update()
@@ -90,12 +85,12 @@ public class Bot : MonoBehaviour{
             {
                 if (Vector3.Angle(this.transform.forward, map[i]) < fieldofViewAngle / 2)
                 {
-                    double tempSV = SV(map[i]);
-                    if (index < tempSV)
-                    {
-                        index = tempSV;
-                        bestPoint = map[i];
-                    }
+                     double tempSV = SV(map[i]);
+                     if (index < tempSV)
+                     {
+                         index = tempSV;
+                         bestPoint = map[i];
+                     }
                 }
             }
         }
@@ -105,7 +100,7 @@ public class Bot : MonoBehaviour{
     public void MoveBot(Vector3 point)
     {
         transform.Rotate(new Vector3(0.0f,Vector2.Angle(new Vector2(point.x-this.transform.position.x,point.z-this.transform.position.z),new Vector2(this.transform.forward.x,this.transform.forward.z)),0.0f)*Time.deltaTime);
-        transform.Translate(new Vector3(point.x,0,point.z) - new Vector3(transform.position.x,0,transform.position.z));
+        transform.Translate(new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z)*Time.deltaTime);
     }
 
     public void OnTriggerStay(Collider other)
