@@ -13,7 +13,7 @@ public class Calculator:MonoBehaviour
     private static double c1 = 0.5;
     private static double c2 = 0.5;
     private static double[] mapGSV;
-    public static double lengthConst = 2;
+    private static double lengthConst = 2;
 
     private Calculator()
     {
@@ -47,9 +47,9 @@ public class Calculator:MonoBehaviour
         double stepsize = 0.125;
         foreach(GameObject obj in floors)
         {
-            for (double i = -obj.transform.lossyScale.x / 2; i <= obj.transform.lossyScale.x / 2; i = i + stepsize) 
+            for (double i = -obj.transform.localScale.x / 2; i <= obj.transform.localScale.x / 2; i = i + stepsize) 
             {
-                for (double j = -obj.transform.lossyScale.z / 2; j <= obj.transform.lossyScale.z / 2; j = j + stepsize) 
+                for (double j = -obj.transform.localScale.z / 2; j <= obj.transform.localScale.z / 2; j = j + stepsize) 
                 {
                     points.Add(new Vector3((float)(i + obj.transform.position.x), obj.transform.position.y, (float)(j + obj.transform.position.z)));
                 }

@@ -15,17 +15,20 @@ public class Bot : MonoBehaviour{
     private int team;
     private List<Vector3> points;
     private Calculator calculator;
-    private double l = 6;
+    public double l = 6;
     private SphereCollider col;
+    private List<Vector3> map;
     //https://unity3d.com/learn/tutorials/projects/stealth/enemy-sight
 
-    public void Awake()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
+        col.radius= (float)l;
         dead = false;
         health = 100;
-        calculator = Calculator.getCalculator(); 
+        calculator = Calculator.getCalculator();
+        transform.position = new Vector3(0.0f, (float)2, 0.0f);
     }
 
     public double LSV(Vector3 point)
@@ -51,11 +54,11 @@ public class Bot : MonoBehaviour{
 
         foreach (var obj in players)
         {
-            PLVS = + Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
+            PLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
         }
         foreach (var obj in bots)
         {
-            PLVS = + Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
+            PLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
         }
         //((-obj.getTeam() * team + 1) / 2) *
         double c1 = 0.33;
@@ -66,66 +69,66 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return calculator.getGVSconstant() * calculator.getGSV(point) + calculator.getGVSconstant() * LSV(point);
+        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+        double temp = calculator.getGVSconstant() * calculator.getGSV(point);
+        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+        //temp =+ calculator.getGVSconstant() * LSV(point);
+        //transform.Translate(new Vector3(1 * Time.deltaTime, 0, 0));
+        return 0;
     }
 
     public void Update()
     {
-        transform.Translate(new Vector3(1*Time.deltaTime, 0, 0));
-        points = new List<Vector3>();
-        foreach(Vector3 obj in calculator.getMap())
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+
+        map = calculator.getMap();
+        Vector3 bestPoint = transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f);
+        double index = 0;
+        for (int i=0;i!=map.Count;i++)
         {
-            if(Vector3.Distance(this.transform.position,obj)<l)
+            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f)) < l)
             {
-                if (Vector3.Angle(this.transform.forward, obj) < fieldofViewAngle / 2)
+                if (Vector3.Angle(this.transform.forward, map[i]) < fieldofViewAngle / 2)
                 {
-                    points.Add(obj);
+                    double tempSV = SV(map[i]);
+                    if (index < tempSV)
+                    {
+                        index = tempSV;
+                        bestPoint = map[i];
+                    }
                 }
             }
         }
-
-        double index = 0;
-        Vector3 bestPoint = new Vector3(0,0,0);
-        foreach(Vector3 point in points)
-        {
-            double tempSV = SV(point);
-            if (index<tempSV)
-            {
-                index = tempSV;
-                bestPoint = point;
-            }
-        }
-
-        MoveBot(bestPoint);
+        MoveBot(bestPoint+new Vector3(0, transform.lossyScale.y / 2, 0));
     }
 
     public void MoveBot(Vector3 point)
     {
-        transform.Rotate((point - new Vector3(transform.rotation.x,transform.rotation.y,transform.rotation.z)) * Time.deltaTime);
-        transform.Translate((point - transform.position) * Time.deltaTime);
+        transform.Rotate(new Vector3(0.0f,Vector2.Angle(new Vector2(point.x-this.transform.position.x,point.z-this.transform.position.z),new Vector2(this.transform.forward.x,this.transform.forward.z)),0.0f)*Time.deltaTime);
+        transform.Translate(new Vector3(point.x,0,point.z) - new Vector3(transform.position.x,0,transform.position.z));
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.CompareTag("Bot")|| other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("Player"))
         {
             playerInSight = false;
             //if ((-other.gameObject.getTeam()*team+1)/2 == 1)
             //{
-                Vector3 direction = other.transform.position - transform.position;
-                float angle = Vector3.Angle(direction, transform.forward);
-                if (angle < fieldofViewAngle / 2)
+            Vector3 direction = other.transform.position - this.transform.position;
+            float angle = Vector3.Angle(direction, this.transform.forward);
+            if (angle < fieldofViewAngle / 2)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(this.transform.position + this.transform.up, direction.normalized, out hit, col.radius))
                 {
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
+                    if (hit.collider.tag == "Bot" || hit.collider.tag == "Player")
                     {
-                        if (hit.collider.tag=="Bot" || hit.collider.tag=="Player")
-                        {
-                            playerInSight = true;
-                            rb.transform.Translate(new Vector3(1,1,1));
-                        }
+                        playerInSight = true;
+                        //rb.transform.Translate(new Vector3(1,1,1));
                     }
                 }
+            }
             //}
         }
     }
@@ -141,7 +144,7 @@ public class Bot : MonoBehaviour{
 
     public void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Bot")|| other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("Player"))
         {
             playerInSight = false;
         }
@@ -151,4 +154,5 @@ public class Bot : MonoBehaviour{
     {
         return team;
     }
+
 }
