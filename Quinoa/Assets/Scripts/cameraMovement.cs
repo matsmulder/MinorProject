@@ -10,6 +10,7 @@ public class cameraMovement : NetworkBehaviour
     private float previousRotationY;
     private float previousRotationX;
     private Vector3 tmp2;
+    private NetworkView nView;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,8 @@ public class cameraMovement : NetworkBehaviour
         tf = GetComponent<Transform>();
         previousRotationY = 0;
         previousRotationX = 0;
+
+        nView = GetComponent<NetworkView>();
 
         //fix camera orientation
         //transform.rotation = playerMovement.rb.rotation;
@@ -27,8 +30,8 @@ public class cameraMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isLocalPlayer)
+        Debug.Log(nView.isMine);
+        if (!nView.isMine)
         {
             // exit from update if this is not the local player
             //return;
