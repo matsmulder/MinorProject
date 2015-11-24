@@ -5,39 +5,46 @@ using System;
 using System.Collections.Generic;
 
 public class Bot : MonoBehaviour{
-    private float fieldofViewAngle = 110f;
     private bool playerInSight;
-
-    public float sensitivity;
-    private int health;
-    private int ammo;
+    public int health;
+    public int ammo;
     private bool dead;
     private Rigidbody rb;
     private int team;
     private List<Vector3> points;
     private Calculator calculator;
-    public double l = 6;
     private SphereCollider col;
     private List<Vector3> map;
     //https://unity3d.com/learn/tutorials/projects/stealth/enemy-sight
+
+    public double sightConstant = 8;
+    public double playerLengthConstant = 0.75;
+    public double cPLSV = 4;
+    public double cHLSV = 3;
+    public double cALSV = 3;
+    public float fieldofViewAngle = 110f;
+    public float sensitivity = 4;
+    public float maxHealth = 20;
+    public float maxAmmo = 20;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
-        col.radius= (float)l;
+        col.radius= (float)sightConstant;
         dead = false;
         health = 100;
+        ammo = 20;
+        team = -1;
         calculator = Calculator.getCalculator();
         transform.position = new Vector3(0.0f, (float)2, 0.0f);
     }
 
     public double LSV(Vector3 point)
     {
-        double PLVS = 0;
-        double HLVS = 0;
-        double ALVS = 0;
-        double l = 4;
+        double PLSV = 0;
+        double HLSV = 0;
+        double ALSV = 0;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] bots = GameObject.FindGameObjectsWithTag("Bot");
         GameObject[] healths = GameObject.FindGameObjectsWithTag("Health");
@@ -45,27 +52,24 @@ public class Bot : MonoBehaviour{
 
         foreach (var obj in healths)
         {
-            HLVS = HLVS +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (health + 1);
+            HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position)/0.75, 2)) / (health + 1);
         }
 
         foreach (var obj in ammos)
         {
-            ALVS = ALVS+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position), 2)) / (ammo + 1);
+            ALSV = ALSV+maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position)/0.75, 2)) / (ammo + 1);
         }
 
         foreach (var obj in players)
         {
-            PLVS = PLVS+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
+            PLSV = PLSV+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / playerLengthConstant, 2));
         }
         foreach (var obj in bots)
         {
-            PLVS = +Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / l, 2));
+            PLSV = PLSV+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / playerLengthConstant, 2));
         }
         //((-obj.getTeam() * team + 1) / 2) *
-        double c1 = 0.5;
-        double c2 = 0.5;
-        double c3 = 0.33;
-        return c1 * PLVS + c2 * HLVS + c3 * ALVS;
+        return cPLSV * PLSV + cHLSV * HLSV + cALSV * ALSV;
     }
 
     public double SV(Vector3 point)
@@ -82,7 +86,7 @@ public class Bot : MonoBehaviour{
         double index = 0;
         for (int i=0;i!=map.Count;i++)
         {
-            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f)) < l)
+            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f)) < sightConstant)
             {
                 if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
                 {
@@ -95,14 +99,19 @@ public class Bot : MonoBehaviour{
                 }
             }
         }
-        //bestPoint = transform.position + new Vector3(1, 0, 1);
         MoveBot(bestPoint);
     }
 
     public void MoveBot(Vector3 point)
     {
-        transform.Translate((new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z))*Time.deltaTime*sensitivity);
-        transform.Rotate(new Vector3(0.0f, Vector2.Angle(new Vector2(point.x - this.transform.position.x, point.z - this.transform.position.z), new Vector2(this.transform.forward.x, this.transform.forward.z)), 0.0f));
+        transform.Translate((new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z))*sensitivity);
+
+        Vector3 aVector = Vector3.Cross(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
+        float a = -aVector.y / Math.Abs(aVector.y);
+        if (a < 1)
+        {
+            transform.Rotate(new Vector3(0.0f, Vector2.Angle(new Vector2(point.x - this.transform.position.x, point.z - this.transform.position.z), new Vector2(this.transform.forward.x, this.transform.forward.z)), 0.0f) * a);
+        }
     }
 
     public void OnTriggerStay(Collider other)

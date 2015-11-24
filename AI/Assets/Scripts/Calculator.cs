@@ -9,11 +9,14 @@ public class Calculator:MonoBehaviour
 {
     private static Calculator singleton=null;
     private static List<Vector3> map;
-
-    private static double c1 = 0.5;
-    private static double c2 = 0.5;
     private static double[] mapGSV;
-    private static double lengthConst = 2;
+
+    public static double lengthConst = 2;
+    public static double stepsize=0.125;
+    public static double cDGSV = 1;
+    public static double cOGSV = 0.5;
+    public static double cGSV = 2 / 3;
+    public static double cLSV = 1 / 3;
 
     private Calculator()
     {
@@ -44,7 +47,6 @@ public class Calculator:MonoBehaviour
     {
         List<Vector3> points = new List<Vector3>();
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
-        double stepsize = 0.125;
         foreach(GameObject obj in floors)
         {
             for (double i = -obj.transform.localScale.x / 2; i <= obj.transform.localScale.x / 2; i = i + stepsize) 
@@ -61,18 +63,17 @@ public class Calculator:MonoBehaviour
     public double GSV(Vector3 point)
     {
         GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
-        double DGVS = 0;
-        double OGVS = 0;
+        double DGSV = 0;
+        double OGSV = 0;
         double l = lengthConst;
         foreach (GameObject obj in walls)
         {
             Vector3 wallCenter = new Vector3(obj.transform.position.x, obj.transform.position.y - obj.transform.lossyScale.y / 2, obj.transform.position.z);
-            double stepSize = 0.125;
             Vector3 closestPoint = wallCenter;
             double index = Vector3.Distance(wallCenter, point);
             double min = Math.Min(obj.transform.lossyScale.x,obj.transform.lossyScale.z);
             double max = Math.Max(obj.transform.lossyScale.x, obj.transform.lossyScale.z);
-            for (double t = -1; t <= 1; t = t + stepSize)
+            for (double t = -1; t <= 1; t = t + stepsize)
             {
                 Vector3 wallPos = wallCenter + new Vector3((float)(((max - min) * Math.Cos(obj.transform.rotation.y * Math.PI / 180) + min) * t / 2), 0, (float)(((max - min) * Math.Sin(obj.transform.rotation.y * Math.PI / 180) + min) * t / 2));
                 
@@ -82,12 +83,10 @@ public class Calculator:MonoBehaviour
                     index = Vector3.Distance(wallPos, point);
                 }
             }
-            DGVS = +(obj.transform.position.y + obj.transform.lossyScale.y / 2) * Math.Exp(-Math.Pow(index / l,2));
-            OGVS = +Math.Exp(-Math.Pow(index / (obj.transform.position.y + obj.transform.lossyScale.y / 2),2));
+            DGSV = +(obj.transform.position.y + obj.transform.lossyScale.y / 2) * Math.Exp(-Math.Pow(index / l,2));
+            OGSV = +Math.Exp(-Math.Pow(index / (obj.transform.position.y + obj.transform.lossyScale.y / 2),2));
         }
-        double c1 = 0.5;
-        double c2 = 0.5;
-        return c1 * DGVS + c2 * (-OGVS + 4);
+        return cDGSV * DGSV + cOGSV * (-OGSV + 4);
     }
 
     public double getGSV(Vector3 point)
@@ -97,11 +96,11 @@ public class Calculator:MonoBehaviour
 
     public double getGSVconstant()
     {
-        return c1;
+        return cGSV;
     }
 
     public double getLSVconstant()
     {
-        return c2;
+        return cLSV;
     }
 }
