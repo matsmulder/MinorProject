@@ -28,6 +28,7 @@ public class ServerSettingsInspector : Editor
         {
             case ServerSettings.HostingOption.BestRegion:
             case ServerSettings.HostingOption.PhotonCloud:
+                Debug.Log("Using cloud");
                 // region selection
                 if (settings.HostType == ServerSettings.HostingOption.PhotonCloud)
                 {
