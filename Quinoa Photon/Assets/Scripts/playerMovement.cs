@@ -2,6 +2,8 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 public class playerMovement : MonoBehaviour {
     public static Rigidbody rb;
@@ -27,7 +29,10 @@ public class playerMovement : MonoBehaviour {
     public float walkingSpeed;
 
     //placeholder strings for controlling the direction of the player; this is done to make the inputs rebindable
-    public string left, right, backward, forward, jump, dodge;
+    //public string left, right, backward, forward, jump, dodge;
+    private Dictionary<string, string> keys;
+    //Default keys
+    private Dictionary<string, string> defaultKeys;
 
     //flags for checking if player has contact with the ground; this to avoid air-jumping
     private bool touchingGround;
@@ -49,6 +54,63 @@ public class playerMovement : MonoBehaviour {
         dodgeFlag = true;
         SpawnFlag = true;
         currentHP = maxHP;
+
+        //Loading keyconfig
+        defaultKeys = new Dictionary<string, string>
+        {
+            { "left","a" },
+            { "right","d" },
+            {"forward","w" },
+            { "backward","s" },
+            {"jump","space" },
+            {"dodge", "left shift" },
+
+        };
+        keys = new Dictionary<string, string>();
+        try
+        {
+            StreamReader f = new StreamReader("keys.cfg");
+            string line;
+            while ((line = f.ReadLine()) != null)
+            {
+                string[] splitted = line.Split(':');
+                if (!defaultKeys.ContainsKey(splitted[0]))
+                {
+                    Debug.Log("Key not used: " + splitted[0]);
+                }
+                else
+                {
+                    keys[splitted[0]] = splitted[1];
+                }
+
+            }
+            f.Close();
+            using (StreamWriter sw = File.AppendText("keys.cfg"))
+            {
+                foreach (string key in defaultKeys.Keys)
+                {
+                    if (!keys.ContainsKey(key))
+                    {
+                        //Add key to file if it doesn't exist
+                        sw.Write(key + ":" + defaultKeys[key] + "\n");
+                        //Add key to settings
+                        keys[key] = defaultKeys[key];
+                    }
+                }
+            }
+        }
+        catch (IOException)
+        {
+            //File doesn't exist yet, create it
+            using (StreamWriter sw = File.CreateText("keys.cfg"))
+            {
+                foreach (string key in defaultKeys.Keys)
+                {
+                    sw.Write(key + ":" + defaultKeys[key] + "\n");
+                    keys[key] = defaultKeys[key];
+                }
+            }
+        }
     }
 	
 	// Update is called once per frame
@@ -99,33 +161,33 @@ public class playerMovement : MonoBehaviour {
         if (touchingGround || touchingRamp || touchingFix)
         {
             //move forward
-            if (Input.GetKey(forward))
+            if (Input.GetKey(keys["forward"]))
             {
                 directionz = 1;
             }
 
 
             //move left
-            if (Input.GetKey(left))
+            if (Input.GetKey(keys["left"]))
             {
                 directionx = -1;
             }
 
 
             //move backward
-            if (Input.GetKey(backward))
+            if (Input.GetKey(keys["backward"]))
             {
                 directionz = -1;
             }
 
             //move right
-            if (Input.GetKey(right))
+            if (Input.GetKey(keys["right"]))
             {
                 directionx = 1;
             }
 
             //stop moving in certain direction when a key is no longer pressed
-            if (Input.GetKeyUp(forward) || Input.GetKeyUp(left) || Input.GetKeyUp(backward) || Input.GetKeyUp(right))
+            if (Input.GetKeyUp(keys["forward"]) || Input.GetKeyUp(keys["left"]) || Input.GetKeyUp(keys["backward"]) || Input.GetKeyUp(keys["right"]))
             {
                 directionx = 0;
                 directionz = 0;
@@ -134,7 +196,7 @@ public class playerMovement : MonoBehaviour {
 
             //when no movement keys are pressed, the player is restored into a rest state
             //also, when a dodge is finished, the player is restored to it's original movement
-            if ((!Input.GetKey(forward) && !Input.GetKey(left) && !Input.GetKey(backward) && !Input.GetKey(right)))
+            if ((!Input.GetKey(keys["forward"]) && !Input.GetKey(keys["left"]) && !Input.GetKey(keys["backward"]) && !Input.GetKey(keys["right"])))
             {
                 directionx = 0;
                 directionz = 0;
@@ -148,14 +210,14 @@ public class playerMovement : MonoBehaviour {
 
             //lookupHeight = true;
             //the famous Unreal Tournament single-tap dodge
-            if (Input.GetKeyDown(dodge) && dodgeFlag)
+            if (Input.GetKeyDown(keys["dodge"]) && dodgeFlag)
             {
                 rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
                 StartCoroutine(DodgeTimeout());
             }
 
             //add upwards force upon pressing the jump key
-            if (Input.GetKeyDown(jump))
+            if (Input.GetKeyDown(keys["jump"]))
             {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
