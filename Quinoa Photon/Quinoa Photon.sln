@@ -1,11 +1,11 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{14A930D0-1E1C-A224-A7C3-7A3013464481}") = "Quinoa Photon", "Assembly-CSharp-firstpass.csproj", "{D3D7042B-DDBF-AD99-C5E6-8D69D8760304}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quinoa Photon.CSharp.Plugins", "Quinoa Photon.CSharp.Plugins.csproj", "{D592B865-4880-06F8-B9A7-85B7DA0403B1}"
 EndProject
-Project("{14A930D0-1E1C-A224-A7C3-7A3013464481}") = "Quinoa Photon", "Assembly-CSharp.csproj", "{5B1FCBEB-D510-8781-89B8-4596DBD297F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quinoa Photon.CSharp", "Quinoa Photon.CSharp.csproj", "{FAC0D18E-D550-AE51-5388-42CE88EF1319}"
 EndProject
-Project("{14A930D0-1E1C-A224-A7C3-7A3013464481}") = "Quinoa Photon", "Assembly-CSharp-Editor.csproj", "{B51BAD70-B0A4-0B66-B8A4-CC632A43ACB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quinoa Photon.CSharp.Editor", "Quinoa Photon.CSharp.Editor.csproj", "{903BB3CF-2A69-CF3F-FC71-E7314C1799DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,40 +13,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D3D7042B-DDBF-AD99-C5E6-8D69D8760304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3D7042B-DDBF-AD99-C5E6-8D69D8760304}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3D7042B-DDBF-AD99-C5E6-8D69D8760304}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3D7042B-DDBF-AD99-C5E6-8D69D8760304}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B1FCBEB-D510-8781-89B8-4596DBD297F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B1FCBEB-D510-8781-89B8-4596DBD297F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B1FCBEB-D510-8781-89B8-4596DBD297F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B1FCBEB-D510-8781-89B8-4596DBD297F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B51BAD70-B0A4-0B66-B8A4-CC632A43ACB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B51BAD70-B0A4-0B66-B8A4-CC632A43ACB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B51BAD70-B0A4-0B66-B8A4-CC632A43ACB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B51BAD70-B0A4-0B66-B8A4-CC632A43ACB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D592B865-4880-06F8-B9A7-85B7DA0403B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D592B865-4880-06F8-B9A7-85B7DA0403B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D592B865-4880-06F8-B9A7-85B7DA0403B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D592B865-4880-06F8-B9A7-85B7DA0403B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC0D18E-D550-AE51-5388-42CE88EF1319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC0D18E-D550-AE51-5388-42CE88EF1319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC0D18E-D550-AE51-5388-42CE88EF1319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC0D18E-D550-AE51-5388-42CE88EF1319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903BB3CF-2A69-CF3F-FC71-E7314C1799DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903BB3CF-2A69-CF3F-FC71-E7314C1799DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903BB3CF-2A69-CF3F-FC71-E7314C1799DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903BB3CF-2A69-CF3F-FC71-E7314C1799DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.inheritsSet = null
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
-		$3.FileWidth = 120
-		$3.TabWidth = 4
-		$3.IndentWidth = 4
-		$3.EolMarker = Unix
-		$3.inheritsSet = Mono
-		$3.inheritsScope = text/plain
-		$3.scope = text/plain
-	EndGlobalSection
-
 EndGlobal
