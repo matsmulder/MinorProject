@@ -79,7 +79,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else if (type == "room")
         {
-            PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions(), TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions() { isVisible = true }, TypedLobby.Default);
         }
     }
 
@@ -114,5 +114,14 @@ public class RandomMatchmaker : MonoBehaviour {
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
+    }
+
+    public void BrowseGames()
+    {
+        Debug.Log("Browsing games...");
+        foreach (RoomInfo game in PhotonNetwork.GetRoomList())
+        {
+            Debug.Log(game.name);
+        }
     }
 }
