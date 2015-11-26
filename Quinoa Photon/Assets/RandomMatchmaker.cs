@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 
 public class RandomMatchmaker : MonoBehaviour {
 
@@ -9,7 +9,8 @@ public class RandomMatchmaker : MonoBehaviour {
     public GameObject standby;
     SpawnSpot[] spawnSpots;
     string type = "random";
-    string name = "";
+    //string roomName = "";
+    public Text nameBox;
 
     public bool offlineMode;
 	// Use this for initialization
@@ -34,10 +35,10 @@ public class RandomMatchmaker : MonoBehaviour {
         }
     }
 
-    public void JoinRoom(string name)
+    public void JoinRoom()
     {
         type = "room";
-        this.name = name;
+        //roomName = name;
         if (offlineMode)
         {
             PhotonNetwork.offlineMode = true;
@@ -67,7 +68,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else if (type == "room")
         {
-            PhotonNetwork.JoinOrCreateRoom(this.name, new RoomOptions(), TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions(), TypedLobby.Default);
         }
     }
 
