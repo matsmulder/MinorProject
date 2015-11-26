@@ -59,9 +59,9 @@ public class playerMovement : MonoBehaviour {
         defaultKeys = new Dictionary<string, string>
         {
             { "left","a" },
-            { "right","d" },
-            {"forward","w" },
-            { "backward","s" },
+            { "right","e" },
+            {"forward","," },
+            { "backward","o" },
             {"jump","space" },
             {"dodge", "left shift" },
 

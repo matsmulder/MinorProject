@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class WeaponData : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    public float fireRate;
+    public float damage;
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
