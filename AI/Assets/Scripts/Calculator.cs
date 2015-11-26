@@ -15,8 +15,8 @@ public class Calculator:MonoBehaviour
     public static double stepsize=0.125;
     public static double cDGSV = 1;
     public static double cOGSV = 0.5;
-    public static double cGSV = 2 / 3;
-    public static double cLSV = 1 / 3;
+    public static double cGSV = 0.66;
+    public static double cLSV = 0.66;
 
     private Calculator()
     {
@@ -71,7 +71,7 @@ public class Calculator:MonoBehaviour
             Vector3 wallCenter = new Vector3(obj.transform.position.x, obj.transform.position.y - obj.transform.lossyScale.y / 2, obj.transform.position.z);
             Vector3 closestPoint = wallCenter;
             double index = Vector3.Distance(wallCenter, point);
-            double min = Math.Min(obj.transform.lossyScale.x,obj.transform.lossyScale.z);
+            double min = Math.Min(obj.transform.lossyScale.x, obj.transform.lossyScale.z);
             double max = Math.Max(obj.transform.lossyScale.x, obj.transform.lossyScale.z);
             for (double t = -1; t <= 1; t = t + stepsize)
             {

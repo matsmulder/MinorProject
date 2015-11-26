@@ -6,7 +6,7 @@ public class Gun1 : NetworkBehaviour {
     private Rigidbody rb; //the 3D model of the gun as rigidbody
     public Rigidbody prefabBullet; //the 3D model of the bullet as rigidbody
     public float bulletSpeed; //the travelling speed of the bullet
-    private Vector3 bulletDir;
+    //private Vector3 bulletDir;
 
     private bool shootFlag; //
     public float fireRate; //the fire rate of the gun
@@ -41,7 +41,7 @@ public class Gun1 : NetworkBehaviour {
 
         //make a ray from the viewpoint to the middle of the screen; this will determine the direction of the bullets
         Ray shootDir = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth * 0.5f, Camera.main.pixelHeight * 0.5f, 0));
-        bulletDir = shootDir.direction;
+        //bulletDir = shootDir.direction;
         clone.velocity = shootDir.direction * bulletSpeed;
         yield return new WaitForSeconds(fireRate);
         shootFlag = true;

@@ -19,7 +19,7 @@ public class Bot : MonoBehaviour{
 
     public double sightConstant = 8;
     public double playerLengthConstant = 0.75;
-    public double cPLSV = 4;
+    public double cPLSV = 3;
     public double cHLSV = 3;
     public double cALSV = 3;
     public float fieldofViewAngle = 110f;
@@ -37,7 +37,8 @@ public class Bot : MonoBehaviour{
         ammo = 20;
         team = -1;
         calculator = Calculator.getCalculator();
-        transform.position = new Vector3(0.0f, (float)2, 0.0f);
+        transform.position = new Vector3(2.5f, (float)2, 2.5f);
+        map = calculator.getMap();
     }
 
     public double LSV(Vector3 point)
@@ -52,23 +53,31 @@ public class Bot : MonoBehaviour{
 
         foreach (var obj in healths)
         {
-            HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position)/0.75, 2)) / (health + 1);
+            HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/0.75, 2)) / (health + 1);
         }
 
         foreach (var obj in ammos)
         {
-            ALSV = ALSV+maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position)/0.75, 2)) / (ammo + 1);
+            ALSV = ALSV+maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/0.75, 2)) / (ammo + 1);
         }
 
         foreach (var obj in players)
         {
-            PLSV = PLSV+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / playerLengthConstant, 2));
+            /*if (((-obj.getTeam() * team + 1) / 2) = 0)
+            {
+                playerLengthConstant = playerLengthConstant * 2;
+            }*/
+            PLSV = PLSV-(1-Math.Pow(1.9*Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z))/playerLengthConstant,2))*Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) /playerLengthConstant,2));
         }
         foreach (var obj in bots)
         {
-            PLSV = PLSV+Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position) / playerLengthConstant, 2));
+            /*if (((-obj.getTeam() * team + 1) / 2) = 0)
+           {
+               playerLengthConstant = playerLengthConstant * 2;
+           }*/
+            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerLengthConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerLengthConstant, 2));
         }
-        //((-obj.getTeam() * team + 1) / 2) *
+
         return cPLSV * PLSV + cHLSV * HLSV + cALSV * ALSV;
     }
 
@@ -82,21 +91,21 @@ public class Bot : MonoBehaviour{
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
         map = calculator.getMap();
-        Vector3 bestPoint = transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f);
+        Vector3 bestPoint = new Vector3(0.0f, 0.0f, 0.0f);
         double index = 0;
         for (int i=0;i!=map.Count;i++)
         {
-            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0.0f, (float)transform.lossyScale.y, 0.0f)) < sightConstant)
+            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0, transform.lossyScale.y, 0)) < sightConstant)
             {
-                if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
-                {
+                //if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
+                //{
                      double tempSV = SV(map[i]);
                      if (index < tempSV)
                      {
                          index = tempSV;
                          bestPoint = map[i];
                      }
-                }
+                //}
             }
         }
         MoveBot(bestPoint);
@@ -104,13 +113,14 @@ public class Bot : MonoBehaviour{
 
     public void MoveBot(Vector3 point)
     {
-        transform.Translate((new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z))*sensitivity);
+        transform.Translate((new Vector3(point.x,0.0f,point.z) - new Vector3(transform.position.x,0.0f,transform.position.z))*Time.deltaTime*sensitivity);
 
         Vector3 aVector = Vector3.Cross(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
         float a = -aVector.y / Math.Abs(aVector.y);
+        float angle = Vector2.Angle(new Vector2(point.x - transform.position.x, point.z - transform.position.z), new Vector2(transform.forward.x, transform.forward.z));
         if (a < 1)
         {
-            transform.Rotate(new Vector3(0.0f, Vector2.Angle(new Vector2(point.x - this.transform.position.x, point.z - this.transform.position.z), new Vector2(this.transform.forward.x, this.transform.forward.z)), 0.0f) * a);
+            transform.Rotate(new Vector3(0, angle, 0) * Time.deltaTime * a);
         }
     }
 
