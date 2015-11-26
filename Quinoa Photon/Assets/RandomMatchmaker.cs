@@ -1,25 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class RandomMatchmaker : MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
     public GameObject standby;
     SpawnSpot[] spawnSpots;
+    string type = "random";
+    string name = "";
 
     public bool offlineMode;
 	// Use this for initialization
 	void Start () {
 
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
-        Connect();
 
         //PhotonNetwork.logLevel = PhotonLogLevel.Full;
-	}
+    }
 
-    void Connect()
+    public void ConnectRandom()
     {
+        type = "random";
+        if (offlineMode)
+        {
+            PhotonNetwork.offlineMode = true;
+            OnJoinedLobby();
+        }
+        else
+        {
+            PhotonNetwork.ConnectUsingSettings("0.1");
+        }
+    }
+
+    public void JoinRoom(string name)
+    {
+        type = "room";
+        this.name = name;
         if (offlineMode)
         {
             PhotonNetwork.offlineMode = true;
@@ -42,8 +60,15 @@ public class RandomMatchmaker : MonoBehaviour {
     }
 
     public void OnJoinedLobby()
-    {
+    {   
+        if (type == "random")
+        {
             PhotonNetwork.JoinRandomRoom();
+        }
+        else if (type == "room")
+        {
+            PhotonNetwork.JoinOrCreateRoom(this.name, new RoomOptions(), TypedLobby.Default);
+        }
     }
 
     void OnPhotonRandomJoinFailed()
