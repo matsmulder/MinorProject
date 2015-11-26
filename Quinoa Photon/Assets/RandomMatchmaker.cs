@@ -12,6 +12,8 @@ public class RandomMatchmaker : MonoBehaviour {
     //string roomName = "";
     public Text nameBox;
 
+    public float respawnTimer;
+
     public bool offlineMode;
 	// Use this for initialization
 	void Start () {
@@ -52,7 +54,16 @@ public class RandomMatchmaker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(respawnTimer > 0 )
+        {
+            respawnTimer -= Time.deltaTime;
 
+            if(respawnTimer <= 0)
+            {
+                //respawn the player
+                SpawnPlayer();
+            }
+        }
     }
 
     void OnGUI()

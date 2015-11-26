@@ -3,11 +3,11 @@ using System.Collections;
 
 public class playerShooting : MonoBehaviour {
 
-    public float fireRate;
+    
     private bool fireFlag;
-    public float damage;
     //public LineRenderer laserBeam;
     public float shootingRange;
+    WeaponData weaponData;
 
     // Use this for initialization
 
@@ -15,6 +15,8 @@ public class playerShooting : MonoBehaviour {
 
 
 	void Start () {
+        
+
         fireFlag = true;
         fxManager = GameObject.FindObjectOfType<FXmanager>();
 
@@ -35,6 +37,11 @@ public class playerShooting : MonoBehaviour {
 
     void Fire()
     {
+       
+        if (weaponData == null)
+        {
+            weaponData = gameObject.GetComponentInChildren<WeaponData>();
+        }
         StartCoroutine(Shoot());
     }
 
@@ -67,7 +74,7 @@ public class playerShooting : MonoBehaviour {
 
             if(h != null)
             {
-                h.GetComponent<PhotonView>().RPC("TakeDamage",PhotonTargets.All, damage);
+                h.GetComponent<PhotonView>().RPC("TakeDamage",PhotonTargets.All, weaponData.damage);
                 //this line is the equivalent of h.TakeDamage(damage) but synchronized
             }
 
@@ -89,7 +96,7 @@ public class playerShooting : MonoBehaviour {
 
         //laserBeam.enabled = true; //enable visibility of laser beam
         ////////////////////////////////
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(weaponData.fireRate);
         fireFlag = true;
         ///////////////////////////////
         //laserBeam.enabled = false; //disable visibility of laser beam
@@ -97,8 +104,8 @@ public class playerShooting : MonoBehaviour {
     }
 
     void DoGunFX(Vector3 hitPoint) {
-        WeaponData wd = gameObject.GetComponentInChildren<WeaponData>();
-        fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, wd.transform.position, hitPoint);
+       
+        fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, weaponData.transform.position, hitPoint);
     }
 
 
@@ -126,7 +133,6 @@ public class playerShooting : MonoBehaviour {
         //set end of laser beam to the point of impact
         if(closestHit == null)
         {
-            Debug.Log("nullshoot");
             hitPoint = Camera.main.transform.forward * shootingRange;
         }
         //laserBeam.SetPosition(1, hitPoint);

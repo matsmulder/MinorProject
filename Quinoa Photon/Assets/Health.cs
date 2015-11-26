@@ -20,10 +20,12 @@ public class Health : MonoBehaviour {
     public void TakeDamage(float amount)
     {
         currentHitPoints -= amount;
+        Debug.Log(currentHitPoints);
 
         if(currentHitPoints <= 0)
         {
             Die();
+            Debug.Log("DIE");
         }
     }
 
@@ -35,9 +37,26 @@ public class Health : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else if (PhotonNetwork.isMasterClient)
+        else
         {
-            PhotonNetwork.Destroy(gameObject);
+            Debug.Log("PhotonView not mine?");
+            if(GetComponent<PhotonView>().isMine) // this is MY player object
+            {
+                Debug.Log("PhotonView isMine");
+                if (gameObject.tag == "Player") 
+                {
+                    RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
+                    nm.standby.SetActive(true);
+                    //GameObject.Find("standby").SetActive(true);
+                   nm.respawnTimer = 2; //set the respawn time to 5 sec
+                }
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
+        
+        //else if (PhotonNetwork.isMasterClient)
+        //{
+        //    PhotonNetwork.Destroy(gameObject);
+        //}
     }
 }

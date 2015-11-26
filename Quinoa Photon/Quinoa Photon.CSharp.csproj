@@ -122,7 +122,6 @@
     <Compile Include="Assets\RandomMatchmaker.cs" />
     <Compile Include="Assets\ScopeTexture.cs" />
     <Compile Include="Assets\Scripts\Gun1.cs" />
-    <Compile Include="Assets\Scripts\Join random game.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\cameraMovement.cs" />
     <Compile Include="Assets\Scripts\playerMovement.cs" />
