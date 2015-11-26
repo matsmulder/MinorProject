@@ -7,6 +7,7 @@ public class RandomMatchmaker : MonoBehaviour {
     //public GameObject player;
     //public GameObject camera1;
     public GameObject standby;
+    public GameObject roomButtonPrefab;
     SpawnSpot[] spawnSpots;
     string type = "random";
     //string roomName = "";
@@ -15,41 +16,31 @@ public class RandomMatchmaker : MonoBehaviour {
     public float respawnTimer;
 
     public bool offlineMode;
+    string status;
+
+
 	// Use this for initialization
 	void Start () {
-
+        status = "inMenu";
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
-
-        //PhotonNetwork.logLevel = PhotonLogLevel.Full;
+        if (offlineMode)
+        {
+            OnJoinedLobby();            //For future extensions
+        }
+        else
+        {
+            PhotonNetwork.ConnectUsingSettings("0.1");
+        }
     }
 
     public void ConnectRandom()
     {
-        type = "random";
-        if (offlineMode)
-        {
-            PhotonNetwork.offlineMode = true;
-            OnJoinedLobby();
-        }
-        else
-        {
-            PhotonNetwork.ConnectUsingSettings("0.1");
-        }
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public void JoinRoom()
     {
-        type = "room";
-        //roomName = name;
-        if (offlineMode)
-        {
-            PhotonNetwork.offlineMode = true;
-            OnJoinedLobby();
-        }
-        else
-        {
-            PhotonNetwork.ConnectUsingSettings("0.1");
-        }
+        PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
 	
 	// Update is called once per frame
@@ -73,14 +64,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void OnJoinedLobby()
     {   
-        if (type == "random")
-        {
-            PhotonNetwork.JoinRandomRoom();
-        }
-        else if (type == "room")
-        {
-            PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions() { isVisible = true }, TypedLobby.Default);
-        }
+        
     }
 
     void OnPhotonRandomJoinFailed()
@@ -91,6 +75,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnJoinedRoom()
     {
+        status = "inGame";
         SpawnPlayer();
 
     }
@@ -118,10 +103,33 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void BrowseGames()
     {
+        GameObject but = (GameObject)Instantiate(roomButtonPrefab, new Vector3(0, 0, 0), new Quaternion());
+        
+
         Debug.Log("Browsing games...");
         foreach (RoomInfo game in PhotonNetwork.GetRoomList())
         {
-            Debug.Log(game.name);
+            //Debug.Log(game.name);
+            Debug.Log("woohoo");
         }
     }
+
+    void OnReceivedRoomListUpdate()
+    {
+        if (status=="browsing")
+        {
+            BrowseGames();
+        }
+    }
+
+    public void clearRoomButtons()
+    {
+
+    }
+    
+    public void setStatus(string stat)
+    {
+        status = stat;
+    }
+
 }
