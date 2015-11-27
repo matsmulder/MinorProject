@@ -314,8 +314,12 @@ public class playerMovement : MonoBehaviour {
 
     void OnDestroy()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (PhotonView.Get(this).isMine)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
     }
 
     IEnumerator DodgeTimeout()
