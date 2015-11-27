@@ -103,14 +103,21 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void BrowseGames()
     {
-        GameObject but = (GameObject)Instantiate(roomButtonPrefab, new Vector3(0, 0, 0), new Quaternion());
-        
+        RoomInfo[] rooms = PhotonNetwork.GetRoomList();
+        GameObject but;
 
-        Debug.Log("Browsing games...");
-        foreach (RoomInfo game in PhotonNetwork.GetRoomList())
+        int i = 0;
+        foreach (RoomInfo game in rooms)
         {
-            //Debug.Log(game.name);
-            Debug.Log("woohoo");
+            but = (GameObject)Instantiate(roomButtonPrefab, new Vector3(0, 0, 0), new Quaternion());
+            but.transform.SetParent(GameObject.Find("Canvas").transform);
+
+            RectTransform rt = but.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0.5f, 1);
+            rt.anchorMax = new Vector2(0.5f, 1);
+            rt.anchoredPosition = new Vector2(0, -10-30*i);
+            but.GetComponent<Text>().text = game.name;
+
         }
     }
 
