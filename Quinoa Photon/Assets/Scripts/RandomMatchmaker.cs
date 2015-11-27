@@ -178,12 +178,21 @@ public class RandomMatchmaker : MonoBehaviour {
             rt.anchorMin = new Vector2(0.5f, 1);
             rt.anchorMax = new Vector2(0.5f, 1);
             rt.anchoredPosition = new Vector2(0, -10-30*i);
-            but.GetComponentInChildren<Text>().text = game.name;
+            but.GetComponentInChildren<Text>().text = game.name + " (" + game.playerCount + "/" + game.maxPlayers + ")";
             Button b = but.GetComponent<Button>();
             b.onClick.AddListener(() =>
             {
                 JoinRoom(but.GetComponentInChildren<Text>().text);
+                GameObject cv = GameObject.Find("Canvas");
+                foreach (Transform childTF in cv.transform)
+                {
+                    if (childTF.CompareTag("menu_only"))
+                    {
+                        childTF.gameObject.SetActive(false);
+                    }
+                }
             });
+            
         }
     }
 
