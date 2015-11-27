@@ -74,11 +74,23 @@ public class playerShooting : MonoBehaviour {
 
             if(h != null)
             {
-                h.GetComponent<PhotonView>().RPC("TakeDamage",PhotonTargets.All, weaponData.damage);
+                
                 //this line is the equivalent of h.TakeDamage(damage) but synchronized
+
+
+                TeamMember tm = hitTransform.GetComponent<TeamMember>();
+                TeamMember myTm = this.GetComponent<TeamMember>();
+
+                if(tm== null || tm.teamID == 0 || myTm==null || myTm.teamID==0 || tm.teamID != myTm.teamID)
+                {
+                    h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, weaponData.damage);
+                }
+
             }
 
-            if(fxManager != null)
+
+
+            if (fxManager != null)
             {
                 DoGunFX(hitPoint);
             }
