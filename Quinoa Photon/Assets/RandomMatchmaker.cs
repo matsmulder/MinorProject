@@ -17,6 +17,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public bool offlineMode;
     string status;
+    private bool pickedTeam = false;
 
 
 	// Use this for initialization
@@ -52,7 +53,7 @@ public class RandomMatchmaker : MonoBehaviour {
             if(respawnTimer <= 0)
             {
                 //respawn the player
-                SpawnPlayer();
+                SpawnPlayer(1);
             }
         }
     }
@@ -60,6 +61,41 @@ public class RandomMatchmaker : MonoBehaviour {
     void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+        if(PhotonNetwork.connected == false)
+        {
+            //not yet connected, ask for online/offline <UPCOMING>
+        }
+
+        if(PhotonNetwork.connected == true)
+        {
+            //fully connected
+            if(pickedTeam)
+            {
+
+            }
+            else
+            {
+                //player has no team assigned
+                if(GUILayout.Button("Team Fastfood"))
+                {
+                    SpawnPlayer(1);
+                }
+                if(GUILayout.Button("Team Superfood"))
+                {
+                    SpawnPlayer(2);
+                }
+                if(GUILayout.Button("Random Select"))
+                {
+                    SpawnPlayer(Random.Range(1, 3));
+                }
+                if(GUILayout.Button("No Team"))
+                {
+                    SpawnPlayer(0);
+                }
+
+            }
+
+        }
     }
 
     public void OnJoinedLobby()
@@ -76,11 +112,11 @@ public class RandomMatchmaker : MonoBehaviour {
     void OnJoinedRoom()
     {
         status = "inGame";
-        SpawnPlayer();
+        //SpawnPlayer();
 
     }
 
-    void SpawnPlayer()
+    void SpawnPlayer(int teamID)
     {
 
         if(spawnSpots == null)
@@ -96,6 +132,27 @@ public class RandomMatchmaker : MonoBehaviour {
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
+
+        //set teamID, TODO: set colour
+        player.GetComponent<TeamMember>().teamID = teamID;
+        MeshRenderer skinColour = player.transform.GetComponentInChildren<MeshRenderer>();
+        if(skinColour == null)
+        {
+            Debug.Log("no mesh renderer found");
+        }
+
+        if(teamID==1) // team fastfood
+        {
+            skinColour.material.color = Color.red;
+        }
+        if(teamID==2) //team superfood
+        {
+            skinColour.material.color = Color.green;
+        }
+        if(teamID==0) //no team
+        {
+            skinColour.material.color = Color.clear;
+        }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
