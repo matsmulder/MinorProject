@@ -19,6 +19,8 @@ public class RandomMatchmaker : MonoBehaviour {
     string status;
     private bool pickedTeam = false;
 
+    private int teamID;
+
 
 	// Use this for initialization
 	void Start () {
@@ -58,7 +60,7 @@ public class RandomMatchmaker : MonoBehaviour {
             if(respawnTimer <= 0)
             {
                 //respawn the player
-                SpawnPlayer(1);
+                SpawnPlayer(teamID);
             }
         }
     }
@@ -97,6 +99,10 @@ public class RandomMatchmaker : MonoBehaviour {
                 {
                     SpawnPlayer(0);
                 }
+                if(GUILayout.Button("Join Random Game"))
+                {
+                    ConnectRandom();
+                }
 
             }
 
@@ -123,7 +129,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void SpawnPlayer(int teamID)
     {
-
+        this.teamID = teamID;
         if(spawnSpots == null)
         {
             Debug.Log("no spawnspots found");
@@ -139,25 +145,8 @@ public class RandomMatchmaker : MonoBehaviour {
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
 
         //set teamID, TODO: set colour
-        player.GetComponent<TeamMember>().teamID = teamID;
-        MeshRenderer skinColour = player.transform.GetComponentInChildren<MeshRenderer>();
-        if(skinColour == null)
-        {
-            Debug.Log("no mesh renderer found");
-        }
+        player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
 
-        if(teamID==1) // team fastfood
-        {
-            skinColour.material.color = Color.red;
-        }
-        if(teamID==2) //team superfood
-        {
-            skinColour.material.color = Color.green;
-        }
-        if(teamID==0) //no team
-        {
-            skinColour.material.color = Color.clear;
-        }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
