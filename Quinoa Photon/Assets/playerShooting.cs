@@ -3,7 +3,7 @@ using System.Collections;
 
 public class playerShooting : MonoBehaviour {
 
-    
+    public string fire;
     private bool fireFlag;
     public float shootingRange;
     WeaponData weaponData;
@@ -27,11 +27,11 @@ public class playerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	      if(Input.GetButton("Fire1") && fireFlag) //player shooting
+	      if(Input.GetButton(fire) && fireFlag) //player shooting
         {
             Fire();
         }
-	}
+    }
 
     void Fire()
     {
@@ -123,6 +123,11 @@ public class playerShooting : MonoBehaviour {
         }
 
         if(weaponData.weaponID == 3) //plasma gun
+        {
+
+        }
+
+        if(weaponData.weaponID == 4) //rocket launcher
         {
 
         }
