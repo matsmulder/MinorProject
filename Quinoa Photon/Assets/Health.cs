@@ -48,7 +48,7 @@ public class Health : MonoBehaviour {
                     RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
                     nm.standby.SetActive(true);
                     //GameObject.Find("standby").SetActive(true);
-                   nm.respawnTimer = 2; //set the respawn time to 5 sec
+                   nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }
                 PhotonNetwork.Destroy(gameObject);
             }

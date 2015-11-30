@@ -22,4 +22,10 @@ public class FXmanager : MonoBehaviour {
         lr.SetPosition(0, startPos);
         lr.SetPosition(1, endPos);
     }
+
+    [PunRPC]
+    void RocketLauncherFX()
+    {
+
+    }
 }
