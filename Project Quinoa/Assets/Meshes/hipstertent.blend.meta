@@ -1,0 +1,115 @@
+fileFormatVersion: 2
+guid: bf72b7137fecc5a4da0968f19e5fa235
+timeCreated: 1448900753
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Dakdelen
+    100002: Dakpannen
+    100004: Gebouw-cilinder
+    100006: Gebouw-kubus
+    100008: //RootNode
+    100010: Houtenframe-cilinder
+    100012: Kozijn
+    100014: Onderkant_Pilaren
+    100016: Vloer
+    400000: Dakdelen
+    400002: Dakpannen
+    400004: Gebouw-cilinder
+    400006: Gebouw-kubus
+    400008: //RootNode
+    400010: Houtenframe-cilinder
+    400012: Kozijn
+    400014: Onderkant_Pilaren
+    400016: Vloer
+    2300000: Dakdelen
+    2300002: Dakpannen
+    2300004: Gebouw-cilinder
+    2300006: Gebouw-kubus
+    2300008: Houtenframe-cilinder
+    2300010: Kozijn
+    2300012: Onderkant_Pilaren
+    2300014: Vloer
+    3300000: Dakdelen
+    3300002: Dakpannen
+    3300004: Gebouw-cilinder
+    3300006: Gebouw-kubus
+    3300008: Houtenframe-cilinder
+    3300010: Kozijn
+    3300012: Onderkant_Pilaren
+    3300014: Vloer
+    4300000: Vloer
+    4300002: Kozijn
+    4300004: Gebouw-kubus
+    4300006: Onderkant_Pilaren
+    4300008: Houtenframe-cilinder
+    4300010: Gebouw-cilinder
+    4300012: Dakpannen
+    4300014: Dakdelen
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
