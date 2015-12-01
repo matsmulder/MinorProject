@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-//using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -12,9 +11,7 @@ public class Calculator:MonoBehaviour
     private static double[] mapGSV;
 
     public static double wallConst = 4;
-    public static double stepsize = 0.5;
-    public static double cGSV = 0.70;
-    public static double cLSV = 2;
+    public static double stepsize = 1;
 
     private Calculator()
     {
@@ -82,15 +79,5 @@ public class Calculator:MonoBehaviour
     public double getGSV(Vector3 point)
     {
         return mapGSV[map.IndexOf(point)];
-    }
-
-    public double getGSVconstant()
-    {
-        return cGSV;
-    }
-
-    public double getLSVconstant()
-    {
-        return cLSV;
     }
 }

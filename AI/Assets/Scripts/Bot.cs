@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-//using UnityEngine.Networking;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -19,6 +18,9 @@ public class Bot : MonoBehaviour{
     public double playerConstant = 4;
     public double ammoConstant = 1;
     public double healthConstant = 1;
+    private static double cGSV = 0.70;
+    private static double cLSV = 2;
+
     private double cPLSV = 1.5;
     private double cHLSV = 1;
     private double cALSV = 1;
@@ -97,7 +99,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return calculator.getLSVconstant() * this.LSV(point) + calculator.getGSVconstant() * calculator.getGSV(point);
+        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);
     }
 
     public void Update()
@@ -111,15 +113,15 @@ public class Bot : MonoBehaviour{
         {
             if (Vector3.Distance(map[i], this.transform.position - new Vector3(0, transform.lossyScale.y, 0)) < sightConstant)
             {
-                //if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
-                //{
+                if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
+                {
                      double tempSV = SV(map[i]);
                      if (index < tempSV)
                      {
                          index = tempSV;
                          bestPoint = map[i];
                      }
-                //}
+                }
             }
         }
 
@@ -150,6 +152,26 @@ public class Bot : MonoBehaviour{
         {
             transform.Rotate(new Vector3(0, angle, 0) * Time.deltaTime * a);
         }
+    }
+
+    public void Shoot(GameObject target)
+    {
+        //if (((-other.gameObject.getTeam() * team + 1) / 2 == 1))
+        //{
+        Vector3 aVector = Vector3.Cross(new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
+        float a = -aVector.y / Math.Abs(aVector.y);
+        float targetAngle = Vector2.Angle(new Vector2(target.transform.position.x - transform.position.x, target.transform.position.z - transform.position.z), new Vector2(transform.forward.x, transform.forward.z));
+        if (Math.Abs(a) > 0.1)
+        {
+            transform.Rotate(new Vector3(0, targetAngle, 0) * Time.deltaTime * a * rotateSpeed);
+        }
+        if (shootFlag)
+        {
+            Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z + 2), Quaternion.identity) as Rigidbody;
+            clone.velocity = this.transform.forward * bulletSpeed;
+            StartCoroutine(bullet());
+        }
+        //}
     }
 
     public void OnTriggerStay(Collider other)
@@ -183,36 +205,6 @@ public class Bot : MonoBehaviour{
         }
 
     }
-    //GameObject player
-    public void Shoot(GameObject target)
-    {
-        //if (((-other.gameObject.getTeam() * team + 1) / 2 == 1))
-        //{
-        Vector3 aVector = Vector3.Cross(new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
-        float a = -aVector.y / Math.Abs(aVector.y);
-        float targetAngle = Vector2.Angle(new Vector2(target.transform.position.x - transform.position.x, target.transform.position.z - transform.position.z), new Vector2(transform.forward.x, transform.forward.z));
-        if (Math.Abs(a) > 0.1)
-        {
-            transform.Rotate(new Vector3(0, targetAngle, 0) * Time.deltaTime * a * rotateSpeed);
-        }
-        if (shootFlag)
-        {
-            Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z + 2), Quaternion.identity) as Rigidbody;
-            clone.velocity = this.transform.forward * bulletSpeed;
-            StartCoroutine(bullet());
-        }
-        //}
-    }
-
-    IEnumerator bullet()
-    {
-        shootFlag = false;
-        yield return new WaitForSeconds(1);
-        if(playerInSight)
-        {
-            shootFlag = true;
-        }
-    }
 
     public void OnTriggerExit(Collider other)
     {
@@ -223,6 +215,16 @@ public class Bot : MonoBehaviour{
             {
                 targets.Remove(other.gameObject);
             }
+        }
+    }
+
+    IEnumerator bullet()
+    {
+        shootFlag = false;
+        yield return new WaitForSeconds(fireRate);
+        if (playerInSight)
+        {
+            shootFlag = true;
         }
     }
 

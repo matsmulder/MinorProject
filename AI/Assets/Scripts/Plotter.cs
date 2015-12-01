@@ -14,6 +14,9 @@ public class Plotter : MonoBehaviour
     public GameObject SVTracker;
     public Bot bot;
 
+    private static double cGSV = 0.70;
+    private static double cLSV = 2;
+
     public void Awake()
     {
         calculator=Calculator.getCalculator();
@@ -22,7 +25,7 @@ public class Plotter : MonoBehaviour
         {
             //Instantiate(GSVTracker, new Vector3(point.x, (float)calculator.GSV(point), point.z), Quaternion.identity);
             //Instantiate(LSVTracker, new Vector3(point.x, (float)(2*bot.LSV(point)), point.z), Quaternion.identity);
-            Instantiate(SVTracker, new Vector3(point.x, (float)(calculator.getGSVconstant()*calculator.GSV(point) + calculator.getLSVconstant()*bot.LSV(point)+2), point.z), Quaternion.identity);
+            Instantiate(SVTracker, new Vector3(point.x, (float)(cGSV*calculator.GSV(point) + cLSV*bot.LSV(point)+2), point.z), Quaternion.identity);
         }
     }
 }
