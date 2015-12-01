@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 public class Bot : MonoBehaviour{
     private bool playerInSight;
-    public int health;
-    public int ammo;
     private bool dead;
     private Rigidbody rb;
     private int team;
@@ -17,15 +15,27 @@ public class Bot : MonoBehaviour{
     private List<Vector3> map;
     //https://unity3d.com/learn/tutorials/projects/stealth/enemy-sight
 
-    public double sightConstant = 8;
-    public double playerLengthConstant = 0.75;
-    public double cPLSV = 3;
-    public double cHLSV = 3;
-    public double cALSV = 3;
-    public float fieldofViewAngle = 110f;
-    public float sensitivity = 4;
-    public float maxHealth = 20;
-    public float maxAmmo = 20;
+    public double sightConstant = 10;
+    public double playerConstant = 4;
+    public double ammoConstant = 1;
+    public double healthConstant = 1;
+    private double cPLSV = 1.5;
+    private double cHLSV = 1;
+    private double cALSV = 1;
+    private float fieldofViewAngle = 190f;
+    public float rotateSpeed;
+    private float sensitivity = 1;
+    private float maxHealth = 100;
+    private float maxAmmo = 20;
+    public int health = 10;
+    public int ammo= 1;
+    public Rigidbody prefabBullet;
+    private float bulletSpeed=100;
+    private float fireRate = 0.2f;
+    private bool shootFlag;
+
+    private List<GameObject> targets = new List<GameObject>();
+    private GameObject minTarget;
 
     public void Start()
     {
@@ -33,12 +43,13 @@ public class Bot : MonoBehaviour{
         col = GetComponent<SphereCollider>();
         col.radius= (float)sightConstant;
         dead = false;
-        health = 100;
-        ammo = 20;
+        //health = 100;
+        //ammo = 0;
         team = -1;
         calculator = Calculator.getCalculator();
-        transform.position = new Vector3(2.5f, (float)2, 2.5f);
         map = calculator.getMap();
+        shootFlag = false;
+        playerInSight = false;
     }
 
     public double LSV(Vector3 point)
@@ -53,29 +64,32 @@ public class Bot : MonoBehaviour{
 
         foreach (var obj in healths)
         {
-            HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/0.75, 2)) / (health + 1);
+            HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/healthConstant, 2)) / (health + 1);
         }
 
         foreach (var obj in ammos)
         {
-            ALSV = ALSV+maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/0.75, 2)) / (ammo + 1);
+            ALSV = ALSV+5*maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/ammoConstant, 2)) / (ammo + 1);
         }
 
         foreach (var obj in players)
         {
             /*if (((-obj.getTeam() * team + 1) / 2) = 0)
             {
-                playerLengthConstant = playerLengthConstant * 2;
+                playerLengthConstant = playerLengthConstant/5;
             }*/
-            PLSV = PLSV-(1-Math.Pow(1.9*Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z))/playerLengthConstant,2))*Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) /playerLengthConstant,2));
+            PLSV = PLSV-(1-Math.Pow(1.9*Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z))/playerConstant,2))*Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) /playerConstant,2));
         }
         foreach (var obj in bots)
         {
             /*if (((-obj.getTeam() * team + 1) / 2) = 0)
            {
-               playerLengthConstant = playerLengthConstant * 2;
+               playerLengthConstant = playerLengthConstant/5;
            }*/
-            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerLengthConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerLengthConstant, 2));
+            if (Vector3.Distance(obj.transform.position,this.transform.position)!=0)
+            {
+                PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerConstant, 2));
+            }
         }
 
         return cPLSV * PLSV + cHLSV * HLSV + cALSV * ALSV;
@@ -83,7 +97,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return calculator.getLSVconstant() * LSV(point) + calculator.getGSVconstant() * calculator.getGSV(point);
+        return calculator.getLSVconstant() * this.LSV(point) + calculator.getGSVconstant() * calculator.getGSV(point);
     }
 
     public void Update()
@@ -108,7 +122,21 @@ public class Bot : MonoBehaviour{
                 //}
             }
         }
+
         MoveBot(bestPoint);
+
+        if (targets.Count > 0)
+        {
+            minTarget = targets[0];
+            foreach (GameObject obj in targets)
+            {
+                if (Vector3.Distance(this.transform.position, minTarget.transform.position) > Vector3.Distance(this.transform.position, obj.transform.position))
+                {
+                    minTarget = obj;
+                }
+            }
+            Shoot(minTarget);
+        }
     }
 
     public void MoveBot(Vector3 point)
@@ -118,7 +146,7 @@ public class Bot : MonoBehaviour{
         Vector3 aVector = Vector3.Cross(new Vector3(point.x - transform.position.x, 0, point.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
         float a = -aVector.y / Math.Abs(aVector.y);
         float angle = Vector2.Angle(new Vector2(point.x - transform.position.x, point.z - transform.position.z), new Vector2(transform.forward.x, transform.forward.z));
-        if (a < 1)
+        if (Math.Abs(a) > 1 && playerInSight == false)
         {
             transform.Rotate(new Vector3(0, angle, 0) * Time.deltaTime * a);
         }
@@ -128,7 +156,6 @@ public class Bot : MonoBehaviour{
     {
         if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("Player"))
         {
-            playerInSight = false;
             //if ((-other.gameObject.getTeam()*team+1)/2 == 1)
             //{
             Vector3 direction = other.transform.position - this.transform.position;
@@ -140,29 +167,62 @@ public class Bot : MonoBehaviour{
                 {
                     if (hit.collider.tag == "Bot" || hit.collider.tag == "Player")
                     {
-                        playerInSight = true;
-                        //rb.transform.Translate(new Vector3(1,1,1));
+                        if (shootFlag == false && playerInSight == false)
+                        {
+                            playerInSight = true;
+                            shootFlag = true;
+                        }
+                        if (targets.IndexOf(hit.transform.gameObject) == -1 && hit.transform.gameObject != this.gameObject)
+                        {
+                            targets.Add(hit.transform.gameObject);
+                        }
                     }
                 }
             }
             //}
         }
+
+    }
+    //GameObject player
+    public void Shoot(GameObject target)
+    {
+        //if (((-other.gameObject.getTeam() * team + 1) / 2 == 1))
+        //{
+        Vector3 aVector = Vector3.Cross(new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
+        float a = -aVector.y / Math.Abs(aVector.y);
+        float targetAngle = Vector2.Angle(new Vector2(target.transform.position.x - transform.position.x, target.transform.position.z - transform.position.z), new Vector2(transform.forward.x, transform.forward.z));
+        if (Math.Abs(a) > 0.1)
+        {
+            transform.Rotate(new Vector3(0, targetAngle, 0) * Time.deltaTime * a * rotateSpeed);
+        }
+        if (shootFlag)
+        {
+            Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z + 2), Quaternion.identity) as Rigidbody;
+            clone.velocity = this.transform.forward * bulletSpeed;
+            StartCoroutine(bullet());
+        }
+        //}
     }
 
-    //public void Shoot()
-    //{
-    //    while(playerInSight)
-    //    {
-    //        transform.Rotate(Vector3.Angle( , transform.forward));
-    //        Fire();
-    //    }
-    //}
+    IEnumerator bullet()
+    {
+        shootFlag = false;
+        yield return new WaitForSeconds(1);
+        if(playerInSight)
+        {
+            shootFlag = true;
+        }
+    }
 
     public void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Bot") || other.gameObject.CompareTag("Player"))
         {
             playerInSight = false;
+            if (targets.IndexOf(other.gameObject) != -1)
+            {
+                targets.Remove(other.gameObject);
+            }
         }
     }
 
