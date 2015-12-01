@@ -32,7 +32,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings("0.1");
+            PhotonNetwork.ConnectUsingSettings("0.2");
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class WeaponSwitching : MonoBehaviour {
+public class WeaponSwitching : Photon.MonoBehaviour {
 
     /// <summary>
     /// a standarized list for weaponIDs and order of childs
@@ -17,16 +17,23 @@ public class WeaponSwitching : MonoBehaviour {
 
     public string sniperRifle, laserGun, plasmaGun, rocketLauncher, grenadeLauncher;
 
+    bool[] weaponStates;
+
     GameObject[] weaponList;
 
     void Start () {
 
+        weaponStates = new bool[transform.childCount];
+
         //make a list of all childs of weaponHolder: the guns!
         weaponList = new GameObject[transform.childCount];
+
+
         int i = 0;
         foreach (Transform child in transform)
         {
             weaponList[i] = child.gameObject;
+            weaponList[i].SetActive(true);
             i++;
         }
     }
@@ -49,6 +56,8 @@ public class WeaponSwitching : MonoBehaviour {
         if (Input.GetKeyDown(sniperRifle))
         {
             weaponList[0].SetActive(true);
+
+            //pv.RPC("SwitchWeapon", PhotonTargets.Others, 1);
         }
 
         if (Input.GetKeyDown(laserGun))
@@ -73,5 +82,43 @@ public class WeaponSwitching : MonoBehaviour {
         //if (Input.GetKeyDown(sniperRifle) { to be continued...
 
         //}
+
+        //this may cause stuttering
+        for(int i=0; i<weaponList.Length; i++)
+        {
+            //weaponList[i].SetActive(weaponStates[i]);
+        }
+
+    }
+
+    [PunRPC]
+    void SwitchWeapon(int index)
+    {
+        if(GetComponent<PhotonView>().isMine)
+        Debug.Log(index);
+        weaponList[0].SetActive(true);
+
+
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            // We own this player: send the others our data
+            for (int i = 0; i < weaponList.Length; i++)
+            {
+                stream.SendNext(weaponList[i].activeSelf); //send active state of each weapon
+            }
+        }
+        else
+        {
+            // Network player, receive data
+            for (int i = 0; i < weaponList.Length; i++)
+            {
+                weaponStates[i] = (bool)stream.ReceiveNext();
+                weaponList[i].SetActive(weaponStates[i]);
+            }
+        }
     }
 }

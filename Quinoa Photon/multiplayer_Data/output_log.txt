@@ -13,8 +13,6 @@ Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multipl
 Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
@@ -24,26 +22,24 @@ Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\M
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\websocket-sharp.dll (this message is harmless)
 Loading C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\websocket-sharp.dll into Unity Child Domain
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.073 seconds
+- Completed reload, in  0.079 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
 Platform assembly: C:\Users\David\Documents\Project Quinoa\Quinoa Photon\multiplayer_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 232c -> priority: 1 
-  Thread -> id: 1f34 -> priority: 1 
-Failed to Instantiate prefab: player4. Client should be in a room. Current connectionStateDetailed: JoinedLobby
+  Thread -> id: 2f5c -> priority: 1 
+  Thread -> id: 22d8 -> priority: 1 
+Can't join random room!
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at RandomMatchmaker.SpawnPlayer (Int32 teamID) [0x00000] in <filename unknown>:0 
-  at RandomMatchmaker.OnGUI () [0x00000] in <filename unknown>:0 
+FirePoint (WeaponData)
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-ramp, this one is for you
+View (0)1001 on player4(Clone) 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
@@ -51,2081 +47,199 @@ JoinRandomRoom failed. Client is not on Master Server or not yet ready to call o
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+900
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+800
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Destroying GO as global. ID: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+DIE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+700
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+600
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+500
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+400
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+300
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+200
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+100
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Destroying GO as global. ID: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+DIE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+View (0)1001 on player4(Clone) 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
 ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-191
+View (0)1001 on player4(Clone) 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-181
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-171
+View (0)1001 on player4(Clone) 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-161
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-151
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-141
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-131
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-121
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-111
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-101
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-91
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-81
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-71
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-61
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-51
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-41
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-31
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-21
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-11
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-1
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
--9
+ramp, this one is for you
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-PhotonView not mine?
+View (0)1001 on player4(Clone) 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--19
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView not mine?
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-191
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-181
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-171
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-161
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-151
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-141
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-131
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-121
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-111
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-101
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-91
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-81
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-71
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-61
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-51
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-41
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-31
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-21
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-11
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--9
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView not mine?
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--19
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView not mine?
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-191
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-181
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-171
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-161
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-151
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-141
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-131
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-121
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-111
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-101
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-91
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-81
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-71
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-61
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-51
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-41
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-31
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-21
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-11
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--9
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView not mine?
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView isMine
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Received RPC "TakeDamage" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-191
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-181
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-171
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-161
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-151
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-141
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-131
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-121
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-111
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-101
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-91
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-81
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-71
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-61
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-51
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-41
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-31
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-21
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-11
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
--9
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView not mine?
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-PhotonView isMine
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-DIE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Received RPC "TakeDamage" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Rigidbody:INTERNAL_get_position (UnityEngine.Vector3&)
-  at UnityEngine.Rigidbody.get_position () [0x00000] in <filename unknown>:0 
-  at cameraMovement.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
 
