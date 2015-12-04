@@ -17,11 +17,14 @@ public class WeaponSwitching : Photon.MonoBehaviour {
 
     public string sniperRifle, laserGun, plasmaGun, rocketLauncher, grenadeLauncher;
 
-    bool[] weaponStates;
+    public bool[] weaponStates;
 
-    GameObject[] weaponList;
+    public GameObject[] weaponList;
+    public PhotonView pv;
 
     void Start () {
+
+        pv = GetComponent<PhotonView>();
 
         weaponStates = new bool[transform.childCount];
 
@@ -35,6 +38,7 @@ public class WeaponSwitching : Photon.MonoBehaviour {
             weaponList[i] = child.gameObject;
             weaponList[i].SetActive(true);
             i++;
+            Debug.Log(weaponList[0].name);
         }
     }
 	
@@ -55,19 +59,21 @@ public class WeaponSwitching : Photon.MonoBehaviour {
 
         if (Input.GetKeyDown(sniperRifle))
         {
-            weaponList[0].SetActive(true);
+            //weaponList[0].SetActive(true);
+            pv.RPC("SwitchWeapon", PhotonTargets.All, 0);
 
-            //pv.RPC("SwitchWeapon", PhotonTargets.Others, 1);
         }
 
         if (Input.GetKeyDown(laserGun))
         {
-            weaponList[1].SetActive(true);
+            //weaponList[1].SetActive(true);
+            pv.RPC("SwitchWeapon", PhotonTargets.All, 1);
         }
 
         if (Input.GetKeyDown(plasmaGun))
         {
-            weaponList[2].SetActive(true);
+            //weaponList[2].SetActive(true);
+            pv.RPC("SwitchWeapon", PhotonTargets.All, 2);
         }
 
         if (Input.GetKeyDown(rocketLauncher))
@@ -92,33 +98,34 @@ public class WeaponSwitching : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    void SwitchWeapon(int index)
+    public void SwitchWeapon(int index)
     {
-        if(GetComponent<PhotonView>().isMine)
-        Debug.Log(index);
-        weaponList[0].SetActive(true);
-
-
+        weaponList[index].SetActive(true);
     }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             // We own this player: send the others our data
-            for (int i = 0; i < weaponList.Length; i++)
-            {
-                stream.SendNext(weaponList[i].activeSelf); //send active state of each weapon
-            }
+       //     for (int i = 0; i < weaponList.Length; i++)
+        //    {
+        //        stream.SendNext(weaponList[i].activeSelf); //send active state of each weapon
+       //     }
         }
         else
         {
             // Network player, receive data
-            for (int i = 0; i < weaponList.Length; i++)
-            {
-                weaponStates[i] = (bool)stream.ReceiveNext();
-                weaponList[i].SetActive(weaponStates[i]);
-            }
+       //     Debug.Log(weaponList.Length + "length");
+       //     for (int i = 0; i < weaponList.Length; i++)
+       //     {
+       //         weaponStates[i] = (bool)stream.ReceiveNext();
+       //         weaponList[i].SetActive(weaponStates[i]);
+       //         Debug.Log(weaponList[i]);
+       //         Debug.Log("test onphotonjeweetzelf");
+       //     }
         }
     }
+    
 }

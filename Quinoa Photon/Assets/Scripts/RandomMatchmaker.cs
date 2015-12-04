@@ -143,6 +143,7 @@ public class RandomMatchmaker : MonoBehaviour {
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
+        player.GetComponentInChildren<WeaponSwitching>().enabled = true;
 
         //set teamID, TODO: set colour
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);

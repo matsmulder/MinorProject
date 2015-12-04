@@ -35,11 +35,12 @@ public class playerShooting : MonoBehaviour {
     void Fire()
     {
        
-        if (weaponData == null)
+        //if (weaponData == null)
         {
             weaponData = gameObject.GetComponentInChildren<WeaponData>();
-            Debug.Log(weaponData);
+            Debug.Log(weaponData.fireRate + "firerate");
         }
+
         StartCoroutine(Shoot());
     }
 
@@ -54,7 +55,7 @@ public class playerShooting : MonoBehaviour {
 
 
         //hit detection with hitscan, used for sniper rifle and laser gun
-        if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // if the weapon used is a sniper rifle or laser gun
+        if (weaponData.weaponID == 0 || weaponData.weaponID == 1 || weaponData.weaponID == 2) // if the weapon used is a sniper rifle or laser gun
         {
 
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -117,7 +118,7 @@ public class playerShooting : MonoBehaviour {
     void DoGunFX(Vector3 hitPoint) {
 
         //sniper rifle: do an RPC call to SniperBulletFX which will create a bullet trail ray, sound and particle effects
-        if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // only create a ray for hitscan-based weapons
+        if (weaponData.weaponID == 0 || weaponData.weaponID == 1 || weaponData.weaponID == 2) // only create a ray for hitscan-based weapons
         {
             Debug.Log(GetComponent<PhotonView>());
             fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, weaponData.transform.position, hitPoint);
