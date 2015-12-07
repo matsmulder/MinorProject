@@ -59,9 +59,9 @@ public class playerMovement : MonoBehaviour {
         defaultKeys = new Dictionary<string, string>
         {
             { "left","a" },
-            { "right","e" },
-            {"forward","," },
-            { "backward","o" },
+            { "right","d" },
+            {"forward","w" },
+            { "backward","s" },
             {"jump","space" },
             {"dodge", "left shift" },
 
@@ -157,12 +157,15 @@ public class playerMovement : MonoBehaviour {
             Cursor.visible = true;
         }
 
+        
         //check for key presses and adapt movement of player but only if the ground is touched
         if (touchingGround || touchingRamp || touchingFix)
         {
+            Debug.Log("Checking movement...");
             //move forward
             if (Input.GetKey(keys["forward"]))
             {
+                Debug.Log("Get a frickin' move on!");
                 directionz = 1;
             }
 
@@ -246,6 +249,7 @@ public class playerMovement : MonoBehaviour {
             {
                 //touchingFix = false;
             }
+            Debug.Log("Not checking movement");
         }
     }
 
@@ -282,13 +286,14 @@ public class playerMovement : MonoBehaviour {
     //check for collision
     void OnCollisionStay(Collision col)
     {
-        //activate flag only when contact between ground and player is true
-        if(col.gameObject.CompareTag("ground"))
+        if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
             touchingGround = true;
         }
+        
 
-        if(col.gameObject.CompareTag("ramp"))
+
+        if (col.gameObject.CompareTag("ramp"))
         {
             touchingRamp = true;
         }
@@ -301,12 +306,12 @@ public class playerMovement : MonoBehaviour {
     //check for exit collision to avoid to being able to move in the air
     void OnCollisionExit(Collision col)
     {
-        if (col.gameObject.CompareTag("ground"))
+        if (!Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
             touchingGround = false;
         }
 
-        if(col.gameObject.CompareTag("ramp"))
+        if (col.gameObject.CompareTag("ramp"))
         {
             touchingRamp = false;
         }

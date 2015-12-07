@@ -1,0 +1,10 @@
+Base path: C:/Program Files/Unity/Editor/Data
+<<<<<<< HEAD
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-4604
+Cmd: getPlatforms
+=======
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-3684
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=445 outsize=445 ok=1
+>>>>>>> Multiplayer
