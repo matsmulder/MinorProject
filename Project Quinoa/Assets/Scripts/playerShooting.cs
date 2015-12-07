@@ -3,7 +3,7 @@ using System.Collections;
 
 public class playerShooting : MonoBehaviour {
 
-    
+    public string fire;
     private bool fireFlag;
     public float shootingRange;
     WeaponData weaponData;
@@ -13,8 +13,7 @@ public class playerShooting : MonoBehaviour {
     FXmanager fxManager;
 
 
-	void Start () {
-        
+    void Start() {
 
         fireFlag = true;
         fxManager = FindObjectOfType<FXmanager>();
@@ -27,19 +26,18 @@ public class playerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	      if(Input.GetButton("Fire1") && fireFlag) //player shooting
+	      if(Input.GetButton(fire) && fireFlag) //player shooting
         {
             Fire();
         }
-	}
+    }
 
     void Fire()
     {
        
-        if (weaponData == null)
-        {
             weaponData = gameObject.GetComponentInChildren<WeaponData>();
-        }
+            Debug.Log(weaponData);
+
         StartCoroutine(Shoot());
     }
 
@@ -51,50 +49,59 @@ public class playerShooting : MonoBehaviour {
         //////////////////////////////
         //edit from here
 
-        Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
-        Transform hitTransform; //transform of the hit object (hitscan only for now)
-        Vector3 hitPoint; //the exact coordinates of the hit face; used as endpoint of 'laser beam' ray and for ricochets in the future
 
-        hitTransform = FindClosestHitInfo(ray, out hitPoint);// find out which object was hit with raycasting; used for weapons with hitscan (instant fire weapons)
 
-        if(hitTransform != null)
+        //hit detection with hitscan, used for sniper rifle and laser gun
+        if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // if the weapon used is a sniper rifle or laser gun
         {
-            Health h = hitTransform.GetComponent<Health>();
 
-            while(h == null && hitTransform.parent) //cycle through childs until the parent which holds the Health script is found
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Transform hitTransform; //transform of the hit object (hitscan only for now)
+            Vector3 hitPoint; //the exact coordinates of the hit face; used as endpoint of 'laser beam' ray and for ricochets in the future
+
+            hitTransform = FindClosestHitInfo(ray, out hitPoint);// find out which object was hit with raycasting; used for weapons with hitscan (instant fire weapons)
+
+
+            //------------- apply health changes-------------------------------------------------------------
+            if (hitTransform != null)
             {
-                hitTransform = hitTransform.parent;
-                h = hitTransform.GetComponent<Health>();
-            }
+                Health h = hitTransform.GetComponent<Health>();
 
-            if(h != null) //only execute when the hit object has a health script
-            {
-                TeamMember tm = hitTransform.GetComponent<TeamMember>(); //lookup the team information of the hit object
-                TeamMember myTm = this.GetComponent<TeamMember>();
-
-                if(tm== null || tm.teamID == 0 || myTm==null || myTm.teamID==0 || tm.teamID != myTm.teamID)
+                while (h == null && hitTransform.parent) //cycle through childs until the parent which holds the Health script is found
                 {
-                    //execute if: hitTransform or the player itself has no team info, is of teamID 0 (no team, independent faction, deathmatch mode) or the teamIDs are different
-                    //this line is the equivalent of h.TakeDamage(damage) but synchronized
-                    h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, weaponData.damage);
+                    hitTransform = hitTransform.parent;
+                    h = hitTransform.GetComponent<Health>();
                 }
 
+                if (h != null) //only execute when the hit object has a health script
+                {
+                    TeamMember tm = hitTransform.GetComponent<TeamMember>(); //lookup the team information of the hit object
+                    TeamMember myTm = this.GetComponent<TeamMember>();
+
+                    if (tm == null || tm.teamID == 0 || myTm == null || myTm.teamID == 0 || tm.teamID != myTm.teamID)
+                    {
+                        //execute if: hitTransform or the player itself has no team info, is of teamID 0 (no team, independent faction, deathmatch mode) or the teamIDs are different
+                        //this line is the equivalent of h.TakeDamage(damage) but synchronized
+                        h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, weaponData.damage);
+                    }
+
+                }
+                //-----------------------------------------------------------------------------------------------
+
+
+                if (fxManager != null) //'sanity check': is there an fxManager? (yes of course, execute Gun FX function)
+                {
+                    DoGunFX(hitPoint);
+                }
             }
-
-
-
-            if (fxManager != null) //'sanity check': is there an fxManager? (yes of course, execute Gun FX function)
+            else
             {
-                DoGunFX(hitPoint);
-            }
-        }
-        else
-        {
-            //nothing is hit
-            if (fxManager != null)
-            {
-                //fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, Camera.main.transform.forward * shootingRange);
-                DoGunFX(Camera.main.transform.forward * shootingRange);
+                //nothing is hit
+                if (fxManager != null)
+                {
+                    //fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, Camera.main.transform.forward * shootingRange);
+                    DoGunFX(Camera.main.transform.forward * shootingRange);
+                }
             }
         }
 
@@ -106,9 +113,23 @@ public class playerShooting : MonoBehaviour {
     }
 
     void DoGunFX(Vector3 hitPoint) {
-       
+
         //sniper rifle: do an RPC call to SniperBulletFX which will create a bullet trail ray, sound and particle effects
-        fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, weaponData.transform.position, hitPoint);
+        if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // only create a ray for hitscan-based weapons
+        {
+            Debug.Log(GetComponent<PhotonView>());
+            fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, weaponData.transform.position, hitPoint);
+        }
+
+        if(weaponData.weaponID == 3) //plasma gun
+        {
+
+        }
+
+        if(weaponData.weaponID == 4) //rocket launcher
+        {
+
+        }
     }
 
 

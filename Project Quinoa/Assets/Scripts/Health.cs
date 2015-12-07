@@ -32,22 +32,18 @@ public class Health : MonoBehaviour {
 
     void Die()
     {
-        //Destroy(gameObject);
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("PhotonView not mine?");
             if(GetComponent<PhotonView>().isMine) // this is MY player object
             {
-                Debug.Log("PhotonView isMine");
                 if (gameObject.tag == "Player") 
                 {
                     RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
                     nm.standby.SetActive(true);
-                    //GameObject.Find("standby").SetActive(true);
                    nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }
                 PhotonNetwork.Destroy(gameObject);

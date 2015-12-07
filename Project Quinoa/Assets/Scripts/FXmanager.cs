@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FXmanager : MonoBehaviour {
 
+    //FXmanager: this class only takes care of the visual effects when shooting with a gun; no collision checks are done here
+
     public AudioClip sniperSound;
     public GameObject sniperBulletPrefab;
     //public AudioClip sniperRicochet;
@@ -25,6 +27,12 @@ public class FXmanager : MonoBehaviour {
 
     [PunRPC]
     void RocketLauncherFX()
+    {
+
+    }
+
+    [PunRPC]
+    void PlasmaGunFX()
     {
 
     }
