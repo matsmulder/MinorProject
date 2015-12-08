@@ -9,6 +9,11 @@ public class RandomMatchmaker : MonoBehaviour {
     public GameObject standby;
     public GameObject roomButtonPrefab;
     SpawnSpot[] spawnSpots;
+    SpawnSpot[] spawnSpotsNoTeam; //free for all spawnspots
+    SpawnSpot[] spawnSpotsSuper; //hipster spawnspots
+    SpawnSpot[] spawnSpotsFast; //fastfood spawnspots
+
+    private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "random";
     //string roomName = "";
     public Text nameBox;
@@ -25,7 +30,37 @@ public class RandomMatchmaker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         status = "inMenu";
+
+        //allocate space for spawnspots
+        //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
+        //this is because there are always the same number of spawnspots per team
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
+        Debug.Log(spawnSpots.Length + "spawnSpots length");
+        spawnSpotsFast = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
+        spawnSpotsSuper = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
+        spawnSpotsNoTeam = new SpawnSpot[spawnSpots.Length];
+        foreach(SpawnSpot sp in spawnSpots)
+        {
+            if (sp.teamid == 0)
+            {
+                Debug.Log(indNoTeam + "indNoTeam");
+                spawnSpotsNoTeam[indNoTeam] = sp;
+                indNoTeam++;
+            }
+            if (sp.teamid == 1) //teamid 0 for free for all, 1 for fastfood and 2 for superfood
+            {
+                Debug.Log(indFast + "indFast");
+                spawnSpotsFast[indFast] = sp;
+                indFast++;
+            }
+            else if (sp.teamid == 2)
+            {
+                Debug.Log(indNoTeam + "indNoTeam");
+                spawnSpotsSuper[indSuper] = sp;
+                indSuper++;
+            }
+            Debug.Log(sp.teamid + "teamid");
+        }
         if (offlineMode)
         {
             OnJoinedLobby();            //For future extensions
@@ -93,7 +128,7 @@ public class RandomMatchmaker : MonoBehaviour {
                 }
                 if(GUILayout.Button("Random Select"))
                 {
-                    SpawnPlayer(Random.Range(1, 3));
+                    SpawnPlayer(Random.Range(1, 3)); //random number 1 or 2
                 }
                 if(GUILayout.Button("No Team"))
                 {
@@ -135,7 +170,25 @@ public class RandomMatchmaker : MonoBehaviour {
             Debug.Log("no spawnspots found");
             return;
         }
-        SpawnSpot mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
+
+        //determine where to spawn
+        SpawnSpot mySpawnSpot;
+        if(teamID == 1) //fastfood
+        {
+            mySpawnSpot = spawnSpotsFast[Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+        }
+        else if(teamID == 2) //superfood
+        {
+            mySpawnSpot = spawnSpotsSuper[Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+        }
+        else //no team food
+        {
+            mySpawnSpot = spawnSpotsNoTeam[Random.Range(0, spawnSpots.Length)];
+        }
+
+        //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
+
+
 
 
         GameObject player = PhotonNetwork.Instantiate("player4", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
