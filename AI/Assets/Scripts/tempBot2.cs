@@ -4,7 +4,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class tempBot : MonoBehaviour
+public class tempBot2 : MonoBehaviour
 {
     private bool playerInSight;
     private Rigidbody rb;
@@ -19,30 +19,17 @@ public class tempBot : MonoBehaviour
         col = GetComponent<SphereCollider>();
         col.radius = 10;
         counter = 0;
-        health = 100;
+        health = -100;
     }
 
     public void Update()
     {
-        if(health!=0)
-        {
-            SendMessage("callUp");
-        }
-        else
-        {
-            SendMessage("deathReport");
-        }
+        counter++;
+        //SendMessage("callUp");
     }
 
-    public void callUp(GameObject bot)
+    public void callUp()
     {
-        health = health -10; 
-        Debug.Log("tempBot "+health);
-    }
-    public void deathReport()
-    {
-        Debug.Log("dead");
-        Destroy(this.gameObject);
+        Debug.Log("tempBot2 " + health);
     }
 }
- 

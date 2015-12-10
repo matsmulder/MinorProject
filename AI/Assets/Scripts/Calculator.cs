@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Runtime.CompilerServices;
 
 public class Calculator:MonoBehaviour
@@ -9,6 +9,9 @@ public class Calculator:MonoBehaviour
     private static Calculator singleton=null;
     private static List<Vector3> map;
     private static double[] mapGSV;
+    private static List<List<GameObject>> allTargets = new List<List<GameObject>>();
+    //private List<Bot> botList = new List<Bot>();
+    //private static bool[] moveBool = new bool[20];
 
     public static double wallConst = 4;
     public static double stepsize = 1;
@@ -80,4 +83,103 @@ public class Calculator:MonoBehaviour
     {
         return mapGSV[map.IndexOf(point)];
     }
+
+    /*public void Start()
+    {
+        map = makeMap();
+        mapGSV = new double[map.Count];
+        for (int i = 0; i != mapGSV.Length; i++)
+        {
+            mapGSV[i] = GSV(map[i]);
+        }
+        moveBool[0] = true;
+    }
+
+    public void Update()
+    {
+        for (int i = 0; i != moveBool.Length - 1; i++)
+        {
+            if (moveBool[i])
+            {
+                foreach (Bot bot in botList)
+                {
+                    bot.setMoveBool(i, true);
+                }
+                StartCoroutine(secondMoveDelay((1 / moveBool.Length), i));
+            }
+        }
+        if (moveBool[moveBool.Length - 1])
+        {
+            foreach (Bot bot in botList)
+            {
+                bot.setMoveBool(moveBool.Length - 1, true);
+            }
+            StartCoroutine(secondMoveDelay((1 / moveBool.Length), moveBool.Length - 1));
+        }
+    }
+
+    IEnumerator secondMoveDelay(float time, int i)
+    {
+        if (i == moveBool.Length - 1)
+        {
+            moveBool[i] = false;
+            yield return new WaitForSeconds(time);
+            moveBool[0] = true;
+        }
+        else
+        {
+            moveBool[i] = false;
+            yield return new WaitForSeconds(time);
+            moveBool[i + 1] = true;
+        }
+    }*/
+
+    public int Teaminator(String tag)
+    {
+        if(tag=="PlayerA")
+        {
+            return 1;
+        }
+        else if(tag=="PlayerB")
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public void addTarget(int botIndex, GameObject player)
+    {
+        allTargets[botIndex].Add(player);
+    }
+
+    public void deleteTarget(int botIndex, GameObject player)
+    {
+        allTargets[botIndex].Remove(player);
+    }
+
+    public List<GameObject> getTargets(int botIndex)
+    {
+        return allTargets[botIndex];
+    }
+
+    public int getAllTargets()
+    {
+        return allTargets.Count;
+    }
+
+    [MethodImpl(MethodImplOptions.Synchronized)]
+    public int addBot()
+    {
+        List<GameObject> targets = new List<GameObject>();
+        allTargets.Add(targets);
+        return allTargets.Count-1;
+    }
+
+    /*public int moveBoolCount()
+    {
+        return moveBool.Length;
+    }*/
 }
