@@ -36,7 +36,6 @@ public class playerShooting : MonoBehaviour {
     {
        
             weaponData = gameObject.GetComponentInChildren<WeaponData>();
-            Debug.Log(weaponData);
 
         StartCoroutine(Shoot());
     }
@@ -63,7 +62,7 @@ public class playerShooting : MonoBehaviour {
 
 
             //------------- apply health changes-------------------------------------------------------------
-            if (hitTransform != null)
+            if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood"))
             {
                 Health h = hitTransform.GetComponent<Health>();
 
@@ -117,7 +116,6 @@ public class playerShooting : MonoBehaviour {
         //sniper rifle: do an RPC call to SniperBulletFX which will create a bullet trail ray, sound and particle effects
         if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // only create a ray for hitscan-based weapons
         {
-            Debug.Log(GetComponent<PhotonView>());
             fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, weaponData.transform.position, hitPoint);
         }
 

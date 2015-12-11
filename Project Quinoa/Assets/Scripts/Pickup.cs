@@ -25,17 +25,17 @@ public class Pickup : MonoBehaviour {
         //pickup is fastfood and has to be picked up by team Wholo
         if(col.gameObject.CompareTag("fastfood") && tm.teamID == 2) 
         {
-            Debug.Log("Go Wholo");
             h = col.GetComponent<Health>();
             h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, healthPickup);
+            scoreManager.scoreSuper++;
         }
 
         //pickup is superfood and has to be picked up by team Trump
         if (col.gameObject.CompareTag("superfood") && tm.teamID == 1)
         {
-            Debug.Log("Go Trump");
             h = col.GetComponent<Health>();
             h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, healthPickup);
+            scoreManager.scoreFast++;
         }
 
 

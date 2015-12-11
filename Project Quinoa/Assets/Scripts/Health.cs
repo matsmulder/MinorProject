@@ -46,6 +46,15 @@ public class Health : MonoBehaviour {
                     nm.standby.SetActive(true);
                    nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }
+
+                if(gameObject.tag == "fastfood")
+                {
+                    scoreManager.scoreSuper++;
+                }
+                if (gameObject.tag == "superfood")
+                {
+                    scoreManager.scoreFast++;
+                }
                 PhotonNetwork.Destroy(gameObject);
             }
         }

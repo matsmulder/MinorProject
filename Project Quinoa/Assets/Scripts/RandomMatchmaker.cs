@@ -39,7 +39,6 @@ public class RandomMatchmaker : MonoBehaviour {
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
         //this is because there are always the same number of spawnspots per team
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
-        Debug.Log(spawnSpots.Length + "spawnSpots length");
         spawnSpotsFast = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
         spawnSpotsSuper = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
         spawnSpotsNoTeam = new SpawnSpot[spawnSpots.Length];
@@ -47,23 +46,22 @@ public class RandomMatchmaker : MonoBehaviour {
         {
             if (sp.teamid == 0)
             {
-                Debug.Log(indNoTeam + "indNoTeam");
+
                 spawnSpotsNoTeam[indNoTeam] = sp;
                 indNoTeam++;
             }
             if (sp.teamid == 1) //teamid 0 for free for all, 1 for fastfood and 2 for superfood
             {
-                Debug.Log(indFast + "indFast");
+
                 spawnSpotsFast[indFast] = sp;
                 indFast++;
             }
             else if (sp.teamid == 2)
             {
-                Debug.Log(indNoTeam + "indNoTeam");
+
                 spawnSpotsSuper[indSuper] = sp;
                 indSuper++;
             }
-            Debug.Log(sp.teamid + "teamid");
         }
         if (offlineMode)
         {
