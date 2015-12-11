@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+//using UnityEditor;
 
 public class RandomMatchmaker : MonoBehaviour {
 
@@ -21,15 +22,18 @@ public class RandomMatchmaker : MonoBehaviour {
     public float respawnTimer;
 
     public bool offlineMode;
-    string status;
+    status stat;
     private bool pickedTeam = false;
 
     private int teamID;
 
+    //[MenuItem("Edit/Reset Playerprefs")]
+    public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
-	// Use this for initialization
-	void Start () {
-        status = "inMenu";
+    // Use this for initialization
+    void Start () {
+        DeletePlayerPrefs();
+        stat = status.inMenu;
 
         //allocate space for spawnspots
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
@@ -115,7 +119,7 @@ public class RandomMatchmaker : MonoBehaviour {
             {
 
             }
-            else
+            else if (stat == status.inGame)
             {
                 //player has no team assigned
                 if(GUILayout.Button("Team Fastfood"))
@@ -157,7 +161,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        status = "inGame";
+        stat = status.inGame;
         //SpawnPlayer();
 
     }
@@ -240,7 +244,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnReceivedRoomListUpdate()
     {
-        if (status=="browsing")
+        if (stat==status.browsing)
         {
             BrowseGames();
         }
@@ -251,9 +255,17 @@ public class RandomMatchmaker : MonoBehaviour {
 
     }
     
-    public void setStatus(string stat)
+    public void setStatus(status st)
     {
-        status = stat;
+        stat = st;
     }
 
+}
+
+
+public enum status
+{
+    inGame,
+    browsing,
+    inMenu,
 }

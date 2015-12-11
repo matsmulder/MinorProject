@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour {
     public float dodgeTimeout; // the time you have to wait before performing a dodge again
     private float previousHeight; // variable to store the height position of the player
     //private bool lookupHeight; // flag for looking up the height position of the player
-    private bool touchingFix; // flag for accessing control statements without touching ground
+    //private bool touchingFix; // flag for accessing control statements without touching ground
     public float thresholdHeight; // amount of difference between cached height an actual height triggers touchingFix
     private float previousTime; //holds the time in seconds, used for tracking time without collision on ramps
     public float maxHP;         //Initial HP
@@ -115,10 +115,6 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if(!photonView.isMine)
-        //{
-        //    return;
-       // }
        
 
         //MOVE!
@@ -153,19 +149,19 @@ public class playerMovement : MonoBehaviour {
         //Set the mouse visible and unlocked when the esc key is pressed
         if (Input.GetKey("escape"))
         {
+            Debug.Log("Pressed escape");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
         
         //check for key presses and adapt movement of player but only if the ground is touched
-        if (touchingGround || touchingRamp || touchingFix)
+        if (touchingGround || touchingRamp)
+            //|| touchingFix)
         {
-            Debug.Log("Checking movement...");
             //move forward
             if (Input.GetKey(keys["forward"]))
             {
-                Debug.Log("Get a frickin' move on!");
                 directionz = 1;
             }
 
@@ -225,31 +221,29 @@ public class playerMovement : MonoBehaviour {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
 
-            if (touchingFix)
-            {
-                //previousTime = Time.fixedTime;
-               // Debug.Log(previousTime);
-            }
+            //if (touchingFix)
+            //{
+            //    //previousTime = Time.fixedTime;
+            //   // Debug.Log(previousTime);
+            //}
 
-            if (touchingGround) //|| (Time.fixedTime - previousTime > 0.2 && touchingFix)
-            {
-                touchingFix = false;
-            }
+            //if (touchingGround) //|| (Time.fixedTime - previousTime > 0.2 && touchingFix)
+            //{
+            //    touchingFix = false;
+            //}
 
         }
         else
         {
-            if(Mathf.Abs(previousHeight - transform.position.y) < thresholdHeight)
-            {
-                //previousTime = Time.fixedTime;
-                touchingFix = true;
-                Debug.Log("ramp, this one is for you");
-            }
-            else
-            {
-                //touchingFix = false;
-            }
-            Debug.Log("Not checking movement");
+            //if(Mathf.Abs(previousHeight - transform.position.y) < thresholdHeight)
+            //{
+            //    //previousTime = Time.fixedTime;
+            //    touchingFix = true;
+            //}
+            //else
+            //{
+            //    //touchingFix = false;
+            //}
         }
     }
 
@@ -321,6 +315,7 @@ public class playerMovement : MonoBehaviour {
     {
         if (PhotonView.Get(this).isMine)
         {
+            Debug.Log("Destroyed");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
