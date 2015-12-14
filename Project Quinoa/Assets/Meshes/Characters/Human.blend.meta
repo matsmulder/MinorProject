@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c377b9fb5cfd92242ae227df0cdead3a
-timeCreated: 1448895103
+guid: 8b9081fbb83e8e345a7e6284859fde62
+timeCreated: 1450018868
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -95,9 +95,9 @@ ModelImporter:
     100174: Plane_000_MeshPart1
     100176: Plane_001
     100178: Plane_002
-    100180: Plane_003
-    100182: Plane_003_MeshPart0
-    100184: Plane_003_MeshPart1
+    100180: Plane_004
+    100182: Plane_004_MeshPart0
+    100184: Plane_004_MeshPart1
     100186: pt_l
     100188: pt_r
     100190: shin_L
@@ -221,9 +221,9 @@ ModelImporter:
     400174: Plane_000_MeshPart1
     400176: Plane_001
     400178: Plane_002
-    400180: Plane_003
-    400182: Plane_003_MeshPart0
-    400184: Plane_003_MeshPart1
+    400180: Plane_004
+    400182: Plane_004_MeshPart0
+    400184: Plane_004_MeshPart1
     400186: pt_l
     400188: pt_r
     400190: shin_L
@@ -265,8 +265,8 @@ ModelImporter:
     3300002: Pants
     3300004: Plane_001
     3300006: Plane_002
-    4300000: Plane_003_MeshPart0
-    4300002: Plane_003_MeshPart1
+    4300000: Plane_004_MeshPart0
+    4300002: Plane_004_MeshPart1
     4300004: Shirt
     4300006: Pants
     4300008: Plane_000_MeshPart0
@@ -309,8 +309,8 @@ ModelImporter:
     13700024: Pet_MeshPart2
     13700026: Plane_000_MeshPart0
     13700028: Plane_000_MeshPart1
-    13700030: Plane_003_MeshPart0
-    13700032: Plane_003_MeshPart1
+    13700030: Plane_004_MeshPart0
+    13700032: Plane_004_MeshPart1
     13700034: Shirt
   materials:
     importMaterials: 1
