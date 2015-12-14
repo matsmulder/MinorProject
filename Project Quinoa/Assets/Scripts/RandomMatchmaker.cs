@@ -50,7 +50,6 @@ public class RandomMatchmaker : MonoBehaviour {
         {
             if (sp.teamid == 0)
             {
-
                 spawnSpotsNoTeam[indNoTeam] = sp;
                 indNoTeam++;
             }
@@ -87,6 +86,7 @@ public class RandomMatchmaker : MonoBehaviour {
         PhotonNetwork.JoinOrCreateRoom(nameBox.text, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
 
+    //override
     public void JoinRoom(string name)
     {
         PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
@@ -94,6 +94,8 @@ public class RandomMatchmaker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        // RESPAWN
         if(respawnTimer > 0 )
         {
             respawnTimer -= Time.deltaTime;
@@ -152,6 +154,7 @@ public class RandomMatchmaker : MonoBehaviour {
                 //player has no team assigned
                 if(GUILayout.Button("Team Fastfood"))
                 {
+
                     SpawnPlayer(1);
                 }
                 if(GUILayout.Button("Team Superfood"))
