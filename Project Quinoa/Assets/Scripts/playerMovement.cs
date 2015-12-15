@@ -115,16 +115,13 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
+
+        Debug.Log(touchingGround);
 
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         transform.Translate(direction);
 
-        // rotate the camera when moving the mouse left and right, up and down >>DEPRECATED<<
-        //transform.Rotate(new Vector3(0,mouseMovementX*Time.deltaTime*sensitivity,0), Space.World); 
-        
-        //transform.Rotate(new Vector3(-1 *mouseMovementY * Time.deltaTime * sensitivity, 0, 0), Space.Self); // rotate the camera when moving the mouse up and down
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
@@ -280,8 +277,9 @@ public class playerMovement : MonoBehaviour {
     //check for collision
     void OnCollisionStay(Collision col)
     {
-        if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
+        //if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
+            Debug.Log("touching the ground again");
             touchingGround = true;
         }
         
@@ -300,8 +298,9 @@ public class playerMovement : MonoBehaviour {
     //check for exit collision to avoid to being able to move in the air
     void OnCollisionExit(Collision col)
     {
-        if (!Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
+        //if (!Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
+            Debug.Log("not touching ground anymore");
             touchingGround = false;
         }
 

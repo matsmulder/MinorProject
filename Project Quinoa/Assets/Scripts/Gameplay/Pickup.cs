@@ -27,7 +27,7 @@ public class Pickup : MonoBehaviour {
         {
             h = col.GetComponent<Health>();
             h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, healthPickup);
-            scoreManager.scoreSuper++;
+            //scoreManager.scoreSuper++;
         }
 
         //pickup is superfood and has to be picked up by team Trump
@@ -35,7 +35,7 @@ public class Pickup : MonoBehaviour {
         {
             h = col.GetComponent<Health>();
             h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, healthPickup);
-            scoreManager.scoreFast++;
+            //scoreManager.scoreFast++;
         }
 
 
