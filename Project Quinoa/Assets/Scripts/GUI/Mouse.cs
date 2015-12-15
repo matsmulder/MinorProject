@@ -46,7 +46,11 @@ public class Mouse : MonoBehaviour {
 			Button_chicken.SetActive (false);
 			Button_wing.SetActive (true);
 		} else {
-			Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+            Application.Quit();
+#endif
 		}
 	}
 
