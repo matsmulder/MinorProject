@@ -19,7 +19,7 @@ public class Mouse : MonoBehaviour {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
-			Application.LoadLevel (3);
+			Application.LoadLevel ("PlayMenu");
 		}
 	}
 
@@ -28,7 +28,7 @@ public class Mouse : MonoBehaviour {
 			Button_blueberry.SetActive (false);
 			Button_shake.SetActive (true);
 		} else {
-			Application.LoadLevel (4);
+			Application.LoadLevel ("StatsMenu");
 		}
 	}
 
@@ -37,7 +37,7 @@ public class Mouse : MonoBehaviour {
 			Button_coffee.SetActive (false);
 			Button_boon.SetActive (true);
 		} else {
-			Application.LoadLevel (2);
+			Application.LoadLevel ("OptionsMenu");
 		}
 	}
 

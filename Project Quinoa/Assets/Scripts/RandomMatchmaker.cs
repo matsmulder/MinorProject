@@ -7,15 +7,7 @@ using UnityEditor;
 #endif
 
 public class RandomMatchmaker : MonoBehaviour {
-#if UNITY_EDITOR
-    [MenuItem("Play/Play Game")]
-    public static void PlayGame()
-    {
-        EditorApplication.SaveScene(EditorApplication.currentScene);
-        EditorApplication.OpenScene("Assets/_Scenes/MainMenu.unity");
-        EditorApplication.isPlaying = true;
-    }
-#endif
+
     //public GameObject player;
     //public GameObject camera1;
     public GameObject standby;
