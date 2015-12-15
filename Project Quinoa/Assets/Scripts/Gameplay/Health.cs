@@ -49,11 +49,11 @@ public class Health : MonoBehaviour {
 
                 if(gameObject.tag == "fastfood")
                 {
-                    scoreManager.scoreSuper++;
+                    scoreManager.numberOfFastPickups--;
                 }
                 if (gameObject.tag == "superfood")
                 {
-                    scoreManager.scoreFast++;
+                    scoreManager.numberOfSuperPickups--;
                 }
                 PhotonNetwork.Destroy(gameObject);
             }

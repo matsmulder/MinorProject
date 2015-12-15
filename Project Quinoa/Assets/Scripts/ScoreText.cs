@@ -11,6 +11,6 @@ public class ScoreText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        txt.text = scoreManager.scoreSuper + "superscore  " + scoreManager.scoreFast + "fastscore";
+        txt.text = scoreManager.numberOfSuperPickups + "superscore  " + scoreManager.numberOfFastPickups + "fastscore";
 	}
 }
