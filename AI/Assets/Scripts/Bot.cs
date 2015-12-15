@@ -21,7 +21,7 @@ public class Bot : MonoBehaviour{
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
     public float sensitivity;// = 0.75f;
-    private bool[] moveBool = new bool[30];
+    private bool[] moveBool;// = new bool[25];
     private Vector3[] bestPoints;
     private float[] bestPointsSV;
     private Vector3 bestPoint;
@@ -51,9 +51,9 @@ public class Bot : MonoBehaviour{
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
-        calculator = Calculator.getCalculator();
+        calculator = BotManager.getCalculator();
         rend = GetComponent<Renderer>();
-        index = calculator.addBot();
+        index = calculator.addBot(this);
         targets = calculator.getTargets(index);
         col.radius= (float)sightConstant;
         team = calculator.Teaminator(this.gameObject.tag);
@@ -62,8 +62,9 @@ public class Bot : MonoBehaviour{
         map = calculator.getMap();
         shootFlag = false;
         playerInSight = false;
-        bestPoint = new Vector3(0, 0, 0);
-        moveBool[0] = true;
+        bestPoint = new Vector3(0,0,0);
+        moveBool = new bool[calculator.getMasterBoolCount()];
+        //moveBool[0] = true;
         bestPoints = new Vector3[moveBool.Length];
         bestPointsSV = new float[moveBool.Length];
     }
@@ -126,6 +127,14 @@ public class Bot : MonoBehaviour{
     {
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
+        for(int i = 0;i!=moveBool.Length;i++)
+        {
+            if(moveBool[i])
+            {
+                Debug.Log(moveBool[i]);
+            }
+        }
+
         if (health > 0)
         {
             for (int i = 0; i != moveBool.Length - 1; i++)
@@ -133,38 +142,20 @@ public class Bot : MonoBehaviour{
                 if (moveBool[i])
                 {
                     CalculateBestPoint(i);
-                    StartCoroutine(secondMoveDelay((1/moveBool.Length), i));
+                    StartCoroutine(Clock(i));
                 }
             }
             if(moveBool[moveBool.Length-1])
             {
                 CalculateBestPoint(moveBool.Length - 1);
-                StartCoroutine(secondMoveDelay((1 / moveBool.Length), moveBool.Length-1));
                 float pointer = Mathf.Max(bestPointsSV);
                 bestPoint = bestPoints[Array.IndexOf(bestPointsSV,pointer)];
+                StartCoroutine(Clock(moveBool.Length - 1));
             }
-
-           /*for (int i = 0; i != moveBool.Length - 1; i++)
-           {
-               if (moveBool[i])
-               {
-                   CalculateBestPoint(i);
-                   Debug.Log("movebool["+i+"]: "+moveBool[i]);
-                   moveBool[i] = false;
-               }
-           }
-           if(moveBool[moveBool.Length-1])
-           {
-               CalculateBestPoint(moveBool.Length - 1);
-               Debug.Log("movebool[" + (moveBool.Length - 1) + "]: " + moveBool[moveBool.Length - 1]);
-               moveBool[moveBool.Length - 1] = false;
-               float pointer = Mathf.Max(bestPointsSV);
-               bestPoint = bestPoints[Array.IndexOf(bestPointsSV,pointer)];
-           }*/
            
             MoveBot(bestPoint);
 
-            if (ammo > 0)
+            if (ammo > 0 && shootFlag)
             {
                 targets = calculator.getTargets(index);
                 if (targets.Count > 0)
@@ -188,7 +179,6 @@ public class Bot : MonoBehaviour{
                 if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
                 {
                     calculator.deleteTarget(index, this.gameObject);
-                    Debug.Log("Bot " + index + " Removed from bot " + i);
                 }
             }
             Destroy(this.gameObject);
@@ -201,7 +191,6 @@ public class Bot : MonoBehaviour{
                 if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
                 {
                     calculator.deleteTarget(index, this.gameObject);
-                    Debug.Log("Bot "+index+" Removed from bot " + i);
                 }
             }
             Destroy(this.gameObject);
@@ -252,8 +241,8 @@ public class Bot : MonoBehaviour{
             {
                 transform.Rotate(new Vector3(0, targetAngle, 0) * Time.deltaTime * a * rotateToTargetSpeed);
             }
-            if (shootFlag)
-            {
+            //if (shootFlag)
+            //{
                 Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, Quaternion.identity) as Rigidbody;
                 clone.velocity = new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed;
                 RaycastHit hit;
@@ -266,7 +255,7 @@ public class Bot : MonoBehaviour{
                 }
                 ammo = ammo - 1;
                 StartCoroutine(bullet());
-            }
+            //}
         }
     }
 
@@ -336,6 +325,12 @@ public class Bot : MonoBehaviour{
         }
     }
 
+    IEnumerator Clock(int i)
+    {
+        moveBool[i] = false;
+        yield return new WaitForSeconds(1/moveBool.Length);
+    }
+
     IEnumerator bullet()
     {
         shootFlag = false;
@@ -346,19 +341,19 @@ public class Bot : MonoBehaviour{
         }
     }
 
-    IEnumerator secondMoveDelay(float time,int i)
+    public void setMoveBool(int i)
     {
-        if (i == moveBool.Length - 1)
+        if(i==moveBool.Length-1)
         {
             moveBool[i] = false;
-            yield return new WaitForSeconds(time);
             moveBool[0] = true;
+            Debug.Log(moveBool[0]);
         }
         else
         {
             moveBool[i] = false;
-            yield return new WaitForSeconds(time);
-            moveBool[i+1] = true;
+            moveBool[i + 1] = true;
+            Debug.Log(moveBool[i]);
         }
     }
 
@@ -373,5 +368,4 @@ public class Bot : MonoBehaviour{
             health = 0;
         }
     }
-    
 }

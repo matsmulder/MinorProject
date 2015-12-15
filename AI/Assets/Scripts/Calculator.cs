@@ -6,17 +6,21 @@ using System.Runtime.CompilerServices;
 
 public class Calculator:MonoBehaviour
 {
-    private static Calculator singleton=null;
-    private static List<Vector3> map;
-    private static double[] mapGSV;
-    private static List<List<GameObject>> allTargets = new List<List<GameObject>>();
-    //private List<Bot> botList = new List<Bot>();
-    //private static bool[] moveBool = new bool[20];
+    private List<Vector3> map;
+    private double[] mapGSV;
+    private List<List<GameObject>> allTargets = new List<List<GameObject>>();
+
+    private static int masterMoveBoolLength = 25;
+    private List<Bot> botList = new List<Bot>();
+    private bool[] masterMoveBool = new bool[masterMoveBoolLength];
 
     public static double wallConst = 4;
     public static double stepsize = 1;
 
-    private Calculator()
+    public Calculator()
+    {    }
+
+    public void Start()
     {
         map = makeMap();
         mapGSV = new double[map.Count];
@@ -24,16 +28,18 @@ public class Calculator:MonoBehaviour
         {
             mapGSV[i] = GSV(map[i]);
         }
+        masterMoveBool[0] = true;
     }
 
-    [MethodImpl(MethodImplOptions.Synchronized)]
-    public static Calculator getCalculator()
+    public void Update()
     {
-        if(singleton==null)
+        for (int i = 0; i != masterMoveBool.Length; i++)
         {
-            singleton = new Calculator();
+            if (masterMoveBool[i])
+            {
+                StartCoroutine(masterClock(i));
+            }
         }
-        return singleton;
     }
 
     public List<Vector3> getMap()
@@ -84,55 +90,31 @@ public class Calculator:MonoBehaviour
         return mapGSV[map.IndexOf(point)];
     }
 
-    /*public void Start()
+    IEnumerator masterClock(int i)
     {
-        map = makeMap();
-        mapGSV = new double[map.Count];
-        for (int i = 0; i != mapGSV.Length; i++)
+        masterMoveBool[i] = false;
+        Debug.Log(botList.Count);
+        foreach (Bot bot in botList)
         {
-            mapGSV[i] = GSV(map[i]);
+            bot.setMoveBool(i);
         }
-        moveBool[0] = true;
-    }
 
-    public void Update()
-    {
-        for (int i = 0; i != moveBool.Length - 1; i++)
-        {
-            if (moveBool[i])
-            {
-                foreach (Bot bot in botList)
-                {
-                    bot.setMoveBool(i, true);
-                }
-                StartCoroutine(secondMoveDelay((1 / moveBool.Length), i));
-            }
-        }
-        if (moveBool[moveBool.Length - 1])
-        {
-            foreach (Bot bot in botList)
-            {
-                bot.setMoveBool(moveBool.Length - 1, true);
-            }
-            StartCoroutine(secondMoveDelay((1 / moveBool.Length), moveBool.Length - 1));
-        }
-    }
+        yield return new WaitForSeconds(1/masterMoveBool.Length);
 
-    IEnumerator secondMoveDelay(float time, int i)
-    {
-        if (i == moveBool.Length - 1)
+        if (i == masterMoveBool.Length - 1)
         {
-            moveBool[i] = false;
-            yield return new WaitForSeconds(time);
-            moveBool[0] = true;
+            masterMoveBool[0] = true;
         }
         else
         {
-            moveBool[i] = false;
-            yield return new WaitForSeconds(time);
-            moveBool[i + 1] = true;
+            masterMoveBool[i + 1] = true;
         }
-    }*/
+    }
+
+    public int getMasterBoolCount()
+    {
+        return masterMoveBool.Length;
+    }
 
     public int Teaminator(String tag)
     {
@@ -171,15 +153,26 @@ public class Calculator:MonoBehaviour
     }
 
     [MethodImpl(MethodImplOptions.Synchronized)]
-    public int addBot()
+    public int addBot(Bot bot)
     {
         List<GameObject> targets = new List<GameObject>();
         allTargets.Add(targets);
+        botList.Add(bot);
+        //printer(allTargets);
         return allTargets.Count-1;
     }
 
-    /*public int moveBoolCount()
+    public void printer(List<List<GameObject>> targets)
     {
-        return moveBool.Length;
-    }*/
+        int counter = 0;
+        foreach (List<GameObject> list in targets)
+        {
+            Debug.Log("List " + counter);
+                counter++;
+            foreach (GameObject go in list)
+            {
+                Debug.Log("GameObject");
+            }
+        }
+    }
 }

@@ -19,7 +19,7 @@ public class Plotter : MonoBehaviour
 
     public void Awake()
     {
-        calculator=Calculator.getCalculator();
+        calculator = BotManager.getCalculator();
         map = calculator.getMap();
         foreach(Vector3 point in map)
         {
