@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameOptions : MonoBehaviour {
+public class GaneOptions : MonoBehaviour {
 
 	public void toMainMenu(){
 		Application.LoadLevel (0);

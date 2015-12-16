@@ -42,7 +42,7 @@ public class Health : MonoBehaviour {
             {
                 if (gameObject.tag == "Player") 
                 {
-                    GameRoomManager nm = GameObject.FindObjectOfType<GameRoomManager>();
+                    RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
                     nm.standby.SetActive(true);
                    nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }

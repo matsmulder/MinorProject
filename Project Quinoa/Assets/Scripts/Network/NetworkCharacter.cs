@@ -10,7 +10,6 @@ public class NetworkCharacter : Photon.MonoBehaviour
 
     void Update()
     {
-        
         if(photonView.isMine)
         {
             //do nothing -- playerMovement is moving us
