@@ -30,7 +30,7 @@ public class RandomMatchmaker : MonoBehaviour {
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     private string roomName = "Room01";
-    private int maxPlayer = 1;
+    private int maxPlayer = 5;
     private Vector2 scrollPosition;
 
     // Use this for initialization
@@ -77,6 +77,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void ConnectRandom()
     {
+        Debug.Log("yeas");
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -93,9 +94,10 @@ public class RandomMatchmaker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		Debug.Log ("CountFF: " + (int)PhotonNetwork.room.customProperties ["CountFF"]);
+        Debug.Log(PhotonNetwork.room.customProperties.Keys);
         // RESPAWN
-        if(respawnTimer > 0 )
+        if (respawnTimer > 0 )
         {
             respawnTimer -= Time.deltaTime;
 
@@ -153,8 +155,10 @@ public class RandomMatchmaker : MonoBehaviour {
                 //player has no team assigned
                 if(GUILayout.Button("Team Fastfood"))
                 {
-
                     SpawnPlayer(1);
+					int prevValue = (int) PhotonNetwork.room.customProperties["CountFF"];
+                    PhotonNetwork.room.customProperties["CountFF"] = prevValue + 1;
+                    PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
                 }
                 if(GUILayout.Button("Team Superfood"))
                 {
@@ -185,8 +189,24 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnPhotonRandomJoinFailed()
     {
-        Debug.Log("Can't join random room!");
-        PhotonNetwork.CreateRoom(null);
+		Debug.Log("Can't join random room!");
+
+        //RoomOptions newRoomOptions = new RoomOptions();
+        //newRoomOptions.isOpen = true;
+        //newRoomOptions.isVisible = true;
+        //newRoomOptions.maxPlayers = (byte) maxPlayer;
+        //newRoomOptions.customRoomProperties = new ExitGames.Client.Photon.Hashtable();
+        //newRoomOptions.customRoomProperties["CountFF"] = 0;
+        //newRoomOptions.customRoomProperties["CountSF"] = 0;
+        //newRoomOptions.customRoomPropertiesForLobby = new string[] { "CountFF", "CountSF" };
+
+        string[] roomPropsInLobby = { "CountFF", "CountSF" };
+        ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
+        
+        Debug.Log(roomName);
+        //PhotonNetwork.CreateRoom(roomName, newRoomOptions, TypedLobby.Default);
+
+        PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
     }
 
     void OnJoinedRoom()
@@ -201,7 +221,6 @@ public class RandomMatchmaker : MonoBehaviour {
         this.teamID = teamID;
         if(spawnSpots == null)
         {
-            Debug.Log("no spawnspots found");
             return;
         }
 

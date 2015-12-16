@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour {
 
@@ -32,6 +34,11 @@ public class Health : MonoBehaviour {
 
     void Die()
     {
+        //Analytics.CustomEvent(string customEventName, IDictionary < string, object > eventData);
+       Analytics.CustomEvent("DIE", new Dictionary<string, object>
+       {
+           {"died object", gameObject.tag }
+       });
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
             Destroy(gameObject);

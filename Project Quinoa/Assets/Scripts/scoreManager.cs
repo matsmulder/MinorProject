@@ -5,10 +5,12 @@ public class scoreManager : MonoBehaviour {
     public static int numberOfSuperPickups;
     public static int numberOfFastPickups;
     private GameObject[] pickupSuperList, pickupFastList;
+    private PhotonView pv;
 	// Use this for initialization
 	void Start () {
         pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
         pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+        pv = GetComponent<PhotonView>();
 
         numberOfFastPickups = pickupFastList.Length;
         numberOfSuperPickups = pickupSuperList.Length;
@@ -19,12 +21,12 @@ public class scoreManager : MonoBehaviour {
 
         if (numberOfFastPickups == 0) //Team Wholo wins
         {
-            StartCoroutine(Win("Wholo"));
+            //StartCoroutine(Win("Wholo"));
         }
 
         if (numberOfSuperPickups == 0) //Team Trump wins
         {
-            StartCoroutine(Win("Trump"));
+            //StartCoroutine(Win("Trump"));
         }
 
 	}
