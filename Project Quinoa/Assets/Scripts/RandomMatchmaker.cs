@@ -15,22 +15,22 @@ public class RandomMatchmaker : MonoBehaviour {
 
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "random";
-    //string roomName = "";
     public Text nameBox;
 
     public float respawnTimer;
-
+    private bool ready = false;
     public bool offlineMode;
     status stat;
     private bool pickedTeam = false;
+    private bool once = true;
 
     private int teamID;
 
     //[MenuItem("Edit/Reset Playerprefs")]
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
-    private string roomName = "Room01";
-    private int maxPlayer = 5;
+    private string roomName = "Room01";  // <- This should be a random room name.
+    private int maxPlayer = 2;
     private Vector2 scrollPosition;
 
     // Use this for initialization
@@ -94,8 +94,26 @@ public class RandomMatchmaker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("CountFF: " + (int)PhotonNetwork.room.customProperties ["CountFF"]);
-        Debug.Log(PhotonNetwork.room.customProperties.Keys);
+        Debug.Log("CountFF: " + PhotonNetwork.room.customProperties["CountFF"]);
+
+        // Checks if all players are ready (if so, spawn all players)
+        bool allready = true;
+        foreach (PhotonPlayer player in PhotonNetwork.playerList)
+        {
+            if((bool) player.customProperties["Ready"] == false)
+            {
+                allready = false;
+                break;
+            }
+        }
+
+        // Initial spawn
+        if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once)                //if the room is full and all players are ready, spawn the players.
+        {
+            SpawnPlayer(teamID);
+            once = false;
+        }
+            
         // RESPAWN
         if (respawnTimer > 0 )
         {
@@ -111,7 +129,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnGUI()
     {
-        GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+        //GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
         if(PhotonNetwork.connected == false)
         {
             //not yet connected, ask for online/offline <UPCOMING>
@@ -120,9 +138,9 @@ public class RandomMatchmaker : MonoBehaviour {
         if(PhotonNetwork.connected == true)
         {
             //fully connected
-            if(pickedTeam)
+            if (pickedTeam)
             {
-                if(stat == status.browsing){
+                if (stat == status.browsing) {
 
                     GUILayout.Space(20);
                     GUI.color = Color.red;
@@ -153,32 +171,81 @@ public class RandomMatchmaker : MonoBehaviour {
             else if (stat == status.inGame)
             {
                 //player has no team assigned
-                if(GUILayout.Button("Team Fastfood"))
+                if (GUILayout.Button("Team Fastfood"))
                 {
-                    SpawnPlayer(1);
-					int prevValue = (int) PhotonNetwork.room.customProperties["CountFF"];
-                    PhotonNetwork.room.customProperties["CountFF"] = prevValue + 1;
-                    PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+                    if (checkJoinConditions(1))
+                    {
+                        teamID = 1;
+                        //SpawnPlayer(1);
+                        UpdateCustomProperties("CountFF", true);
+                    }
                 }
-                if(GUILayout.Button("Team Superfood"))
+                if (GUILayout.Button("Team Superfood"))
                 {
-                    SpawnPlayer(2);
+                    if (checkJoinConditions(2))
+                    {
+                        teamID = 2;
+                        //SpawnPlayer(2);
+                        UpdateCustomProperties("CountSF", true);
+                    }
                 }
-                if(GUILayout.Button("Random Select"))
+                if (GUILayout.Button("Random Select"))
                 {
-                    SpawnPlayer(Random.Range(1, 3)); //random number 1 or 2
+                    int rand = Random.Range(1, 3);                  // random number 1 or 2
+                    if (rand == 1)
+                    {
+                        if (checkJoinConditions(1))
+                        {
+                            teamID = 1;
+                            UpdateCustomProperties("CountFF", true);
+                        }
+                        else
+                        {
+                            teamID = 2;
+                            UpdateCustomProperties("CountSF", true);
+                        }
+                    }
+                    else
+                    {
+                        if (checkJoinConditions(2))
+                        {
+                            teamID = 2;
+                            UpdateCustomProperties("CountSF", true);
+                        }
+                        else
+                        {
+                            teamID = 1;
+                            UpdateCustomProperties("CountFF", true);
+                        }
+                    }
                 }
-                if(GUILayout.Button("No Team"))
+                if (GUILayout.Button("No Team"))
                 {
-                    SpawnPlayer(0);
+                    //SpawnPlayer(0);                                 // not yet implemented
                 }
-                if(GUILayout.Button("Join Random Game"))
+                if (GUILayout.Button("Join Random Game"))
                 {
                     ConnectRandom();
                 }
 
+                if (ready)
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("I'm Ready!");         ////Ready Label
+                    if(GUILayout.Button("Not ready"))      ////Ready Button
+                    {
+                        if(teamID == 1)
+                        {
+                            UpdateCustomProperties("CountSF", false);
+                        }
+                        else
+                        {
+                            UpdateCustomProperties("CountFF", false);
+                        }
+                        
+                    }
+                }
             }
-
         }
     }
 
@@ -187,24 +254,54 @@ public class RandomMatchmaker : MonoBehaviour {
         
     }
 
+    public void UpdateCustomProperties (string customProp, bool increment)
+    {
+        if (increment)
+        {
+            int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
+            PhotonNetwork.room.customProperties[customProp] = prevValue + 1;
+            PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+            ready = true;
+            PhotonNetwork.player.customProperties["Ready"] = true;
+            PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+        }
+        else
+        {
+            int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
+            PhotonNetwork.room.customProperties[customProp] = prevValue - 1;
+            PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+            ready = false;
+            PhotonNetwork.player.customProperties["Ready"] = false;
+            PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+        }
+    }
+
+    public bool checkJoinConditions(int ID)
+    {
+        if(ID == 1)
+        {
+            if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5*maxPlayer && PhotonNetwork.room.playerCount < maxPlayer)
+            {
+                return true;
+            }
+        }
+        else if(ID == 2){
+            if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5*maxPlayer && PhotonNetwork.room.playerCount < maxPlayer)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        return false;
+    }
+
     void OnPhotonRandomJoinFailed()
     {
-		Debug.Log("Can't join random room!");
-
-        //RoomOptions newRoomOptions = new RoomOptions();
-        //newRoomOptions.isOpen = true;
-        //newRoomOptions.isVisible = true;
-        //newRoomOptions.maxPlayers = (byte) maxPlayer;
-        //newRoomOptions.customRoomProperties = new ExitGames.Client.Photon.Hashtable();
-        //newRoomOptions.customRoomProperties["CountFF"] = 0;
-        //newRoomOptions.customRoomProperties["CountSF"] = 0;
-        //newRoomOptions.customRoomPropertiesForLobby = new string[] { "CountFF", "CountSF" };
-
         string[] roomPropsInLobby = { "CountFF", "CountSF" };
         ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
-        
-        Debug.Log(roomName);
-        //PhotonNetwork.CreateRoom(roomName, newRoomOptions, TypedLobby.Default);
 
         PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
     }
