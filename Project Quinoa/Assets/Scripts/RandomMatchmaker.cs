@@ -82,7 +82,6 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void ConnectRandom()
     {
-        Debug.Log("yeas");
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -99,17 +98,17 @@ public class RandomMatchmaker : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Debug.Log("CountFF: " + PhotonNetwork.room.customProperties["CountFF"]);
-       
+
         //Checks if ten minutes have passed or all pick ups has been picked up.
-        restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - startTime)/60;
-        
-        if (restTimeMinDouble > 0 || allPickedUp)
+        restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties["StartingTime"]) /60;
+        restTimeMin = (int)Math.Truncate(restTimeMinDouble);
+        restTimeSec = (int)((restTimeMinDouble - restTimeMin) * 60);
+
+        if (restTimeMinDouble <= 0 || allPickedUp)
         {
+
             // load score screen, wait and then return to the Lobby
         }
-        restTimeMin = (int) Math.Truncate(restTimeMinDouble);
-        restTimeSec = (int) (restTimeMinDouble - restTimeMin) * 60;
 
         // Checks if all players are ready (if so, spawn all players)
         bool allready = true;
@@ -125,8 +124,7 @@ public class RandomMatchmaker : MonoBehaviour {
         // Initial spawn
         if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once)                //if the room is full and all players are ready, spawn the players.
         {
-            startTime = PhotonNetwork.time;
-            PhotonNetwork.room.customProperties["StartingTime"] = startTime;
+            PhotonNetwork.room.customProperties["StartingTime"] = PhotonNetwork.time;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             stat = status.inGame;
             SpawnPlayer(teamID);
@@ -151,14 +149,11 @@ public class RandomMatchmaker : MonoBehaviour {
         //GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
         if(PhotonNetwork.connected == false)
         {
-            Debug.Log("Hey Hey False");
             //not yet connected, ask for online/offline <UPCOMING>
         }
 
         if (PhotonNetwork.connected == true)
         {
-            Debug.Log("Hey Hey true");
-            Debug.Log(stat);
             if (stat == status.browsing)
             {
 
@@ -281,7 +276,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void OnJoinedLobby()
     {
-        Debug.Log("no i come in Lobby");
+
     }
 
     public void UpdateCustomProperties (string customProp, bool increment)
@@ -292,10 +287,8 @@ public class RandomMatchmaker : MonoBehaviour {
             PhotonNetwork.room.customProperties[customProp] = prevValue + 1;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             ready = true;
-            Debug.Log("This beforeafter:" + PhotonNetwork.player.customProperties["Ready"]);
             PhotonNetwork.player.customProperties["Ready"] = true;
             PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
-            Debug.Log("This playerafter:" + PhotonNetwork.player.customProperties["Ready"]);
         }
         else
         {
@@ -340,7 +333,6 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        Debug.Log("here in Room");
         stat = status.inLobby;
     }
 
