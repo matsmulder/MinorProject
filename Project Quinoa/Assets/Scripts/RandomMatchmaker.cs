@@ -100,9 +100,15 @@ public class RandomMatchmaker : MonoBehaviour {
     void Update() {
 
         //Checks if ten minutes have passed or all pick ups has been picked up.
-        restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties["StartingTime"]) /60;
-        restTimeMin = (int)Math.Truncate(restTimeMinDouble);
-        restTimeSec = (int)((restTimeMinDouble - restTimeMin) * 60);
+        if (PhotonNetwork.room.customProperties.ContainsKey("StartingTime"))
+        {
+            restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties["StartingTime"]) / 60;
+
+            restTimeMin = (int)Math.Truncate(restTimeMinDouble);
+            restTimeSec = (int)((restTimeMinDouble - restTimeMin) * 60);
+        }
+
+
 
         if (restTimeMinDouble <= 0 || allPickedUp)
         {
@@ -114,10 +120,13 @@ public class RandomMatchmaker : MonoBehaviour {
         bool allready = true;
         foreach (PhotonPlayer player in PhotonNetwork.playerList)
         {
-            if ((bool) player.customProperties["Ready"] != true)
+            if (player.customProperties.ContainsKey("Ready"))
             {
-                allready = false;
-                break;
+                if ((bool)player.customProperties["Ready"] != true)
+                {
+                    allready = false;
+                    break;
+                }
             }
         }
 
@@ -127,6 +136,7 @@ public class RandomMatchmaker : MonoBehaviour {
             PhotonNetwork.room.customProperties["StartingTime"] = PhotonNetwork.time;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             stat = status.inGame;
+            Debug.Log(teamID + "spawning");
             SpawnPlayer(teamID);
             once = false;
         }
@@ -349,16 +359,19 @@ public class RandomMatchmaker : MonoBehaviour {
         string prefabName;
         if(teamID == 1) //fastfood
         {
+            Debug.Log(spawnSpotsFast + "fast");
             mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHuman";
         }
         else if(teamID == 2) //superfood
         {
+            Debug.Log(spawnSpotsSuper + "super");
             mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHipster";
         }
         else //no team food
         {
+            Debug.Log(spawnSpotsNoTeam + "noteam");
             mySpawnSpot = spawnSpotsNoTeam[UnityEngine.Random.Range(0, spawnSpots.Length)];
             prefabName = "player4";
         }
