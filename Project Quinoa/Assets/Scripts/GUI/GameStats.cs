@@ -5,6 +5,6 @@ public class GameStats : MonoBehaviour {
 
 
 	public void toMainMenu(){
-		Application.LoadLevel (0);
+		Application.LoadLevel ("mainMenu");
 	}
 }
