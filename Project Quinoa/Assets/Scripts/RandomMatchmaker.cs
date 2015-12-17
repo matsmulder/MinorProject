@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class RandomMatchmaker : MonoBehaviour {
 
@@ -14,22 +15,26 @@ public class RandomMatchmaker : MonoBehaviour {
     SpawnSpot[] spawnSpotsFast; //fastfood spawnspots
 
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
-    string type = "random";
+    string type = "Random";
     public Text nameBox;
+    public DateTime startTime;
 
     public float respawnTimer;
     private bool ready = false;
     public bool offlineMode;
     status stat;
-    private bool pickedTeam = false;
     private bool once = true;
-
+    public bool allPickedUp;
     private int teamID;
+    private int restTimeMin;
+    private int restTimeSec;
+    private double restTimeMinDouble;
+    private int totalRoundTime = 10;
 
     //[MenuItem("Edit/Reset Playerprefs")]
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
-    private string roomName = "Room01";  // <- This should be a random room name.
+    private string roomName = "Room01";  // <- This should be a Random room name.
     private int maxPlayer = 2;
     private Vector2 scrollPosition;
 
@@ -91,10 +96,19 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         Debug.Log("CountFF: " + PhotonNetwork.room.customProperties["CountFF"]);
+
+        //Checks if ten minutes have passed or all pick ups has been picked up.
+        restTimeMinDouble = totalRoundTime - (DateTime.UtcNow - startTime).TotalMinutes;
+        if (restTimeMinDouble > 0 || allPickedUp)
+        {
+            // load score screen, wait and then return to the Lobby
+        }
+        restTimeMin = (int) Math.Truncate(restTimeMinDouble);
+        restTimeSec = (int) (restTimeMinDouble - restTimeMin) * 60;
 
         // Checks if all players are ready (if so, spawn all players)
         bool allready = true;
@@ -103,6 +117,10 @@ public class RandomMatchmaker : MonoBehaviour {
             if((bool) player.customProperties["Ready"] == false)
             {
                 allready = false;
+                startTime = DateTime.UtcNow;
+                PhotonNetwork.room.customProperties["StartingTime"] = startTime;
+                PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+                stat = status.inGame;
                 break;
             }
         }
@@ -135,40 +153,37 @@ public class RandomMatchmaker : MonoBehaviour {
             //not yet connected, ask for online/offline <UPCOMING>
         }
 
-        if(PhotonNetwork.connected == true)
+        if (PhotonNetwork.connected == true)
         {
-            //fully connected
-            if (pickedTeam)
+            if (stat == status.browsing)
             {
-                if (stat == status.browsing) {
 
-                    GUILayout.Space(20);
-                    GUI.color = Color.red;
-                    GUILayout.Box("Game Rooms");
+                GUILayout.Space(20);
+                GUI.color = Color.red;
+                GUILayout.Box("Game Rooms");
+                GUI.color = Color.white;
+                GUILayout.Space(20);
+
+                scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(400), GUILayout.Height(300));
+
+                foreach (RoomInfo game in PhotonNetwork.GetRoomList()) // Each RoomInfo "game" in the amount of games created "rooms" display the fallowing.
+                {
+
+                    GUI.color = Color.green;
+                    GUILayout.Box(game.name + " " + game.playerCount + "/" + game.maxPlayers); //Thus we are in a for loop of games rooms display the game.name provide assigned above, playercount, and max players provided. EX 2/20
                     GUI.color = Color.white;
-                    GUILayout.Space(20);
 
-                    scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(400), GUILayout.Height(300));
-
-                    foreach (RoomInfo game in PhotonNetwork.GetRoomList()) // Each RoomInfo "game" in the amount of games created "rooms" display the fallowing.
+                    if (GUILayout.Button("Join Room"))
                     {
 
-                        GUI.color = Color.green;
-                        GUILayout.Box(game.name + " " + game.playerCount + "/" + game.maxPlayers); //Thus we are in a for loop of games rooms display the game.name provide assigned above, playercount, and max players provided. EX 2/20
-                        GUI.color = Color.white;
-
-                        if (GUILayout.Button("Join Room"))
-                        {
-
-                            PhotonNetwork.JoinRoom(game.name); // Next to each room there is a button to join the listed game.name in the current loop.
-                        }
+                        PhotonNetwork.JoinRoom(game.name); // Next to each room there is a button to join the listed game.name in the current loop.
                     }
-
-                    GUILayout.EndScrollView();
-                    GUILayout.EndArea();
                 }
+
+                GUILayout.EndScrollView();
+                GUILayout.EndArea();
             }
-            else if (stat == status.inGame)
+            else if (stat == status.inLobby)
             {
                 //player has no team assigned
                 if (GUILayout.Button("Team Fastfood"))
@@ -176,7 +191,6 @@ public class RandomMatchmaker : MonoBehaviour {
                     if (checkJoinConditions(1))
                     {
                         teamID = 1;
-                        //SpawnPlayer(1);
                         UpdateCustomProperties("CountFF", true);
                     }
                 }
@@ -185,13 +199,12 @@ public class RandomMatchmaker : MonoBehaviour {
                     if (checkJoinConditions(2))
                     {
                         teamID = 2;
-                        //SpawnPlayer(2);
                         UpdateCustomProperties("CountSF", true);
                     }
                 }
                 if (GUILayout.Button("Random Select"))
                 {
-                    int rand = Random.Range(1, 3);                  // random number 1 or 2
+                    int rand = UnityEngine.Random.Range(1, 3);                  // UnityEngine.Random number 1 or 2
                     if (rand == 1)
                     {
                         if (checkJoinConditions(1))
@@ -232,9 +245,9 @@ public class RandomMatchmaker : MonoBehaviour {
                 {
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("I'm Ready!");         ////Ready Label
-                    if(GUILayout.Button("Not ready"))      ////Ready Button
+                    if (GUILayout.Button("Not ready"))      ////Ready Button
                     {
-                        if(teamID == 1)
+                        if (teamID == 1)
                         {
                             UpdateCustomProperties("CountSF", false);
                         }
@@ -242,9 +255,14 @@ public class RandomMatchmaker : MonoBehaviour {
                         {
                             UpdateCustomProperties("CountFF", false);
                         }
-                        
+
                     }
                 }
+            }
+            else if (stat == status.inGame)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Remaining time: " + restTimeMin + " Min " + restTimeSec + " Sec");
             }
         }
     }
@@ -300,7 +318,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnPhotonRandomJoinFailed()
     {
-        string[] roomPropsInLobby = { "CountFF", "CountSF" };
+        string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime" };
         ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
 
         PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -308,9 +326,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        stat = status.inGame;
-        //SpawnPlayer();
-
+        stat = status.inLobby;
     }
 
     void SpawnPlayer(int teamID)
@@ -326,17 +342,17 @@ public class RandomMatchmaker : MonoBehaviour {
         string prefabName;
         if(teamID == 1) //fastfood
         {
-            mySpawnSpot = spawnSpotsFast[Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+            mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHuman";
         }
         else if(teamID == 2) //superfood
         {
-            mySpawnSpot = spawnSpotsSuper[Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+            mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHipster";
         }
         else //no team food
         {
-            mySpawnSpot = spawnSpotsNoTeam[Random.Range(0, spawnSpots.Length)];
+            mySpawnSpot = spawnSpotsNoTeam[UnityEngine.Random.Range(0, spawnSpots.Length)];
             prefabName = "player4";
         }
 
@@ -421,7 +437,8 @@ public class RandomMatchmaker : MonoBehaviour {
 
 public enum status
 {
-    inGame,
+    inLobby,
     browsing,
     inMenu,
+    inGame,
 }

@@ -21,7 +21,6 @@ public class Pickup : MonoBehaviour {
 
     void OnTriggerStay(Collider col)
     {
-        Debug.Log("test col");
         //pickup is fastfood and has to be picked up by team Wholo
         if(col.gameObject.CompareTag("fastfood") && tm.teamID == 2) 
         {
