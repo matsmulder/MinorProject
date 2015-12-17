@@ -19,7 +19,7 @@ public class FacebookManager : MonoBehaviour {
     static void ShareToFacebook(string linkParameter, string nameParameter, string captionParameter, string descriptionParameter, string pictureParameter, string redirectParameter)
     {
         /* PARAMETERS:
-        * link: Link behind post (when someone clicks on the post)
+        * link: Link behind post (when someone clicks on the post). Tip: https://drproject.twi.tudelft.nl/ewi3620tu1/Index.html
         * name: Name of the post
         * caption: text below the name, should be descriptive
         * description: footer text, should be short

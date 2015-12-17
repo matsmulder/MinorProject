@@ -6,6 +6,7 @@ public class scoreManager : MonoBehaviour {
     public static int numberOfFastPickups;
     private GameObject[] pickupSuperList, pickupFastList;
     private PhotonView pv;
+
 	// Use this for initialization
 	void Start () {
         pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
