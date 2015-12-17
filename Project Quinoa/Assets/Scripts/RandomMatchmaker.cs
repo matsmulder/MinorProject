@@ -99,6 +99,7 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        Debug.Log(stat);
         //Checks if ten minutes have passed or all pick ups has been picked up.
         if (PhotonNetwork.room.customProperties.ContainsKey("StartingTime"))
         {
@@ -128,15 +129,20 @@ public class RandomMatchmaker : MonoBehaviour {
                     break;
                 }
             }
+            else
+            {
+                allready = false;
+                break;
+            }
         }
 
         // Initial spawn
+        Debug.Log(PhotonNetwork.room.maxPlayers + "maxPlayers");
         if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once)                //if the room is full and all players are ready, spawn the players.
         {
             PhotonNetwork.room.customProperties["StartingTime"] = PhotonNetwork.time;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             stat = status.inGame;
-            Debug.Log(teamID + "spawning");
             SpawnPlayer(teamID);
             once = false;
         }
@@ -359,19 +365,16 @@ public class RandomMatchmaker : MonoBehaviour {
         string prefabName;
         if(teamID == 1) //fastfood
         {
-            Debug.Log(spawnSpotsFast + "fast");
             mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHuman";
         }
         else if(teamID == 2) //superfood
         {
-            Debug.Log(spawnSpotsSuper + "super");
             mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
             prefabName = "playerHipster";
         }
         else //no team food
         {
-            Debug.Log(spawnSpotsNoTeam + "noteam");
             mySpawnSpot = spawnSpotsNoTeam[UnityEngine.Random.Range(0, spawnSpots.Length)];
             prefabName = "player4";
         }
