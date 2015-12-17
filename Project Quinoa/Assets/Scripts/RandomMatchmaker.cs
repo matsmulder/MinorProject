@@ -99,14 +99,16 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        Debug.Log(stat);
         //Checks if ten minutes have passed or all pick ups has been picked up.
-        if (PhotonNetwork.room.customProperties.ContainsKey("StartingTime"))
+        if (PhotonNetwork.room != null)
         {
-            restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties["StartingTime"]) / 60;
+            if (PhotonNetwork.room.customProperties.ContainsKey("StartingTime"))
+            {
+                restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties["StartingTime"]) / 60;
 
-            restTimeMin = (int)Math.Truncate(restTimeMinDouble);
-            restTimeSec = (int)((restTimeMinDouble - restTimeMin) * 60);
+                restTimeMin = (int)Math.Truncate(restTimeMinDouble);
+                restTimeSec = (int)((restTimeMinDouble - restTimeMin) * 60);
+            }
         }
 
 
@@ -137,14 +139,16 @@ public class RandomMatchmaker : MonoBehaviour {
         }
 
         // Initial spawn
-        Debug.Log(PhotonNetwork.room.maxPlayers + "maxPlayers");
-        if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once)                //if the room is full and all players are ready, spawn the players.
+        if (PhotonNetwork.room != null)
         {
-            PhotonNetwork.room.customProperties["StartingTime"] = PhotonNetwork.time;
-            PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
-            stat = status.inGame;
-            SpawnPlayer(teamID);
-            once = false;
+            if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once)                //if the room is full and all players are ready, spawn the players.
+            {
+                PhotonNetwork.room.customProperties["StartingTime"] = PhotonNetwork.time;
+                PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+                stat = status.inGame;
+                SpawnPlayer(teamID);
+                once = false;
+            }
         }
             
         // RESPAWN

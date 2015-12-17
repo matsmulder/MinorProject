@@ -10,7 +10,6 @@ public class Toggle_play : MonoBehaviour {
 
 	public GameObject panel_joinormake;
 	public GameObject panel_joingame;
-	public GameObject panel_creategame;
 	public GameObject panel_joininputfield;
 	public GameObject panel_createinputfield;
 
@@ -32,15 +31,11 @@ public class Toggle_play : MonoBehaviour {
 	}
 
 	public void ToMainMenu(){
-		Application.LoadLevel ("mainMenu");
+		Application.LoadLevel (0);
 	}
 
-    public void toQuinoaGame()
-    {
-        Application.LoadLevel("Quinoa");
-    }
 
-    public void joingame_input(){
+	public void joingame_input(){
 		panel_joinormake.SetActive (false);
 		panel_joininputfield.SetActive (true);
 	}
@@ -50,20 +45,17 @@ public class Toggle_play : MonoBehaviour {
 		panel_createinputfield.SetActive (true);
 	}
 	
-	public void creategame(){
-		panel_createinputfield.SetActive (false);
-		panel_creategame.SetActive (true);
-	}
+
 	
 	public void joingame(){
 		panel_joininputfield.SetActive (false);
+		panel_createinputfield.SetActive (false);
 		panel_joingame.SetActive (true);
 	}
 
 	void resetnetworkgame(){
 		panel_joinormake.SetActive (true);
 		panel_joingame.SetActive (false);
-		panel_creategame.SetActive (false);
 		panel_joininputfield.SetActive (false);
 		panel_createinputfield.SetActive (false);
 	}

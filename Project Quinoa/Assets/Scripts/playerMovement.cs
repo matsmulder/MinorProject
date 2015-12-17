@@ -67,6 +67,8 @@ public class playerMovement : MonoBehaviour {
 
         };
         keys = new Dictionary<string, string>();
+        Debug.Log(keys);
+        Debug.Log(defaultKeys);
         try
         {
             StreamReader f = new StreamReader("keys.cfg");
@@ -116,7 +118,6 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(touchingGround);
 
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
@@ -279,7 +280,7 @@ public class playerMovement : MonoBehaviour {
     {
         //if (Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
-            Debug.Log("touching the ground again");
+            //Debug.Log("touching the ground again");
             touchingGround = true;
         }
         
@@ -300,7 +301,7 @@ public class playerMovement : MonoBehaviour {
     {
         //if (!Physics.Raycast(this.transform.position, new Vector3(0, -1, 0), 1f))
         {
-            Debug.Log("not touching ground anymore");
+            //Debug.Log("not touching ground anymore");
             touchingGround = false;
         }
 

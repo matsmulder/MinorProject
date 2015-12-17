@@ -19,7 +19,7 @@ public class Mouse : MonoBehaviour {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
-			Application.LoadLevel ("PlayMenu");
+			Application.LoadLevel (1);
 		}
 	}
 
@@ -28,7 +28,7 @@ public class Mouse : MonoBehaviour {
 			Button_blueberry.SetActive (false);
 			Button_shake.SetActive (true);
 		} else {
-			Application.LoadLevel ("StatsMenu");
+			Application.LoadLevel (2);
 		}
 	}
 
@@ -37,7 +37,7 @@ public class Mouse : MonoBehaviour {
 			Button_coffee.SetActive (false);
 			Button_boon.SetActive (true);
 		} else {
-			Application.LoadLevel ("OptionsMenu");
+			Application.LoadLevel (3);
 		}
 	}
 
@@ -46,11 +46,7 @@ public class Mouse : MonoBehaviour {
 			Button_chicken.SetActive (false);
 			Button_wing.SetActive (true);
 		} else {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE
-            Application.Quit();
-#endif
+			Application.Quit();
 		}
 	}
 
