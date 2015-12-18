@@ -207,6 +207,7 @@ public class RandomMatchmaker : MonoBehaviour {
 				once = false;
                 allready = false;
 				gameStarted = true;
+				canvas_Ready.SetActive(false);
 			}
 		}
             
