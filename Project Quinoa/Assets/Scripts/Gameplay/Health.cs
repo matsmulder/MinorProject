@@ -24,10 +24,16 @@ public class Health : MonoBehaviour {
         currentHitPoints -= amount;
         Debug.Log(currentHitPoints);
 
-        if(currentHitPoints <= 0)
+        if(currentHitPoints <= 0 && gameObject.tag != "fastfood" && gameObject.tag != "superfood") //only allow negative health for players
         {
             Die();
             Debug.Log("DIE");
+        }
+
+        if(currentHitPoints == 0 && (gameObject.tag == "fastfood" || gameObject.tag == "superfood")) //only call Die() when hitpoints of pickup are equal to zero
+        {
+            Die();
+            Debug.Log("pickup picked up");
         }
     }
 
@@ -43,20 +49,21 @@ public class Health : MonoBehaviour {
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
             Destroy(gameObject);
+            Debug.Log(gameObject.tag + "TAGGGGG");
         }
         else
         {
-            if(GetComponent<PhotonView>().isMine) // this is MY player object
+            if (GetComponent<PhotonView>().isMine) // this is MY player object
             {
-                if (gameObject.tag == "Player") 
+                if (gameObject.tag == "Player")
                 {
                     RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
-                    
+
                     nm.standby.SetActive(true);
                     nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }
 
-                if(gameObject.tag == "fastfood")
+                if (gameObject.tag == "fastfood")
                 {
                     scoreManager.numberOfFastPickups--;
                 }
@@ -64,6 +71,7 @@ public class Health : MonoBehaviour {
                 {
                     scoreManager.numberOfSuperPickups--;
                 }
+                Debug.Log(gameObject.tag + "TAGGGGG");
                 PhotonNetwork.Destroy(gameObject);
             }
         }

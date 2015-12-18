@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Pickup : MonoBehaviour {
 
-    private TeamMember tm;
+    public TeamMember tm;
     private Health h;
     public float healthPickup;
     private PhotonView pv;
@@ -38,6 +38,11 @@ public class Pickup : MonoBehaviour {
         }
 
 
+
+    }
+
+    public void EndGame()
+    {
 
     }
 }

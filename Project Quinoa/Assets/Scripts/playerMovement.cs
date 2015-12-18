@@ -67,8 +67,6 @@ public class playerMovement : MonoBehaviour {
 
         };
         keys = new Dictionary<string, string>();
-        Debug.Log(keys);
-        Debug.Log(defaultKeys);
         try
         {
             StreamReader f = new StreamReader("keys.cfg");
