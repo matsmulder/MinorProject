@@ -93,7 +93,6 @@ public class RandomMatchmaker : MonoBehaviour {
 		lobbyNames [0] = lobbyName1;
 		lobbyNames [1] = lobbyName2;
 		lobbyNames [2] = lobbyName3;
-        Debug.Log(lobbyNames);
 		//allocate space for spawnspots
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
         //this is because there are always the same number of spawnspots per team
@@ -150,9 +149,6 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        Debug.Log(PhotonNetwork.player.customProperties["CountFF"]);
-        Debug.Log(PhotonNetwork.player.customProperties["CountSF"]);
-
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
@@ -199,7 +195,6 @@ public class RandomMatchmaker : MonoBehaviour {
 		// Initial spawn
 		if (PhotonNetwork.room != null) {
 			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players.
-                Debug.Log("allready?" + allready + "not even" + once + "once");
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
 				stat = status.inGame;
@@ -208,6 +203,7 @@ public class RandomMatchmaker : MonoBehaviour {
                 allready = false;
 				gameStarted = true;
 				canvas_Ready.SetActive(false);
+                GameObject.FindGameObjectWithTag("canvas").SetActive(false);
 			}
 		}
             
@@ -253,7 +249,6 @@ public class RandomMatchmaker : MonoBehaviour {
 	}
 
 	public void onPlayButtonClicked(){
-        Debug.Log("clicked play");
 	if(team.value == 0)	// fastfood
 		{
 			if (checkJoinConditions(1))
@@ -282,7 +277,7 @@ public class RandomMatchmaker : MonoBehaviour {
 	}
 
 	public void onlobbybutton1Clicked(){
-        Debug.Log(lobbyNames[0].text);
+
 		JoinRoom(lobbyNames[0].text);
 		panel_joininputfield.SetActive(false);
 		panel_Setready.SetActive(true);
