@@ -22,7 +22,8 @@ public class RandomMatchmaker : MonoBehaviour {
     private bool ready = false;
     public bool offlineMode;
     status stat;
-    private bool once = true;
+    private bool once;
+    private bool allready;
     public bool allPickedUp;
     private int teamID;
     private int restTimeMin;
@@ -70,11 +71,17 @@ public class RandomMatchmaker : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        once = true;
         DeletePlayerPrefs();
         stat = status.inMenu;
 
-		//Put the buttons and text from the GameLobby in a 2D array.
-		lobbyButtons = new Button[3];
+        
+        //ALWAY INITIALIZE
+        PhotonNetwork.player.customProperties["CountFF"] = 0;
+        PhotonNetwork.player.customProperties["CountSF"] = 0;
+
+        //Put the buttons and text from the GameLobby in a 2D array.
+        lobbyButtons = new Button[3];
 		lobbyButtons [0] = lobbyButton1;
 		lobbyButtons [1] = lobbyButton2;
 		lobbyButtons [2] = lobbyButton3;
@@ -86,7 +93,7 @@ public class RandomMatchmaker : MonoBehaviour {
 		lobbyNames [0] = lobbyName1;
 		lobbyNames [1] = lobbyName2;
 		lobbyNames [2] = lobbyName3;
-
+        Debug.Log(lobbyNames);
 		//allocate space for spawnspots
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
         //this is because there are always the same number of spawnspots per team
@@ -143,8 +150,11 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-		// checks status 
-		inLobbyScreen = panel_joininputfield.GetActive();
+        Debug.Log(PhotonNetwork.player.customProperties["CountFF"]);
+        Debug.Log(PhotonNetwork.player.customProperties["CountSF"]);
+
+        // checks status 
+        inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
 		inGameScreen = panel_Setready.GetActive();
 		inReadyScreen = canvas_Ready.GetActive();
@@ -164,28 +174,38 @@ public class RandomMatchmaker : MonoBehaviour {
 			// load score screen, wait and then return to the Lobby
 		}
 
-		// Checks if all players are ready (if so, spawn all players)
-		bool allready = true;
-		foreach (PhotonPlayer player in PhotonNetwork.playerList) {
-			if (player.customProperties.ContainsKey ("Ready")) {
-				if ((bool)player.customProperties ["Ready"] != true) {
-					allready = false;
-					break;
-				}
-			} else {
-				allready = false;
-				break;
-			}
-		}
+        // Checks if all players are ready (if so, spawn all players)
+        if (once)
+        {
+            allready = true;
+            foreach (PhotonPlayer player in PhotonNetwork.playerList)
+            {
+                if (player.customProperties.ContainsKey("Ready"))
+                {
+                    if ((bool)player.customProperties["Ready"] != true)
+                    {
+                        allready = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    allready = false;
+                    break;
+                }
+            }
+        }
 
 		// Initial spawn
 		if (PhotonNetwork.room != null) {
-			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {                //if the room is full and all players are ready, spawn the players.
+			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players.
+                Debug.Log("allready?" + allready + "not even" + once + "once");
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
 				stat = status.inGame;
-				SpawnPlayer (teamID);
+				SpawnPlayer(teamID);
 				once = false;
+                allready = false;
 				gameStarted = true;
 			}
 		}
@@ -196,7 +216,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
 			if (respawnTimer <= 0) {
 				//respawn the player
-				SpawnPlayer (teamID);
+				SpawnPlayer(teamID);
 			}
 		}
 
@@ -221,7 +241,6 @@ public class RandomMatchmaker : MonoBehaviour {
 			// 		<- this is done in an public void method and is called when the create game button is clicked.
 			//}
 			if (inGameScreen) {
-                Debug.Log(PhotonNetwork.room);
                 //				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
                 currentGameName.text = createGameName.text;
                 currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
@@ -233,6 +252,7 @@ public class RandomMatchmaker : MonoBehaviour {
 	}
 
 	public void onPlayButtonClicked(){
+        Debug.Log("clicked play");
 	if(team.value == 0)	// fastfood
 		{
 			if (checkJoinConditions(1))
@@ -261,6 +281,7 @@ public class RandomMatchmaker : MonoBehaviour {
 	}
 
 	public void onlobbybutton1Clicked(){
+        Debug.Log(lobbyNames[0].text);
 		JoinRoom(lobbyNames[0].text);
 		panel_joininputfield.SetActive(false);
 		panel_Setready.SetActive(true);
@@ -435,7 +456,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     }
 
-    public void UpdateCustomProperties (string customProp, bool increment)
+    public void UpdateCustomProperties(string customProp, bool increment)
     {
         if (increment)
         {
