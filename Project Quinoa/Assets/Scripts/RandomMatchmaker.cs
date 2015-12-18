@@ -221,9 +221,10 @@ public class RandomMatchmaker : MonoBehaviour {
 			// 		<- this is done in an public void method and is called when the create game button is clicked.
 			//}
 			if (inGameScreen) {
-				Debug.Log(currentGameName.text);
-				Debug.Log(PhotonNetwork.room.name);
-				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
+                Debug.Log(PhotonNetwork.room);
+                //				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
+                currentGameName.text = createGameName.text;
+                currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
 			}
 			if (inReadyScreen) {
 				readyAmountPlayers.text = ((int)PhotonNetwork.room.playerCount + "/" + (int)PhotonNetwork.room.maxPlayers);
@@ -291,7 +292,7 @@ public class RandomMatchmaker : MonoBehaviour {
 	public void onClickedCreateGame(){
 		int num;
 		if (!createGameName.text.Equals ("")) {
-			
+
 			if (int.Parse(createGameMaxPlayers.text) < 2){
 				maxPlayer = 2;
 			}
