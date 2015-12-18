@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Analytics;
 
 public class playerShooting : MonoBehaviour {
 
@@ -79,11 +81,36 @@ public class playerShooting : MonoBehaviour {
 
                     if (tm == null || tm.teamID == 0 || myTm == null || myTm.teamID == 0 || tm.teamID != myTm.teamID)
                     {
+                        Analytics.CustomEvent("Hit enemy!", new Dictionary<string, object>
+                        {
+                           {"teamID hit :", tm.teamID },
+                           {"teamID fired shot:", myTm.teamID },
+                           {"Weapon ID:", weaponData.weaponID },
+                           {"position", gameObject.transform.position }
+                        });
                         //execute if: hitTransform or the player itself has no team info, is of teamID 0 (no team, independent faction, deathmatch mode) or the teamIDs are different
                         //this line is the equivalent of h.TakeDamage(damage) but synchronized
                         h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, weaponData.damage);
                     }
+                    else //player has hit a teammate
+                    {
+                        Analytics.CustomEvent("Friendly Fire...", new Dictionary<string, object>
+                        {
+                              {"Teamkiller teamID:", myTm.teamID },
+                              {"Weapon ID:", weaponData.weaponID },
+                              {"position", gameObject.transform.position }
+                        });
+                    }
 
+                }
+                else //player hasn't hit anything with health
+                {
+                    Analytics.CustomEvent("Missed shot", new Dictionary<string, object>
+                    {
+                          {"Weapon ID:", weaponData.weaponID },
+                          {"position", gameObject.transform.position }
+
+                    });
                 }
                 //-----------------------------------------------------------------------------------------------
 
@@ -98,6 +125,12 @@ public class playerShooting : MonoBehaviour {
                 //nothing is hit
                 if (fxManager != null)
                 {
+                    Analytics.CustomEvent("Missed shot", new Dictionary<string, object>
+                    {
+                          {"Weapon ID:", weaponData.weaponID },
+                          {"position", gameObject.transform.position },
+
+                    });
                     //fxManager.GetComponent<PhotonView>().RPC("SniperBulletFX", PhotonTargets.All, Camera.main.transform.position, Camera.main.transform.forward * shootingRange);
                     DoGunFX(Camera.main.transform.forward * shootingRange);
                 }

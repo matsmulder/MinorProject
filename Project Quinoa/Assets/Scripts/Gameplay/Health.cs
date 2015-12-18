@@ -37,7 +37,8 @@ public class Health : MonoBehaviour {
         //Analytics.CustomEvent(string customEventName, IDictionary < string, object > eventData);
        Analytics.CustomEvent("DIE", new Dictionary<string, object>
        {
-           {"died object", gameObject.tag }
+           {"died object", gameObject.tag },
+           {"position", gameObject.transform.position }
        });
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
