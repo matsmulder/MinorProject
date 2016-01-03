@@ -74,7 +74,7 @@ public class RandomMatchmaker : MonoBehaviour {
         once = true;
         DeletePlayerPrefs();
         stat = status.inMenu;
-
+		PlayerPrefs.DeleteAll();
         
         //ALWAY INITIALIZE
         PhotonNetwork.player.customProperties["CountFF"] = 0;
@@ -166,8 +166,10 @@ public class RandomMatchmaker : MonoBehaviour {
 		}
 
 		if (restTimeMinDouble <= 0 || allPickedUp) {
-
-			// load score screen, wait and then return to the Lobby
+			PlayerPrefs.SetInt("TeamID",teamID);
+			PlayerPrefs.SetInt ("Won",10);
+			
+			Application.LoadLevel ("Game_Over");
 		}
 
         // Checks if all players are ready (if so, spawn all players)

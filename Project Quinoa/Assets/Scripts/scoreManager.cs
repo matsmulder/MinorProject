@@ -63,16 +63,18 @@ public class scoreManager : MonoBehaviour {
     {
         Debug.Log("Team " + teamName + " is the winner!");
         yield return new WaitForSeconds(2);
-        Application.LoadLevel(Application.loadedLevel);
+        Application.LoadLevel("Game_Over");
     }
 
     [PunRPC]
     void EndGame(int winningTeamID)
     {
+		PlayerPrefs.SetInt("TeamID",myTeamID);
         //txt.text = winningTeamID.ToString();
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         int i = 0;
         Debug.Log(players.Length);
+
         foreach(GameObject player in players)
         {
             if (players[i].GetComponent<PhotonView>().isMine)
@@ -84,11 +86,15 @@ public class scoreManager : MonoBehaviour {
 
         if(myTeamID == winningTeamID) //you are in the winning team, display win screen
         {
-            txt.text = "your team wins!";
+            //txt.text = "your team wins!";
+			PlayerPrefs.SetInt("Won",1);
+			//Application.LoadLevel("Game_Over");
         }
         else //you are in the losing team, display lose screen
         {
-            txt.text = "your team loses";
+			//txt.text = "your team loses";
+			PlayerPrefs.SetInt("Won",0);
+			//Application.LoadLevel("Game_Over");
         }
     }
 }
