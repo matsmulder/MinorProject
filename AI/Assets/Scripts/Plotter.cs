@@ -19,13 +19,13 @@ public class Plotter : MonoBehaviour
 
     public void Awake()
     {
-        calculator = BotManager.getCalculator();
+        calculator = GameObject.FindGameObjectWithTag("Calculator").GetComponent<Calculator>();
         map = calculator.getMap();
         foreach(Vector3 point in map)
         {
             //Instantiate(GSVTracker, new Vector3(point.x, (float)(cGSV*calculator.GSV(point)), point.z), Quaternion.identity);
             //Instantiate(LSVTracker, new Vector3(point.x, (float)(cLSV*bot.LSV(point)), point.z), Quaternion.identity);
-            //Instantiate(SVTracker, new Vector3(point.x, (float)(cGSV * calculator.GSV(point) + cLSV * bot.LSV(point) + 2), point.z), Quaternion.identity);
+            Instantiate(SVTracker, new Vector3(point.x, (float)(cGSV * calculator.GSV(point) + cLSV * bot.LSV(point) + 2), point.z), Quaternion.identity);
         }
     }
 }

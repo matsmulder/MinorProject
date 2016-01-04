@@ -7,9 +7,7 @@ public class Bot : MonoBehaviour{
     //Bot State variables
     private Rigidbody rb;
     private Calculator calculator;
-    private Renderer rend;
     private SphereCollider col;
-    private List<Vector3> map;
     private List<Vector3> points;
     private float maxHealth = 100;
     private float maxAmmo = 20;
@@ -24,7 +22,7 @@ public class Bot : MonoBehaviour{
     private bool[] moveBool;// = new bool[25];
     private Vector3[] bestPoints;
     private float[] bestPointsSV;
-    private Vector3 bestPoint;
+    private Vector3 bestPoint  = new Vector3(0,0,0);
 
     //Bot Shooting variables
     private float rotateToTargetSpeed = 10;
@@ -51,20 +49,16 @@ public class Bot : MonoBehaviour{
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
-        calculator = BotManager.getCalculator();
-        rend = GetComponent<Renderer>();
+        calculator = GameObject.FindGameObjectWithTag("Calculator").GetComponent<Calculator>();
         index = calculator.addBot(this);
         targets = calculator.getTargets(index);
         col.radius= (float)sightConstant;
         team = calculator.Teaminator(this.gameObject.tag);
         health = 100;
         ammo = 0;
-        map = calculator.getMap();
         shootFlag = false;
         playerInSight = false;
-        bestPoint = new Vector3(0,0,0);
         moveBool = new bool[calculator.getMasterBoolCount()];
-        //moveBool[0] = true;
         bestPoints = new Vector3[moveBool.Length];
         bestPointsSV = new float[moveBool.Length];
     }
@@ -127,13 +121,13 @@ public class Bot : MonoBehaviour{
     {
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
-        for(int i = 0;i!=moveBool.Length;i++)
+        /*for(int i = 0;i!=moveBool.Length;i++)
         {
             if(moveBool[i])
             {
                 Debug.Log(moveBool[i]);
             }
-        }
+        }*/
 
         if (health > 0)
         {
@@ -201,17 +195,18 @@ public class Bot : MonoBehaviour{
     {
         bestPoints[j] = new Vector3(0.0f, 0.0f, 0.0f);
         bestPointsSV[j] = 0;
-        for (int i = Mathf.RoundToInt((map.Count-1)*j/moveBool.Length); i != Mathf.RoundToInt((map.Count - 1)*(j+1)/ moveBool.Length); i++)
+
+        for (int i = Mathf.RoundToInt((calculator.getMap().Count-1)*j/moveBool.Length); i != Mathf.RoundToInt((calculator.getMap().Count - 1)*(j+1)/ moveBool.Length); i++)
         {
-            if (Vector3.Distance(map[i], this.transform.position - new Vector3(0, transform.lossyScale.y, 0)) < sightConstant)
+            if (Vector3.Distance(calculator.getMap()[i], this.transform.position - new Vector3(0, transform.lossyScale.y, 0)) < sightConstant)
             {
-                //if (Vector3.Angle(this.transform.forward,map[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
+                //if (Vector3.Angle(this.transform.forward,calculator.getMap()[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
                 //{
-                double tempSV = SV(map[i]);
+                double tempSV = SV(calculator.getMap()[i]);
                 if (bestPointsSV[j] < tempSV)
                 {
                     bestPointsSV[j] = (float) tempSV;
-                    bestPoints[j] = map[i];
+                    bestPoints[j] = calculator.getMap()[i];
                 }
                 //}
             }
@@ -347,13 +342,13 @@ public class Bot : MonoBehaviour{
         {
             moveBool[i] = false;
             moveBool[0] = true;
-            Debug.Log(moveBool[0]);
+            //Debug.Log(moveBool[0]);
         }
         else
         {
             moveBool[i] = false;
             moveBool[i + 1] = true;
-            Debug.Log(moveBool[i]);
+            //Debug.Log(moveBool[i]);
         }
     }
 

@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Gun1.cs" />
      <Compile Include="Assets\Scripts\Bot.cs" />
-     <Compile Include="Assets\Scripts\BotManager.cs" />
      <Compile Include="Assets\Scripts\Calculator.cs" />
      <Compile Include="Assets\Scripts\Plotter.cs" />
      <Compile Include="Assets\Scripts\cameraMovement.cs" />

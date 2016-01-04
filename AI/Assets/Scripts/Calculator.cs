@@ -28,7 +28,7 @@ public class Calculator:MonoBehaviour
         {
             mapGSV[i] = GSV(map[i]);
         }
-        masterMoveBool[0] = true;
+        masterMoveBool[masterMoveBool.Length-1] = true;
     }
 
     public void Update()
@@ -93,7 +93,7 @@ public class Calculator:MonoBehaviour
     IEnumerator masterClock(int i)
     {
         masterMoveBool[i] = false;
-        Debug.Log(botList.Count);
+        //Debug.Log(botList.Count);
         foreach (Bot bot in botList)
         {
             bot.setMoveBool(i);
@@ -162,7 +162,7 @@ public class Calculator:MonoBehaviour
         return allTargets.Count-1;
     }
 
-    public void printer(List<List<GameObject>> targets)
+    /*public void printer(List<List<GameObject>> targets)
     {
         int counter = 0;
         foreach (List<GameObject> list in targets)
@@ -174,5 +174,5 @@ public class Calculator:MonoBehaviour
                 Debug.Log("GameObject");
             }
         }
-    }
+    }*/
 }
