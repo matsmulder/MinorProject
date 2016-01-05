@@ -11,6 +11,7 @@ public class scoreManager : MonoBehaviour {
     private int winningTeamID, myTeamID;
     public Text txt;
     private GameObject gameOverCanvas;
+    private bool winFlag;
 	// Use this for initialization
 	void Start () {
        pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
@@ -26,6 +27,7 @@ public class scoreManager : MonoBehaviour {
         }
                 gameOverCanvas.SetActive(false);
 
+        winFlag = true;
         pv = GetComponent<PhotonView>();
         //pu = FindObjectsOfType<Pickup>();
         //int i = 0, j = 0, k = 0;
@@ -53,14 +55,14 @@ public class scoreManager : MonoBehaviour {
 	void Update () {
 
 
-        if (numberOfFastPickups == 0) //Team Wholo wins
+        if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
         {
             //StartCoroutine(Win("Wholo"));
             //pu.EndGame();
             pv.RPC("EndGame", PhotonTargets.All, 2);
         }
 
-        if (numberOfSuperPickups == 0) //Team Trump wins
+        if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
         {
             //StartCoroutine(Win("Trump"));
             //pu.EndGame();
@@ -79,6 +81,7 @@ public class scoreManager : MonoBehaviour {
     [PunRPC]
     void EndGame(int winningTeamID)
     {
+        winFlag = false;
 		PlayerPrefs.SetInt("TeamID",myTeamID);
         //txt.text = winningTeamID.ToString();
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -127,6 +130,7 @@ public class scoreManager : MonoBehaviour {
 
     IEnumerator Reboot(float waitingTime)
     {
+        PhotonNetwork.LeaveRoom();
         yield return new WaitForSeconds(waitingTime);
         Application.LoadLevel(Application.loadedLevel);
     }
