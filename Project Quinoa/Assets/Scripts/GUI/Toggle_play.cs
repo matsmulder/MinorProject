@@ -35,7 +35,7 @@ public class Toggle_play : MonoBehaviour {
     }
 
     public void ToMainMenu(){
-		Application.LoadLevel (0);
+		Application.LoadLevel ("MainMenu");
 	}
 
 

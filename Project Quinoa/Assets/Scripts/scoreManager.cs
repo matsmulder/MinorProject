@@ -120,5 +120,14 @@ public class scoreManager : MonoBehaviour {
                 endgameTextList[3].SetActive(true);
             }
         }
+
+        StartCoroutine(Reboot(5));
+            
+        }
+
+    IEnumerator Reboot(float waitingTime)
+    {
+        yield return new WaitForSeconds(waitingTime);
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

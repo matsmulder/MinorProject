@@ -12,8 +12,8 @@ public class LoadQuinoaScene : MonoBehaviour {
 	
 	}
 
-    void LoadScene()
+    public void LoadScene()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel("Quinoa");
     }
 }
