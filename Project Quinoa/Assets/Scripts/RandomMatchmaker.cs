@@ -169,7 +169,7 @@ public class RandomMatchmaker : MonoBehaviour {
 			PlayerPrefs.SetInt("TeamID",teamID);
 			PlayerPrefs.SetInt ("Won",10);
 			
-			Application.LoadLevel ("Game_Over");
+			//Application.LoadLevel ("Game_Over");
 		}
 
         // Checks if all players are ready (if so, spawn all players)

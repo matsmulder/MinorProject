@@ -5,16 +5,26 @@ using System.Collections;
 public class scoreManager : MonoBehaviour {
     public static int numberOfSuperPickups;
     public static int numberOfFastPickups;
-    private GameObject[] pickupSuperList, pickupFastList;
+    private GameObject[] pickupSuperList, pickupFastList, endgameTextList;
     private PhotonView pv;
     private Pickup[] pu, puTrump, puWholo;
     private int winningTeamID, myTeamID;
     public Text txt;
-
+    private GameObject gameOverCanvas;
 	// Use this for initialization
 	void Start () {
        pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
         pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+
+        endgameTextList = GameObject.FindGameObjectsWithTag("endgametext");
+        gameOverCanvas = GameObject.FindGameObjectWithTag("gameovercanvas");
+
+        foreach(GameObject endgametext in endgameTextList)
+        {
+            Debug.Log(endgametext.name);
+            endgametext.SetActive(false);
+        }
+                gameOverCanvas.SetActive(false);
 
         pv = GetComponent<PhotonView>();
         //pu = FindObjectsOfType<Pickup>();
@@ -84,17 +94,31 @@ public class scoreManager : MonoBehaviour {
             i++;
         }
 
+        gameOverCanvas.SetActive(true);
+
         if(myTeamID == winningTeamID) //you are in the winning team, display win screen
         {
-            //txt.text = "your team wins!";
-			PlayerPrefs.SetInt("Won",1);
-			//Application.LoadLevel("Game_Over");
+            Debug.Log("win");
+            if(myTeamID == 1) //member of team Trump, display winning screen
+            {
+                endgameTextList[1].SetActive(true);
+            }
+            if(myTeamID == 2) //member of team Wholo, display winning screen
+            {
+                endgameTextList[0].SetActive(true);
+            }
         }
         else //you are in the losing team, display lose screen
         {
-			//txt.text = "your team loses";
-			PlayerPrefs.SetInt("Won",0);
-			//Application.LoadLevel("Game_Over");
+            Debug.Log("lose");
+            if (myTeamID == 1) //member of team Trump, display losing screen
+            {
+                endgameTextList[2].SetActive(true);
+            }
+            if (myTeamID == 2) //member of team Wholo, display losing screen
+            {
+                endgameTextList[3].SetActive(true);
+            }
         }
     }
 }
