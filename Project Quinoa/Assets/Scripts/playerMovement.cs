@@ -182,8 +182,9 @@ public class playerMovement : MonoBehaviour {
             }
 
             //stop moving in certain direction when a key is no longer pressed
-            if (Input.GetKeyUp(keys["forward"]) || Input.GetKeyUp(keys["left"]) || Input.GetKeyUp(keys["backward"]) || Input.GetKeyUp(keys["right"]))
-            {
+            //if (Input.GetKeyUp(keys["forward"]) || Input.GetKeyUp(keys["left"]) || Input.GetKeyUp(keys["backward"]) || Input.GetKeyUp(keys["right"]))
+              if (Input.GetKeyUp("w") || Input.GetKeyUp("a") || Input.GetKeyUp("s") || Input.GetKeyUp("d"))
+                {
                 directionx = 0;
                 directionz = 0;
             }
@@ -191,8 +192,9 @@ public class playerMovement : MonoBehaviour {
 
             //when no movement keys are pressed, the player is restored into a rest state
             //also, when a dodge is finished, the player is restored to it's original movement
-            if ((!Input.GetKey(keys["forward"]) && !Input.GetKey(keys["left"]) && !Input.GetKey(keys["backward"]) && !Input.GetKey(keys["right"])))
-            {
+            //if ((!Input.GetKey(keys["forward"]) && !Input.GetKey(keys["left"]) && !Input.GetKey(keys["backward"]) && !Input.GetKey(keys["right"])))
+              if (!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d"))
+                {
                 directionx = 0;
                 directionz = 0;
                 directiony = 0;
@@ -205,14 +207,16 @@ public class playerMovement : MonoBehaviour {
 
             //lookupHeight = true;
             //the famous Unreal Tournament single-tap dodge
-            if (Input.GetKeyDown(keys["dodge"]) && dodgeFlag)
+            //if (Input.GetKeyDown(keys["dodge"]) && dodgeFlag)
+            if (Input.GetKeyDown("left shift") && dodgeFlag)
             {
                 rb.AddRelativeForce(new Vector3(directionx*dodgeSpeed,dodgeHeight, directionz *dodgeSpeed));
                 StartCoroutine(DodgeTimeout());
             }
 
             //add upwards force upon pressing the jump key
-            if (Input.GetKeyDown(keys["jump"]))
+            //if (Input.GetKeyDown(keys["jump"]))
+            if (Input.GetKeyDown("space"))
             {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
@@ -259,18 +263,12 @@ public class playerMovement : MonoBehaviour {
             if (currentHP <= 0)
             {
                 Debug.Log("U dead m4te");
-                respawn();
 
             }
         }
 
     }
 
-    private void respawn()
-    {
-        Debug.Log("Respawning...");
-        transform.position = new Vector3(0, 0, 0);
-    }
 
 
     //check for collision

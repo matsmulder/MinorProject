@@ -70,37 +70,37 @@ public class RandomMatchmaker : MonoBehaviour {
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         once = true;
         DeletePlayerPrefs();
         stat = status.inMenu;
-		PlayerPrefs.DeleteAll();
-        
+        PlayerPrefs.DeleteAll();
+
         //ALWAY INITIALIZE
         PhotonNetwork.player.customProperties["CountFF"] = 0;
         PhotonNetwork.player.customProperties["CountSF"] = 0;
 
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
-		lobbyButtons [0] = lobbyButton1;
-		lobbyButtons [1] = lobbyButton2;
-		lobbyButtons [2] = lobbyButton3;
-		lobbyPlayers = new Text[3];
-		lobbyPlayers [0] = lobbyPlayers1;
-		lobbyPlayers [1] = lobbyPlayers2;
-		lobbyPlayers [2] = lobbyPlayers3;
-		lobbyNames = new Text[3];
-		lobbyNames [0] = lobbyName1;
-		lobbyNames [1] = lobbyName2;
-		lobbyNames [2] = lobbyName3;
-		//allocate space for spawnspots
+        lobbyButtons[0] = lobbyButton1;
+        lobbyButtons[1] = lobbyButton2;
+        lobbyButtons[2] = lobbyButton3;
+        lobbyPlayers = new Text[3];
+        lobbyPlayers[0] = lobbyPlayers1;
+        lobbyPlayers[1] = lobbyPlayers2;
+        lobbyPlayers[2] = lobbyPlayers3;
+        lobbyNames = new Text[3];
+        lobbyNames[0] = lobbyName1;
+        lobbyNames[1] = lobbyName2;
+        lobbyNames[2] = lobbyName3;
+        //allocate space for spawnspots
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
         //this is because there are always the same number of spawnspots per team
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
         spawnSpotsFast = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
         spawnSpotsSuper = new SpawnSpot[(int)(spawnSpots.Length * 0.5)];
         spawnSpotsNoTeam = new SpawnSpot[spawnSpots.Length];
-        foreach(SpawnSpot sp in spawnSpots)
+        foreach (SpawnSpot sp in spawnSpots)
         {
             if (sp.teamid == 0)
             {
@@ -126,10 +126,10 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings("0.2");
+            PhotonNetwork.ConnectUsingSettings("0.4");
         }
     }
-
+    
     public void ConnectRandom()
     {
         PhotonNetwork.JoinRandomRoom();
@@ -178,6 +178,7 @@ public class RandomMatchmaker : MonoBehaviour {
             allready = true;
             foreach (PhotonPlayer player in PhotonNetwork.playerList)
             {
+                Debug.Log("player ready?");
                 if (player.customProperties.ContainsKey("Ready"))
                 {
                     if ((bool)player.customProperties["Ready"] != true)
@@ -200,6 +201,7 @@ public class RandomMatchmaker : MonoBehaviour {
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
 				stat = status.inGame;
+                Debug.Log("initial spawn");
 				SpawnPlayer(teamID);
 				once = false;
                 allready = false;
@@ -214,7 +216,8 @@ public class RandomMatchmaker : MonoBehaviour {
 			respawnTimer -= Time.deltaTime;
 
 			if (respawnTimer <= 0) {
-				//respawn the player
+                //respawn the player
+                Debug.Log("respawn");
 				SpawnPlayer(teamID);
 			}
 		}
@@ -278,23 +281,30 @@ public class RandomMatchmaker : MonoBehaviour {
 		}
 	}
 
-	public void onlobbybutton1Clicked(){
+	//public void onlobbybutton1Clicked(){
 
-		JoinRoom(lobbyNames[0].text);
-		panel_joininputfield.SetActive(false);
-		panel_Setready.SetActive(true);
+	//	JoinRoom(lobbyNames[0].text);
+	//	panel_joininputfield.SetActive(false);
+	//	panel_Setready.SetActive(true);
 		
-	}
-	public void onlobbybutton2Clicked(){
-		JoinRoom(lobbyNames[1].text);
-		panel_joininputfield.SetActive(false);
-		panel_Setready.SetActive(true);
-	}
-	public void onlobbybutton3Clicked(){
-		JoinRoom(lobbyNames[2].text);
-		panel_joininputfield.SetActive(false);
-		panel_Setready.SetActive(true);
-	}
+	//}
+	//public void onlobbybutton2Clicked(){
+	//	JoinRoom(lobbyNames[1].text);
+	//	panel_joininputfield.SetActive(false);
+	//	panel_Setready.SetActive(true);
+	//}
+	//public void onlobbybutton3Clicked(){
+	//	JoinRoom(lobbyNames[2].text);
+	//	panel_joininputfield.SetActive(false);
+	//	panel_Setready.SetActive(true);
+	//}
+
+    public void onLobbyButtonClicked(int button)
+    {
+        JoinRoom(lobbyNames[button].text);
+        panel_joininputfield.SetActive(false);
+        panel_Setready.SetActive(true);
+    }
 
 	public void onNotReadyClicked(){
 		if (teamID == 1)
@@ -513,6 +523,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void SpawnPlayer(int teamID)
     {
+        Debug.Log("spawn with teamID" + teamID);
         this.teamID = teamID;
         if(spawnSpots == null)
         {

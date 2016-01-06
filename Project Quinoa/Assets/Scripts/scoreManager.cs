@@ -133,5 +133,7 @@ public class scoreManager : MonoBehaviour {
         PhotonNetwork.LeaveRoom();
         yield return new WaitForSeconds(waitingTime);
         Application.LoadLevel(Application.loadedLevel);
+        Cursor.visible = true;
+        Debug.Log("testarossa");
     }
 }
