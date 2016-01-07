@@ -178,7 +178,7 @@ public class RandomMatchmaker : MonoBehaviour {
             allready = true;
             foreach (PhotonPlayer player in PhotonNetwork.playerList)
             {
-                Debug.Log("player ready?");
+                //Debug.Log("player ready?");
                 if (player.customProperties.ContainsKey("Ready"))
                 {
                     if ((bool)player.customProperties["Ready"] != true)
