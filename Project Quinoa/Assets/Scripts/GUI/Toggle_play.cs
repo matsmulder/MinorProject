@@ -7,7 +7,7 @@ public class Toggle_play : MonoBehaviour {
 	public GameObject panel_networkplay;
 	public GameObject network_button;
 	public GameObject normalmode_button;
-	private bool isShowing = true;
+	private bool isShowing = false;
 
 	public GameObject panel_joinormake;
 	public GameObject panel_joingame;
