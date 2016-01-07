@@ -245,7 +245,10 @@ public class RandomMatchmaker : MonoBehaviour {
 			if (inGameScreen) {
                 //				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
                 currentGameName.text = createGameName.text;
-                currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
+                if (PhotonNetwork.room != null)
+                {
+                    currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
+                }
 			}
 			if (inReadyScreen) {
 				readyAmountPlayers.text = ((int)PhotonNetwork.room.playerCount + "/" + (int)PhotonNetwork.room.maxPlayers);
