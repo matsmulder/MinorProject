@@ -66,6 +66,9 @@ public class RandomMatchmaker : MonoBehaviour {
 	public GameObject panel_createinputfield;
 	public GameObject panel_joininputfield;
 	public GameObject canvas_Ready;
+
+    public Text SliderText;
+    public Slider numberOfBots;
 	
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
@@ -149,6 +152,12 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        //check for offline mode
+        
+
+
+
+
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
@@ -178,7 +187,7 @@ public class RandomMatchmaker : MonoBehaviour {
             allready = true;
             foreach (PhotonPlayer player in PhotonNetwork.playerList)
             {
-                Debug.Log("player ready?");
+                //Debug.Log("player ready?");
                 if (player.customProperties.ContainsKey("Ready"))
                 {
                     if ((bool)player.customProperties["Ready"] != true)
@@ -200,7 +209,7 @@ public class RandomMatchmaker : MonoBehaviour {
 			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players.
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
-				stat = status.inGame;
+                stat = status.inGame;
                 Debug.Log("initial spawn");
 				SpawnPlayer(teamID);
 				once = false;
@@ -283,6 +292,29 @@ public class RandomMatchmaker : MonoBehaviour {
 			}
 		}
 	}
+
+
+    //check for offline/online mode
+    public void OfflineModeButtonClicked()
+    {
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.offlineMode = true;
+        offlineMode = true;
+    }
+
+    public void OnlineModeButtonClicked()
+    {
+        PhotonNetwork.offlineMode = false;
+        offlineMode = false;
+        PhotonNetwork.ConnectUsingSettings("0.5");
+    }
+
+    public void GetBotSliderValue()
+    {
+        SliderText.text = ((int)numberOfBots.value).ToString();
+    }
+
+
 
 	//public void onlobbybutton1Clicked(){
 
@@ -464,7 +496,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void OnJoinedLobby()
     {
-
+        
     }
 
     public void UpdateCustomProperties(string customProp, bool increment)
