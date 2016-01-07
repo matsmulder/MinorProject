@@ -123,7 +123,8 @@ public class scoreManager : MonoBehaviour {
                 endgameTextList[3].SetActive(true);
             }
         }
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         StartCoroutine(Reboot(5));
             
         }
