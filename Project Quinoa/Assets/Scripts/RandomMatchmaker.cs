@@ -69,7 +69,8 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public Text SliderText;
     public Slider numberOfBots;
-	
+    private int realNumberOfBots;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
@@ -556,16 +557,23 @@ public class RandomMatchmaker : MonoBehaviour {
         stat = status.inLobby;
     }
 
-    void OfflineButtonFastClicked()
+    public void OnSliderChanged()
+    {
+        realNumberOfBots = (int)numberOfBots.value;
+        SliderText.text = ((int)numberOfBots.value).ToString();
+    }
+
+
+    public void OfflineButtonFastClicked()
     {
         SpawnPlayer(1);
-        SpawnBot(1, (int)numberOfBots.value);
+        SpawnBot(1, realNumberOfBots);
     }
     
-    void OfflineButtonSuperClicked()
+    public void OfflineButtonSuperClicked()
     {
         SpawnPlayer(2);
-        SpawnBot(2, (int)numberOfBots.value);
+        SpawnBot(2, realNumberOfBots);
     }
 
     void SpawnPlayer(int teamID)
