@@ -156,27 +156,31 @@ public class playerMovement : MonoBehaviour {
             //|| touchingFix)
         {
             //move forward
-            if (Input.GetKey(keys["forward"]))
+            //if (Input.GetKey(keys["forward"]))
+            if(Input.GetKey("w"))
             {
                 directionz = 1;
             }
 
 
             //move left
-            if (Input.GetKey(keys["left"]))
+            //if (Input.GetKey(keys["left"]))
+            if(Input.GetKey("a"))
             {
                 directionx = -1;
             }
 
 
             //move backward
-            if (Input.GetKey(keys["backward"]))
+            //if (Input.GetKey(keys["backward"]))
+            if(Input.GetKey("s"))
             {
                 directionz = -1;
             }
 
             //move right
-            if (Input.GetKey(keys["right"]))
+            //if (Input.GetKey(keys["right"]))
+            if(Input.GetKey("d"))
             {
                 directionx = 1;
             }
