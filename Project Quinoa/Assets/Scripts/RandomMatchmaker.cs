@@ -556,6 +556,18 @@ public class RandomMatchmaker : MonoBehaviour {
         stat = status.inLobby;
     }
 
+    void OfflineButtonFastClicked()
+    {
+        SpawnPlayer(1);
+        SpawnBot(1, (int)numberOfBots.value);
+    }
+    
+    void OfflineButtonSuperClicked()
+    {
+        SpawnPlayer(2);
+        SpawnBot(2, (int)numberOfBots.value);
+    }
+
     void SpawnPlayer(int teamID)
     {
         Debug.Log("spawn with teamID" + teamID);
@@ -596,6 +608,39 @@ public class RandomMatchmaker : MonoBehaviour {
 
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
+    }
+
+    void SpawnBot(int playerTeamID, int numberOfBots)
+    {
+        int previousTeamID = playerTeamID;
+        for (int i = 0; i < numberOfBots; i++)
+        {
+            if(previousTeamID == 1)//previous spawned instance was of team Trump, spawn Wholo now
+            {
+                SpawnWholoBot();
+                previousTeamID = 2;
+            }
+            if(previousTeamID == 2)//previous spawned instance was of team Wholo, spawn Trump now
+            {
+                SpawnTrumpBot();
+                previousTeamID = 1;
+            }
+        }
+    }
+
+    void SpawnTrumpBot()
+    {
+        SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+        GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+
+    }
+
+    void SpawnWholoBot()
+    {
+        SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
+        GameObject bot = PhotonNetwork.Instantiate("playerHipster", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
     }
 
     public void BrowseGames()
