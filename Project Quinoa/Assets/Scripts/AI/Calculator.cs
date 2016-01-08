@@ -14,6 +14,9 @@ public class Calculator:MonoBehaviour
     private List<Bot> botList = new List<Bot>();
     private bool[] masterMoveBool = new bool[masterMoveBoolLength];
 
+    private String playerA = "PlayerA";
+    private String playerB = "PlayerB";
+
     public static double wallConst = 4;
     public static double stepsizeX = 3.01662;
     public static double stepsizeZ = 2.87266;
@@ -119,11 +122,11 @@ public class Calculator:MonoBehaviour
 
     public int Teaminator(String tag)
     {
-        if(tag=="PlayerA")
+        if(tag==playerA)
         {
             return 1;
         }
-        else if(tag=="PlayerB")
+        else if(tag==playerB)
         {
             return -1;
         }
@@ -159,7 +162,6 @@ public class Calculator:MonoBehaviour
         List<GameObject> targets = new List<GameObject>();
         allTargets.Add(targets);
         botList.Add(bot);
-        //printer(allTargets);
         return allTargets.Count-1;
     }
 
