@@ -29,7 +29,7 @@ public class RandomMatchmaker : MonoBehaviour {
     private int restTimeMin;
     private int restTimeSec;
     private double restTimeMinDouble;
-    private int totalRoundTime = 10;
+    public int totalRoundTime;
     private string roomName = "Room01";  // <- This should be a Random room name.
     private int maxPlayer = 2;
     private Vector2 scrollPosition;
@@ -70,6 +70,7 @@ public class RandomMatchmaker : MonoBehaviour {
     public Text SliderText;
     public Slider numberOfBots;
     private int realNumberOfBots;
+    private scoreManager sm;
 
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
@@ -124,6 +125,9 @@ public class RandomMatchmaker : MonoBehaviour {
                 indSuper++;
             }
         }
+
+        sm = GetComponent<scoreManager>();
+
         if (offlineMode)
         {
             OnJoinedLobby();            //For future extensions
@@ -175,10 +179,9 @@ public class RandomMatchmaker : MonoBehaviour {
 			}
 		}
 
-		if (restTimeMinDouble <= 0 || allPickedUp) {
-			PlayerPrefs.SetInt("TeamID",teamID);
-			PlayerPrefs.SetInt ("Won",10);
-			
+		if (restTimeMinDouble < 0) {
+
+            sm.GetComponent<PhotonView>().RPC("EndGame", PhotonTargets.All, 0);
 			//Application.LoadLevel ("Game_Over");
 		}
 

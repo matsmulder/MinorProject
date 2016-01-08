@@ -12,20 +12,24 @@ public class scoreManager : MonoBehaviour {
     public Text txt;
     private GameObject gameOverCanvas;
     private bool winFlag;
+
+    public Text endGameText;
 	// Use this for initialization
 	void Start () {
        pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
         pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
 
-        endgameTextList = GameObject.FindGameObjectsWithTag("endgametext");
         gameOverCanvas = GameObject.FindGameObjectWithTag("gameovercanvas");
+        gameOverCanvas.SetActive(false);
+        //endgameTextList = GameObject.FindGameObjectsWithTag("endgametext");
+        
 
-        foreach(GameObject endgametext in endgameTextList)
-        {
-            Debug.Log(endgametext.name);
-            endgametext.SetActive(false);
-        }
-                gameOverCanvas.SetActive(false);
+        //foreach(GameObject endgametext in endgameTextList)
+        //{
+        //    Debug.Log(endgametext.name);
+        //    endgametext.SetActive(false);
+        //}
+        //        gameOverCanvas.SetActive(false);
 
         winFlag = true;
         pv = GetComponent<PhotonView>();
@@ -57,77 +61,79 @@ public class scoreManager : MonoBehaviour {
 
         if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
         {
-            //StartCoroutine(Win("Wholo"));
-            //pu.EndGame();
             pv.RPC("EndGame", PhotonTargets.All, 2);
         }
 
         if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
         {
-            //StartCoroutine(Win("Trump"));
-            //pu.EndGame();
             pv.RPC("EndGame", PhotonTargets.All, 1);
         }
 
 	}
 
-    IEnumerator Win(string teamName)
-    {
-        Debug.Log("Team " + teamName + " is the winner!");
-        yield return new WaitForSeconds(2);
-        Application.LoadLevel("Game_Over");
-    }
-
     [PunRPC]
     void EndGame(int winningTeamID)
     {
         winFlag = false;
-		PlayerPrefs.SetInt("TeamID",myTeamID);
-        //txt.text = winningTeamID.ToString();
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        int i = 0;
-        Debug.Log(players.Length);
-
-        foreach(GameObject player in players)
-        {
-            if (players[i].GetComponent<PhotonView>().isMine)
-            {
-                myTeamID = players[i].gameObject.GetComponent<TeamMember>().teamID;
-            }
-            i++;
-        }
 
         gameOverCanvas.SetActive(true);
 
-        if(myTeamID == winningTeamID) //you are in the winning team, display win screen
+        if (winningTeamID == 0) //set teamID = 0 for time limit
         {
-            Debug.Log("win");
-            if(myTeamID == 1) //member of team Trump, display winning screen
+            endgameTextList[4].SetActive(true);
+            endGameText.text = "TIME!";
+        }
+        else
+        {
+
+            int i = 0;
+            foreach (GameObject player in players)
             {
-                endgameTextList[1].SetActive(true);
+                if (players[i].GetComponent<PhotonView>().isMine)
+                {
+                    myTeamID = players[i].gameObject.GetComponent<TeamMember>().teamID;
+                }
+                i++;
             }
-            if(myTeamID == 2) //member of team Wholo, display winning screen
+
+            if (myTeamID == winningTeamID) //you are in the winning team, display win screen
             {
-                endgameTextList[0].SetActive(true);
+                Debug.Log("win");
+                if (myTeamID == 1) //member of team Trump, display winning screen
+                {
+                    //endgameTextList[1].SetActive(true);
+                    endGameText.text = "You crushed the Quinoa!";
+                }
+                if (myTeamID == 2) //member of team Wholo, display winning screen
+                {
+                    //endgameTextList[0].SetActive(true);
+                    endGameText.text = "You beat the burger!";
+                }
+            }
+            else //you are in the losing team, display lose screen
+            {
+                Debug.Log("lose");
+                if (myTeamID == 1) //member of team Trump, display losing screen
+                {
+                    //endgameTextList[2].SetActive(true);
+                    endGameText.text = "Quinoa smashed you down";
+                }
+                if (myTeamID == 2) //member of team Wholo, display losing screen
+                {
+                    //endgameTextList[3].SetActive(true);
+                    endGameText.text = "The burger whoppe(r)d you down!";
+                }
             }
         }
-        else //you are in the losing team, display lose screen
-        {
-            Debug.Log("lose");
-            if (myTeamID == 1) //member of team Trump, display losing screen
-            {
-                endgameTextList[2].SetActive(true);
-            }
-            if (myTeamID == 2) //member of team Wholo, display losing screen
-            {
-                endgameTextList[3].SetActive(true);
-            }
-        }
+
+        endGameText.text += "\nreturning in 5 seconds";
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         StartCoroutine(Reboot(5));
             
-        }
+    }
 
     IEnumerator Reboot(float waitingTime)
     {
