@@ -72,6 +72,7 @@ public class Calculator:MonoBehaviour
     {
         GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
         double GSV = 0;
+        double height = 0;
         foreach (GameObject obj in walls)
         {
             Vector3 wallCenter = new Vector3(obj.transform.position.x, obj.transform.position.y - obj.transform.lossyScale.y / 2, obj.transform.position.z);
@@ -84,7 +85,17 @@ public class Calculator:MonoBehaviour
                 {
                     position = new Vector3(obj.transform.position.x, point.y, point.z);
                 }
-            GSV = GSV + 2*(obj.transform.position.y + obj.transform.lossyScale.y / 2) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+
+            if (obj.transform.position.y + obj.transform.lossyScale.y / 2<10)
+            {
+                height = obj.transform.position.y + obj.transform.lossyScale.y / 2;
+            }
+            else
+            {
+                height = 10;
+            }
+
+            GSV = GSV + 2*(height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
         }
         return GSV;
     }
