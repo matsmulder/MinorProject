@@ -66,6 +66,8 @@ public class RandomMatchmaker : MonoBehaviour {
 	public GameObject panel_createinputfield;
 	public GameObject panel_joininputfield;
 	public GameObject canvas_Ready;
+	public GameObject teamFull;
+	public GameObject canvas_Objective;
 
     public Text SliderText;
     public Slider numberOfBots;
@@ -181,8 +183,16 @@ public class RandomMatchmaker : MonoBehaviour {
 
 		if (restTimeMinDouble < 0) {
 
-            sm.GetComponent<PhotonView>().RPC("EndGame", PhotonTargets.All, 0);
+			sm.GetComponent<PhotonView> ().RPC ("EndGame", PhotonTargets.All, 0);
+
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			StartCoroutine(Reboot(5));   
 			//Application.LoadLevel ("Game_Over");
+		} else if (restTimeMinDouble > (double)9.92) {
+			canvas_Objective.SetActive (true);
+		} else {
+			canvas_Objective.SetActive (false);
 		}
 
         // Checks if all players are ready (if so, spawn all players)
@@ -531,17 +541,20 @@ public class RandomMatchmaker : MonoBehaviour {
         {
             if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
+				teamFull.SetActive(false);
                 return true;
             }
         }
         else if(ID == 2){
             if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5 * maxPlayer)
             {
-                return true;
-            }
+				teamFull.SetActive(false);
+				return true;
+			}
         }
         else
         {
+			teamFull.SetActive(true);
             return false;
         }
         return false;
@@ -715,6 +728,14 @@ public class RandomMatchmaker : MonoBehaviour {
         stat = st;
     }
 
+	IEnumerator Reboot(float waitingTime)
+	{
+		PhotonNetwork.LeaveRoom();
+		yield return new WaitForSeconds(waitingTime);
+		Application.LoadLevel(Application.loadedLevel);
+		Cursor.visible = true;
+		Debug.Log("testarossa");
+	}
 }
 
 public enum status

@@ -131,8 +131,7 @@ public class scoreManager : MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartCoroutine(Reboot(5));
-            
+        StartCoroutine(Reboot(5));   
     }
 
     IEnumerator Reboot(float waitingTime)
