@@ -663,15 +663,17 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void SpawnBot(int playerTeamID, int numberOfBots)
     {
+        Debug.Log("entered spawnBot, numberOfBots:" + numberOfBots);
         int previousTeamID = playerTeamID;
         for (int i = 0; i < numberOfBots; i++)
         {
+            Debug.Log("previous team id is: " + previousTeamID);
             if(previousTeamID == 1)//previous spawned instance was of team Trump, spawn Wholo now
             {
                 SpawnWholoBot();
                 previousTeamID = 2;
             }
-            if(previousTeamID == 2)//previous spawned instance was of team Wholo, spawn Trump now
+            else if(previousTeamID == 2)//previous spawned instance was of team Wholo, spawn Trump now
             {
                 SpawnTrumpBot();
                 previousTeamID = 1;
