@@ -141,7 +141,7 @@ public class RandomMatchmaker : MonoBehaviour {
             PhotonNetwork.ConnectUsingSettings("0.4");
         }
 
-        calc = GameObject.FindObjectOfType<Calculator>();
+        calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
     
     public void ConnectRandom()
@@ -652,6 +652,8 @@ public class RandomMatchmaker : MonoBehaviour {
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
+        player.GetComponent<Bot>().enabled = false;
+        player.GetComponent<SphereCollider>().enabled = false;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
 
         //set teamID, TODO: set colour
@@ -686,6 +688,9 @@ public class RandomMatchmaker : MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.GetComponent<playerMovement>().enabled = false;
+        bot.GetComponent<Bot>().enabled = true;
+        bot.GetComponent<SphereCollider>().enabled = true;
 
     }
 

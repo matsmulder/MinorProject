@@ -14,12 +14,14 @@ public class Calculator:MonoBehaviour
     private List<Bot> botList = new List<Bot>();
     private bool[] masterMoveBool = new bool[masterMoveBoolLength];
 
-    private String playerA = "PlayerA";
-    private String playerB = "PlayerB";
+    private String playerA = "playerA";
+    private String playerB = "playerB";
 
     public static double wallConst = 4;
     public static double stepsizeX = 3.01662;
     public static double stepsizeZ = 2.87266;
+
+    private static double cpGSV = 3;
 
     public Calculator()
     {    }
@@ -97,6 +99,16 @@ public class Calculator:MonoBehaviour
 
             GSV = GSV + 2*(height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
         }
+
+        /*if(bot.getTeam()==1)
+        {
+            GSV = GSV + cPGSV * (1 - Vector3.Distance(point,new Vector3(64f,-30f,-43f)) / Vector3.Distance(new Vector3(64f,-30f,-43f),new Vector3(-37f,-30f,28f)));
+        }
+        if(bot.getTeam()==-1)
+        {
+            GSV = GSV + cPGSV * (1 - Vector3.Distance(point,new Vector3(-37f,-30f,28f)) / Vector3.Distance(new Vector3(64f,-30f,-43f),new Vector3(-37f,-30f,28f)));
+        }*/
+
         return GSV;
     }
 

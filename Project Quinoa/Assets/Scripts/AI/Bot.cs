@@ -366,4 +366,9 @@ public class Bot : MonoBehaviour{
             health = 0;
         }
     }
+
+    public int getTeam()
+    {
+        return team;
+    }
 }
