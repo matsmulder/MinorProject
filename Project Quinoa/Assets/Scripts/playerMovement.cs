@@ -116,7 +116,6 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        Debug.Log(touchingGround + "testarossa");
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         //transform.Translate(direction);
@@ -153,9 +152,14 @@ public class playerMovement : MonoBehaviour {
 
         
         //check for key presses and adapt movement of player but only if the ground is touched
-        if (touchingGround || touchingRamp)
+        if (touchingGround)
             //|| touchingFix)
         {
+            //initial reset
+            directionx = 0;
+            directionz = 0;
+
+
             //move forward
             //if (Input.GetKey(keys["forward"]))
             if(Input.GetKey("w"))
