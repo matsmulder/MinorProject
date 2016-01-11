@@ -93,17 +93,16 @@ public class Toggle_play : MonoBehaviour {
             }
             foreach (GameObject panel in activePanels[screen])
             {
-                Debug.Log(panel);
+                //Debug.Log(panel);
                 panel.SetActive(true);
-                Debug.Log(panel.activeInHierarchy);
-                Debug.Log(panel.activeSelf);
+                //Debug.Log(panel.activeInHierarchy);
+                //Debug.Log(panel.activeSelf);
             }
             //if (screen == 1)
             //{
 
             //}
         }
-        Debug.Log("joininput: "+panel_joininputfield.activeInHierarchy);
         currentScreen = screen;
     }
 
