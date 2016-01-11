@@ -31,7 +31,7 @@ public class RandomMatchmaker : MonoBehaviour {
     private double restTimeMinDouble;
     public int totalRoundTime;
     private string roomName = "Room01";  // <- This should be a Random room name.
-    private int maxPlayer = 2;
+    private int maxPlayer;
     private Vector2 scrollPosition;
 	private bool gameStarted;
 
@@ -372,15 +372,13 @@ public class RandomMatchmaker : MonoBehaviour {
 	public void onClickedCreateGame(){
 		int num;
 		if (!createGameName.text.Equals ("")) {
-
-			if (int.Parse(createGameMaxPlayers.text) < 2){
+            if (int.Parse(createGameMaxPlayers.text) < 2){
 				maxPlayer = 2;
 			}
 			else{
 				maxPlayer = int.Parse(createGameMaxPlayers.text);
 			}
-
-			string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
+            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
 			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
 
 			PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -539,24 +537,36 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public bool checkJoinConditions(int ID)
     {
+        maxPlayer = PhotonNetwork.room.maxPlayers;
         if(ID == 1)
         {
             if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
-				teamFull.SetActive(false);
+                teamFull.SetActive(false);
                 return true;
             }
+            else
+            {
+                teamFull.SetActive(true);
+                return false;
+            }
+
         }
         else if(ID == 2){
             if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5 * maxPlayer)
             {
-				teamFull.SetActive(false);
+                teamFull.SetActive(false);
 				return true;
 			}
+            else
+            {
+                teamFull.SetActive(true);
+                return false;
+            }
         }
         else
         {
-			teamFull.SetActive(true);
+
             return false;
         }
         return false;
