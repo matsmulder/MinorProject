@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class playerStat{
-	public string name;
-	public int kills;
-	public int deaths;
-	public int won;
-	public int lost;
+	private string name;
+	private int kills;
+	private int deaths;
+	private int won;
+	private int lost;
 
 	public playerStat(string name, int kills, int deaths, int won, int lost){
 		this.name = name;
@@ -17,10 +17,10 @@ public class playerStat{
 	}
 
 	public string toJson(){
-		"{\"Name\":\"" + name + "\"," +
+		return ("{\"Name\":\"" + name + "\"," +
 		"\"Kills\":\"" + kills + "\"," +
 		"\"Deaths\":\"" + deaths + "\"," +
 		"\"Won\":\""+won+"\"," +
-		"\"Lost\":\""+lost+"\"}";
+		"\"Lost\":\""+lost+"\"}");
 	}
 }
