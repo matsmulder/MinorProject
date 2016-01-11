@@ -72,8 +72,8 @@ public class Toggle_play : MonoBehaviour {
 
     public void selectScreen(int screen)
     {
-        Debug.Log("Current screen: " + currentScreen);
-        Debug.Log("Screen: " + screen);
+        //Debug.Log("Current screen: " + currentScreen);
+        //Debug.Log("Screen: " + screen);
         /**
         0: main screen (with join game/creategame buttons
         1: joingame_input
@@ -103,6 +103,7 @@ public class Toggle_play : MonoBehaviour {
 
             //}
         }
+        //Debug.Log("joininput: "+panel_joininputfield.activeInHierarchy);
         currentScreen = screen;
     }
 
