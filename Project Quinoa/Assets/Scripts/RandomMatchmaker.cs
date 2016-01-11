@@ -313,7 +313,9 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         PhotonNetwork.Disconnect();
         PhotonNetwork.offlineMode = true;
+        PhotonNetwork.CreateRoom("offline");
         offlineMode = true;
+        Debug.Log("offline");
     }
 
     public void OnlineModeButtonClicked()
@@ -584,6 +586,7 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         SpawnPlayer(1);
         SpawnBot(1, realNumberOfBots);
+
     }
     
     public void OfflineButtonSuperClicked()
