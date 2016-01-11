@@ -74,6 +74,8 @@ public class RandomMatchmaker : MonoBehaviour {
     private int realNumberOfBots;
     private scoreManager sm;
 
+    private Calculator calc;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
@@ -138,6 +140,8 @@ public class RandomMatchmaker : MonoBehaviour {
         {
             PhotonNetwork.ConnectUsingSettings("0.4");
         }
+
+        calc = GameObject.FindObjectOfType<Calculator>();
     }
     
     public void ConnectRandom()
@@ -315,6 +319,7 @@ public class RandomMatchmaker : MonoBehaviour {
         PhotonNetwork.offlineMode = true;
         PhotonNetwork.CreateRoom("offline");
         offlineMode = true;
+        calc.enabled = true;
         Debug.Log("offline");
     }
 
@@ -323,6 +328,7 @@ public class RandomMatchmaker : MonoBehaviour {
         PhotonNetwork.offlineMode = false;
         offlineMode = false;
         PhotonNetwork.ConnectUsingSettings("0.5");
+        calc.enabled = false;
     }
 
     public void GetBotSliderValue()
@@ -594,6 +600,10 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void OfflineButtonFastClicked()
     {
+        if(calc.enabled!=true)
+        {
+            calc.enabled = true;
+        }
         SpawnPlayer(1);
         SpawnBot(1, realNumberOfBots);
 
@@ -601,6 +611,10 @@ public class RandomMatchmaker : MonoBehaviour {
     
     public void OfflineButtonSuperClicked()
     {
+        if (calc.enabled != true)
+        {
+            calc.enabled = true;
+        }
         SpawnPlayer(2);
         SpawnBot(2, realNumberOfBots);
     }
