@@ -114,16 +114,17 @@ public class playerMovement : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
-
+        Debug.Log(touchingGround + "testarossa");
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
-        transform.Translate(direction);
-
+        //transform.Translate(direction);
         //lock rotation of player to around the y-axis only, this to avoid 'rolling off' edges
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
+        Vector3 pos = rb.position + transform.TransformDirection(direction);
+        rb.MovePosition(pos);
 
         //rotate with mouse input
         mouseMovementX = Input.GetAxis("Mouse X");
