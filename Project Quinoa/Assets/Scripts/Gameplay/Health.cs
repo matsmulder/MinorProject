@@ -19,6 +19,10 @@ public class Health : MonoBehaviour {
 	void Update () {
 	    
 	}
+	
+	public float getHealthPoints(){
+		return currentHitPoints ();
+	}
 
     [PunRPC]
     public void TakeDamage(float amount)
