@@ -21,7 +21,7 @@ public class Health : MonoBehaviour {
 	}
 	
 	public float getHealthPoints(){
-		return currentHitPoints ();
+		return currentHitPoints;
 	}
 
     [PunRPC]
@@ -62,7 +62,7 @@ public class Health : MonoBehaviour {
                 {
                     RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
 				
-					PhotonNetwork.player.customProperties["Deaths"] = PhotonNetwork.player.customProperties["Deaths"] + 1;
+					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
 					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 				
                     nm.standby.SetActive(true);

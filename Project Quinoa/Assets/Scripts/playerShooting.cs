@@ -94,7 +94,7 @@ public class playerShooting : MonoBehaviour {
                         //this line is the equivalent of h.TakeDamage(damage) but synchronized
 
 						if(h.getHealthPoints() < weaponData.damage){
-							PhotonNetwork.player.customProperties ["Kills"] = PhotonNetwork.player.customProperties ["Kills"] + 1;
+							PhotonNetwork.player.customProperties ["Kills"] = (int)PhotonNetwork.player.customProperties ["Kills"] + 1;
 							PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);						
 						}
 

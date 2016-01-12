@@ -108,14 +108,14 @@ public class scoreManager : MonoBehaviour {
                 {
                     //endgameTextList[1].SetActive(true);
                     endGameText.text = "You crushed the Quinoa!";
-					PhotonNetwork.player.customProperties ["Won"] = 0;
+					PhotonNetwork.player.customProperties ["Won"] = 1;
 
                 }
                 if (myTeamID == 2) //member of team Wholo, display winning screen
                 {
                     //endgameTextList[0].SetActive(true);
                     endGameText.text = "You beat the burger!";
-					PhotonNetwork.player.customProperties ["Won"] = 0;
+					PhotonNetwork.player.customProperties ["Won"] = 1;
                 }
             }
             else //you are in the losing team, display lose screen
@@ -125,13 +125,13 @@ public class scoreManager : MonoBehaviour {
                 {
                     //endgameTextList[2].SetActive(true);
                     endGameText.text = "Quinoa smashed you down";
-					PhotonNetwork.player.customProperties ["Lost"] = 0;
+					PhotonNetwork.player.customProperties ["Lost"] = 1;
                 }
                 if (myTeamID == 2) //member of team Wholo, display losing screen
                 {
                     //endgameTextList[3].SetActive(true);
                     endGameText.text = "The burger whoppe(r)d you down!";
-					PhotonNetwork.player.customProperties ["Lost"] = 0;
+					PhotonNetwork.player.customProperties ["Lost"] = 1;
                 }
             }
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
