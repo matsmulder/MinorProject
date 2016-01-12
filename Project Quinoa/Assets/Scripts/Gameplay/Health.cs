@@ -28,7 +28,7 @@ public class Health : MonoBehaviour {
     public void TakeDamage(float amount)
     {
         currentHitPoints -= amount;
-        //Debug.Log(currentHitPoints);
+        Debug.Log(currentHitPoints);
 
         if(currentHitPoints <= 0 && gameObject.tag != "fastfood" && gameObject.tag != "superfood") //only allow negative health for players
         {
@@ -44,6 +44,7 @@ public class Health : MonoBehaviour {
 
     void Die()
     {
+        Debug.Log("DIE");
         //Analytics.CustomEvent(string customEventName, IDictionary < string, object > eventData);
        Analytics.CustomEvent("DIE", new Dictionary<string, object>
        {
