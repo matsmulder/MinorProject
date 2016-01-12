@@ -2,14 +2,18 @@
 using System.Collections;
 
 public class LogIn : MonoBehaviour {
+	public DataController dc;
 
 	// Use this for initialization
 	void Start () {
-	
+		dc = new DataController ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public void tryLogIn(){
+		
+	}
+
+	public void addUser(){
 	
 	}
 }

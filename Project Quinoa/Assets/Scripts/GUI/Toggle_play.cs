@@ -81,6 +81,11 @@ public class Toggle_play : MonoBehaviour {
         3: joingame
         -1: Main menu
         */
+        if (RandomMatchmaker.inRoom) {
+            PhotonNetwork.LeaveRoom();
+            RandomMatchmaker.inRoom = false;
+        }
+
         if (screen == -1)
         {
             Application.LoadLevel("MainMenu");
@@ -93,17 +98,9 @@ public class Toggle_play : MonoBehaviour {
             }
             foreach (GameObject panel in activePanels[screen])
             {
-                //Debug.Log(panel);
                 panel.SetActive(true);
-                //Debug.Log(panel.activeInHierarchy);
-                //Debug.Log(panel.activeSelf);
             }
-            //if (screen == 1)
-            //{
-
-            //}
         }
-        //Debug.Log("joininput: "+panel_joininputfield.activeInHierarchy);
         currentScreen = screen;
     }
 

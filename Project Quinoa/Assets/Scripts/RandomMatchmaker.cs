@@ -76,6 +76,8 @@ public class RandomMatchmaker : MonoBehaviour {
 
     private Calculator calc;
 
+    public static bool inRoom = false;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
@@ -335,6 +337,7 @@ public class RandomMatchmaker : MonoBehaviour {
         JoinRoom(lobbyNames[button].text);
         panel_joininputfield.SetActive(false);
         panel_Setready.SetActive(true);
+        inRoom = true;
     }
 
 	public void onNotReadyClicked(){
@@ -365,6 +368,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
 			panel_createinputfield.SetActive(false);
 			panel_Setready.SetActive(true);
+            inRoom = true;
 		}
 	}
 	
