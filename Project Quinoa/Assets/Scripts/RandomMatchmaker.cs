@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class RandomMatchmaker : Photon.MonoBehaviour {
+public class RandomMatchmaker : MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
@@ -19,6 +19,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     SpawnSpotPickup[] spawnSpotsQuinoa; //list of all quinoa pickup spawnspots
 
     private int indSuPu, indFaPu;
+    public static int numberOfBurgers, numberOfQuinoa;
+
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
     public Text nameBox;
@@ -87,6 +89,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
+        numberOfBurgers = 0;
+        numberOfQuinoa = 0;
+
         once = true;
         DeletePlayerPrefs();
         stat = status.inMenu;
@@ -186,7 +192,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-	
+
+
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
@@ -532,10 +539,12 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 if(spp.PickupID == 1) //Trump spawnspot
                 {
                     PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
+                    numberOfBurgers++;
                 }
                 else if(spp.PickupID == 2) //Wholo spawnspot
                 {
                     PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
+                    numberOfQuinoa++;
                 }
             }
             sm.InitializePickupList(); //grab pickup data
@@ -581,9 +590,12 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
         //set teamID, TODO: set colour
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
-
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
+
+        ///////KIJK UIT: BEUN///////////
+        player.SetActive(true);
+        //////EINDE BEUN////////////////
     }
 
     void SpawnBot(int playerTeamID, int numberOfBots)

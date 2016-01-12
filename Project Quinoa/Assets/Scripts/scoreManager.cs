@@ -13,6 +13,8 @@ public class scoreManager : MonoBehaviour {
     private GameObject gameOverCanvas;
     private bool winFlag;
 
+    private int capturedBurgers, capturedQuinoa;
+
     public Text endGameText;
 	// Use this for initialization
 	void Start () {
@@ -44,17 +46,56 @@ public class scoreManager : MonoBehaviour {
 	void Update () {
 
 
-        if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
+        //if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
+        //{
+        //    pv.RPC("EndGame", PhotonTargets.All, 2);
+        //}
+
+        //if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
+        //{
+        //    pv.RPC("EndGame", PhotonTargets.All, 1);
+        //}
+
+        if(capturedBurgers == RandomMatchmaker.numberOfBurgers && winFlag) //teaw Wholo wins
         {
             pv.RPC("EndGame", PhotonTargets.All, 2);
         }
 
-        if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
+        if(capturedQuinoa == RandomMatchmaker.numberOfQuinoa && winFlag) //team Trump wins
         {
             pv.RPC("EndGame", PhotonTargets.All, 1);
         }
 
 	}
+
+    public void CapturedPickups(string pickupName, bool captured)
+    {
+        if(pickupName == "fastfood")
+        {
+            if(captured)
+            {
+                capturedBurgers++;
+            }
+            else
+            {
+                capturedBurgers--;
+            }
+        }
+        else if(pickupName == "superfood")
+        {
+            if(captured)
+            {
+                capturedQuinoa++;
+            }
+            else
+            {
+                capturedQuinoa--;
+            }
+        }
+
+        Debug.Log("captured burgers: " + capturedBurgers + "\ncaptured quinoa: " + capturedQuinoa);
+    }
+
 
     [PunRPC]
     void EndGame(int winningTeamID)

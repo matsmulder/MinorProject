@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TeamMember : MonoBehaviour {
 
-    int _teamID=0;
+    public int _teamID=0;
 
     public int teamID
     {
