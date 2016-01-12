@@ -22,7 +22,7 @@ public class DataController{
 		httpWebRequest.Method = "POST";
 
 		// write away to the node.js 
-		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream();
+		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
