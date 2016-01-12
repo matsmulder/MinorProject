@@ -87,6 +87,7 @@ public class RandomMatchmaker : MonoBehaviour {
         stat = status.inMenu;
         PlayerPrefs.DeleteAll();
 
+        SpawnPickups();
         
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
@@ -220,12 +221,13 @@ public class RandomMatchmaker : MonoBehaviour {
 
 		// Initial spawn
 		if (PhotonNetwork.room != null) {
-			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players.
+			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players and the pickups
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
                 stat = status.inGame;
                 Debug.Log("initial spawn");
 				SpawnPlayer(teamID);
+                SpawnPickups();
 				once = false;
                 allready = false;
 				gameStarted = true;
@@ -480,7 +482,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         SpawnPlayer(1);
         SpawnBot(1, realNumberOfBots);
-
+        SpawnPickups();
     }
     
     public void OfflineButtonSuperClicked()
@@ -491,6 +493,12 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         SpawnPlayer(2);
         SpawnBot(2, realNumberOfBots);
+        SpawnPickups();
+    }
+
+    void SpawnPickups()
+    {
+        PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
     }
 
     void SpawnPlayer(int teamID)
