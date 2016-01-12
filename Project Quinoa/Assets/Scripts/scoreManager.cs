@@ -81,7 +81,7 @@ public class scoreManager : MonoBehaviour {
 
         if (winningTeamID == 0) //set teamID = 0 for time limit
         {
-            endgameTextList[4].SetActive(true);
+            //endgameTextList[4].SetActive(true);               //Never assigned
             endGameText.text = "TIME!";
         }
         else
