@@ -88,6 +88,9 @@ public class RandomMatchmaker : MonoBehaviour {
         //ALWAY INITIALIZE
         PhotonNetwork.room.customProperties["CountFF"] = 0;
         PhotonNetwork.room.customProperties["CountSF"] = 0;
+		PhotonNetwork.player.customProperties["Lost"] = 0;
+		PhotonNetwork.player.customProperties["Won"] = 0;
+		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 		PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
 
         //Put the buttons and text from the GameLobby in a 2D array.
@@ -163,20 +166,13 @@ public class RandomMatchmaker : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        //check for offline mode
-        
-
-
-
-
+	
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
 		inGameScreen = panel_Setready.GetActive();
 		inReadyScreen = canvas_Ready.GetActive();
 
-		//Checks if ten minutes have passed or all pick ups has been picked up.
 		if (PhotonNetwork.room != null) {
 			if (PhotonNetwork.room.customProperties.ContainsKey ("StartingTime")) {
 				restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties ["StartingTime"]) / 60;
@@ -189,6 +185,10 @@ public class RandomMatchmaker : MonoBehaviour {
 		if (restTimeMinDouble < 0) {
 
 			sm.GetComponent<PhotonView> ().RPC ("EndGame", PhotonTargets.All, 0);
+
+			PhotonNetwork.player.customProperties["Lost"] = 1;
+			PhotonNetwork.player.customProperties["Won"] = 0;
+			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
