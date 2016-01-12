@@ -75,4 +75,19 @@ public class DataController{
 
 		return correctLogin;
 	}
+
+	public void makeAccount(string name, string password){
+		// ini web
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/makeLogin");
+		httpWebRequest.ContentType = "text/json";
+		httpWebRequest.Method = "POST";
+	                        
+		// write away to the node.js 
+		var streamWriter = new StreamWriter (httpWebRequest.GetRequestStream ());
+		string json = "{\"User\":" + name + ","
+					+ "\"Password\":" + password + "};";
+		streamWriter.Write (json);
+		streamWriter.Flush ();
+		streamWriter.Close ();
+	}
 }
