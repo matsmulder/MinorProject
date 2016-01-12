@@ -337,26 +337,6 @@ public class RandomMatchmaker : MonoBehaviour {
         SliderText.text = ((int)numberOfBots.value).ToString();
     }
 
-
-
-	//public void onlobbybutton1Clicked(){
-
-	//	JoinRoom(lobbyNames[0].text);
-	//	panel_joininputfield.SetActive(false);
-	//	panel_Setready.SetActive(true);
-		
-	//}
-	//public void onlobbybutton2Clicked(){
-	//	JoinRoom(lobbyNames[1].text);
-	//	panel_joininputfield.SetActive(false);
-	//	panel_Setready.SetActive(true);
-	//}
-	//public void onlobbybutton3Clicked(){
-	//	JoinRoom(lobbyNames[2].text);
-	//	panel_joininputfield.SetActive(false);
-	//	panel_Setready.SetActive(true);
-	//}
-
     public void onLobbyButtonClicked(int button)
     {
         JoinRoom(lobbyNames[button].text);
@@ -402,118 +382,6 @@ public class RandomMatchmaker : MonoBehaviour {
 			GUILayout.Label ("Remaining time: " + restTimeMin + " Min " + restTimeSec + " Sec");
 		}
 	}
-	//            if (stat == status.browsing)
-//            {
-//                scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(400), GUILayout.Height(300));
-//
-//                foreach (RoomInfo game in PhotonNetwork.GetRoomList()) // Each RoomInfo "game" in the amount of games created "rooms" display the fallowing.
-//                {
-//
-//                    GUI.color = Color.green;
-//                    GUILayout.Box(game.name + " " + game.playerCount + "/" + game.maxPlayers); //Thus we are in a for loop of games rooms display the game.name provide assigned above, playercount, and max players provided. EX 2/20
-//                    GUI.color = Color.white;
-//
-//                    if (GUILayout.Button("Join Room"))
-//                    {
-//
-//                        PhotonNetwork.JoinRoom(game.name); // Next to each room there is a button to join the listed game.name in the current loop.
-//                    }
-//                }
-//
-//                GUILayout.EndScrollView();
-//                GUILayout.EndArea();
-//            }
-//            else if (stat == status.inLobby)
-//            {
-//                //player has no team assigned
-//                if (GUILayout.Button("Team Fastfood"))
-//                {
-//                    if (checkJoinConditions(1))
-//                    {
-//                        teamID = 1;
-//                        UpdateCustomProperties("CountFF", true);
-//                    }
-//                    else
-//                    {
-//                        GUILayout.Label("Amount of FastFoodLovers allready full");
-//                    }
-//                }
-//                if (GUILayout.Button("Team Superfood"))
-//                {
-//                    if (checkJoinConditions(2))
-//                    {
-//                        teamID = 2;
-//                        UpdateCustomProperties("CountSF", true);
-//                    }
-//                    else
-//                    {
-//                        GUILayout.Label("Amount of SuperFoodLovers allready full");
-//                    }
-//                }
-//                if (GUILayout.Button("Random Select"))
-//                {
-//                    int rand = UnityEngine.Random.Range(1, 3);                  // UnityEngine.Random number 1 or 2
-//                    if (rand == 1)
-//                    {
-//                        if (checkJoinConditions(1))
-//                        {
-//                            teamID = 1;
-//                            UpdateCustomProperties("CountFF", true);
-//                        }
-//                        else
-//                        {
-//                            teamID = 2;
-//                            UpdateCustomProperties("CountSF", true);
-//                        }
-//                    }
-//                    else
-//                    {
-//                        if (checkJoinConditions(2))
-//                        {
-//                            teamID = 2;
-//                            UpdateCustomProperties("CountSF", true);
-//                        }
-//                        else
-//                        {
-//                            teamID = 1;
-//                            UpdateCustomProperties("CountFF", true);
-//                        }
-//                    }
-//                }
-//                if (GUILayout.Button("No Team"))
-//                {
-//                    //SpawnPlayer(0);                                 // not yet implemented
-//                }
-//                if (GUILayout.Button("Join Random Game"))
-//                {
-//                    ConnectRandom();
-//                }
-//
-//                if (ready)
-//                {
-//                    GUILayout.BeginHorizontal();
-//                    GUILayout.Label("I'm Ready!");         ////Ready Label
-//                    if (GUILayout.Button("Not ready"))      ////Ready Button
-//                    {
-//                        if (teamID == 1)
-//                        {
-//                            UpdateCustomProperties("CountFF", false);
-//                        }
-//                        else
-//                        {
-//                            UpdateCustomProperties("CountSF", false);
-//                        }
-//
-//                    }
-//                }
-//            }
-//            else if (stat == status.inGame)
-//            {
-//                GUILayout.BeginHorizontal();
-//                GUILayout.Label("Remaining time: " + restTimeMin + " Min " + restTimeSec + " Sec");
-//            }
-//        }
-//    }
 
     public void OnJoinedLobby()
     {
@@ -716,34 +584,10 @@ public class RandomMatchmaker : MonoBehaviour {
             if (roomName != "" && maxPlayer > 0) // if the room name has a name and max players are larger then 0
             {
                 PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer); // then create a photon room visible , and open with the maxplayers provide by user.
-
             }
         }
 
     }
-
-
-//RectTransform rt = but.GetComponent<RectTransform>();
-//            rt.anchorMin = new Vector2(0.5f, 1);
-//            rt.anchorMax = new Vector2(0.5f, 1);
-//            rt.anchoredPosition = new Vector2(0, -10-30*i);
-//            but.GetComponentInChildren<Text>().text = game.name + " (" + game.playerCount + "/" + game.maxPlayers + ")";
-//            Button b = but.GetComponent<Button>();
-//            b.onClick.AddListener(() =>
-//            //{
-//                //JoinRoom(but.GetComponentInChildren<Text>().text);
-//               // GameObject cv = GameObject.Find("Canvas");
-//                //foreach (Transform childTF in cv.transform)
-//                //{
-//                    //if (childTF.CompareTag("menu_only"))
-//                    //{
-//                       // childTF.gameObject.SetActive(false);
-//                    //}
-//                //}
-//            });
-            
-//        }
-//    }
 
     void OnReceivedRoomListUpdate()
     {
