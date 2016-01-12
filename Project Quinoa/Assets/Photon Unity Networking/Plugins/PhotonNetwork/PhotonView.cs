@@ -305,7 +305,9 @@ public class PhotonView : Photon.MonoBehaviour
             PhotonNetwork.networkingPeer.LocalCleanPhotonView(this);
         }
 
+#pragma warning disable 0618 // Type or member is obsolete
         if (!this.destroyedByPhotonNetworkOrQuit && !Application.isLoadingLevel)
+#pragma warning restore 0618 // Type or member is obsolete
         {
             if (this.instantiationId > 0)
             {

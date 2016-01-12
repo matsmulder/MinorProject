@@ -151,7 +151,7 @@ public class Calculator:MonoBehaviour
         }
         else if(tag==playerB)
         {
-            return -1;
+            return 2;
         }
         else
         {

@@ -55,9 +55,9 @@ public class Bot : MonoBehaviour{
         index = calculator.addBot(this);
         targets = calculator.getTargets(index);
         col.radius= (float)sightConstant;
-        team = calculator.Teaminator(this.gameObject.tag);
+        //team = calculator.Teaminator(this.gameObject.tag);
         health = 100;
-        ammo = 0;
+        //ammo = 0;
         shootFlag = false;
         playerInSight = false;
         moveBool = new bool[calculator.getMasterBoolCount()];
@@ -74,7 +74,7 @@ public class Bot : MonoBehaviour{
         GameObject[] teamMates; 
         GameObject[] opponents;
 
-        if (this.team == -1)
+        if (this.team == 2)
         {
             teamMates = GameObject.FindGameObjectsWithTag(playerB);
             opponents= GameObject.FindGameObjectsWithTag(playerA);
@@ -182,7 +182,7 @@ public class Bot : MonoBehaviour{
             Destroy(this.gameObject);
         }
         
-        if(transform.position.y<0)
+        if(transform.position.y<-42)
         {
             for (int i = 0; i != calculator.getAllTargets(); i++)
             {
@@ -247,7 +247,7 @@ public class Bot : MonoBehaviour{
                 RaycastHit hit;
                 if (Physics.Raycast(new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, clone.velocity.normalized, out hit, col.radius))
                 {
-                    if ((team == -1 && hit.collider.tag == playerA)||(team == 1 && hit.collider.tag == playerB))
+                    if ((team == 2 && hit.collider.tag == playerA)||(team == 1 && hit.collider.tag == playerB))
                     {
                         //Health Reduction Here
                     }
@@ -260,7 +260,7 @@ public class Bot : MonoBehaviour{
 
     public void OnTriggerStay(Collider other)
     {
-        if ((team == -1 && other.gameObject.CompareTag(playerA) && Vector3.Distance(other.gameObject.transform.position,this.transform.position)<sightConstant)||(team == 1 && other.gameObject.CompareTag(playerB) && Vector3.Distance(other.gameObject.transform.position, this.transform.position) < sightConstant))
+        if ((team == 2 && other.gameObject.CompareTag(playerA) && Vector3.Distance(other.gameObject.transform.position,this.transform.position)<sightConstant)||(team == 1 && other.gameObject.CompareTag(playerB) && Vector3.Distance(other.gameObject.transform.position, this.transform.position) < sightConstant))
         {
             Vector3 direction = other.transform.position - this.transform.position;
             float angle = Vector3.Angle(direction, this.transform.forward);
@@ -269,7 +269,7 @@ public class Bot : MonoBehaviour{
                 RaycastHit hit;
                 if (Physics.Raycast(this.transform.position + this.transform.up, direction.normalized, out hit, col.radius))
                 {
-                    if ((team == -1 && hit.transform.gameObject.CompareTag(playerA)) || (team == 1 && hit.transform.gameObject.CompareTag(playerB)))
+                    if ((team == 2 && hit.transform.gameObject.CompareTag(playerA)) || (team == 1 && hit.transform.gameObject.CompareTag(playerB)))
                     {
                         if (shootFlag == false && playerInSight == false)
                         {
@@ -309,7 +309,7 @@ public class Bot : MonoBehaviour{
 
     public void OnTriggerExit(Collider other)
     {
-        if ((team == -1 && other.gameObject.CompareTag(playerA))||(team == 1 && other.gameObject.CompareTag(playerB)))
+        if ((team == 2 && other.gameObject.CompareTag(playerA))||(team == 1 && other.gameObject.CompareTag(playerB)))
         {
             if (targets.IndexOf(other.gameObject) != -1)
             {
