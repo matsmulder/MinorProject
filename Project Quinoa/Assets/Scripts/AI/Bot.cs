@@ -120,8 +120,9 @@ public class Bot : MonoBehaviour{
         return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);
     }
 
-    public void LateUpdate()
+    public void FixedUpdate()
     {
+        Debug.Log("Updating");
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
         /*for(int i = 0;i!=moveBool.Length;i++)
