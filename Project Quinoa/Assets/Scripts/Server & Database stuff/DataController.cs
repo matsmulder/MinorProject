@@ -5,13 +5,13 @@ using System.Net;
 using System.Web.Script.Serialization;
 
 public class DataController{
-	public string playerName;
-	public int kills;
-	public int deaths;
-	public int won;
-	public int lost;
+	public static string playerName;
+	public static int kills;
+	public static int deaths;
+	public static int won;
+	public static int lost;
 
-	public void sentDBData(){
+	public static void sentDBData(){
 		// initialisation
 		playerJson DBJSON = new playerJson(playerName, kills, deaths, won, lost);
 		string json = DBJSON.toJson();
@@ -28,7 +28,7 @@ public class DataController{
 		streamWriter.Close();
 	}
 
-	public playerJson getDBData(string name){
+	public static playerJson getDBData(string name){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/getStats");
 		httpWebRequest.ContentType = "text/json";
@@ -54,7 +54,7 @@ public class DataController{
 		return playerStats;
 	}
 
-	public bool checkCredentials(string name, string password){
+	public static bool checkCredentials(string name, string password){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/checkLogin");
 		httpWebRequest.ContentType = "text/json";
@@ -76,7 +76,7 @@ public class DataController{
 		return correctLogin;
 	}
 
-	public void makeAccount(string name, string password){
+	public static void makeAccount(string name, string password){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/makeLogin");
 		httpWebRequest.ContentType = "text/json";
