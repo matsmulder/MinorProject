@@ -31,7 +31,7 @@ public class RandomMatchmaker : MonoBehaviour {
     private double restTimeMinDouble;
     public int totalRoundTime;
     private string roomName = "Room01";  // <- This should be a Random room name.
-    private int maxPlayer = 2;
+    private int maxPlayer;
     private Vector2 scrollPosition;
 	private bool gameStarted;
 
@@ -73,6 +73,8 @@ public class RandomMatchmaker : MonoBehaviour {
     public Slider numberOfBots;
     private int realNumberOfBots;
     private scoreManager sm;
+
+    private Calculator calc;
 
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
@@ -138,6 +140,8 @@ public class RandomMatchmaker : MonoBehaviour {
         {
             PhotonNetwork.ConnectUsingSettings("0.4");
         }
+
+        calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
     
     public void ConnectRandom()
@@ -313,7 +317,10 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         PhotonNetwork.Disconnect();
         PhotonNetwork.offlineMode = true;
+        PhotonNetwork.CreateRoom("offline");
         offlineMode = true;
+        calc.enabled = true;
+        Debug.Log("offline");
     }
 
     public void OnlineModeButtonClicked()
@@ -321,6 +328,7 @@ public class RandomMatchmaker : MonoBehaviour {
         PhotonNetwork.offlineMode = false;
         offlineMode = false;
         PhotonNetwork.ConnectUsingSettings("0.5");
+        calc.enabled = false;
     }
 
     public void GetBotSliderValue()
@@ -370,15 +378,13 @@ public class RandomMatchmaker : MonoBehaviour {
 	public void onClickedCreateGame(){
 		int num;
 		if (!createGameName.text.Equals ("")) {
-
-			if (int.Parse(createGameMaxPlayers.text) < 2){
+            if (int.Parse(createGameMaxPlayers.text) < 2){
 				maxPlayer = 2;
 			}
 			else{
 				maxPlayer = int.Parse(createGameMaxPlayers.text);
 			}
-
-			string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
+            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
 			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
 
 			PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -537,24 +543,36 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public bool checkJoinConditions(int ID)
     {
+        maxPlayer = PhotonNetwork.room.maxPlayers;
         if(ID == 1)
         {
             if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
-				teamFull.SetActive(false);
+                teamFull.SetActive(false);
                 return true;
             }
+            else
+            {
+                teamFull.SetActive(true);
+                return false;
+            }
+
         }
         else if(ID == 2){
             if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5 * maxPlayer)
             {
-				teamFull.SetActive(false);
+                teamFull.SetActive(false);
 				return true;
 			}
+            else
+            {
+                teamFull.SetActive(true);
+                return false;
+            }
         }
         else
         {
-			teamFull.SetActive(true);
+
             return false;
         }
         return false;
@@ -582,12 +600,21 @@ public class RandomMatchmaker : MonoBehaviour {
 
     public void OfflineButtonFastClicked()
     {
+        if(calc.enabled!=true)
+        {
+            calc.enabled = true;
+        }
         SpawnPlayer(1);
         SpawnBot(1, realNumberOfBots);
+
     }
     
     public void OfflineButtonSuperClicked()
     {
+        if (calc.enabled != true)
+        {
+            calc.enabled = true;
+        }
         SpawnPlayer(2);
         SpawnBot(2, realNumberOfBots);
     }
@@ -625,6 +652,8 @@ public class RandomMatchmaker : MonoBehaviour {
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
+        player.GetComponent<Bot>().enabled = false;
+        player.GetComponent<SphereCollider>().enabled = false;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
 
         //set teamID, TODO: set colour
@@ -636,15 +665,17 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void SpawnBot(int playerTeamID, int numberOfBots)
     {
+        Debug.Log("entered spawnBot, numberOfBots:" + numberOfBots);
         int previousTeamID = playerTeamID;
         for (int i = 0; i < numberOfBots; i++)
         {
+            Debug.Log("previous team id is: " + previousTeamID);
             if(previousTeamID == 1)//previous spawned instance was of team Trump, spawn Wholo now
             {
                 SpawnWholoBot();
                 previousTeamID = 2;
             }
-            if(previousTeamID == 2)//previous spawned instance was of team Wholo, spawn Trump now
+            else if(previousTeamID == 2)//previous spawned instance was of team Wholo, spawn Trump now
             {
                 SpawnTrumpBot();
                 previousTeamID = 1;
@@ -657,6 +688,9 @@ public class RandomMatchmaker : MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.GetComponent<playerMovement>().enabled = false;
+        bot.GetComponent<Bot>().enabled = true;
+        bot.GetComponent<SphereCollider>().enabled = true;
 
     }
 

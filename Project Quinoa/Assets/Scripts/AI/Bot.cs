@@ -44,8 +44,8 @@ public class Bot : MonoBehaviour{
     private double cPLSV = 1.5;
     private double cHLSV = 1;
     private double cALSV = 1;
-    private String playerA = "PlayerA";
-    private String playerB = "PlayerB";
+    private String playerA = "playerA";
+    private String playerB = "playerB";
 
     public void Start()
     {
@@ -365,5 +365,10 @@ public class Bot : MonoBehaviour{
         {
             health = 0;
         }
+    }
+
+    public int getTeam()
+    {
+        return team;
     }
 }
