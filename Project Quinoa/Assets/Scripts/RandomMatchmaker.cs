@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class RandomMatchmaker : MonoBehaviour {
+public class RandomMatchmaker : Photon.MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
@@ -86,8 +86,6 @@ public class RandomMatchmaker : MonoBehaviour {
         DeletePlayerPrefs();
         stat = status.inMenu;
         PlayerPrefs.DeleteAll();
-
-        SpawnPickups();
         
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
@@ -138,7 +136,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings("0.4");
+            PhotonNetwork.ConnectUsingSettings("0.5");
         }
 
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
@@ -498,7 +496,11 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void SpawnPickups()
     {
-        PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
+        if (PhotonNetwork.isMasterClient)
+        {
+            //spawn all the pickups!
+            PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
+        }
     }
 
     void SpawnPlayer(int teamID)
