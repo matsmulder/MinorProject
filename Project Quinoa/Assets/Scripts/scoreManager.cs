@@ -16,49 +16,30 @@ public class scoreManager : MonoBehaviour {
     public Text endGameText;
 	// Use this for initialization
 	void Start () {
-       pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
-        pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+       
 
         gameOverCanvas = GameObject.FindGameObjectWithTag("gameovercanvas");
         gameOverCanvas.SetActive(false);
-        //endgameTextList = GameObject.FindGameObjectsWithTag("endgametext");
-        
 
-        //foreach(GameObject endgametext in endgameTextList)
-        //{
-        //    Debug.Log(endgametext.name);
-        //    endgametext.SetActive(false);
-        //}
-        //        gameOverCanvas.SetActive(false);
-
-        winFlag = true;
+        winFlag = false;
         pv = GetComponent<PhotonView>();
-        //pu = FindObjectsOfType<Pickup>();
-        //int i = 0, j = 0, k = 0;
-        //foreach (Pickup child in pu)
-        //{
-        //    if(child.tm.teamID == 1) //members of team Trump
-        //    {
-        //        puTrump[j] = pu[i];
-        //        j++;
-        //        Debug.Log("Trump");
-        //    }
-        //    if(child.tm.teamID == 2) //members of team Wholo
-        //    {
-        //        puWholo[k] = pu[i];
-        //        k++;
-        //        Debug.Log("wholo");
-        //    }
-        //    i++;
-        //}
-        numberOfFastPickups = pickupFastList.Length;
-        numberOfSuperPickups = pickupSuperList.Length;
 
 		PhotonNetwork.player.customProperties ["Won"] = 0;
 		PhotonNetwork.player.customProperties ["Lost"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 	}
 	
+    public void InitializePickupList()
+    {
+        pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
+        pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+
+        numberOfFastPickups = pickupFastList.Length;
+        numberOfSuperPickups = pickupSuperList.Length;
+        winFlag = true;
+    }
+
+
 	// Update is called once per frame
 	void Update () {
 

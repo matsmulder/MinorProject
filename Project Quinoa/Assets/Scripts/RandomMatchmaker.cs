@@ -14,6 +14,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     SpawnSpot[] spawnSpotsSuper; //hipster spawnspots
     SpawnSpot[] spawnSpotsFast; //fastfood spawnspots
 
+    SpawnSpotPickup[] spawnSpotsPickups; //list of all pickup spawnspots
+    SpawnSpotPickup[] spawnSpotsBurger; //list of all burger pickup spawnspots
+    SpawnSpotPickup[] spawnSpotsQuinoa; //list of all quinoa pickup spawnspots
+
+    private int indSuPu, indFaPu;
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
     public Text nameBox;
@@ -127,6 +132,27 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 indSuper++;
             }
         }
+
+        spawnSpotsPickups = GameObject.FindObjectsOfType<SpawnSpotPickup>();
+        //spawnSpotsBurger = new SpawnSpotPickup[(int)(spawnSpotsPickups.Length * 0.5)];
+        //spawnSpotsQuinoa = new SpawnSpotPickup[(int)(spawnSpotsPickups.Length * 0.5)];
+        //foreach (SpawnSpotPickup spp in spawnSpotsPickups)
+        //{
+        //    if (spp.PickupID == 1) //teamid 0 for free for all, 1 for fastfood and 2 for superfood
+        //    {
+
+        //        spawnSpotsBurger[indFaPu] = spp;
+        //        indFaPu++;
+        //    }
+        //    else if (spp.PickupID == 2)
+        //    {
+
+        //        spawnSpotsQuinoa[indSuPu] = spp;
+        //        indSuPu++;
+        //    }
+        //}
+
+
 
         sm = GetComponent<scoreManager>();
 
@@ -499,7 +525,20 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         if (PhotonNetwork.isMasterClient)
         {
             //spawn all the pickups!
-            PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
+            //PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
+
+            foreach(SpawnSpotPickup spp in spawnSpotsPickups)
+            {
+                if(spp.PickupID == 1) //Trump spawnspot
+                {
+                    PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
+                }
+                else if(spp.PickupID == 2) //Wholo spawnspot
+                {
+                    PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
+                }
+            }
+            sm.InitializePickupList(); //grab pickup data
         }
     }
 
