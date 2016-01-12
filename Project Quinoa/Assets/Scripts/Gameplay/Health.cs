@@ -11,6 +11,8 @@ public class Health : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentHitPoints = hitPoints;
+		PhotonNetwork.player.customProperties["Deaths"] = 0;
+		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 	}
 	
 	// Update is called once per frame
@@ -55,7 +57,10 @@ public class Health : MonoBehaviour {
                 if (gameObject.tag == "Player")
                 {
                     RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
-
+				
+					PhotonNetwork.player.customProperties["Deaths"] = PhotonNetwork.player.customProperties["Deaths"] + 1;
+					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
+				
                     nm.standby.SetActive(true);
                     nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }

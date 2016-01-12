@@ -86,8 +86,9 @@ public class RandomMatchmaker : MonoBehaviour {
         PlayerPrefs.DeleteAll();
 
         //ALWAY INITIALIZE
-        PhotonNetwork.player.customProperties["CountFF"] = 0;
-        PhotonNetwork.player.customProperties["CountSF"] = 0;
+        PhotonNetwork.room.customProperties["CountFF"] = 0;
+        PhotonNetwork.room.customProperties["CountSF"] = 0;
+		PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
 
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
