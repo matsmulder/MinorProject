@@ -687,10 +687,9 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
-        bot.GetComponent<playerMovement>().enabled = false;
-        bot.GetComponent<Bot>().enabled = true;
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<Bot>().enabled = true;
+        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
 
     }
 
@@ -698,6 +697,8 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHipster", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<Bot>().enabled = true;
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
     }
 

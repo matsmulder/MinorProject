@@ -86,15 +86,12 @@ public class scoreManager : MonoBehaviour {
         }
         else
         {
-
-            int i = 0;
             foreach (GameObject player in players)
             {
-                if (players[i].GetComponent<PhotonView>().isMine)
+                if (player.GetComponent<PhotonView>().isMine)
                 {
-                    myTeamID = players[i].gameObject.GetComponent<TeamMember>().teamID;
+                    myTeamID = player.gameObject.GetComponent<TeamMember>().teamID;
                 }
-                i++;
             }
 
             if (myTeamID == winningTeamID) //you are in the winning team, display win screen
