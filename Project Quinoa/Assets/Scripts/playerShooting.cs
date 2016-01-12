@@ -24,6 +24,8 @@ public class playerShooting : MonoBehaviour {
         {
             Debug.Log("no fxmanager found");
         }
+		PhotonNetwork.player.customProperties ["Kills"] = 0;
+		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 	}
 	
 	// Update is called once per frame
@@ -90,6 +92,12 @@ public class playerShooting : MonoBehaviour {
                         });
                         //execute if: hitTransform or the player itself has no team info, is of teamID 0 (no team, independent faction, deathmatch mode) or the teamIDs are different
                         //this line is the equivalent of h.TakeDamage(damage) but synchronized
+
+						if(h.getHealthPoints() < weaponData.damage){
+							PhotonNetwork.player.customProperties ["Kills"] = (int)PhotonNetwork.player.customProperties ["Kills"] + 1;
+							PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);						
+						}
+
                         h.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, weaponData.damage);
                     }
                     else //player has hit a teammate
