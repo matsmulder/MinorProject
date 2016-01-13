@@ -490,6 +490,8 @@ public class RandomMatchmaker : MonoBehaviour {
         //ALWAY INITIALIZE
         PhotonNetwork.room.customProperties["CountFF"] = 0;
         PhotonNetwork.room.customProperties["CountSF"] = 0;
+        PhotonNetwork.room.customProperties["FFDeaths"] = 0;
+        PhotonNetwork.room.customProperties["SFDeaths"] = 0;
         PhotonNetwork.player.customProperties["Lost"] = 0;
         PhotonNetwork.player.customProperties["Won"] = 0;
         PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);

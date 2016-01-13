@@ -109,6 +109,18 @@ public class scoreManager : MonoBehaviour {
         {
             //endgameTextList[4].SetActive(true);               //Never assigned
             endGameText.text = "TIME!";
+            if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            {
+                Debug.Log("Fast food won :D");
+            }
+            else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            {
+                Debug.Log("Super food won :D");
+            }
+            else
+            {
+                Debug.Log("Tie!");
+            }
         }
         else
         {

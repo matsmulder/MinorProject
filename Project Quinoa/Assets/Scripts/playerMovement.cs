@@ -145,7 +145,7 @@ public class playerMovement : MonoBehaviour {
         //Set the mouse visible and unlocked when the esc key is pressed
         if (Input.GetKey("escape"))
         {
-            Debug.Log("Pressed escape");
+            //Debug.Log("Pressed escape");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
