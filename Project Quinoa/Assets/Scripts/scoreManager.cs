@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class scoreManager : MonoBehaviour {
+public class scoreManager : Photon.MonoBehaviour {
     public static int numberOfSuperPickups;
     public static int numberOfFastPickups;
     private GameObject[] pickupSuperList, pickupFastList, endgameTextList;
@@ -13,7 +13,7 @@ public class scoreManager : MonoBehaviour {
     private GameObject gameOverCanvas;
     private bool winFlag;
 
-    private int capturedBurgers, capturedQuinoa;
+    public int capturedBurgers, capturedQuinoa;
 
     public Text endGameText;
 	// Use this for initialization
@@ -74,28 +74,69 @@ public class scoreManager : MonoBehaviour {
         {
             if(captured)
             {
-                capturedBurgers++;
+                //capturedBurgers++;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedBurgers", PhotonTargets.All, true);
+                }
             }
             else
             {
-                capturedBurgers--;
+                //capturedBurgers--;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedBurgers", PhotonTargets.All, false);
+                }
             }
         }
         else if(pickupName == "superfood")
         {
             if(captured)
             {
-                capturedQuinoa++;
+                //capturedQuinoa++;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedQuinoa", PhotonTargets.All, true);
+                }
             }
             else
             {
-                capturedQuinoa--;
+                //capturedQuinoa--;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedQuinoa", PhotonTargets.All, false);
+                }
             }
         }
 
         Debug.Log("captured burgers: " + capturedBurgers + "\ncaptured quinoa: " + capturedQuinoa);
     }
 
+    [PunRPC]
+    void UpdateCapturedQuinoa(bool increment)
+    {
+        if(increment)
+        {
+            capturedQuinoa++;
+        }
+        else
+        {
+            capturedQuinoa--;
+        }
+    }
+
+    [PunRPC]
+    void UpdateCapturedBurgers(bool increment)
+    {
+        if (increment)
+        {
+            capturedBurgers++;
+        }
+        else
+        {
+            capturedBurgers--;
+        }
+    }
 
     [PunRPC]
     void EndGame(int winningTeamID)

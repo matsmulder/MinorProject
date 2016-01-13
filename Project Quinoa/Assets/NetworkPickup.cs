@@ -31,10 +31,6 @@ public class NetworkPickup : Photon.MonoBehaviour {
 
     void Update()
     {
-        if(GetComponent<Rigidbody>().velocity != Vector3.zero)
-        {
-            Debug.Log(GetComponent<Rigidbody>());
-        }
     //    if (photonView.isMine)
     //    {
 
