@@ -181,6 +181,5 @@ public class scoreManager : MonoBehaviour {
         yield return new WaitForSeconds(waitingTime);
         Application.LoadLevel(Application.loadedLevel);
         Cursor.visible = true;
-        Debug.Log("testarossa");
     }
 }

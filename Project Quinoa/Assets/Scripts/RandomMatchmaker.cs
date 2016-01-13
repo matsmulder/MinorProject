@@ -582,12 +582,12 @@ public class RandomMatchmaker : MonoBehaviour {
         }
 
         //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
-        GameObject player = PhotonNetwork.Instantiate(prefabName , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
+        GameObject player = PhotonNetwork.Instantiate("universalPlayer" , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
-        player.GetComponent<Bot>().enabled = false;
-        player.GetComponent<SphereCollider>().enabled = false;
+        //player.GetComponent<Bot>().enabled = false;
+        //player.GetComponent<SphereCollider>().enabled = false;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
 
         //set teamID, TODO: set colour
