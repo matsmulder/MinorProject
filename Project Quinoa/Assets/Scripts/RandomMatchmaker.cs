@@ -534,7 +534,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         if (PhotonNetwork.isMasterClient)
         {
             //spawn all the pickups!
-            //PhotonNetwork.Instantiate("superfood", new Vector3(46, -6, -2), Quaternion.identity, 0);
 
             foreach(SpawnSpotPickup spp in spawnSpotsPickups)
             {
