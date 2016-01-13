@@ -24,10 +24,12 @@ public class TeamMember : MonoBehaviour {
         if (teamID == 1) // team fastfood
         {
             skinColour.material.color = Color.red;
+            gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         }
         if (teamID == 2) //team superfood
         {
             skinColour.material.color = Color.green;
+            gameObject.transform.FindChild("human").gameObject.SetActive(false);
         }
         if (teamID == 0) //no team
         {
