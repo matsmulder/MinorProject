@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class RandomMatchmaker : MonoBehaviour {
+public class RandomMatchmaker : Photon.MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
@@ -589,9 +589,15 @@ public class RandomMatchmaker : MonoBehaviour {
         //player.GetComponent<Bot>().enabled = false;
         //player.GetComponent<SphereCollider>().enabled = false;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
-
-        //set teamID, TODO: set colour
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
+
+        //disable mesh renderer for local player
+        if (player.GetComponent<PhotonView>().isMine)
+        {
+            player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
+            player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
+            
+        }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
