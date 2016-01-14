@@ -88,6 +88,8 @@ public class DataController{
 
 	public bool checkCredentials(string name, string password){
 		// ini web
+		Debug.Log ("ik kom hier!");
+
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/checkLogin");
 		httpWebRequest.ContentType = "text/json";
 		httpWebRequest.Method = "POST";

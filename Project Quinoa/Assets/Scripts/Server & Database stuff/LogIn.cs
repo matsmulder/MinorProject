@@ -4,14 +4,15 @@ using UnityEngine.UI;
 using System;
 
 public class LogIn : MonoBehaviour {
-	public DataController dc;
+	public DataController dc = new DataController();
 
 	public Text username, password;
 
-	public GameObject WrongInput, NewAccount;
-
+	public GameObject WrongInput, NewAccount, LogInCanvas ;
+	
 	public void tryLogIn(){
 		NewAccount.SetActive (false);
+	
 		bool valid = dc.checkCredentials (username.text, password.text);
 
 		username.text = "";
@@ -19,7 +20,6 @@ public class LogIn : MonoBehaviour {
 
 		if (valid) {
 			Debug.Log ("log in credentials are correct");
-			// load Network Screen
 		} else {
 			Debug.Log ("Log in is not correct");
 			WrongInput.SetActive(true);

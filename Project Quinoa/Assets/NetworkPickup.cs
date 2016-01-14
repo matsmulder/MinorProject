@@ -27,7 +27,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
 
     void FixedUpdate()
     {
-        Debug.Log(pushing);
+        //Debug.Log(pushing);
         pickupKind.gameObject.SetActive(true);
         //if (pushing)
         //{
