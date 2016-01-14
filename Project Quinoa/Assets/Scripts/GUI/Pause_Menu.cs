@@ -40,7 +40,8 @@ public class Pause_Menu : MonoBehaviour {
 
     public void quitGame()
     {
-
+        PhotonNetwork.LeaveRoom();
+        Application.LoadLevel("MainMenu");
     }
 
 }
