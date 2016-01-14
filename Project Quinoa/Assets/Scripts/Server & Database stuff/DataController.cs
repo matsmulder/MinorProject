@@ -9,7 +9,7 @@ public class DataController{
 	public static int deaths;
 	public static int won;
 	public static int lost;
-
+	
 	public static void sentDBData(){
 		// initialisation
 		playerJson DBJSON = new playerJson(playerName, kills, deaths, won, lost);
@@ -27,31 +27,55 @@ public class DataController{
 		streamWriter.Close();
 	}
 
-	//public static playerJson getDBData(string name){
+	public static playerJson getDBData(string name){
 		// ini web
-		//var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/getStats");
-		//httpWebRequest.ContentType = "text/json";
-		//httpWebRequest.Method = "POST";
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/getStats");
+		httpWebRequest.ContentType = "text/json";
+		httpWebRequest.Method = "POST";
 
 		// write away to the node.js 
-		//var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-		//string json = "{\"user\":" + name + "};";
-		//streamWriter.Write(json);
-		//streamWriter.Flush();
-		//streamWriter.Close();
+		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
+		string json = "{\"user\":" + name + "};";
+		streamWriter.Write(json);
+		streamWriter.Flush();
+		streamWriter.Close();
 
-		// ini res
-		//var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse ();
-		//var streamReader = new StreamReader (httpResponse.GetResponseStream ());
-		//string userStats = streamReader.ReadToEnd;
+		// ini response from the server
+		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse ();
+		var streamReader = new StreamReader (httpResponse.GetResponseStream ());
+		string userStats = (string)streamReader.ReadToEnd();
 		
-		// ini JSON parser
-		//JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-		//playerJson playerStats = new playerJson;
-			
-		// handle the userStats data
-		//return playerStats;
-	//}
+		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
+		JSONObject json2 = new JSONObject(userStats);
+		for(int i = 0; i < json2.list.Count; i++){
+			string key = (string)json2.keys[i];
+
+			switch(key){
+			case "Username":
+				Debug.Log("without .str: " + json2[i]);
+				Debug.Log("string: " + json2[i].str);
+				playerName = json2[i].str;
+				break;
+			case "AmountKills":
+				kills = (int)json2[i].n;
+				break;
+			case "AmountDeaths":
+				deaths = (int)json2[i].n;
+				break;
+			case "AmountWon":
+				won = (int)json2[i].n;
+				break;
+			case "AmountLost":
+				lost = (int)json2[i].n;
+				break;
+			}
+		}
+
+		// make playerJson and return
+		playerJson playerStats = new playerJson (playerName, kills, deaths, won, lost);
+		resetData ();
+		return playerStats;
+	}
 
 	public static bool checkCredentials(string name, string password){
 		// ini web
@@ -95,5 +119,13 @@ public class DataController{
 		streamWriter.Write (json);
 		streamWriter.Flush ();
 		streamWriter.Close ();
+	}
+
+	public static void resetData(){
+		playerName = "";
+		kills = 0;
+		deaths = 0;
+		won = 0;
+		lost = 0;
 	}
 }
