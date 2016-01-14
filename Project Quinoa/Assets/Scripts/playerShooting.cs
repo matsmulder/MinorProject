@@ -11,7 +11,7 @@ public class playerShooting : MonoBehaviour {
     WeaponData weaponData;
     public float doubleKillTime, multiKillTime;
     private AudioSource audio1;
-    public AudioClip doubleKillSound, multiKillSound;
+    public AudioClip doubleKillSound, multiKillSound, noobSound;
     
 
     // Use this for initialization
@@ -100,6 +100,10 @@ public class playerShooting : MonoBehaviour {
 
 						if(h.getHealthPoints() < weaponData.damage){
                             Debug.Log("kill!");
+                            if(Random.Range(0,1f) > 0.5f) //random chance of playing LOL NOOB!
+                            {
+                                AudioSource.PlayClipAtPoint(noobSound, transform.position);
+                            }
                             if (multiKillTrigger)
                             {
                                 //play audio MULTI KILL! sound
