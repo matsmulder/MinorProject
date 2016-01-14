@@ -20,6 +20,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     private int indSuPu, indFaPu;
     public static int numberOfBurgers, numberOfQuinoa;
+    public bool playerKind;
 
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
@@ -27,7 +28,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public double startTime;
     public float respawnTimer;
     private bool ready = false;
-    public bool offlineMode;
+    public static bool offlineMode;
     status stat;
     private bool once;
     private bool allready;
@@ -281,15 +282,24 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			if (respawnTimer <= 0) {
                 //respawn the player
                 Debug.Log("respawn");
-
+                
                 if (!offlineMode)
                 {
                     SpawnPlayer(teamID);
                 }
                 else
                 {
-                    Debug.Log("spawn bot");
-                    SpawnBot(teamID, 1);
+                    if (playerKind)
+                    {
+                        Debug.Log("spawn player");
+                        SpawnPlayer(teamID);
+                    }
+                    else
+                    {
+                        Debug.Log("spawn bot");
+                        SpawnBot(teamID, 1);
+                    }
+
                 }
 			}
 		}

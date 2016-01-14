@@ -41,7 +41,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
         //if (photonView.isMine)
         if (photonView.isMine)
         {
-            Debug.Log("MINE");
+
         }
         else
         {
