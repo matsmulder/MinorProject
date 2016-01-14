@@ -278,7 +278,16 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			if (respawnTimer <= 0) {
                 //respawn the player
                 Debug.Log("respawn");
-				SpawnPlayer(teamID);
+
+                if (!offlineMode)
+                {
+                    SpawnPlayer(teamID);
+                }
+                else
+                {
+
+                    SpawnBot(teamID, 1);
+                }
 			}
 		}
 
@@ -637,7 +646,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(1);
+        //bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
 
     }
 
@@ -649,7 +659,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(2);
+        //bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+
     }
 
     public void BrowseGames()

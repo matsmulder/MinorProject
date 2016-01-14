@@ -10,6 +10,10 @@ public class TeamMember : MonoBehaviour {
         get { return _teamID; }
     }
 
+    public void SetTeamIDoffline(int id)
+    {
+        _teamID = id;
+    }
 
     [PunRPC]
     void SetTeamID(int id)

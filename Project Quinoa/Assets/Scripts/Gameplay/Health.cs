@@ -8,9 +8,10 @@ public class Health : MonoBehaviour {
     public float hitPoints;
     private float currentHitPoints;
     private Calculator calculator;
-
+    private RandomMatchmaker rm;
 	// Use this for initialization
 	void Start () {
+        rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
 		PhotonNetwork.player.customProperties["Deaths"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
@@ -53,6 +54,20 @@ public class Health : MonoBehaviour {
            {"died object", gameObject.tag },
            {"position", gameObject.transform.position }
        });
+
+        if(GetComponent<SphereCollider>().enabled) //this is a bot
+        {
+           
+        }
+        else if(!GetComponent<SphereCollider>().enabled) //this is a player
+        {
+
+        }
+        else
+        {
+            Debug.Log("sphere collider does not exist");
+        }
+        
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
             Destroy(gameObject);
