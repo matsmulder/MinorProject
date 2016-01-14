@@ -76,6 +76,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public GameObject teamFull;
 	public GameObject canvas_Objective;
 
+	public DataController dc;
+
     public Text SliderText;
     public Slider numberOfBots;
     private int realNumberOfBots;
@@ -217,6 +219,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			PhotonNetwork.player.customProperties["Won"] = 0;
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
+			dc.sentDBData();
+
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 			StartCoroutine(Reboot(5));   
@@ -300,9 +304,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			//}
 			if (inGameScreen) {
                 //				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
-                currentGameName.text = createGameName.text;
                 if (PhotonNetwork.room != null)
                 {
+                    currentGameName.text = PhotonNetwork.room.name;
                     currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
                 }
 			}

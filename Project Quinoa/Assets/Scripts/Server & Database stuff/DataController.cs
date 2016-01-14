@@ -9,8 +9,15 @@ public class DataController{
 	public static int deaths;
 	public static int won;
 	public static int lost;
-	
-	public static void sentDBData(){
+
+	public void sentDBData(){
+		// retrieve data when calles from the playerCustomProperties
+		playerName = (string)PhotonNetwork.player.name;
+		kills = (int)PhotonNetwork.player.customProperties ["Kills"];
+		deaths = (int)PhotonNetwork.player.customProperties ["Deaths"];
+		won = (int)PhotonNetwork.player.customProperties ["Won"];
+		lost = (int)PhotonNetwork.player.customProperties ["Lost"];
+
 		// initialisation
 		playerJson DBJSON = new playerJson(playerName, kills, deaths, won, lost);
 		string json = DBJSON.toJson();
@@ -25,9 +32,11 @@ public class DataController{
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
+
+		resetData ();
 	}
 
-	public static playerJson getDBData(string name){
+	public playerJson getDBData(string name){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/getStats");
 		httpWebRequest.ContentType = "text/json";
@@ -43,7 +52,7 @@ public class DataController{
 		// ini response from the server
 		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse ();
 		var streamReader = new StreamReader (httpResponse.GetResponseStream ());
-		string userStats = (string)streamReader.ReadToEnd();
+		string userStats = streamReader.ReadToEnd();
 		
 		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
 		JSONObject json2 = new JSONObject(userStats);
@@ -77,7 +86,7 @@ public class DataController{
 		return playerStats;
 	}
 
-	public static bool checkCredentials(string name, string password){
+	public bool checkCredentials(string name, string password){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/checkLogin");
 		httpWebRequest.ContentType = "text/json";
@@ -106,7 +115,7 @@ public class DataController{
 		return correctLogin;
 	}
 
-	public static void makeAccount(string name, string password){
+	public void makeAccount(string name, string password){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/makeLogin");
 		httpWebRequest.ContentType = "text/json";
@@ -121,7 +130,7 @@ public class DataController{
 		streamWriter.Close ();
 	}
 
-	public static void resetData(){
+	public void resetData(){
 		playerName = "";
 		kills = 0;
 		deaths = 0;
