@@ -28,7 +28,7 @@ public class Health : MonoBehaviour {
     public void TakeDamage(float amount)
     {
         currentHitPoints -= amount;
-        //Debug.Log(currentHitPoints);
+        Debug.Log(currentHitPoints);
 
         if(currentHitPoints <= 0 && gameObject.tag != "fastfood" && gameObject.tag != "superfood") //only allow negative health for players
         {
@@ -44,6 +44,7 @@ public class Health : MonoBehaviour {
 
     void Die()
     {
+        Debug.Log("DIE");
         //Analytics.CustomEvent(string customEventName, IDictionary < string, object > eventData);
        Analytics.CustomEvent("DIE", new Dictionary<string, object>
        {
@@ -64,7 +65,21 @@ public class Health : MonoBehaviour {
 				
 					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
 					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
-				
+
+                    int team = gameObject.GetComponent<TeamMember>().teamID;
+                    if (team == 1)
+                    {
+                        PhotonNetwork.room.customProperties["FFDeaths"] = (int)PhotonNetwork.room.customProperties["FFDeaths"] + 1;
+                    }
+                    else if (team == 2)
+                    {
+                        PhotonNetwork.room.customProperties["SFDeaths"] = (int)PhotonNetwork.room.customProperties["SFDeaths"] + 1;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Something somewhere went terribly wrong");
+                    }
+                    PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
                     nm.standby.SetActive(true);
                     nm.respawnTimer = 2; //set the respawn time to 2 sec
                 }
