@@ -13,6 +13,8 @@ public class scoreManager : Photon.MonoBehaviour {
     private GameObject gameOverCanvas;
     private bool winFlag;
 
+	public DataController dc;
+
     public int capturedBurgers, capturedQuinoa;
 
     public Text endGameText;
@@ -257,6 +259,8 @@ public class scoreManager : Photon.MonoBehaviour {
             }
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
         }
+
+		dc.sentDBData();
 
         endGameText.text += "\nreturning in 5 seconds";
 
