@@ -44,6 +44,8 @@ public class Bot : MonoBehaviour{
     private double cPLSV = 1.5;
     private double cHLSV = 1;
     private double cALSV = 1;
+    private double cpGSV = 5;
+    private Vector3 goal;
     private String playerA = "playerA";
     private String playerB = "playerB";
 
@@ -64,6 +66,14 @@ public class Bot : MonoBehaviour{
         bestPoint = transform.position;
         bestPoints = new Vector3[moveBool.Length];
         bestPointsSV = new float[moveBool.Length];
+        if(team == 1)
+        {
+            goal = new Vector3(64f, -30f, -43f);
+        }
+        else
+        {
+            goal = new Vector3(-37f, -30f, 28f);
+        }
     }
 
     public double LSV(Vector3 point)
@@ -117,7 +127,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);
+        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point) + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
     }
 
     public void FixedUpdate()
