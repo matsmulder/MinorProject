@@ -43,6 +43,7 @@ public class playerMovement : MonoBehaviour {
 
     //flag for ability to spawn players
     public static bool SpawnFlag;
+    private Pause_Menu pauseMenu;
 
 	// Use this for initialization
 	void Start () {
@@ -111,6 +112,9 @@ public class playerMovement : MonoBehaviour {
                 }
             }
         }
+        Debug.Log(pauseMenu);
+        pauseMenu = GameObject.FindObjectOfType<Pause_Menu>();
+        Debug.Log(pauseMenu);
     }
 	
 	// Update is called once per frame
@@ -132,8 +136,10 @@ public class playerMovement : MonoBehaviour {
         //if (Input.GetButtonDown("Fire1"))
         if (Input.GetMouseButtonDown(0))
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (pauseMenu.paused)
+            {
+                pauseMenu.togglePause();
+            }
         }
 
         //this fixes unwanted rotation caused by contact with a ramp
@@ -141,15 +147,6 @@ public class playerMovement : MonoBehaviour {
         {
             rb.angularVelocity = Vector3.zero;
         }
-
-        //Set the mouse visible and unlocked when the esc key is pressed
-        if (Input.GetKey("escape"))
-        {
-            //Debug.Log("Pressed escape");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
         
         //check for key presses and adapt movement of player but only if the ground is touched
         if (touchingGround)

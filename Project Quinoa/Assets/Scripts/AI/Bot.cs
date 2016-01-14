@@ -39,7 +39,7 @@ public class Bot : MonoBehaviour{
     private double playerConstant = 8;
     private double ammoConstant = 1;
     private double healthConstant = 1;
-    private static double cGSV = 0.05;
+    private static double cGSV = 0;
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
@@ -160,8 +160,8 @@ public class Bot : MonoBehaviour{
                             minTarget = obj;
                         }
                     }
-                    GetComponent<playerShooting>().Fire();
-                    //Shoot(minTarget);
+                    //GetComponent<playerShooting>().Fire();
+                    Shoot(minTarget);
                 }
             }
         }
