@@ -66,7 +66,7 @@ public class playerShooting : MonoBehaviour {
 
 
             //------------- apply health changes-------------------------------------------------------------
-            if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood"))
+            if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood") && hitTransform.gameObject.name != "taartschep")
             {
                 Health h = hitTransform.GetComponent<Health>();
 
