@@ -300,9 +300,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			//}
 			if (inGameScreen) {
                 //				currentGameName.text = PhotonNetwork.room.playerCount.ToString();
-                currentGameName.text = createGameName.text;
                 if (PhotonNetwork.room != null)
                 {
+                    currentGameName.text = PhotonNetwork.room.name;
                     currentAmountPlayers.text = PhotonNetwork.room.playerCount.ToString();
                 }
 			}
