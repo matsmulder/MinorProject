@@ -18,8 +18,6 @@ public class Calculator:MonoBehaviour
     public static double stepsizeX = 3.01662;
     public static double stepsizeZ = 2.87266;
 
-    private static double cpGSV = 5/0.15;
-
     public Calculator()
     {    }
 
