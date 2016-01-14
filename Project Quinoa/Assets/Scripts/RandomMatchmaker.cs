@@ -386,7 +386,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	}
 	
 	public void onClickedCreateGame(){
-		int num;
 		if (!createGameName.text.Equals ("")) {
             if (int.Parse(createGameMaxPlayers.text) < 2){
 				maxPlayer = 2;
@@ -397,9 +396,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
 			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
 
-			PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
+#pragma warning disable 0618 // Type or member is obsolete
+            PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
+#pragma warning restore 0618 // Type or member is obsolete
 
-			panel_createinputfield.SetActive(false);
+            panel_createinputfield.SetActive(false);
 			panel_Setready.SetActive(true);
             inRoom = true;
 		}
@@ -474,7 +475,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
             return false;
         }
-        return false;
     }
 
     void OnPhotonRandomJoinFailed()
@@ -482,7 +482,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
         ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
 
+#pragma warning disable 0618 // Type or member is obsolete
         PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
+#pragma warning restore 0618 // Type or member is obsolete
     }
 
     void OnJoinedRoom()
@@ -563,21 +565,17 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
         //determine where to spawn
         SpawnSpot mySpawnSpot;
-        string prefabName;
         if(teamID == 1) //fastfood
         {
             mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-            prefabName = "playerHuman";
         }
         else if(teamID == 2) //superfood
         {
             mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-            prefabName = "playerHipster";
         }
         else //no team food
         {
             mySpawnSpot = spawnSpotsNoTeam[UnityEngine.Random.Range(0, spawnSpots.Length)];
-            prefabName = "player4";
         }
 
         //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
@@ -628,9 +626,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnTrumpBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
+        bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
+        bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
 
     }
@@ -638,9 +638,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnWholoBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("playerHipster", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
+        bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
+        bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
     }
 
@@ -649,7 +651,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         GameObject but;
 
-        int i = 0;
         foreach (RoomInfo game in rooms)
         {
             but = (GameObject)Instantiate(roomButtonPrefab, new Vector3(0, 0, 0), new Quaternion());
@@ -657,7 +658,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
             if (roomName != "" && maxPlayer > 0) // if the room name has a name and max players are larger then 0
             {
+#pragma warning disable 0618 // Type or member is obsolete
                 PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer); // then create a photon room visible , and open with the maxplayers provide by user.
+#pragma warning restore 0618 // Type or member is obsolete
             }
         }
 

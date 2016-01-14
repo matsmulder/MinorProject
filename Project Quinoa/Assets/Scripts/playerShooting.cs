@@ -36,7 +36,7 @@ public class playerShooting : MonoBehaviour {
         }
     }
 
-    void Fire()
+   public void Fire()
     {
        
             weaponData = gameObject.GetComponentInChildren<WeaponData>();
