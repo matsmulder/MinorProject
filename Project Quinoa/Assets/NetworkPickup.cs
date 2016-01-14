@@ -7,53 +7,81 @@ public class NetworkPickup : Photon.MonoBehaviour {
     Quaternion realRotation = Quaternion.identity;
     Vector3 realVelocity = Vector3.zero;
     Rigidbody rb;
+    private bool pushing;
+    private Transform pickupKind;
 
-    void start()
+    void Start()
     {
+        pushing = false;
         rb = GetComponent<Rigidbody>();
-        Debug.Log(rb + "raoeu");
+
+        if(gameObject.transform.FindChild("pickupquinoalowpoly") == null)
+        {
+            pickupKind = gameObject.transform.FindChild("pickuphamburger");
+        }
+        else
+        {
+            pickupKind = gameObject.transform.FindChild("pickupquinoalowpoly");
+        }
     }
 
     void FixedUpdate()
     {
+        Debug.Log(pushing);
+        pickupKind.gameObject.SetActive(true);
+        //if (pushing)
+        //{
+        //    pickupKind.gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    pickupKind.gameObject.SetActive(true);
+        //}
+
+        //if (photonView.isMine)
         if (photonView.isMine)
         {
-           
+            Debug.Log("MINE");
         }
         else
         {
-            GetComponent<Rigidbody>().velocity = Vector3.Lerp(GetComponent<Rigidbody>().velocity, realVelocity, updateVelocityTime);
-            GetComponent<Rigidbody>().position = Vector3.Lerp(transform.position, realPosition, updatePositionTime);
-            GetComponent<Rigidbody>().rotation = Quaternion.Lerp(transform.rotation, realRotation, updateRotationTime);
+            if (!pushing)
+            {
+                GetComponent<Rigidbody>().velocity = Vector3.Lerp(GetComponent<Rigidbody>().velocity, realVelocity, updateVelocityTime);
+                GetComponent<Rigidbody>().position = Vector3.Lerp(transform.position, realPosition, updatePositionTime);
+                GetComponent<Rigidbody>().rotation = Quaternion.Lerp(transform.rotation, realRotation, updateRotationTime);
+            }
         }
     }
 
-
-    void Update()
+    void OnCollisionEnter(Collision col)
     {
-    //    if (photonView.isMine)
-    //    {
+        if(col.gameObject.CompareTag("Player"))
+        {
+            pushing = true;
+        }
+    }
 
-    //    }
-    //    else
-    //    {
-    //        transform.position = Vector3.Lerp(transform.position, realPosition, updatePositionTime);
-    //        transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, updateRotationTime);
-    //    }
+    void OnCollisionExit(Collision col)
+    {
+        if(col.gameObject.CompareTag("Player"))
+        {
+            pushing = false;
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
-            // We own this player: send the others our data
+            // this pickup, send other players our data
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
         }
         else
         {
-            // Network player, receive data
+            // Network pickup, receive data
             realPosition = (Vector3)stream.ReceiveNext();
             realRotation = (Quaternion)stream.ReceiveNext();
             realVelocity = (Vector3)stream.ReceiveNext();
