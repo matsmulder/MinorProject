@@ -307,12 +307,12 @@ public class PhotonView : Photon.MonoBehaviour
 
 #pragma warning disable 0618 // Type or member is obsolete
         if (!this.destroyedByPhotonNetworkOrQuit && !Application.isLoadingLevel)
-#pragma warning restore 0618 // Type or member is obsolete
         {
             if (this.instantiationId > 0)
             {
-                // if this viewID was not manually assigned (and we're not shutting down or loading a level), you should use PhotonNetwork.Destroy() to get rid of GOs with PhotonViews
+                              // if this viewID was not manually assigned (and we're not shutting down or loading a level), you should use PhotonNetwork.Destroy() to get rid of GOs with PhotonViews
                 Debug.LogError("OnDestroy() seems to be called without PhotonNetwork.Destroy()?! GameObject: " + this.gameObject + " Application.isLoadingLevel: " + Application.isLoadingLevel);
+#pragma warning restore 0618 // Type or member is obsolete
             }
             else
             {

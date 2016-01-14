@@ -7,13 +7,15 @@ public class Health : MonoBehaviour {
 
     public float hitPoints;
     private float currentHitPoints;
+    private Calculator calculator;
 
 	// Use this for initialization
 	void Start () {
         currentHitPoints = hitPoints;
 		PhotonNetwork.player.customProperties["Deaths"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
-	}
+        calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -82,6 +84,14 @@ public class Health : MonoBehaviour {
                     PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
                     nm.standby.SetActive(true);
                     nm.respawnTimer = 2; //set the respawn time to 2 sec
+
+                    for (int i = 0; i != calculator.getAllTargets(); i++)
+                    {
+                        if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                        {
+                            calculator.deleteTarget(i, this.gameObject);
+                        }
+                    }
                 }
 
                 if (gameObject.tag == "fastfood")
