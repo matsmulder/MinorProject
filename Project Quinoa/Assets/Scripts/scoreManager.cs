@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class scoreManager : MonoBehaviour {
+public class scoreManager : Photon.MonoBehaviour {
     public static int numberOfSuperPickups;
     public static int numberOfFastPickups;
     private GameObject[] pickupSuperList, pickupFastList, endgameTextList;
@@ -13,67 +13,130 @@ public class scoreManager : MonoBehaviour {
     private GameObject gameOverCanvas;
     private bool winFlag;
 
+    public int capturedBurgers, capturedQuinoa;
+
     public Text endGameText;
 	// Use this for initialization
 	void Start () {
-       pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
-        pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+       
 
         gameOverCanvas = GameObject.FindGameObjectWithTag("gameovercanvas");
         gameOverCanvas.SetActive(false);
-        //endgameTextList = GameObject.FindGameObjectsWithTag("endgametext");
-        
 
-        //foreach(GameObject endgametext in endgameTextList)
-        //{
-        //    Debug.Log(endgametext.name);
-        //    endgametext.SetActive(false);
-        //}
-        //        gameOverCanvas.SetActive(false);
-
-        winFlag = true;
+        winFlag = false;
         pv = GetComponent<PhotonView>();
-        //pu = FindObjectsOfType<Pickup>();
-        //int i = 0, j = 0, k = 0;
-        //foreach (Pickup child in pu)
-        //{
-        //    if(child.tm.teamID == 1) //members of team Trump
-        //    {
-        //        puTrump[j] = pu[i];
-        //        j++;
-        //        Debug.Log("Trump");
-        //    }
-        //    if(child.tm.teamID == 2) //members of team Wholo
-        //    {
-        //        puWholo[k] = pu[i];
-        //        k++;
-        //        Debug.Log("wholo");
-        //    }
-        //    i++;
-        //}
-        numberOfFastPickups = pickupFastList.Length;
-        numberOfSuperPickups = pickupSuperList.Length;
 
 		PhotonNetwork.player.customProperties ["Won"] = 0;
 		PhotonNetwork.player.customProperties ["Lost"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 	}
 	
+    public void InitializePickupList()
+    {
+        pickupFastList = GameObject.FindGameObjectsWithTag("fastfood");
+        pickupSuperList = GameObject.FindGameObjectsWithTag("superfood");
+
+        numberOfFastPickups = pickupFastList.Length;
+        numberOfSuperPickups = pickupSuperList.Length;
+        winFlag = true;
+    }
+
+
 	// Update is called once per frame
 	void Update () {
 
 
-        if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
+        //if (numberOfFastPickups == 0 && winFlag) //Team Wholo wins
+        //{
+        //    pv.RPC("EndGame", PhotonTargets.All, 2);
+        //}
+
+        //if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
+        //{
+        //    pv.RPC("EndGame", PhotonTargets.All, 1);
+        //}
+
+        if(capturedBurgers == RandomMatchmaker.numberOfBurgers && winFlag) //teaw Wholo wins
         {
             pv.RPC("EndGame", PhotonTargets.All, 2);
         }
 
-        if (numberOfSuperPickups == 0 && winFlag) //Team Trump wins
+        if(capturedQuinoa == RandomMatchmaker.numberOfQuinoa && winFlag) //team Trump wins
         {
             pv.RPC("EndGame", PhotonTargets.All, 1);
         }
 
 	}
+
+    public void CapturedPickups(string pickupName, bool captured)
+    {
+        if(pickupName == "fastfood")
+        {
+            if(captured)
+            {
+                //capturedBurgers++;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedBurgers", PhotonTargets.All, true);
+                }
+            }
+            else
+            {
+                //capturedBurgers--;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedBurgers", PhotonTargets.All, false);
+                }
+            }
+        }
+        else if(pickupName == "superfood")
+        {
+            if(captured)
+            {
+                //capturedQuinoa++;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedQuinoa", PhotonTargets.All, true);
+                }
+            }
+            else
+            {
+                //capturedQuinoa--;
+                if (photonView.isMine)
+                {
+                    pv.RPC("UpdateCapturedQuinoa", PhotonTargets.All, false);
+                }
+            }
+        }
+
+        Debug.Log("captured burgers: " + capturedBurgers + "\ncaptured quinoa: " + capturedQuinoa);
+    }
+
+    [PunRPC]
+    void UpdateCapturedQuinoa(bool increment)
+    {
+        if(increment)
+        {
+            capturedQuinoa++;
+        }
+        else
+        {
+            capturedQuinoa--;
+        }
+    }
+
+    [PunRPC]
+    void UpdateCapturedBurgers(bool increment)
+    {
+        if (increment)
+        {
+            capturedBurgers++;
+        }
+        else
+        {
+            capturedBurgers--;
+        }
+    }
 
     [PunRPC]
     void EndGame(int winningTeamID)
@@ -85,20 +148,29 @@ public class scoreManager : MonoBehaviour {
 
         if (winningTeamID == 0) //set teamID = 0 for time limit
         {
-            endgameTextList[4].SetActive(true);
+            //endgameTextList[4].SetActive(true);               //Never assigned
             endGameText.text = "TIME!";
+            if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            {
+                Debug.Log("Fast food won :D");
+            }
+            else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            {
+                Debug.Log("Super food won :D");
+            }
+            else
+            {
+                Debug.Log("Tie!");
+            }
         }
         else
         {
-
-            int i = 0;
             foreach (GameObject player in players)
             {
-                if (players[i].GetComponent<PhotonView>().isMine)
+                if (player.GetComponent<PhotonView>().isMine)
                 {
-                    myTeamID = players[i].gameObject.GetComponent<TeamMember>().teamID;
+                    myTeamID = player.gameObject.GetComponent<TeamMember>().teamID;
                 }
-                i++;
             }
 
             if (myTeamID == winningTeamID) //you are in the winning team, display win screen
@@ -150,6 +222,5 @@ public class scoreManager : MonoBehaviour {
         yield return new WaitForSeconds(waitingTime);
         Application.LoadLevel(Application.loadedLevel);
         Cursor.visible = true;
-        Debug.Log("testarossa");
     }
 }

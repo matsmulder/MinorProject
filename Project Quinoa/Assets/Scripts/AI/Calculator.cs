@@ -21,7 +21,7 @@ public class Calculator:MonoBehaviour
     public static double stepsizeX = 3.01662;
     public static double stepsizeZ = 2.87266;
 
-    private static double cpGSV = 3;
+    private static double cpGSV = 5/0.15;
 
     public Calculator()
     {    }
@@ -102,9 +102,9 @@ public class Calculator:MonoBehaviour
 
         /*if(bot.getTeam()==1)
         {
-            GSV = GSV + cPGSV * (1 - Vector3.Distance(point,new Vector3(64f,-30f,-43f)) / Vector3.Distance(new Vector3(64f,-30f,-43f),new Vector3(-37f,-30f,28f)));
+            GSV = GSV + cPGSV * (1 - Vector3.Distance(point,new Vector3(64f,-30f,-43f)) / );
         }
-        if(bot.getTeam()==-1)
+        if(bot.getTeam()==2)
         {
             GSV = GSV + cPGSV * (1 - Vector3.Distance(point,new Vector3(-37f,-30f,28f)) / Vector3.Distance(new Vector3(64f,-30f,-43f),new Vector3(-37f,-30f,28f)));
         }*/
@@ -151,7 +151,7 @@ public class Calculator:MonoBehaviour
         }
         else if(tag==playerB)
         {
-            return -1;
+            return 2;
         }
         else
         {

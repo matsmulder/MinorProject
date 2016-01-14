@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class RandomMatchmaker : MonoBehaviour {
+public class RandomMatchmaker : Photon.MonoBehaviour {
 
     //public GameObject player;
     //public GameObject camera1;
@@ -13,6 +13,13 @@ public class RandomMatchmaker : MonoBehaviour {
     SpawnSpot[] spawnSpotsNoTeam; //free for all spawnspots
     SpawnSpot[] spawnSpotsSuper; //hipster spawnspots
     SpawnSpot[] spawnSpotsFast; //fastfood spawnspots
+
+    SpawnSpotPickup[] spawnSpotsPickups; //list of all pickup spawnspots
+    SpawnSpotPickup[] spawnSpotsBurger; //list of all burger pickup spawnspots
+    SpawnSpotPickup[] spawnSpotsQuinoa; //list of all quinoa pickup spawnspots
+
+    private int indSuPu, indFaPu;
+    public static int numberOfBurgers, numberOfQuinoa;
 
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
@@ -76,20 +83,21 @@ public class RandomMatchmaker : MonoBehaviour {
 
     private Calculator calc;
 
+    public static bool inRoom = false;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
     void Start() {
+
+        numberOfBurgers = 0;
+        numberOfQuinoa = 0;
+
         once = true;
         DeletePlayerPrefs();
         stat = status.inMenu;
         PlayerPrefs.DeleteAll();
-
-        //ALWAY INITIALIZE
-        PhotonNetwork.room.customProperties["CountFF"] = 0;
-        PhotonNetwork.room.customProperties["CountSF"] = 0;
-		PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
-
+        
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
         lobbyButtons[0] = lobbyButton1;
@@ -131,6 +139,27 @@ public class RandomMatchmaker : MonoBehaviour {
             }
         }
 
+        spawnSpotsPickups = GameObject.FindObjectsOfType<SpawnSpotPickup>();
+        //spawnSpotsBurger = new SpawnSpotPickup[(int)(spawnSpotsPickups.Length * 0.5)];
+        //spawnSpotsQuinoa = new SpawnSpotPickup[(int)(spawnSpotsPickups.Length * 0.5)];
+        //foreach (SpawnSpotPickup spp in spawnSpotsPickups)
+        //{
+        //    if (spp.PickupID == 1) //teamid 0 for free for all, 1 for fastfood and 2 for superfood
+        //    {
+
+        //        spawnSpotsBurger[indFaPu] = spp;
+        //        indFaPu++;
+        //    }
+        //    else if (spp.PickupID == 2)
+        //    {
+
+        //        spawnSpotsQuinoa[indSuPu] = spp;
+        //        indSuPu++;
+        //    }
+        //}
+
+
+
         sm = GetComponent<scoreManager>();
 
         if (offlineMode)
@@ -139,7 +168,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings("0.4");
+            PhotonNetwork.ConnectUsingSettings("0.5");
         }
 
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
@@ -164,11 +193,6 @@ public class RandomMatchmaker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        //check for offline mode
-        
-
-
-
 
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
@@ -176,7 +200,6 @@ public class RandomMatchmaker : MonoBehaviour {
 		inGameScreen = panel_Setready.GetActive();
 		inReadyScreen = canvas_Ready.GetActive();
 
-		//Checks if ten minutes have passed or all pick ups has been picked up.
 		if (PhotonNetwork.room != null) {
 			if (PhotonNetwork.room.customProperties.ContainsKey ("StartingTime")) {
 				restTimeMinDouble = totalRoundTime - (PhotonNetwork.time - (double)PhotonNetwork.room.customProperties ["StartingTime"]) / 60;
@@ -189,6 +212,10 @@ public class RandomMatchmaker : MonoBehaviour {
 		if (restTimeMinDouble < 0) {
 
 			sm.GetComponent<PhotonView> ().RPC ("EndGame", PhotonTargets.All, 0);
+
+			PhotonNetwork.player.customProperties["Lost"] = 1;
+			PhotonNetwork.player.customProperties["Won"] = 0;
+			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
@@ -225,12 +252,13 @@ public class RandomMatchmaker : MonoBehaviour {
 
 		// Initial spawn
 		if (PhotonNetwork.room != null) {
-			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players.
+			if (PhotonNetwork.room.playerCount == PhotonNetwork.room.maxPlayers && allready && once) {  //if the room is full and all players are ready, spawn the players and the pickups
 				PhotonNetwork.room.customProperties ["StartingTime"] = PhotonNetwork.time;
 				PhotonNetwork.room.SetCustomProperties (PhotonNetwork.room.customProperties);
                 stat = status.inGame;
                 Debug.Log("initial spawn");
 				SpawnPlayer(teamID);
+                SpawnPickups();
 				once = false;
                 allready = false;
 				gameStarted = true;
@@ -342,6 +370,7 @@ public class RandomMatchmaker : MonoBehaviour {
         JoinRoom(lobbyNames[button].text);
         panel_joininputfield.SetActive(false);
         panel_Setready.SetActive(true);
+        inRoom = true;
     }
 
 	public void onNotReadyClicked(){
@@ -372,6 +401,7 @@ public class RandomMatchmaker : MonoBehaviour {
 
 			panel_createinputfield.SetActive(false);
 			panel_Setready.SetActive(true);
+            inRoom = true;
 		}
 	}
 	
@@ -457,6 +487,16 @@ public class RandomMatchmaker : MonoBehaviour {
 
     void OnJoinedRoom()
     {
+        //ALWAY INITIALIZE
+        PhotonNetwork.room.customProperties["CountFF"] = 0;
+        PhotonNetwork.room.customProperties["CountSF"] = 0;
+        PhotonNetwork.room.customProperties["FFDeaths"] = 0;
+        PhotonNetwork.room.customProperties["SFDeaths"] = 0;
+        PhotonNetwork.player.customProperties["Lost"] = 0;
+        PhotonNetwork.player.customProperties["Won"] = 0;
+        PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+        PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
+
         stat = status.inLobby;
     }
 
@@ -475,7 +515,7 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         SpawnPlayer(1);
         SpawnBot(1, realNumberOfBots);
-
+        SpawnPickups();
     }
     
     public void OfflineButtonSuperClicked()
@@ -486,6 +526,30 @@ public class RandomMatchmaker : MonoBehaviour {
         }
         SpawnPlayer(2);
         SpawnBot(2, realNumberOfBots);
+        SpawnPickups();
+    }
+
+    void SpawnPickups()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            //spawn all the pickups!
+
+            foreach(SpawnSpotPickup spp in spawnSpotsPickups)
+            {
+                if(spp.PickupID == 1) //Trump spawnspot
+                {
+                    PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
+                    numberOfBurgers++;
+                }
+                else if(spp.PickupID == 2) //Wholo spawnspot
+                {
+                    PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
+                    numberOfQuinoa++;
+                }
+            }
+            sm.InitializePickupList(); //grab pickup data
+        }
     }
 
     void SpawnPlayer(int teamID)
@@ -517,19 +581,28 @@ public class RandomMatchmaker : MonoBehaviour {
         }
 
         //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
-        GameObject player = PhotonNetwork.Instantiate(prefabName , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
+        GameObject player = PhotonNetwork.Instantiate("universalPlayer" , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
-        player.GetComponent<Bot>().enabled = false;
-        player.GetComponent<SphereCollider>().enabled = false;
+        //player.GetComponent<Bot>().enabled = false;
+        //player.GetComponent<SphereCollider>().enabled = false;
         player.transform.FindChild("Main Camera").gameObject.SetActive(true);
-
-        //set teamID, TODO: set colour
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
 
+        //disable mesh renderer for local player
+        if (player.GetComponent<PhotonView>().isMine)
+        {
+            player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
+            player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
+            
+        }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
+
+        ///////KIJK UIT: BEUN///////////
+        player.SetActive(true);
+        //////EINDE BEUN////////////////
     }
 
     void SpawnBot(int playerTeamID, int numberOfBots)
@@ -556,10 +629,9 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHuman", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
-        bot.GetComponent<playerMovement>().enabled = false;
-        bot.GetComponent<Bot>().enabled = true;
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<Bot>().enabled = true;
+        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
 
     }
 
@@ -567,6 +639,8 @@ public class RandomMatchmaker : MonoBehaviour {
     {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("playerHipster", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //bot spawned
+        bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<Bot>().enabled = true;
         bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
     }
 

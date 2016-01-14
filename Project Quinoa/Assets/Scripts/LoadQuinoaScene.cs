@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class LoadQuinoaScene : MonoBehaviour {
 
 	// Use this for initialization
@@ -15,5 +17,15 @@ public class LoadQuinoaScene : MonoBehaviour {
     public void LoadScene()
     {
         Application.LoadLevel("Quinoa");
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+
+#elif UNITY_STANDALONE
+        Application.Quit();
+#endif
     }
 }
