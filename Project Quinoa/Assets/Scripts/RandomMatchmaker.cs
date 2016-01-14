@@ -539,12 +539,14 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             {
                 if(spp.PickupID == 1) //Trump spawnspot
                 {
-                    PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
+                    //PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
+                    PhotonNetwork.InstantiateSceneObject("fastfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
                     numberOfBurgers++;
                 }
                 else if(spp.PickupID == 2) //Wholo spawnspot
                 {
-                    PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
+                    //PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
+                    PhotonNetwork.InstantiateSceneObject("superfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
                     numberOfQuinoa++;
                 }
             }
