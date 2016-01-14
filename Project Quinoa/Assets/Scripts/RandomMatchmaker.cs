@@ -608,13 +608,16 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
             player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
-            
+            //also parent WeaponHolder to the FP camera
+            Transform cam = player.gameObject.transform.FindChild("Main Camera");
+            Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
+            wph.transform.parent = cam;
         }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
         ///////KIJK UIT: BEUN///////////
-        player.SetActive(true);
+        //player.SetActive(true);
         //////EINDE BEUN////////////////
     }
 

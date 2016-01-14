@@ -134,13 +134,13 @@ public class playerMovement : MonoBehaviour {
         mouseMovementY = Input.GetAxis("Mouse Y");
 
         //if (Input.GetButtonDown("Fire1"))
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (pauseMenu.paused)
-            {
-                pauseMenu.togglePause();
-            }
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if (pauseMenu.paused)
+        //    {
+        //        pauseMenu.togglePause();
+        //    }
+        //}
 
         //this fixes unwanted rotation caused by contact with a ramp
         if (mouseMovementX == 0)
