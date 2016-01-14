@@ -87,11 +87,14 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     public static bool inRoom = false;
 
+    public Canvas crosshairCanvas;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
     void Start() {
 
+        crosshairCanvas.gameObject.SetActive(false);
         numberOfBurgers = 0;
         numberOfQuinoa = 0;
 
@@ -285,7 +288,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 }
                 else
                 {
-
+                    Debug.Log("spawn bot");
                     SpawnBot(teamID, 1);
                 }
 			}
@@ -571,6 +574,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     void SpawnPlayer(int teamID)
     {
+        crosshairCanvas.gameObject.SetActive(true);
         Debug.Log("spawn with teamID" + teamID);
         this.teamID = teamID;
         if(spawnSpots == null)
