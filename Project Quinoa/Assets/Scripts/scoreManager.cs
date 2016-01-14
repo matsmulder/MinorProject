@@ -145,34 +145,83 @@ public class scoreManager : Photon.MonoBehaviour {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         gameOverCanvas.SetActive(true);
-
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PhotonView>().isMine)
+            {
+                myTeamID = player.gameObject.GetComponent<TeamMember>().teamID;
+            }
+        }
         if (winningTeamID == 0) //set teamID = 0 for time limit
         {
-            //endgameTextList[4].SetActive(true);               //Never assigned
             endGameText.text = "TIME!";
-            if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            if (capturedQuinoa > capturedBurgers)
             {
                 Debug.Log("Fast food won :D");
+                if (myTeamID == 1)
+                {
+                    endGameText.text += " You gained more pickups :D";
+                    PhotonNetwork.player.customProperties["Won"] = 1;
+                }
+                else
+                {
+                    endGameText.text += " The burgers took more pickups :(";
+                    PhotonNetwork.player.customProperties["Lost"] = 1;
+                }
             }
-            else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            else if (capturedQuinoa < capturedBurgers)
             {
                 Debug.Log("Super food won :D");
+                if (myTeamID == 2)
+                {
+                    endGameText.text += " You gained more pickups :D";
+                    PhotonNetwork.player.customProperties["Won"] = 1;
+                }
+                else
+                {
+                    endGameText.text += " The hipsters took more pickups :(";
+                    PhotonNetwork.player.customProperties["Lost"] = 1;
+                }
             }
             else
             {
-                Debug.Log("Tie!");
+                if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+                {
+                    Debug.Log("Fast food won :D (by kills)");
+                    if (myTeamID == 1)
+                    {
+                        endGameText.text += " You overkilled quinoa :D";
+                        PhotonNetwork.player.customProperties["Won"] = 1;
+                    }
+                    else
+                    {
+                        endGameText.text += " You died way more than those burgers :(";
+                        PhotonNetwork.player.customProperties["Lost"] = 1;
+                    }
+                }
+                else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+                {
+                    Debug.Log("Super food won :D (by kills)");
+                    if (myTeamID == 2)
+                    {
+                        endGameText.text += " You overkilled the burgers :D";
+                        PhotonNetwork.player.customProperties["Won"] = 1;
+                    }
+                    else
+                    {
+                        endGameText.text += " You died way more than those hipsters :(";
+                        PhotonNetwork.player.customProperties["Lost"] = 1;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Tie!");
+                    endGameText.text += " It's a tie!";
+                }
             }
         }
         else
         {
-            foreach (GameObject player in players)
-            {
-                if (player.GetComponent<PhotonView>().isMine)
-                {
-                    myTeamID = player.gameObject.GetComponent<TeamMember>().teamID;
-                }
-            }
-
             if (myTeamID == winningTeamID) //you are in the winning team, display win screen
             {
                 Debug.Log("win");
