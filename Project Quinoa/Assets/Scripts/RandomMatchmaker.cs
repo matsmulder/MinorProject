@@ -76,6 +76,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public GameObject teamFull;
 	public GameObject canvas_Objective;
 
+	public DataController dc;
+
     public Text SliderText;
     public Slider numberOfBots;
     private int realNumberOfBots;
@@ -216,6 +218,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			PhotonNetwork.player.customProperties["Lost"] = 1;
 			PhotonNetwork.player.customProperties["Won"] = 0;
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
+
+			dc.sentDBData();
 
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
