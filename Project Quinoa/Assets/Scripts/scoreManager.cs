@@ -148,19 +148,29 @@ public class scoreManager : Photon.MonoBehaviour {
 
         if (winningTeamID == 0) //set teamID = 0 for time limit
         {
-            //endgameTextList[4].SetActive(true);               //Never assigned
             endGameText.text = "TIME!";
-            if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            if (capturedQuinoa > capturedBurgers)
             {
                 Debug.Log("Fast food won :D");
             }
-            else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+            else if (capturedQuinoa < capturedBurgers)
             {
                 Debug.Log("Super food won :D");
             }
             else
             {
-                Debug.Log("Tie!");
+                if ((int)PhotonNetwork.room.customProperties["SFDeaths"] > (int)PhotonNetwork.room.customProperties["FFDeaths"])
+                {
+                    Debug.Log("Fast food won :D (by kills)");
+                }
+                else if ((int)PhotonNetwork.room.customProperties["SFDeaths"] < (int)PhotonNetwork.room.customProperties["FFDeaths"])
+                {
+                    Debug.Log("Super food won :D (by kills)");
+                }
+                else
+                {
+                    Debug.Log("Tie!");
+                }
             }
         }
         else
