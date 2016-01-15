@@ -12,7 +12,7 @@ public class Bot : MonoBehaviour{
     public int health;
     private int team;
     private int index;
-
+    private Rigidbody rb;
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
     public float sensitivity;// = 0.75f;
@@ -49,7 +49,7 @@ public class Bot : MonoBehaviour{
     public void Start()
     {
         plsh = GetComponent<playerShooting>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
         index = calculator.addBot(this);

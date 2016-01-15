@@ -14,7 +14,7 @@ public class Pause_Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(rm.stat);
+        //Debug.Log(rm.stat);
         if (rm.stat == status.inGame)
         {
             if (Input.GetKeyDown("escape"))
