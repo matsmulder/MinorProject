@@ -616,7 +616,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         player.GetComponent<playerShooting>().enabled = true;
         //player.GetComponent<Bot>().enabled = false;
         //player.GetComponent<SphereCollider>().enabled = false;
-        player.transform.FindChild("Main Camera").gameObject.SetActive(true);
+        Transform cam1 = player.transform.FindChild("Main Camera");
+        cam1.gameObject.SetActive(true);
+        cam1.GetComponent<AudioListener>().enabled = false;
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
 
         //disable mesh renderer for local player
@@ -625,9 +627,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
             player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
             //also parent WeaponHolder to the FP camera
-            Transform cam = player.gameObject.transform.FindChild("Main Camera");
+            //Transform cam = player.gameObject.transform.FindChild("Main Camera");
             Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
-            wph.transform.parent = cam;
+            wph.transform.parent = cam1;
         }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
