@@ -112,9 +112,7 @@ public class playerMovement : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(pauseMenu);
         pauseMenu = GameObject.FindObjectOfType<Pause_Menu>();
-        Debug.Log(pauseMenu);
     }
 	
 	// Update is called once per frame
@@ -250,6 +248,12 @@ public class playerMovement : MonoBehaviour {
             //{
             //    //touchingFix = false;
             //}
+        }
+
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log(AudioListener.volume);
+            AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
         }
     }
 
