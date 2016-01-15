@@ -667,6 +667,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
@@ -680,6 +681,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);
