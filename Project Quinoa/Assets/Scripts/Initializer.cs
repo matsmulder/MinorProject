@@ -24,6 +24,10 @@ public class Initializer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    if (Input.GetKeyDown("m"))
+        {
+            Debug.Log(AudioListener.volume);
+            AudioListener.volume = Mathf.Abs(AudioListener.volume-1);
+        }
 	}
 }
