@@ -14,7 +14,6 @@ public class Pause_Menu : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("escape"))
         {
-            Debug.Log("W00T");
             togglePause();
         }
     }
