@@ -98,7 +98,8 @@ public class Health : MonoBehaviour {
                         Debug.LogWarning("Something somewhere went terribly wrong");
                     }
                     PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
-                    if (!RandomMatchmaker.offlineMode)
+                    //if (!RandomMatchmaker.offlineMode)
+                    if(GetComponent<SphereCollider>().enabled == false) //only activate standby camera for real player upon dying
                     {
                         nm.standby.SetActive(true);
                     }

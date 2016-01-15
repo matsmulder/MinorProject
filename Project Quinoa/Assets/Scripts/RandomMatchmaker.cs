@@ -631,7 +631,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
         //player.GetComponent<Bot>().enabled = false;
-        //player.GetComponent<SphereCollider>().enabled = false;
+        player.GetComponent<SphereCollider>().enabled = false;
+        player.transform.FindChild("BotCameraPoint").gameObject.SetActive(false); //disable the empty gameObject with the same location as the camera; this is only used for bots
         Transform cam1 = player.transform.FindChild("Main Camera");
         cam1.gameObject.SetActive(true);
         //cam1.GetComponent<AudioListener>().enabled = false;
@@ -682,6 +683,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
+        bot.gameObject.transform.FindChild("BotCameraPoint").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
         bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(1);
@@ -696,6 +698,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
+        bot.gameObject.transform.FindChild("BotCameraPoint").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);
         bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(2);

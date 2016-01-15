@@ -30,6 +30,7 @@ public class Bot : MonoBehaviour{
     private bool shootFlag;
     private List<GameObject> targets;// = new List<GameObject>();
     private GameObject minTarget;
+    private playerShooting plsh;
 
     //State Value Equation constants
     public double sightConstant = 15;
@@ -46,6 +47,8 @@ public class Bot : MonoBehaviour{
 
     public void Start()
     {
+        plsh = GetComponent<playerShooting>();
+        rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
         index = calculator.addBot(this);
@@ -83,6 +86,7 @@ public class Bot : MonoBehaviour{
         }
 
         Debug.Log(teamMates.Count);
+
         foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
@@ -90,7 +94,7 @@ public class Bot : MonoBehaviour{
                 PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2));
             }
         }
-        Debug.Log(opponents.Count);
+        //Debug.Log(opponents.Count);
         foreach (GameObject obj in opponents)
         {
             PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2));
@@ -224,7 +228,10 @@ public class Bot : MonoBehaviour{
             //Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, Quaternion.identity) as Rigidbody;
             //clone.velocity = new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed;
             Debug.Log("shoot!");
-                
+            if (plsh.fireFlag)
+            {
+                plsh.Fire();
+            }
                 //RaycastHit hit;
                 //if (Physics.Raycast(new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, (new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed).normalized, out hit, col.radius))
                 //{
