@@ -472,26 +472,32 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         maxPlayer = PhotonNetwork.room.maxPlayers;
         if(ID == 1)
         {
-            if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
+            Debug.Log("Checking for fastfood: " + PhotonNetwork.room.customProperties["CountFF"] + " " + 0.5 * maxPlayer);
+            if ((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
                 teamFull.SetActive(false);
+                Debug.Log("Not full");
                 return true;
             }
             else
             {
+                Debug.Log("Full");
                 teamFull.SetActive(true);
                 return false;
             }
 
         }
         else if(ID == 2){
+            Debug.Log("Checking for superfood: " + PhotonNetwork.room.customProperties["CountSF"] + " " + 0.5 * maxPlayer);
             if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5 * maxPlayer)
             {
+                Debug.Log("Not full");
                 teamFull.SetActive(false);
 				return true;
 			}
             else
             {
+                Debug.Log("Full");
                 teamFull.SetActive(true);
                 return false;
             }
@@ -516,8 +522,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void OnJoinedRoom()
     {
         //ALWAY INITIALIZE
-        PhotonNetwork.room.customProperties["CountFF"] = 0;
-        PhotonNetwork.room.customProperties["CountSF"] = 0;
+        if (!PhotonNetwork.room.customProperties.ContainsKey("CountFF"))
+        {
+            PhotonNetwork.room.customProperties["CountFF"] = 0;
+            PhotonNetwork.room.customProperties["CountSF"] = 0;
+        }
         PhotonNetwork.room.customProperties["FFDeaths"] = 0;
         PhotonNetwork.room.customProperties["SFDeaths"] = 0;
         PhotonNetwork.player.customProperties["Lost"] = 0;
