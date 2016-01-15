@@ -656,8 +656,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     {
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         GameObject but;
-
+#pragma warning disable 0219
         foreach (RoomInfo game in rooms)
+#pragma warning disable 0219
         {
             but = (GameObject)Instantiate(roomButtonPrefab, new Vector3(0, 0, 0), new Quaternion());
             but.transform.SetParent(GameObject.Find("Canvas").transform);
