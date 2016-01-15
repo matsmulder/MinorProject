@@ -4,18 +4,24 @@ using System.Collections;
 public class Pause_Menu : MonoBehaviour {
     public GameObject pauseCanvas;
     public bool paused;
+    private RandomMatchmaker rm;
 
 	// Use this for initialization
 	void Start () {
         paused = false;
+        rm = GameObject.FindObjectOfType<RandomMatchmaker>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("escape"))
+        if (rm.stat == status.inGame)
         {
-            togglePause();
+            if (Input.GetKeyDown("escape"))
+            {
+                togglePause();
+            }
         }
+        
     }
 
     public void togglePause()
