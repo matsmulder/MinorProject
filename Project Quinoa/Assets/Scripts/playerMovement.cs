@@ -315,12 +315,6 @@ public class playerMovement : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (PhotonView.Get(this).isMine)
-        {
-            Debug.Log("Destroyed");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
         
     }
 

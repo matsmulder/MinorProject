@@ -39,7 +39,7 @@ public class Bot : MonoBehaviour{
     private double playerConstant = 8;
     private double ammoConstant = 1;
     private double healthConstant = 1;
-    private static double cGSV = 0;
+    private static double cGSV = 0.30;
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
@@ -67,17 +67,14 @@ public class Bot : MonoBehaviour{
         bestPoints = new Vector3[moveBool.Length];
         bestPointsSV = new float[moveBool.Length];
         team = GetComponent<TeamMember>().teamID;
-        Debug.Log(team);
         teamFinder();
         if (team == 1)
         {
-            goal = new Vector3(64f, -30f, -43f);
-            //goal = new Vector3(-37f, -30f, 28f);
+            goal = new Vector3(-37f, -30f, 28f);
         }
         else if(team == 2)
         {
-            goal = new Vector3(-37f, -30f, 28f);
-            //goal = new Vector3(64f, -30f, -43f);
+            goal = new Vector3(64f, -30f, -43f);
         }
     }
 
@@ -90,28 +87,29 @@ public class Bot : MonoBehaviour{
         GameObject[] healths = GameObject.FindGameObjectsWithTag("health");
         GameObject[] ammos = GameObject.FindGameObjectsWithTag("ammo");
 
-        foreach (var obj in healths)
+        foreach (GameObject obj in healths)
         {
             //HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/healthConstant, 2)) / (health + 1);
             HLSV = HLSV + ((maxHealth - health) / (health + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / healthConstant, 2)) / (health + 1);
         }
 
-        foreach (var obj in ammos)
+        foreach (GameObject obj in ammos)
         {
             //ALSV = ALSV+5*maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/ammoConstant, 2)) / (ammo + 1);
             ALSV = ALSV + 5 * ((maxAmmo - ammo) / (ammo + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / ammoConstant, 2)) / (ammo + 1);
         }
-
-        foreach (var obj in teamMates)
+        Debug.Log(teamMates.Count);
+        foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
             {
-                PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / (playerConstant/2), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / (playerConstant/2), 2));
+                PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2));
             }
         }
-        foreach (var obj in opponents)
+        Debug.Log(opponents.Count);
+        foreach (GameObject obj in opponents)
         {
-            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, new Vector3(obj.transform.position.x, 0, obj.transform.position.z)) / playerConstant, 2));
+            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2));
         }
 
         return cPLSV * PLSV + cHLSV * HLSV + cALSV * ALSV;
@@ -119,7 +117,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point) + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
+        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);// + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
     }
 
     public void FixedUpdate()
