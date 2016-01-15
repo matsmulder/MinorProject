@@ -67,26 +67,18 @@ public class Calculator:MonoBehaviour
 
     public double GSV(Vector3 point)
     {
-        //GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
-        GameObject[] walls = new GameObject[1];
-        walls[0]= GameObject.FindGameObjectWithTag("wall");
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
+        //GameObject[] walls = new GameObject[1];
+        //walls[0]= GameObject.FindGameObjectWithTag("wall");
         double GSV = 0;
         double height = 0;
         foreach (GameObject obj in walls)
         {
             Vector3 wallCenter = new Vector3(obj.transform.position.x, obj.transform.position.y - obj.transform.lossyScale.y / 2, obj.transform.position.z);
             Vector3 position;
-            //this is problematic and is a bug
-            if (obj.GetComponent<Collider>().bounds.size.x < obj.GetComponent<Collider>().bounds.size.z)
-                {
-                    position = new Vector3(point.x, point.y, obj.transform.position.z);
-                }
-            else
-                {
-                    position = new Vector3(obj.transform.position.x, point.y, point.z);
-                }
+            double length;
 
-            if (obj.transform.position.y + obj.transform.lossyScale.y / 2<10)
+            if (obj.transform.position.y + obj.transform.lossyScale.y / 2 < 10)
             {
                 height = obj.transform.position.y + obj.transform.lossyScale.y / 2;
             }
@@ -95,7 +87,34 @@ public class Calculator:MonoBehaviour
                 height = 10;
             }
 
-            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+            if (obj.GetComponent<Collider>().bounds.size.x < obj.GetComponent<Collider>().bounds.size.z)
+            {
+                position = new Vector3(point.x, point.y, obj.transform.position.z);
+                length = obj.GetComponent<Collider>().bounds.size.z;
+                if (Vector3.Distance(point, position) > length)
+                {
+                    Vector3 position2 = new Vector3(obj.transform.position.x, point.y, point.z);
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2))* Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
+                }
+                else
+                {
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+                }
+            }
+            else
+            {
+                position = new Vector3(obj.transform.position.x, point.y, point.z);
+                length = obj.GetComponent<Collider>().bounds.size.z;
+                if (Vector3.Distance(point, position) > length)
+                {
+                    Vector3 position2 = new Vector3(point.x, point.y, obj.transform.position.z);
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
+                }
+                else
+                {
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+                }
+            }
         }
 
         return GSV;

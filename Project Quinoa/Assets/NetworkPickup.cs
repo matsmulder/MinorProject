@@ -6,14 +6,12 @@ public class NetworkPickup : Photon.MonoBehaviour {
     Vector3 realPosition = Vector3.zero;
     Quaternion realRotation = Quaternion.identity;
     Vector3 realVelocity = Vector3.zero;
-    Rigidbody rb;
     private bool pushing;
     private Transform pickupKind;
 
     void Start()
     {
         pushing = false;
-        rb = GetComponent<Rigidbody>();
 
         if(gameObject.transform.FindChild("pickupquinoalowpoly") == null)
         {
