@@ -8,9 +8,10 @@ public class Health : MonoBehaviour {
     public float hitPoints;
     private float currentHitPoints;
     private Calculator calculator;
-
+    private RandomMatchmaker rm;
 	// Use this for initialization
 	void Start () {
+        rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
 		PhotonNetwork.player.customProperties["Deaths"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
@@ -53,6 +54,21 @@ public class Health : MonoBehaviour {
            {"died object", gameObject.tag },
            {"position", gameObject.transform.position }
        });
+        RandomMatchmaker rmm = GameObject.FindObjectOfType<RandomMatchmaker>();
+
+        if(GetComponent<SphereCollider>().enabled) //this is a bot
+        {
+            rmm.playerKind = false;
+        }
+        else if(!GetComponent<SphereCollider>().enabled) //this is a player
+        {
+            rmm.playerKind = true;
+        }
+        else
+        {
+            Debug.LogWarning("sphere collider does not exist");
+        }
+        
         if (GetComponent<PhotonView>().instantiationId == 0) //
         {
             Destroy(gameObject);
@@ -82,7 +98,10 @@ public class Health : MonoBehaviour {
                         Debug.LogWarning("Something somewhere went terribly wrong");
                     }
                     PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
-                    nm.standby.SetActive(true);
+                    if (!RandomMatchmaker.offlineMode)
+                    {
+                        nm.standby.SetActive(true);
+                    }
                     nm.respawnTimer = 2; //set the respawn time to 2 sec
 
                     for (int i = 0; i != calculator.getAllTargets(); i++)

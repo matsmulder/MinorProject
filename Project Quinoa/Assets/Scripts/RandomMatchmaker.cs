@@ -20,6 +20,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     private int indSuPu, indFaPu;
     public static int numberOfBurgers, numberOfQuinoa;
+    public bool playerKind;
 
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
@@ -27,7 +28,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public double startTime;
     public float respawnTimer;
     private bool ready = false;
-    public bool offlineMode;
+    public static bool offlineMode;
     status stat;
     private bool once;
     private bool allready;
@@ -87,11 +88,14 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     public static bool inRoom = false;
 
+    public Canvas crosshairCanvas;
+
     public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
 
     // Use this for initialization
     void Start() {
 
+        crosshairCanvas.gameObject.SetActive(false);
         numberOfBurgers = 0;
         numberOfQuinoa = 0;
 
@@ -278,7 +282,25 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			if (respawnTimer <= 0) {
                 //respawn the player
                 Debug.Log("respawn");
-				SpawnPlayer(teamID);
+                
+                if (!offlineMode)
+                {
+                    SpawnPlayer(teamID);
+                }
+                else
+                {
+                    if (playerKind)
+                    {
+                        Debug.Log("spawn player");
+                        SpawnPlayer(teamID);
+                    }
+                    else
+                    {
+                        Debug.Log("spawn bot");
+                        SpawnBot(teamID, 1);
+                    }
+
+                }
 			}
 		}
 
@@ -546,13 +568,15 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 if(spp.PickupID == 1) //Trump spawnspot
                 {
                     //PhotonNetwork.Instantiate("fastfood", spp.transform.position, spp.transform.rotation, 0);
-                    PhotonNetwork.InstantiateSceneObject("fastfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
+                    GameObject pickup = PhotonNetwork.InstantiateSceneObject("fastfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
+                    //pickup.SetActive(true);
                     numberOfBurgers++;
                 }
                 else if(spp.PickupID == 2) //Wholo spawnspot
                 {
                     //PhotonNetwork.Instantiate("superfood", spp.transform.position, spp.transform.rotation, 0);
-                    PhotonNetwork.InstantiateSceneObject("superfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
+                    GameObject pickup = PhotonNetwork.InstantiateSceneObject("superfood", spp.transform.position, spp.transform.rotation, 0, new object[0]);
+                    //pickup.SetActive(true);
                     numberOfQuinoa++;
                 }
             }
@@ -562,6 +586,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     void SpawnPlayer(int teamID)
     {
+        crosshairCanvas.gameObject.SetActive(true);
         Debug.Log("spawn with teamID" + teamID);
         this.teamID = teamID;
         if(spawnSpots == null)
@@ -599,13 +624,16 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
             player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
-            
+            //also parent WeaponHolder to the FP camera
+            Transform cam = player.gameObject.transform.FindChild("Main Camera");
+            Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
+            wph.transform.parent = cam;
         }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
 
         ///////KIJK UIT: BEUN///////////
-        player.SetActive(true);
+        //player.SetActive(true);
         //////EINDE BEUN////////////////
     }
 
@@ -637,7 +665,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(1);
+        //bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
 
     }
 
@@ -649,7 +678,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);
-        bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+        bot.gameObject.GetComponent<TeamMember>().SetTeamIDoffline(2);
+        //bot.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID); //set teamID
+
     }
 
     public void BrowseGames()

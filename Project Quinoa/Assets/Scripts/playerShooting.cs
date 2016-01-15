@@ -6,9 +6,13 @@ using UnityEngine.Analytics;
 public class playerShooting : MonoBehaviour {
 
     public string fire;
-    private bool fireFlag;
+    private bool fireFlag, doubleKillTrigger, multiKillTrigger;
     public float shootingRange;
     WeaponData weaponData;
+    public float doubleKillTime, multiKillTime;
+    private AudioSource audio1;
+    public AudioClip doubleKillSound, multiKillSound, noobSound;
+    
 
     // Use this for initialization
 
@@ -17,6 +21,7 @@ public class playerShooting : MonoBehaviour {
 
     void Start() {
 
+        audio1 = GetComponent<AudioSource>();
         fireFlag = true;
         fxManager = FindObjectOfType<FXmanager>();
 
@@ -94,6 +99,32 @@ public class playerShooting : MonoBehaviour {
                         //this line is the equivalent of h.TakeDamage(damage) but synchronized
 
 						if(h.getHealthPoints() < weaponData.damage){
+                            Debug.Log("kill!");
+                            if(Random.Range(0,1f) > 0.5f) //random chance of playing LOL NOOB!
+                            {
+                                AudioSource.PlayClipAtPoint(noobSound, transform.position);
+                            }
+                            if (multiKillTrigger)
+                            {
+                                //play audio MULTI KILL! sound
+                                audio1.PlayOneShot(multiKillSound, 1);
+                                Debug.Log("MULTI KILL!");
+                                StartCoroutine(MultiKill()); //every kill in the given time limit after a double kill is a multi kill!
+                            }
+
+                            if (!doubleKillTrigger && !multiKillTrigger)
+                            {
+                                StartCoroutine(DoubleKill());
+                            }
+                            else
+                            {
+                                //play audio DOUBLE KILL! sound
+                                audio1.PlayOneShot(doubleKillSound, 1);
+                                Debug.Log("DOUBLE KILL!");
+                                StartCoroutine(MultiKill());
+                            }
+
+
 							PhotonNetwork.player.customProperties ["Kills"] = (int)PhotonNetwork.player.customProperties ["Kills"] + 1;
 							PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);						
 						}
@@ -150,6 +181,20 @@ public class playerShooting : MonoBehaviour {
         yield return new WaitForSeconds(weaponData.fireRate);
         fireFlag = true;
         //DON'T EDIT
+    }
+
+    IEnumerator DoubleKill()
+    {
+        doubleKillTrigger = true;
+        yield return new WaitForSeconds(doubleKillTime);
+        doubleKillTrigger = false;
+    }
+
+    IEnumerator MultiKill()
+    {
+        multiKillTrigger = true;
+        yield return new WaitForSeconds(multiKillTime);
+        multiKillTrigger = false;
     }
 
     void DoGunFX(Vector3 hitPoint) {

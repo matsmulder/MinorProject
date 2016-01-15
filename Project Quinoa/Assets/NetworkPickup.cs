@@ -27,7 +27,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
 
     void FixedUpdate()
     {
-        Debug.Log(pushing);
+        //Debug.Log(pushing);
         pickupKind.gameObject.SetActive(true);
         //if (pushing)
         //{
@@ -41,7 +41,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
         //if (photonView.isMine)
         if (photonView.isMine)
         {
-            Debug.Log("MINE");
+
         }
         else
         {

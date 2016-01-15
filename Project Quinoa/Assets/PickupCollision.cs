@@ -4,6 +4,8 @@ using System.Collections;
 public class PickupCollision : MonoBehaviour {
 
     private scoreManager sm;
+    private AudioSource audio1;
+    public AudioClip pickupSound;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class PickupCollision : MonoBehaviour {
             {
                 //burger in Wholo base
                 sm.CapturedPickups("fastfood", true);
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             }
         }
 
@@ -33,6 +36,7 @@ public class PickupCollision : MonoBehaviour {
             {
                 //quinoa in Trump base
                 sm.CapturedPickups("superfood", true);
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             }
 
             if (gameObject.tag == "fastfood")

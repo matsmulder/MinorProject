@@ -14,14 +14,15 @@ public class scoreManager : Photon.MonoBehaviour {
     private bool winFlag;
 
 	public DataController dc;
-
+    private AudioSource audio1;
+    public AudioClip victory;
     public int capturedBurgers, capturedQuinoa;
 
     public Text endGameText;
 	// Use this for initialization
 	void Start () {
-       
 
+        audio1 = GetComponent<AudioSource>();
         gameOverCanvas = GameObject.FindGameObjectWithTag("gameovercanvas");
         gameOverCanvas.SetActive(false);
 
@@ -227,6 +228,7 @@ public class scoreManager : Photon.MonoBehaviour {
             if (myTeamID == winningTeamID) //you are in the winning team, display win screen
             {
                 Debug.Log("win");
+                audio1.PlayOneShot(victory, 1);
                 if (myTeamID == 1) //member of team Trump, display winning screen
                 {
                     //endgameTextList[1].SetActive(true);
