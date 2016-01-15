@@ -13,6 +13,7 @@ public class Bot : MonoBehaviour{
     private int team;
     private int index;
     private Rigidbody rb;
+
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
     public float sensitivity;// = 0.75f;
@@ -85,8 +86,6 @@ public class Bot : MonoBehaviour{
             HLSV = HLSV + ((maxHealth - health) / (health + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / healthConstant, 2)) / (health + 1);
         }
 
-        Debug.Log(teamMates.Count);
-
         foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
@@ -94,7 +93,6 @@ public class Bot : MonoBehaviour{
                 PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2));
             }
         }
-        //Debug.Log(opponents.Count);
         foreach (GameObject obj in opponents)
         {
             PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2));
@@ -135,7 +133,6 @@ public class Bot : MonoBehaviour{
 
             if (shootFlag)
             {
-
                 targets = calculator.getTargets(index);
 
                 if (targets.Count > 0)
@@ -148,7 +145,6 @@ public class Bot : MonoBehaviour{
                             minTarget = obj;
                         }
                     }
-                    //GetComponent<playerShooting>().Fire();
                     Shoot(minTarget);
                 }
             }
@@ -215,6 +211,7 @@ public class Bot : MonoBehaviour{
 
     public void Shoot(GameObject target)
     {
+        if (target != null)
         {
             Vector3 aVector = Vector3.Cross(new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z), new Vector3(transform.forward.x, 0, transform.forward.z));
             float a = -aVector.y / Math.Abs(aVector.y);
@@ -223,25 +220,10 @@ public class Bot : MonoBehaviour{
             {
                 transform.Rotate(new Vector3(0, targetAngle, 0) * Time.deltaTime * a * rotateToTargetSpeed);
             }
-            //if (shootFlag)
-            //{
-            //Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, Quaternion.identity) as Rigidbody;
-            //clone.velocity = new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed;
-            Debug.Log("shoot!");
             if (plsh.fireFlag)
             {
                 plsh.Fire();
             }
-                //RaycastHit hit;
-                //if (Physics.Raycast(new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, (new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed).normalized, out hit, col.radius))
-                //{
-                //    if (opponents.IndexOf(hit.transform.gameObject)!=-1)
-                //    {
-                //        //Health Reduction Here
-                //    }
-                //}
-                //StartCoroutine(bullet());
-            //}
         }
     }
 
@@ -265,7 +247,6 @@ public class Bot : MonoBehaviour{
                         }
                         if (targets.IndexOf(hit.transform.gameObject) == -1 && hit.transform.gameObject != this.gameObject)
                         {
-                            //targets.Add(hit.transform.gameObject);
                             calculator.addTarget(index,hit.transform.gameObject);
                         }
                     }
@@ -296,7 +277,6 @@ public class Bot : MonoBehaviour{
         teamMates = new List<GameObject>();
         opponents = new List<GameObject>();
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
         if (team == 2)
         {
             foreach (GameObject player in players)
@@ -349,13 +329,11 @@ public class Bot : MonoBehaviour{
         {
             moveBool[i] = false;
             moveBool[0] = true;
-            //Debug.Log(moveBool[0]);
         }
         else
         {
             moveBool[i] = false;
             moveBool[i + 1] = true;
-            //Debug.Log(moveBool[i]);
         }
     }
 
