@@ -5,7 +5,7 @@ public class PickupCollision : MonoBehaviour {
 
     private scoreManager sm;
     private AudioSource audio1;
-    public AudioClip pickupSound;
+    public AudioClip pickupSound, lostPickupSound;
 
     void Start()
     {
@@ -59,6 +59,7 @@ public class PickupCollision : MonoBehaviour {
             {
                 //burger in Wholo base
                 sm.CapturedPickups("fastfood", false);
+                AudioSource.PlayClipAtPoint(lostPickupSound, transform.position);
             }
         }
 
@@ -68,6 +69,7 @@ public class PickupCollision : MonoBehaviour {
             {
                 //quinoa in Trump base
                 sm.CapturedPickups("superfood", false);
+                AudioSource.PlayClipAtPoint(lostPickupSound, transform.position);
             }
 
             if (gameObject.tag == "fastfood")

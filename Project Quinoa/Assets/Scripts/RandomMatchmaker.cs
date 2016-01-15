@@ -349,7 +349,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			}
 			else
 			{
-				//DisplayDialog("Amount of FastFoodLovers allready full, please choose the other team");
+                //DisplayDialog("Amount of FastFoodLovers allready full, please choose the other team");
+                Debug.Log("team Wholo is full");
 			}
 		}
 		else{					// superfood
@@ -361,7 +362,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			}
 			else
 			{
-				//MessageBox.Show("Amount of SuperFoodLovers allready full, please choose the other team");
+                //MessageBox.Show("Amount of SuperFoodLovers allready full, please choose the other team");
+                Debug.Log("team Trump is full");
 			}
 		}
 	}
@@ -470,6 +472,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public bool checkJoinConditions(int ID)
     {
         maxPlayer = PhotonNetwork.room.maxPlayers;
+        Debug.Log("check join condition " + ID);
         if(ID == 1)
         {
             if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
@@ -618,7 +621,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         //player.GetComponent<SphereCollider>().enabled = false;
         Transform cam1 = player.transform.FindChild("Main Camera");
         cam1.gameObject.SetActive(true);
-        cam1.GetComponent<AudioListener>().enabled = false;
+        //cam1.GetComponent<AudioListener>().enabled = false;
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
 
         //disable mesh renderer for local player
