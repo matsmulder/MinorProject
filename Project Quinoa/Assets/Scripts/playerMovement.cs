@@ -57,61 +57,61 @@ public class playerMovement : MonoBehaviour {
         currentHP = maxHP;
 
         //Loading keyconfig
-        defaultKeys = new Dictionary<string, string>
-        {
-            { "left","a" },
-            { "right","d" },
-            {"forward","w" },
-            { "backward","s" },
-            {"jump","space" },
-            {"dodge", "left shift" },
+        //defaultKeys = new Dictionary<string, string>
+        //{
+        //    { "left","a" },
+        //    { "right","d" },
+        //    {"forward","w" },
+        //    { "backward","s" },
+        //    {"jump","space" },
+        //    {"dodge", "left shift" },
 
-        };
-        keys = new Dictionary<string, string>();
-        try
-        {
-            StreamReader f = new StreamReader("keys.cfg");
-            string line;
-            while ((line = f.ReadLine()) != null)
-            {
-                string[] splitted = line.Split(':');
-                if (!defaultKeys.ContainsKey(splitted[0]))
-                {
-                    Debug.Log("Key not used: " + splitted[0]);
-                }
-                else
-                {
-                    keys[splitted[0]] = splitted[1];
-                }
+        //};
+        //keys = new Dictionary<string, string>();
+        //try
+        //{
+        //    StreamReader f = new StreamReader("keys.cfg");
+        //    string line;
+        //    while ((line = f.ReadLine()) != null)
+        //    {
+        //        string[] splitted = line.Split(':');
+        //        if (!defaultKeys.ContainsKey(splitted[0]))
+        //        {
+        //            Debug.Log("Key not used: " + splitted[0]);
+        //        }
+        //        else
+        //        {
+        //            keys[splitted[0]] = splitted[1];
+        //        }
 
-            }
-            f.Close();
-            using (StreamWriter sw = File.AppendText("keys.cfg"))
-            {
-                foreach (string key in defaultKeys.Keys)
-                {
-                    if (!keys.ContainsKey(key))
-                    {
-                        //Add key to file if it doesn't exist
-                        sw.Write(key + ":" + defaultKeys[key] + "\n");
-                        //Add key to settings
-                        keys[key] = defaultKeys[key];
-                    }
-                }
-            }
-        }
-        catch (IOException)
-        {
-            //File doesn't exist yet, create it
-            using (StreamWriter sw = File.CreateText("keys.cfg"))
-            {
-                foreach (string key in defaultKeys.Keys)
-                {
-                    sw.Write(key + ":" + defaultKeys[key] + "\n");
-                    keys[key] = defaultKeys[key];
-                }
-            }
-        }
+        //    }
+        //    f.Close();
+        //    using (StreamWriter sw = File.AppendText("keys.cfg"))
+        //    {
+        //        foreach (string key in defaultKeys.Keys)
+        //        {
+        //            if (!keys.ContainsKey(key))
+        //            {
+        //                //Add key to file if it doesn't exist
+        //                sw.Write(key + ":" + defaultKeys[key] + "\n");
+        //                //Add key to settings
+        //                keys[key] = defaultKeys[key];
+        //            }
+        //        }
+        //    }
+        //}
+        //catch (IOException)
+        //{
+        //    //File doesn't exist yet, create it
+        //    using (StreamWriter sw = File.CreateText("keys.cfg"))
+        //    {
+        //        foreach (string key in defaultKeys.Keys)
+        //        {
+        //            sw.Write(key + ":" + defaultKeys[key] + "\n");
+        //            keys[key] = defaultKeys[key];
+        //        }
+        //    }
+        //}
         pauseMenu = GameObject.FindObjectOfType<Pause_Menu>();
     }
 	
