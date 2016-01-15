@@ -5,14 +5,11 @@ using System.Collections.Generic;
 
 public class Bot : MonoBehaviour{
     //Bot State variables
-    private Rigidbody rb;
     private Calculator calculator;
     private SphereCollider col;
     private List<Vector3> points;
     private float maxHealth = 100;
-    private float maxAmmo = 20;
     public int health;
-    public int ammo;
     private int team;
     private int index;
 
@@ -38,13 +35,11 @@ public class Bot : MonoBehaviour{
     //State Value Equation constants
     public double sightConstant = 15;
     private double playerConstant = 8;
-    private double ammoConstant = 1;
     private double healthConstant = 1;
     private static double cGSV = -0.30;
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
-    private double cALSV = 1;
     private double cpGSV = 5;
     private Vector3 goal = new Vector3(13.5f,-30f,-7.5f);
     private List<GameObject> teamMates=new List<GameObject>();
@@ -59,9 +54,6 @@ public class Bot : MonoBehaviour{
         index = calculator.addBot(this);
         targets = calculator.getTargets(index);
         col.radius= (float)sightConstant;
-        //team = calculator.Teaminator(this.gameObject.tag);
-        //health = 100;
-        //ammo = 0;
         shootFlag = false;
         playerInSight = false;
         moveBool = new bool[calculator.getMasterBoolCount()];
@@ -84,10 +76,8 @@ public class Bot : MonoBehaviour{
     {
         double PLSV = 0;
         double HLSV = 0;
-        double ALSV = 0;
 
         GameObject[] healths = GameObject.FindGameObjectsWithTag("health");
-        GameObject[] ammos = GameObject.FindGameObjectsWithTag("ammo");
 
         foreach (GameObject obj in healths)
         {
@@ -95,12 +85,8 @@ public class Bot : MonoBehaviour{
             HLSV = HLSV + ((maxHealth - health) / (health + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / healthConstant, 2)) / (health + 1);
         }
 
-        foreach (GameObject obj in ammos)
-        {
-            //ALSV = ALSV+5*maxAmmo*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/ammoConstant, 2)) / (ammo + 1);
-            ALSV = ALSV + 5 * ((maxAmmo - ammo) / (ammo + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / ammoConstant, 2)) / (ammo + 1);
-        }
-        //Debug.Log(teamMates.Count);
+        Debug.Log(teamMates.Count);
+
         foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
@@ -114,7 +100,7 @@ public class Bot : MonoBehaviour{
             PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2));
         }
 
-        return cPLSV * PLSV + cHLSV * HLSV + cALSV * ALSV;
+        return cPLSV * PLSV + cHLSV * HLSV;
     }
 
     public double SV(Vector3 point)
@@ -147,7 +133,7 @@ public class Bot : MonoBehaviour{
            
             MoveBot(bestPoint);
 
-            if (ammo > 0 && shootFlag)
+            if (shootFlag)
             {
 
                 targets = calculator.getTargets(index);
@@ -254,7 +240,6 @@ public class Bot : MonoBehaviour{
                 //        //Health Reduction Here
                 //    }
                 //}
-                //ammo = ammo - 1;
                 //StartCoroutine(bullet());
             //}
         }
@@ -287,26 +272,6 @@ public class Bot : MonoBehaviour{
                 }
             }
         }
-
-        /*if (other.gameObject.CompareTag("ammo") && Vector3.Distance(this.transform.position,other.transform.position) <= 2)
-        {
-            ammo = 20;
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.CompareTag("health") && Vector3.Distance(this.transform.position, other.transform.position) <= 2)
-        {
-            if (health <= 50)
-            {
-                health = health + 50;
-            }
-            else
-            {
-                health = 100;
-            }
-            Destroy(other.gameObject);
-        }*/
-
     }
 
     public void OnTriggerExit(Collider other)

@@ -67,9 +67,9 @@ public class Calculator:MonoBehaviour
 
     public double GSV(Vector3 point)
     {
-        GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
-        //GameObject[] walls = new GameObject[1];
-        //walls[0]= GameObject.FindGameObjectWithTag("wall");
+        //GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
+        GameObject[] walls = new GameObject[1];
+        walls[0] = GameObject.FindGameObjectWithTag("wall");
         double GSV = 0;
         double height = 0;
         foreach (GameObject obj in walls)
@@ -77,7 +77,8 @@ public class Calculator:MonoBehaviour
             Vector3 wallCenter = new Vector3(obj.transform.position.x, obj.transform.position.y - obj.transform.lossyScale.y / 2, obj.transform.position.z);
             Vector3 position;
             double length;
-
+            Vector3 l;
+            Vector3 L;
             if (obj.transform.position.y + obj.transform.lossyScale.y / 2 < 10)
             {
                 height = obj.transform.position.y + obj.transform.lossyScale.y / 2;
@@ -89,34 +90,98 @@ public class Calculator:MonoBehaviour
 
             if (obj.GetComponent<Collider>().bounds.size.x < obj.GetComponent<Collider>().bounds.size.z)
             {
-                position = new Vector3(point.x, point.y, obj.transform.position.z);
                 length = obj.GetComponent<Collider>().bounds.size.z;
+                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x*Math.Cos(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y)));
+                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z*-Math.Sin(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y)));
+                position = (wallCenter+l)* Vector3.Dot(point,wallCenter+l)/Vector3.Dot(wallCenter+l,wallCenter+l);
                 if (Vector3.Distance(point, position) > length)
                 {
-                    Vector3 position2 = new Vector3(obj.transform.position.x, point.y, point.z);
-                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2))* Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
+                    Vector3 position2 = (wallCenter + L) * Vector3.Dot(point, wallCenter + L) / Vector3.Dot(wallCenter + L, wallCenter + L);
+                    if (Vector3.Distance(wallCenter - l, position)< Vector3.Distance(wallCenter + l, position))
+                    {
+                        if (Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - L, position2) / wallConst, 2));
+                        }
+                        else
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + L, position2) / wallConst, 2));
+                        }
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - L, position2) / wallConst, 2));
+                        }
+                        else
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + L, position2) / wallConst, 2));
+                        }
+                    }
+                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
                 }
                 else
                 {
-                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+                    if (Vector3.Distance(wallCenter - l, position) < Vector3.Distance(wallCenter + l, position))
+                    {
+                        GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2));
+                    }
+                    else
+                    {
+                        GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2));
+                    }
+                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
                 }
             }
             else
             {
                 position = new Vector3(obj.transform.position.x, point.y, point.z);
                 length = obj.GetComponent<Collider>().bounds.size.z;
+                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x * Math.Cos(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y)));
+                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z * -Math.Sin(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y)));
+                position = (wallCenter + l) * Vector3.Dot(point, wallCenter + l) / Vector3.Dot(wallCenter + l, wallCenter + l);
                 if (Vector3.Distance(point, position) > length)
                 {
-                    Vector3 position2 = new Vector3(point.x, point.y, obj.transform.position.z);
-                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
+                    Vector3 position2 = (wallCenter + L) * Vector3.Dot(point, wallCenter + L) / Vector3.Dot(wallCenter + L, wallCenter + L);
+                    if (Vector3.Distance(wallCenter - l, position) < Vector3.Distance(wallCenter + l, position))
+                    {
+                        if (Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - L, position2) / wallConst, 2));
+                        }
+                        else
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + L, position2) / wallConst, 2));
+                        }
+                    }
+                    else
+                    {
+                        if(Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - L, position2) / wallConst, 2));
+                        }
+                        else
+                        {
+                            GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + L, position2) / wallConst, 2));
+                        }
+                    }
+                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
                 }
                 else
                 {
-                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+                    if (Vector3.Distance(wallCenter - l, position) < Vector3.Distance(wallCenter + l, position))
+                    {
+                        GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter - l, position) / wallConst, 2));
+                    }
+                    else
+                    {
+                        GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2));
+                    }
+                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
                 }
             }
         }
-
         return GSV;
     }
 
@@ -179,18 +244,4 @@ public class Calculator:MonoBehaviour
         botList.Add(bot);
         return allTargets.Count-1;
     }
-
-    /*public void printer(List<List<GameObject>> targets)
-    {
-        int counter = 0;
-        foreach (List<GameObject> list in targets)
-        {
-            Debug.Log("List " + counter);
-                counter++;
-            foreach (GameObject go in list)
-            {
-                Debug.Log("GameObject");
-            }
-        }
-    }*/
 }
