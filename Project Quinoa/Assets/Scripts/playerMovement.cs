@@ -112,9 +112,7 @@ public class playerMovement : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(pauseMenu);
         pauseMenu = GameObject.FindObjectOfType<Pause_Menu>();
-        Debug.Log(pauseMenu);
     }
 	
 	// Update is called once per frame
@@ -251,6 +249,12 @@ public class playerMovement : MonoBehaviour {
             //    //touchingFix = false;
             //}
         }
+
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log(AudioListener.volume);
+            AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -315,12 +319,6 @@ public class playerMovement : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (PhotonView.Get(this).isMine)
-        {
-            Debug.Log("Destroyed");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
         
     }
 

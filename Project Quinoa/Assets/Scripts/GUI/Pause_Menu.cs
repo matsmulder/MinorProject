@@ -14,7 +14,6 @@ public class Pause_Menu : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("escape"))
         {
-            //Debug.Log("Pressed escape");
             togglePause();
         }
     }
@@ -24,7 +23,6 @@ public class Pause_Menu : MonoBehaviour {
 
         if (paused)
         {
-            
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             //pauseCanvas.SetActive(false);
