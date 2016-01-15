@@ -230,12 +230,13 @@ public class playerMovement : MonoBehaviour {
         {
             
         }
-
+#if UNITY_EDITOR
         if (Input.GetKeyDown("m"))
         {
             Debug.Log(AudioListener.volume);
             AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
         }
+#endif
     }
 
     void OnCollisionEnter(Collision col)
