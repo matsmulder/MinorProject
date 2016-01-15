@@ -14,6 +14,7 @@ public class Pause_Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(rm.stat);
         if (rm.stat == status.inGame)
         {
             if (Input.GetKeyDown("escape"))
@@ -26,18 +27,18 @@ public class Pause_Menu : MonoBehaviour {
 
     public void togglePause()
     {
-
+        Debug.Log("Paused");
         if (paused)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            //pauseCanvas.SetActive(false);
+            pauseCanvas.SetActive(false);
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            //pauseCanvas.SetActive(true);
+            pauseCanvas.SetActive(true);
         }
         paused = !paused;
     }
