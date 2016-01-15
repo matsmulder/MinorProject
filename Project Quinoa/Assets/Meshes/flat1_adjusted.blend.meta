@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: d2fb22f944a72b9479257cf9a926a5cf
+timeCreated: 1452871992
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Building-blok
+    100002: Building-blok_001
+    100004: Building-blok_002
+    100006: Cube
+    100008: Cube_001
+    100010: //RootNode
+    100012: Kozijn_boven
+    100014: Kozijn_boven_railing
+    100016: Kozijn_onder
+    100018: vloer1
+    100020: Vloer2
+    400000: Building-blok
+    400002: Building-blok_001
+    400004: Building-blok_002
+    400006: Cube
+    400008: Cube_001
+    400010: //RootNode
+    400012: Kozijn_boven
+    400014: Kozijn_boven_railing
+    400016: Kozijn_onder
+    400018: vloer1
+    400020: Vloer2
+    2300000: Building-blok
+    2300002: Building-blok_001
+    2300004: Building-blok_002
+    2300006: Cube
+    2300008: Cube_001
+    2300010: Kozijn_boven
+    2300012: Kozijn_boven_railing
+    2300014: Kozijn_onder
+    2300016: vloer1
+    2300018: Vloer2
+    3300000: Building-blok
+    3300002: Building-blok_001
+    3300004: Building-blok_002
+    3300006: Cube
+    3300008: Cube_001
+    3300010: Kozijn_boven
+    3300012: Kozijn_boven_railing
+    3300014: Kozijn_onder
+    3300016: vloer1
+    3300018: Vloer2
+    4300000: Cube_001
+    4300002: Building-blok_002
+    4300004: Building-blok_001
+    4300006: Cube
+    4300008: Vloer2
+    4300010: vloer1
+    4300012: Kozijn_boven_railing
+    4300014: Kozijn_boven
+    4300016: Kozijn_onder
+    4300018: Building-blok
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
