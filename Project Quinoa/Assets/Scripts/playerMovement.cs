@@ -117,7 +117,17 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
+#if UNITY_EDITOR
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log(AudioListener.volume);
+            AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
+        }
+#endif
+        if (pauseMenu.paused)
+        {
+            return;
+        }
         //MOVE!
         Vector3 direction = new Vector3(directionx*walkingSpeed*Time.deltaTime, directiony*walkingSpeed*Time.deltaTime, directionz*walkingSpeed*Time.deltaTime);
         //transform.Translate(direction);
@@ -230,13 +240,7 @@ public class playerMovement : MonoBehaviour {
         {
             
         }
-#if UNITY_EDITOR
-        if (Input.GetKeyDown("m"))
-        {
-            Debug.Log(AudioListener.volume);
-            AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
-        }
-#endif
+
     }
 
     void OnCollisionEnter(Collision col)
