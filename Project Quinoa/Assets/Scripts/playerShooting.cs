@@ -6,7 +6,8 @@ using UnityEngine.Analytics;
 public class playerShooting : MonoBehaviour {
 
     public string fire;
-    private bool fireFlag, doubleKillTrigger, multiKillTrigger;
+    private bool doubleKillTrigger, multiKillTrigger;
+    public bool fireFlag;
     public float shootingRange;
     WeaponData weaponData;
     public float doubleKillTime, multiKillTime;
@@ -35,9 +36,12 @@ public class playerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	      if(Input.GetButton(fire) && fireFlag) //player shooting
+        if (GetComponent<SphereCollider>().enabled == false) //only execute this statement for the own player, not for the bots
         {
-            Fire();
+            if (Input.GetButton(fire) && fireFlag) //player shooting
+            {
+                Fire();
+            }
         }
     }
 
@@ -58,20 +62,36 @@ public class playerShooting : MonoBehaviour {
         //edit from here
 
 
-
         //hit detection with hitscan, used for sniper rifle and laser gun
         if (weaponData.weaponID == 1 || weaponData.weaponID == 2) // if the weapon used is a sniper rifle or laser gun
         {
-
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Vector3 shootingOrigin = Vector3.zero, shootingDirection = Vector3.zero;
+            if (GetComponent<SphereCollider>().enabled == false) //real player
+            {
+                //ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                shootingOrigin = Camera.main.transform.position;
+                shootingDirection = Camera.main.transform.forward;
+            }
+            else if(GetComponent<SphereCollider>().enabled == true) //bot player
+            {
+                Transform tf = transform.FindChild("BotCameraPoint");
+                shootingOrigin = tf.position;
+                shootingDirection = tf.forward;
+            }
+            else
+            {
+                Debug.Log("something went wrong");
+            }
+            Ray ray = new Ray(shootingOrigin, shootingDirection);
             Transform hitTransform; //transform of the hit object (hitscan only for now)
             Vector3 hitPoint; //the exact coordinates of the hit face; used as endpoint of 'laser beam' ray and for ricochets in the future
 
             hitTransform = FindClosestHitInfo(ray, out hitPoint);// find out which object was hit with raycasting; used for weapons with hitscan (instant fire weapons)
-
+            Debug.Log(hitTransform.GetComponentInChildren<SphereCollider>());
+            Debug.Log("hit!");
 
             //------------- apply health changes-------------------------------------------------------------
-            if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood") && hitTransform.gameObject.name != "taartschep")
+            if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood"))
             {
                 Health h = hitTransform.GetComponent<Health>();
 
@@ -80,14 +100,17 @@ public class playerShooting : MonoBehaviour {
                     hitTransform = hitTransform.parent;
                     h = hitTransform.GetComponent<Health>();
                 }
+                Debug.Log(h);
 
                 if (h != null) //only execute when the hit object has a health script
                 {
                     TeamMember tm = hitTransform.GetComponent<TeamMember>(); //lookup the team information of the hit object
                     TeamMember myTm = this.GetComponent<TeamMember>();
-
+                    Debug.Log(tm.teamID);
+                    Debug.Log(myTm.teamID);
                     if (tm == null || tm.teamID == 0 || myTm == null || myTm.teamID == 0 || tm.teamID != myTm.teamID)
                     {
+                        Debug.Log("pass!");
                         Analytics.CustomEvent("Hit enemy!", new Dictionary<string, object>
                         {
                            {"teamID hit :", tm.teamID },
