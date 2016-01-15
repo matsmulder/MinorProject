@@ -48,7 +48,7 @@ public class Bot : MonoBehaviour{
     public void Start()
     {
         plsh = GetComponent<playerShooting>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
         index = calculator.addBot(this);
