@@ -12,7 +12,7 @@ public class Plotter : MonoBehaviour
     public GameObject SVTracker;
 
     //private static double cpGSV = 5;
-    //private static double cGSV = 0.30;
+    private static double cGSV = 0.30;
     //private static double cLSV = 2;
 
     public void Start()
@@ -30,9 +30,9 @@ public class Plotter : MonoBehaviour
         map = calculator.getMap();
         foreach (Vector3 point in map)
         {
-            //Instantiate(SVTracker, new Vector3(point.x, (float)(cGSV*calculator.GSV(point)), point.z), Quaternion.identity);
-            //Instantiate(SVTracker, new Vector3(point.x, (float)(cLSV*bot.LSV(point)+30), point.z), Quaternion.identity);
-            Instantiate(SVTracker, new Vector3(point.x, (float)(bot.SV(point)+50), point.z), Quaternion.identity);
+            //Instantiate(SVTracker, new Vector3(point.x, (float)(cGSV*calculator.GSV(point)+55), point.z), Quaternion.identity);
+            //Instantiate(SVTracker, new Vector3(point.x, (float)(cLSV*bot.LSV(point)+55), point.z), Quaternion.identity);
+            Instantiate(SVTracker, new Vector3(point.x, (float)(bot.SV(point)+55), point.z), Quaternion.identity);
         }
     }
 }
