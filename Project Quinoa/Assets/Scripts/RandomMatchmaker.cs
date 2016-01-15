@@ -333,7 +333,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 }
 			}
 			if (inReadyScreen) {
-				readyAmountPlayers.text = ((int)PhotonNetwork.room.playerCount + "/" + (int)PhotonNetwork.room.maxPlayers);
+				readyAmountPlayers.text = ((int)PhotonNetwork.room.customProperties["PlayersReady"] + "/" + (int)PhotonNetwork.room.maxPlayers);
 			}
 		}
 	}
@@ -346,7 +346,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 				teamID = 1;
 				UpdateCustomProperties("CountFF", true);
 				canvas_Ready.SetActive(true);
-			}
+                //PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
+            }
 			else
 			{
                 //DisplayDialog("Amount of FastFoodLovers allready full, please choose the other team");
@@ -359,7 +360,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 				teamID = 2;
 				UpdateCustomProperties("CountSF", true);
 				canvas_Ready.SetActive(true);
-			}
+                //PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
+            }
 			else
 			{
                 //MessageBox.Show("Amount of SuperFoodLovers allready full, please choose the other team");
@@ -421,8 +423,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			else{
 				maxPlayer = int.Parse(createGameMaxPlayers.text);
 			}
-            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
-			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
+            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime", "ReadyPlayers"};
+			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 }, { "PlayersReady", 0 } };
 
 #pragma warning disable 0618 // Type or member is obsolete
             PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -453,6 +455,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
             PhotonNetwork.room.customProperties[customProp] = prevValue + 1;
+            PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             ready = true;
             PhotonNetwork.player.customProperties["Ready"] = true;
@@ -462,6 +465,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
             PhotonNetwork.room.customProperties[customProp] = prevValue - 1;
+            PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] - 1;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             ready = false;
             PhotonNetwork.player.customProperties["Ready"] = false;
@@ -509,7 +513,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void OnPhotonRandomJoinFailed()
     {
         string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
-        ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
+        ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 }, { "PlayersReady", 0 } };
 
 #pragma warning disable 0618 // Type or member is obsolete
         PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -518,11 +522,17 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        //ALWAY INITIALIZE
-        if (!PhotonNetwork.room.customProperties.ContainsKey("CountFF"))
+        ////ALWAY INITIALIZE
+        //if (!PhotonNetwork.room.customProperties.ContainsKey("CountFF"))
+        //{
+        //    Debug.Log("Initialized");
+        //    PhotonNetwork.room.customProperties["CountFF"] = 0;
+        //    PhotonNetwork.room.customProperties["CountSF"] = 0;
+        //    PhotonNetwork.room.customProperties["PlayersReady"] = 0;
+        //}         //Should be done on room creation
+        foreach (string key in PhotonNetwork.room.customProperties.Keys)
         {
-            PhotonNetwork.room.customProperties["CountFF"] = 0;
-            PhotonNetwork.room.customProperties["CountSF"] = 0;
+            Debug.Log(key);
         }
         PhotonNetwork.room.customProperties["FFDeaths"] = 0;
         PhotonNetwork.room.customProperties["SFDeaths"] = 0;
