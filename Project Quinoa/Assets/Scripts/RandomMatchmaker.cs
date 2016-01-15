@@ -29,7 +29,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public float respawnTimer;
     private bool ready = false;
     public static bool offlineMode;
-    status stat;
+    public status stat;
     private bool once;
     private bool allready;
     public bool allPickedUp;

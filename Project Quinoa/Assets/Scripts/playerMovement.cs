@@ -219,35 +219,16 @@ public class playerMovement : MonoBehaviour {
             }
 
             //add upwards force upon pressing the jump key
-            //if (Input.GetKeyDown(keys["jump"]))
             if (Input.GetKeyDown("space"))
             {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
-
-            //if (touchingFix)
-            //{
-            //    //previousTime = Time.fixedTime;
-            //   // Debug.Log(previousTime);
-            //}
-
-            //if (touchingGround) //|| (Time.fixedTime - previousTime > 0.2 && touchingFix)
-            //{
-            //    touchingFix = false;
-            //}
+            
 
         }
         else
         {
-            //if(Mathf.Abs(previousHeight - transform.position.y) < thresholdHeight)
-            //{
-            //    //previousTime = Time.fixedTime;
-            //    touchingFix = true;
-            //}
-            //else
-            //{
-            //    //touchingFix = false;
-            //}
+            
         }
 
         if (Input.GetKeyDown("m"))
