@@ -87,7 +87,6 @@ public class playerShooting : MonoBehaviour {
             Vector3 hitPoint; //the exact coordinates of the hit face; used as endpoint of 'laser beam' ray and for ricochets in the future
 
             hitTransform = FindClosestHitInfo(ray, out hitPoint);// find out which object was hit with raycasting; used for weapons with hitscan (instant fire weapons)
-            Debug.Log(hitTransform.GetComponentInChildren<SphereCollider>());
             Debug.Log("hit!");
 
             //------------- apply health changes-------------------------------------------------------------
