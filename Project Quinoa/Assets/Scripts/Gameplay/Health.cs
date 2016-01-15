@@ -35,11 +35,25 @@ public class Health : MonoBehaviour {
 
         if(currentHitPoints <= 0 && gameObject.tag != "fastfood" && gameObject.tag != "superfood") //only allow negative health for players
         {
+            for (int i = 0; i != calculator.getAllTargets(); i++)
+            {
+                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                {
+                    calculator.deleteTarget(i, this.gameObject);
+                }
+            }
             Die();
         }
 
         if(currentHitPoints == 0 && (gameObject.tag == "fastfood" || gameObject.tag == "superfood")) //only call Die() when hitpoints of pickup are equal to zero
         {
+            for (int i = 0; i != calculator.getAllTargets(); i++)
+            {
+                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                {
+                    calculator.deleteTarget(i, this.gameObject);
+                }
+            }
             Die();
         }
     }
