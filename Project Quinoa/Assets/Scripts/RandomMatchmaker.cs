@@ -29,7 +29,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public float respawnTimer;
     private bool ready = false;
     public static bool offlineMode;
-    status stat;
+    public status stat;
     private bool once;
     private bool allready;
     public bool allPickedUp;
@@ -333,7 +333,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
                 }
 			}
 			if (inReadyScreen) {
-				readyAmountPlayers.text = ((int)PhotonNetwork.room.playerCount + "/" + (int)PhotonNetwork.room.maxPlayers);
+				readyAmountPlayers.text = ((int)PhotonNetwork.room.customProperties["PlayersReady"] + "/" + (int)PhotonNetwork.room.maxPlayers);
 			}
 		}
 	}
@@ -346,10 +346,12 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 				teamID = 1;
 				UpdateCustomProperties("CountFF", true);
 				canvas_Ready.SetActive(true);
-			}
+                //PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
+            }
 			else
 			{
-				//DisplayDialog("Amount of FastFoodLovers allready full, please choose the other team");
+                //DisplayDialog("Amount of FastFoodLovers allready full, please choose the other team");
+                Debug.Log("team Wholo is full");
 			}
 		}
 		else{					// superfood
@@ -358,10 +360,12 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 				teamID = 2;
 				UpdateCustomProperties("CountSF", true);
 				canvas_Ready.SetActive(true);
-			}
+                //PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
+            }
 			else
 			{
-				//MessageBox.Show("Amount of SuperFoodLovers allready full, please choose the other team");
+                //MessageBox.Show("Amount of SuperFoodLovers allready full, please choose the other team");
+                Debug.Log("team Trump is full");
 			}
 		}
 	}
@@ -419,8 +423,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			else{
 				maxPlayer = int.Parse(createGameMaxPlayers.text);
 			}
-            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
-			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
+            string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime", "ReadyPlayers"};
+			ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 }, { "PlayersReady", 0 } };
 
 #pragma warning disable 0618 // Type or member is obsolete
             PhotonNetwork.CreateRoom(createGameName.text, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -451,6 +455,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
             PhotonNetwork.room.customProperties[customProp] = prevValue + 1;
+            PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] + 1;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             ready = true;
             PhotonNetwork.player.customProperties["Ready"] = true;
@@ -460,6 +465,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         {
             int prevValue = (int)PhotonNetwork.room.customProperties[customProp];
             PhotonNetwork.room.customProperties[customProp] = prevValue - 1;
+            PhotonNetwork.room.customProperties["PlayersReady"] = (int)PhotonNetwork.room.customProperties["PlayersReady"] - 1;
             PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.customProperties);
             ready = false;
             PhotonNetwork.player.customProperties["Ready"] = false;
@@ -470,9 +476,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public bool checkJoinConditions(int ID)
     {
         maxPlayer = PhotonNetwork.room.maxPlayers;
+        //Debug.Log("check join condition " + ID);
         if(ID == 1)
         {
-            if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
+            if ((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
                 teamFull.SetActive(false);
                 return true;
@@ -506,7 +513,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void OnPhotonRandomJoinFailed()
     {
         string[] roomPropsInLobby = { "CountFF", "CountSF", "StartingTime"};
-        ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 } };
+        ExitGames.Client.Photon.Hashtable customRoomProps = new ExitGames.Client.Photon.Hashtable() { { "CountFF", 0 }, { "CountSF", 0 }, { "PlayersReady", 0 } };
 
 #pragma warning disable 0618 // Type or member is obsolete
         PhotonNetwork.CreateRoom(roomName, true, true, maxPlayer, customRoomProps, roomPropsInLobby);
@@ -515,9 +522,18 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        //ALWAY INITIALIZE
-        PhotonNetwork.room.customProperties["CountFF"] = 0;
-        PhotonNetwork.room.customProperties["CountSF"] = 0;
+        ////ALWAY INITIALIZE
+        //if (!PhotonNetwork.room.customProperties.ContainsKey("CountFF"))
+        //{
+        //    Debug.Log("Initialized");
+        //    PhotonNetwork.room.customProperties["CountFF"] = 0;
+        //    PhotonNetwork.room.customProperties["CountSF"] = 0;
+        //    PhotonNetwork.room.customProperties["PlayersReady"] = 0;
+        //}         //Should be done on room creation
+        foreach (string key in PhotonNetwork.room.customProperties.Keys)
+        {
+            Debug.Log(key);
+        }
         PhotonNetwork.room.customProperties["FFDeaths"] = 0;
         PhotonNetwork.room.customProperties["SFDeaths"] = 0;
         PhotonNetwork.player.customProperties["Lost"] = 0;
@@ -616,7 +632,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         player.GetComponent<playerShooting>().enabled = true;
         //player.GetComponent<Bot>().enabled = false;
         //player.GetComponent<SphereCollider>().enabled = false;
-        player.transform.FindChild("Main Camera").gameObject.SetActive(true);
+        Transform cam1 = player.transform.FindChild("Main Camera");
+        cam1.gameObject.SetActive(true);
+        //cam1.GetComponent<AudioListener>().enabled = false;
         player.GetComponent<PhotonView>().RPC("SetTeamID", PhotonTargets.AllBuffered, teamID);
 
         //disable mesh renderer for local player
@@ -625,9 +643,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
             player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
             //also parent WeaponHolder to the FP camera
-            Transform cam = player.gameObject.transform.FindChild("Main Camera");
+            //Transform cam = player.gameObject.transform.FindChild("Main Camera");
             Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
-            wph.transform.parent = cam;
+            wph.transform.parent = cam1;
         }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
@@ -662,6 +680,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(true);
@@ -675,6 +694,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
         GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
+        bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
         bot.gameObject.transform.FindChild("hipster").gameObject.SetActive(true);
         bot.gameObject.transform.FindChild("human").gameObject.SetActive(false);

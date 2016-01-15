@@ -147,7 +147,9 @@ public class Bot : MonoBehaviour{
 
             if (ammo > 0 && shootFlag)
             {
+
                 targets = calculator.getTargets(index);
+
                 if (targets.Count > 0)
                 {
                     minTarget = targets[0];
@@ -235,18 +237,20 @@ public class Bot : MonoBehaviour{
             }
             //if (shootFlag)
             //{
-                //Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, Quaternion.identity) as Rigidbody;
-                //clone.velocity = new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed;
-                RaycastHit hit;
-                if (Physics.Raycast(new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, (new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed).normalized, out hit, col.radius))
-                {
-                    if (opponents.IndexOf(hit.transform.gameObject)!=-1)
-                    {
-                        //Health Reduction Here
-                    }
-                }
-                ammo = ammo - 1;
-                StartCoroutine(bullet());
+            //Rigidbody clone = Instantiate(prefabBullet, new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, Quaternion.identity) as Rigidbody;
+            //clone.velocity = new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed;
+            Debug.Log("shoot!");
+                
+                //RaycastHit hit;
+                //if (Physics.Raycast(new Vector3(rb.position.x, rb.position.y, rb.position.z) + this.transform.forward.normalized, (new Vector3(target.transform.position.x - this.transform.position.x, 1, target.transform.position.z - this.transform.position.z) * bulletSpeed).normalized, out hit, col.radius))
+                //{
+                //    if (opponents.IndexOf(hit.transform.gameObject)!=-1)
+                //    {
+                //        //Health Reduction Here
+                //    }
+                //}
+                //ammo = ammo - 1;
+                //StartCoroutine(bullet());
             //}
         }
     }
@@ -327,11 +331,11 @@ public class Bot : MonoBehaviour{
         {
             foreach (GameObject player in players)
             {
-                if (GetComponent<Bot>().team == 1)
+                if (player.GetComponent<TeamMember>().teamID == 1)
                 {
                     opponents.Add(player);
                 }
-                else if (GetComponent<Bot>().team == 2)
+                else if (player.GetComponent<TeamMember>().teamID == 2)
                 {
                     teamMates.Add(player);
                 }
@@ -341,11 +345,11 @@ public class Bot : MonoBehaviour{
         {
             foreach (GameObject player in players)
             {
-                if (GetComponent<Bot>().team == 1)
+                if (player.GetComponent<TeamMember>().teamID == 1)
                 {
                     teamMates.Add(player);
                 }
-                else if (GetComponent<Bot>().team == 2)
+                else if (player.GetComponent<TeamMember>().teamID == 2)
                 {
                     opponents.Add(player);
                 }

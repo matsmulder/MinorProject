@@ -112,9 +112,7 @@ public class playerMovement : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(pauseMenu);
         pauseMenu = GameObject.FindObjectOfType<Pause_Menu>();
-        Debug.Log(pauseMenu);
     }
 	
 	// Update is called once per frame
@@ -221,36 +219,24 @@ public class playerMovement : MonoBehaviour {
             }
 
             //add upwards force upon pressing the jump key
-            //if (Input.GetKeyDown(keys["jump"]))
             if (Input.GetKeyDown("space"))
             {
                 rb.AddForce(Vector3.up * jumpHeight);
             }
-
-            //if (touchingFix)
-            //{
-            //    //previousTime = Time.fixedTime;
-            //   // Debug.Log(previousTime);
-            //}
-
-            //if (touchingGround) //|| (Time.fixedTime - previousTime > 0.2 && touchingFix)
-            //{
-            //    touchingFix = false;
-            //}
+            
 
         }
         else
         {
-            //if(Mathf.Abs(previousHeight - transform.position.y) < thresholdHeight)
-            //{
-            //    //previousTime = Time.fixedTime;
-            //    touchingFix = true;
-            //}
-            //else
-            //{
-            //    //touchingFix = false;
-            //}
+            
         }
+#if UNITY_EDITOR
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log(AudioListener.volume);
+            AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
+        }
+#endif
     }
 
     void OnCollisionEnter(Collision col)
@@ -315,12 +301,6 @@ public class playerMovement : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (PhotonView.Get(this).isMine)
-        {
-            Debug.Log("Destroyed");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
         
     }
 
