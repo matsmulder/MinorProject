@@ -472,10 +472,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public bool checkJoinConditions(int ID)
     {
         maxPlayer = PhotonNetwork.room.maxPlayers;
-        Debug.Log("check join condition " + ID);
+        //Debug.Log("check join condition " + ID);
         if(ID == 1)
         {
-            if((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
+            if ((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
                 teamFull.SetActive(false);
                 return true;
@@ -519,8 +519,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void OnJoinedRoom()
     {
         //ALWAY INITIALIZE
-        PhotonNetwork.room.customProperties["CountFF"] = 0;
-        PhotonNetwork.room.customProperties["CountSF"] = 0;
+        if (!PhotonNetwork.room.customProperties.ContainsKey("CountFF"))
+        {
+            PhotonNetwork.room.customProperties["CountFF"] = 0;
+            PhotonNetwork.room.customProperties["CountSF"] = 0;
+        }
         PhotonNetwork.room.customProperties["FFDeaths"] = 0;
         PhotonNetwork.room.customProperties["SFDeaths"] = 0;
         PhotonNetwork.player.customProperties["Lost"] = 0;
