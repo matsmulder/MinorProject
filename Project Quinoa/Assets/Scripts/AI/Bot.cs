@@ -12,7 +12,7 @@ public class Bot : MonoBehaviour{
     public int health;
     private int team;
     private int index;
-
+    private Rigidbody rb;
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
     public float sensitivity;// = 0.75f;

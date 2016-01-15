@@ -57,6 +57,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
         if(col.gameObject.CompareTag("Player"))
         {
             pushing = true;
+            Debug.Log(pushing);
         }
     }
 
@@ -65,6 +66,7 @@ public class NetworkPickup : Photon.MonoBehaviour {
         if(col.gameObject.CompareTag("Player"))
         {
             pushing = false;
+            Debug.Log(pushing);
         }
     }
 
