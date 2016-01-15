@@ -13,6 +13,7 @@ public class Bot : MonoBehaviour{
     private int team;
     private int index;
     private Rigidbody rb;
+
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
     public float sensitivity;// = 0.75f;
@@ -20,7 +21,6 @@ public class Bot : MonoBehaviour{
     private Vector3[] bestPoints;
     private float[] bestPointsSV;
     private Vector3 bestPoint;
-    private Rigidbody rb;
 
     //Bot Shooting variables
     private float rotateToTargetSpeed = 10;
