@@ -472,35 +472,29 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public bool checkJoinConditions(int ID)
     {
         maxPlayer = PhotonNetwork.room.maxPlayers;
-        Debug.Log("check join condition " + ID);
+        //Debug.Log("check join condition " + ID);
         if(ID == 1)
         {
-            Debug.Log("Checking for fastfood: " + PhotonNetwork.room.customProperties["CountFF"] + " " + 0.5 * maxPlayer);
             if ((int) PhotonNetwork.room.customProperties["CountFF"] < 0.5 * maxPlayer)
             {
                 teamFull.SetActive(false);
-                Debug.Log("Not full");
                 return true;
             }
             else
             {
-                Debug.Log("Full");
                 teamFull.SetActive(true);
                 return false;
             }
 
         }
         else if(ID == 2){
-            Debug.Log("Checking for superfood: " + PhotonNetwork.room.customProperties["CountSF"] + " " + 0.5 * maxPlayer);
             if ((int)PhotonNetwork.room.customProperties["CountSF"] < 0.5 * maxPlayer)
             {
-                Debug.Log("Not full");
                 teamFull.SetActive(false);
 				return true;
 			}
             else
             {
-                Debug.Log("Full");
                 teamFull.SetActive(true);
                 return false;
             }
