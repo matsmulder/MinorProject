@@ -39,7 +39,7 @@ public class Bot : MonoBehaviour{
     private double playerConstant = 8;
     private double ammoConstant = 1;
     private double healthConstant = 1;
-    private static double cGSV = 0.30;
+    private static double cGSV = -0.30;
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
@@ -117,7 +117,7 @@ public class Bot : MonoBehaviour{
 
     public double SV(Vector3 point)
     {
-        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);// + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
+        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point) + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
     }
 
     public void FixedUpdate()
