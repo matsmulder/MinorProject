@@ -29,13 +29,13 @@ public class WeaponSwitching : Photon.MonoBehaviour {
         weaponList = new GameObject[transform.childCount];
 
 
-        //int i = 0;
-        //foreach (Transform child in transform)
-        //{
-        //    weaponList[i] = child.gameObject;
-        //    weaponList[i].SetActive(true);
-        //    i++;
-        //}
+        int i = 0;
+        foreach (Transform child in transform)
+        {
+            weaponList[i] = child.gameObject;
+            //weaponList[i].SetActive(true);
+            i++;
+        }
     }
 	
 	// Update is called once per frame
