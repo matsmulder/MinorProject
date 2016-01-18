@@ -486,7 +486,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             }
             else
             {
-                teamFull.SetActive(true);
+                //teamFull.SetActive(true);
+                StartCoroutine(fullMessage(teamFull));
                 return false;
             }
 
@@ -499,7 +500,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			}
             else
             {
-                teamFull.SetActive(true);
+                //teamFull.SetActive(true);
+                StartCoroutine(fullMessage(teamFull));
                 return false;
             }
         }
@@ -753,6 +755,13 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 		Cursor.visible = true;
 		Debug.Log("testarossa");
 	}
+
+    IEnumerator fullMessage(GameObject panel)
+    {
+        panel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        panel.SetActive(false);
+    }
 }
 
 public enum status
