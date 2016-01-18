@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 public class Health : MonoBehaviour {
 
     public float hitPoints;
-    private float currentHitPoints;
+    public float currentHitPoints;
     private Calculator calculator;
     private RandomMatchmaker rm;
 	// Use this for initialization
@@ -33,25 +33,17 @@ public class Health : MonoBehaviour {
         currentHitPoints -= amount;
         Debug.Log(currentHitPoints);
 
-        if(currentHitPoints <= 0 && gameObject.tag != "fastfood" && gameObject.tag != "superfood") //only allow negative health for players
+        if(currentHitPoints <= 0) //only allow negative health for players
         {
-            for (int i = 0; i != calculator.getAllTargets(); i++)
+            if (RandomMatchmaker.offlineMode)
             {
-                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                Debug.Log("calculator");
+                for (int i = 0; i != calculator.getAllTargets(); i++)
                 {
-                    calculator.deleteTarget(i, this.gameObject);
-                }
-            }
-            Die();
-        }
-
-        if(currentHitPoints == 0 && (gameObject.tag == "fastfood" || gameObject.tag == "superfood")) //only call Die() when hitpoints of pickup are equal to zero
-        {
-            for (int i = 0; i != calculator.getAllTargets(); i++)
-            {
-                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
-                {
-                    calculator.deleteTarget(i, this.gameObject);
+                    if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                    {
+                        calculator.deleteTarget(i, this.gameObject);
+                    }
                 }
             }
             Die();
@@ -68,15 +60,15 @@ public class Health : MonoBehaviour {
            {"died object", gameObject.tag },
            {"position", gameObject.transform.position }
        });
-        RandomMatchmaker rmm = GameObject.FindObjectOfType<RandomMatchmaker>();
+        //RandomMatchmaker rmm = GameObject.FindObjectOfType<RandomMatchmaker>();
 
         if(GetComponent<SphereCollider>().enabled) //this is a bot
         {
-            rmm.playerKind = false;
+            rm.playerKind = false;
         }
         else if(!GetComponent<SphereCollider>().enabled) //this is a player
         {
-            rmm.playerKind = true;
+            rm.playerKind = true;
         }
         else
         {
@@ -91,10 +83,8 @@ public class Health : MonoBehaviour {
         {
             if (GetComponent<PhotonView>().isMine) // this is MY player object
             {
-                if (gameObject.tag == "Player")
-                {
-                    RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
-				
+                //RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
+                Debug.Log("photonview ismine");
 					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
 					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
@@ -115,28 +105,27 @@ public class Health : MonoBehaviour {
                     //if (!RandomMatchmaker.offlineMode)
                     if(GetComponent<SphereCollider>().enabled == false) //only activate standby camera for real player upon dying
                     {
-                        nm.standby.SetActive(true);
+                        Debug.Log(rm.standby);
+                        rm.standby.SetActive(true);
                     }
-                    nm.respawnTimer = 2; //set the respawn time to 2 sec
+                    rm.respawnTimer = 2; //set the respawn time to 2 sec
 
-                    for (int i = 0; i != calculator.getAllTargets(); i++)
+                    if (RandomMatchmaker.offlineMode)
                     {
-                        if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                        for (int i = 0; i != calculator.getAllTargets(); i++)
                         {
-                            calculator.deleteTarget(i, this.gameObject);
+                            if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
+                            {
+                                calculator.deleteTarget(i, this.gameObject);
+                            }
                         }
                     }
-                }
-
-                if (gameObject.tag == "fastfood")
-                {
-                    scoreManager.numberOfFastPickups--;
-                }
-                if (gameObject.tag == "superfood")
-                {
-                    scoreManager.numberOfSuperPickups--;
-                }
+                
                 PhotonNetwork.Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("don't know, is this condition even reachable?");
             }
         }
         
