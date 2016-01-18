@@ -24,7 +24,6 @@ public class Bot : MonoBehaviour{
 
     //Bot Shooting variables
     private float rotateToTargetSpeed = 10;
-    private float bulletSpeed = 50;
     private float fireRate = 1;//0.5f;
     private bool playerInSight;
     public Rigidbody prefabBullet;
@@ -41,7 +40,7 @@ public class Bot : MonoBehaviour{
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
-    private double cpGSV = 5;
+    private double cpGSV = 10;
     private Vector3 goal = new Vector3(13.5f,-30f,-7.5f);
     private List<GameObject> teamMates=new List<GameObject>();
     private List<GameObject> opponents=new List<GameObject>();

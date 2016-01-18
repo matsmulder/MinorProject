@@ -67,9 +67,7 @@ public class Calculator:MonoBehaviour
 
     public double GSV(Vector3 point)
     {
-        //GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
-        GameObject[] walls = new GameObject[1];
-        walls[0] = GameObject.FindGameObjectWithTag("wall");
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("wall");
         double GSV = 0;
         double height = 0;
         foreach (GameObject obj in walls)
@@ -91,12 +89,14 @@ public class Calculator:MonoBehaviour
             if (obj.GetComponent<Collider>().bounds.size.x < obj.GetComponent<Collider>().bounds.size.z)
             {
                 length = obj.GetComponent<Collider>().bounds.size.z;
-                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x*Math.Cos(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y)));
-                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z*-Math.Sin(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y)));
-                position = (wallCenter+l)* Vector3.Dot(point,wallCenter+l)/Vector3.Dot(wallCenter+l,wallCenter+l);
+                //l = new Vector3(obj.GetComponent<Collider>().bounds.size.x, 0, 0);
+                //L = new Vector3(0, 0, obj.GetComponent<Collider>().bounds.size.z);
+                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x*Math.Cos(obj.transform.rotation.y*Mathf.Deg2Rad)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y*Mathf.Deg2Rad)));
+                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z*-Math.Sin(obj.transform.rotation.y*Mathf.Deg2Rad)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y*Mathf.Deg2Rad)));
+                position = wallCenter + (l) * Vector3.Dot(point - wallCenter, l) / Vector3.Dot(l, l);
                 if (Vector3.Distance(point, position) > length)
                 {
-                    Vector3 position2 = (wallCenter + L) * Vector3.Dot(point, wallCenter + L) / Vector3.Dot(wallCenter + L, wallCenter + L);
+                    Vector3 position2 = wallCenter + (L) * Vector3.Dot(point - wallCenter, L) / Vector3.Dot(L, L);
                     if (Vector3.Distance(wallCenter - l, position)< Vector3.Distance(wallCenter + l, position))
                     {
                         if (Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))
@@ -119,7 +119,7 @@ public class Calculator:MonoBehaviour
                             GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + L, position2) / wallConst, 2));
                         }
                     }
-                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position2) / wallConst, 2));
                 }
                 else
                 {
@@ -131,19 +131,22 @@ public class Calculator:MonoBehaviour
                     {
                         GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter + l, position) / wallConst, 2));
                     }
-                    //GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
+                    GSV = GSV + (height) * Math.Exp(-Math.Pow(Vector3.Distance(wallCenter, position) / wallConst, 2));
                 }
             }
             else
             {
-                position = new Vector3(obj.transform.position.x, point.y, point.z);
                 length = obj.GetComponent<Collider>().bounds.size.z;
-                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x * Math.Cos(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y)));
-                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z * -Math.Sin(obj.transform.rotation.y)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y)));
-                position = (wallCenter + l) * Vector3.Dot(point, wallCenter + l) / Vector3.Dot(wallCenter + l, wallCenter + l);
+                //L = new Vector3(obj.GetComponent<Collider>().bounds.size.x, 0, 0);
+                //l = new Vector3(0, 0, obj.GetComponent<Collider>().bounds.size.z);
+                //position = new Vector3(obj.transform.position.x, point.y, point.z);
+                L = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.x * Math.Cos(obj.transform.rotation.y*Mathf.Deg2Rad)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.x * Math.Sin(obj.transform.rotation.y*Mathf.Deg2Rad)));
+                l = new Vector3((float)(obj.GetComponent<Collider>().bounds.size.z * -Math.Sin(obj.transform.rotation.y*Mathf.Deg2Rad)), 0f, (float)(obj.GetComponent<Collider>().bounds.size.z * Math.Cos(obj.transform.rotation.y*Mathf.Deg2Rad)));
+                position = wallCenter + (l) * Vector3.Dot(point - wallCenter, l) / Vector3.Dot(l, l);
                 if (Vector3.Distance(point, position) > length)
                 {
-                    Vector3 position2 = (wallCenter + L) * Vector3.Dot(point, wallCenter + L) / Vector3.Dot(wallCenter + L, wallCenter + L);
+                    Vector3 position2 = wallCenter + (L) * Vector3.Dot(point - wallCenter, L) / Vector3.Dot(L, L);
+                    //Vector3 position2 = new Vector3(point.x, point.y, obj.transform.position.z);
                     if (Vector3.Distance(wallCenter - l, position) < Vector3.Distance(wallCenter + l, position))
                     {
                         if (Vector3.Distance(wallCenter - L, position2) < Vector3.Distance(wallCenter + L, position2))

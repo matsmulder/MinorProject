@@ -8,9 +8,11 @@ public class Health : MonoBehaviour {
     public float hitPoints;
     private float currentHitPoints;
     private Calculator calculator;
+#pragma warning disable 0414 // Type or member is obsolete
     private RandomMatchmaker rm;
-	// Use this for initialization
-	void Start () {
+#pragma warning disable 0414 // Type or member is obsolete
+    // Use this for initialization
+    void Start () {
         rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
 		PhotonNetwork.player.customProperties["Deaths"] = 0;
