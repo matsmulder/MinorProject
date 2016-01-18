@@ -61,6 +61,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public Button lobbyButton1;
 	public Button lobbyButton2;
 	public Button lobbyButton3;
+    public bool[] activeRooms;
 	public Text createGameName;
 	public Text createGameMaxPlayers;
 	public Button createGame;
@@ -117,6 +118,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         lobbyNames[0] = lobbyName1;
         lobbyNames[1] = lobbyName2;
         lobbyNames[2] = lobbyName3;
+        activeRooms = new bool[3];
         //allocate space for spawnspots
         //the length of SpawnSpotsFast and SpawnSpotsSuper is half of the total number of SpawnSpots
         //this is because there are always the same number of spawnspots per team
@@ -318,8 +320,24 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 					for (int i = 0; i < PhotonNetwork.GetRoomList().Length; i++) {
 						lobbyNames [i].text = roomList [i].name;
 						lobbyPlayers [i].text = roomList [i].playerCount.ToString();
-					}
+                        activeRooms[i] = true;
+                    }
+                    for (int i = PhotonNetwork.GetRoomList().Length; i<3; i++)
+                    {
+                        lobbyNames[i].text = "Empty room";
+                        lobbyPlayers[i].text = "0";
+                        activeRooms[i] = false;
+                    }
 				}
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        lobbyNames[i].text = "Empty room";
+                        lobbyPlayers[i].text = "0";
+                        activeRooms[i] = false;
+                    }
+                }
 			}
 			//if (inCreateGameScreen) {
 			// 		<- this is done in an public void method and is called when the create game button is clicked.
