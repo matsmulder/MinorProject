@@ -13,11 +13,12 @@ public class FacebookManager : MonoBehaviour {
 
     public void ShareToFacebook()
     {
-		string linkParameter = "Tip: https://drproject.twi.tudelft.nl/ewi3620tu1/Index.html"; 
-		string nameParameter = "Just played Project Quinoa, download the game here.";
+	
+		string linkParameter = "http://drproject.twi.tudelft.nl:8082/home/"; 
+		string nameParameter = "Just played Project Quinoa, download the game here!";
 		string captionParameter = "Picture of the game"; 
 		string descriptionParameter = "Game made by gamestudio: Project Quinoa";
-		string pictureParameter = "https://drproject.twi.tudelft.nl/ewi3620tu1/ProjectQuinoaPicture.png";
+		string pictureParameter = "http://drproject.twi.tudelft.nl:8082/home/ProjectQuinoaPicture.jpg/";
 		string redirectParameter = "https://www.facebook.com/";
 
         /* PARAMETERS:
