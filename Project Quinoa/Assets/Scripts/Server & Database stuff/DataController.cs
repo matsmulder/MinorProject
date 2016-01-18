@@ -23,7 +23,7 @@ public class DataController{
 		string json = DBJSON.toJson();
 
 		// ini web
-		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/postStats");
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/postStats");
 		httpWebRequest.ContentType = "text/json";
 		httpWebRequest.Method = "POST";
 
@@ -38,7 +38,7 @@ public class DataController{
 
 	public playerJson getDBData(string name){
 		// ini web
-		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/getStats");
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/getStats");
 		httpWebRequest.ContentType = "text/json";
 		httpWebRequest.Method = "POST";
 
@@ -90,7 +90,7 @@ public class DataController{
 		// ini web
 		Debug.Log ("ik kom hier!");
 
-		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/checkLogin");
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/checkLogin");
 		httpWebRequest.ContentType = "text/json";
 		httpWebRequest.Method = "POST";
 			
@@ -119,10 +119,10 @@ public class DataController{
 
 	public void makeAccount(string name, string password){
 		// ini web
-		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("https://drproject.twi.tudelft.nl:8082/makeLogin");
-		httpWebRequest.ContentType = "text/json";
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/makeLogin");
+		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
-	                        
+
 		// write away to the node.js 
 		var streamWriter = new StreamWriter (httpWebRequest.GetRequestStream ());
 		string json = "{\"User\":" + name + ","
