@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Facebook.MiniJSON;
+using Facebook.Unity;
+using System;
 
 public class FacebookManager : MonoBehaviour {
 
@@ -8,12 +11,13 @@ public class FacebookManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //FB.Init(InitCallback, OnHideUnity);
         DontDestroyOnLoad(this);
     }
-
+    
     public void ShareToFacebook()
     {
-	
+	    
 		string linkParameter = "http://drproject.twi.tudelft.nl:8082/home/"; 
 		string nameParameter = "Just played Project Quinoa, download the game here!";
 		string captionParameter = "Picture of the game"; 
@@ -39,6 +43,53 @@ public class FacebookManager : MonoBehaviour {
         "&redirect_uri=" + WWW.EscapeURL(redirectParameter));
     }
 
+    public void FBLogin()
+    {
+        var token = Guid.NewGuid().ToString();
+        //FB.LogInWithReadPermissions(new string[] { "user_profile", "user_friends" }, onLoginCallback);
+        Application.OpenURL(String.Format("https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&state={2}", FACEBOOK_APP_ID, "http://drproject.twi.tudelft.nl:8082/home/", token));
+        timeout();
+        Debug.Log(FB.IsLoggedIn);
+    }
+
+    IEnumerator timeout()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    //private void InitCallback()
+    //{
+    //    if (FB.IsInitialized)
+    //    {
+    //        FB.ActivateApp();
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Computer says no");
+    //    }
+    //}
+
+    //private void OnHideUnity(bool isGameShown)
+    //{
+    //    //if (!isGameShown)
+    //    //{
+    //    //    Time.timeScale = 0;
+    //    //}
+    //}
+
+    //private void onLoginCallback(ILoginResult res)
+    //{
+    //    Debug.Log(res);
+    //    if (FB.IsLoggedIn)
+    //    {
+    //        Debug.Log("yay");
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("computer says no :(");
+    //    }
+    //}
 
 
+    
 }

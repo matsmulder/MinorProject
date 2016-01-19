@@ -641,7 +641,9 @@ ModelImporter:
     7400004: Die_2
     7400006: Jump
     7400008: Walk_Action
+    7400010: Idle
     9500000: //RootNode
+    11100000: //RootNode
     13700000: BezierCurve_MeshPart0
     13700002: BezierCurve_MeshPart1
     13700004: BezierCurve_MeshPart2
@@ -667,13 +669,3361 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 10
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Die
+      firstFrame: -1
+      lastFrame: 88
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die_2
+      takeName: Die_2
+      firstFrame: 0
+      lastFrame: 63
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Jump
+      firstFrame: -1
+      lastFrame: 78
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk_Action
+      takeName: Walk_Action
+      firstFrame: -1
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Default Take
+      firstFrame: 10
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BezierCurve
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart0
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart1
+        weight: 1
+      - path: BezierCurve/BezierCurve_MeshPart2
+        weight: 1
+      - path: GZM_Ball025
+        weight: 1
+      - path: GZM_Breast_L
+        weight: 1
+      - path: GZM_Breast_R
+        weight: 1
+      - path: GZM_Circle025
+        weight: 1
+      - path: GZM_CircleChest
+        weight: 1
+      - path: GZM_CircleHips
+        weight: 1
+      - path: GZM_CircleSpine
+        weight: 1
+      - path: GZM_CrownHips
+        weight: 1
+      - path: GZM_Cube025
+        weight: 1
+      - path: GZM_FaceHead
+        weight: 1
+      - path: GZM_FaceJaw
+        weight: 1
+      - path: GZM_Foot
+        weight: 1
+      - path: GZM_FootIK
+        weight: 1
+      - path: GZM_Gaze
+        weight: 1
+      - path: GZM_Hand
+        weight: 1
+      - path: GZM_HandIK
+        weight: 1
+      - path: GZM_Head
+        weight: 1
+      - path: GZM_Jaw
+        weight: 1
+      - path: GZM_Knuckle
+        weight: 1
+      - path: GZM_LoLid
+        weight: 1
+      - path: GZM_Master
+        weight: 1
+      - path: GZM_Neck
+        weight: 1
+      - path: GZM_RevFoot
+        weight: 1
+      - path: GZM_RevToe
+        weight: 1
+      - path: GZM_Root
+        weight: 1
+      - path: GZM_Shoulder
+        weight: 1
+      - path: GZM_Toe
+        weight: 1
+      - path: GZM_Tongue
+        weight: 1
+      - path: GZM_UpLid
+        weight: 1
+      - path: humanquinoa
+        weight: 1
+      - path: humanquinoa/master
+        weight: 1
+      - path: humanquinoa/master/root
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/DEF-upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-forearm_01_L/DEF-forearm_02_L/DEF-forearm_03_L/DEF-hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/DEF-lat_dorsi_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_pinky_L/DEF-f_pinky_01_L/DEF-f_pinky_02_L/DEF-f_pinky_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-palm_ring_L/DEF-f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/DEF-thumb_01_L/DEF-thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/DEF-f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/DEF-f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_index_L/f_index_01_L/f_index_02_L/DEF-f_index_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_middle_L/DEF-f_middle_01_L/DEF-f_middle_02_L/DEF-f_middle_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/palm_ring_L/f_ring_01_L/DEF-f_ring_02_L/DEF-f_ring_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_L/arm_socket_L/upper_arm_L/forearm_L/hand_L/thumb_01_L/thumb_02_L/DEF-thumb_03_L
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/DEF-upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-forearm_01_R/DEF-forearm_02_R/DEF-forearm_03_R/DEF-hand_R/DEF-palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/DEF-lat_dorsi_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-palm_ring_R/DEF-f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/DEF-thumb_01_R/DEF-thumb_02_R/DEF-thumb_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_index_R/DEF-f_index_01_R/DEF-f_index_02_R/DEF-f_index_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/DEF-f_middle_01_R/DEF-f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_middle_R/f_middle_01_R/f_middle_02_R/DEF-f_middle_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/DEF-f_pinky_01_R/DEF-f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_pinky_R/f_pinky_01_R/f_pinky_02_R/DEF-f_pinky_03_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/DEF-f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R
+        weight: 1
+      - path: humanquinoa/master/root/arm_hinge_R/arm_socket_R/upper_arm_R/forearm_R/hand_R/palm_ring_R/f_ring_01_R/f_ring_02_R/DEF-f_ring_03_R
+        weight: 1
+      - path: humanquinoa/master/root/DEF-hips
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1
+        weight: 1
+      - path: humanquinoa/master/root/DEF-spine/DEF-spine-1/DEF-chest
+        weight: 1
+      - path: humanquinoa/master/root/hips
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_L
+        weight: 1
+      - path: humanquinoa/master/root/hips/DEF-gluteus_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/DEF-thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-femoris_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-quadriceps_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/DEF-shin_01_L/DEF-shin_02_L/DEF-shin_03_L/DEF-foot_L/DEF-toe_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_L/leg_socket_L/thigh_L/shin_L/DEF-soleus_L
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/DEF-thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-femoris_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-quadriceps_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/DEF-shin_01_R/DEF-shin_02_R/DEF-shin_03_R/DEF-foot_R/DEF-toe_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R
+        weight: 1
+      - path: humanquinoa/master/root/leg_hinge_R/leg_socket_R/thigh_R/shin_R/DEF-soleus_R
+        weight: 1
+      - path: humanquinoa/master/root/spine
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/breast_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-deltoid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_L/DEF-scapula_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-deltoid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/clavicle_R/DEF-scapula_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-pectoralis_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-stomach
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/DEF-trapezius2_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-platysma_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/DEF-trapezius1_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-lolid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/DEF-uplid_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_L/DEF-eye_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/eye_parent_R/DEF-eye_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/chest-1/neck/head/jaw/DEF-tongue_base/DEF-tongue_mid/DEF-tongue_tip
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_L
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-clavicle_R
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head
+        weight: 1
+      - path: humanquinoa/master/root/spine/spine-1/chest/DEF-chest-1/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: humanquinoa_Body
+        weight: 1
+      - path: humanquinoa_Eyebrow001
+        weight: 1
+      - path: humanquinoa_HighPolyEyes
+        weight: 1
+      - path: humanquinoa_Teeth_Base
+        weight: 1
+      - path: humanquinoa_tongue01
+        weight: 1
+      - path: LeftShoe
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig_001
+        weight: 1
+      - path: metarig_001/Bone
+        weight: 1
+      - path: metarig_001/Bone/heel_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/foot_L/toe_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/heel_02_L
+        weight: 1
+      - path: metarig_001/Bone/heel_L/pt_l
+        weight: 1
+      - path: metarig_001/Bone/heel_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/foot_R/toe_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/heel_02_R
+        weight: 1
+      - path: metarig_001/Bone/heel_R/pt_r
+        weight: 1
+      - path: metarig_001/Bone/hips_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/neck_0/head_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/f_index_01_L_0/f_index_02_L_0/f_index_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_01_L/thumb_01_L_0/thumb_02_L_0/thumb_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_02_L/f_middle_01_L/f_middle_02_L/f_middle_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_03_L/f_ring_01_L_0/f_ring_02_L/f_ring_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_L/upper_arm_L_0/forearm_L_0/hand_L_0/palm_04_L/f_pinky_01_L/f_pinky_02_L/f_pinky_03_L
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/f_index_01_R/f_index_02_R/f_index_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_01_R/thumb_01_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_02_R/f_middle_01_R_0/f_middle_02_R_0/f_middle_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_03_R/f_ring_01_R_0/f_ring_02_R_0/f_ring_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/spine_0/chest_0/shoulder_R/upper_arm_R_0/forearm_R_0/hand_R_0/palm_04_R/f_pinky_01_R_0/f_pinky_02_R_0/f_pinky_03_R
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_L_0/shin_L_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0
+        weight: 1
+      - path: metarig_001/Bone/hips_0/thigh_R_0/shin_R_0
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Right_shoe
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

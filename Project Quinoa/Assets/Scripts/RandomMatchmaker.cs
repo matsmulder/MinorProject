@@ -22,6 +22,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public static int numberOfBurgers, numberOfQuinoa;
     public bool playerKind;
 
+    public string playerPrefabName;
+
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
     public Text nameBox;
@@ -84,6 +86,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public Slider numberOfBots;
     private int realNumberOfBots;
     private scoreManager sm;
+    private Toggle_play tp;
 
     private Calculator calc;
 
@@ -101,7 +104,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         numberOfQuinoa = 0;
 
         once = true;
-        DeletePlayerPrefs();
         stat = status.inMenu;
         PlayerPrefs.DeleteAll();
         
@@ -169,6 +171,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
 
         sm = GetComponent<scoreManager>();
+        tp = GameObject.Find("Canvassen").GetComponentInChildren<Toggle_play>();
 
         if (offlineMode)
         {
@@ -177,8 +180,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         else
         {
             PhotonNetwork.ConnectUsingSettings("0.5");
-        }
 
+			if(PlayerPrefs.HasKey("Name")){
+				PhotonNetwork.player.name = PlayerPrefs.GetString("Name");
+			}
+		}
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
     
@@ -195,7 +201,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     //override
     public void JoinRoom(string name)
     {
-        PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
+        PhotonNetwork.JoinRoom(name);
+        //PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
 
     // Update is called once per frame
@@ -230,7 +237,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 			StartCoroutine(Reboot(5));   
-			//Application.LoadLevel ("Game_Over");
+
 		} else if (restTimeMinDouble > (double)9.92) {
 			canvas_Objective.SetActive (true);
 		} else {
@@ -415,10 +422,18 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     public void onLobbyButtonClicked(int button)
     {
-        JoinRoom(lobbyNames[button].text);
-        panel_joininputfield.SetActive(false);
-        panel_Setready.SetActive(true);
-        inRoom = true;
+        if (!activeRooms[button])
+        {
+            tp.selectScreen(2);
+        }
+        else
+        {
+            JoinRoom(lobbyNames[button].text);
+            panel_joininputfield.SetActive(false);
+            panel_Setready.SetActive(true);
+            inRoom = true;
+        }
+        
     }
 
 	public void onNotReadyClicked(){
@@ -504,6 +519,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             }
             else
             {
+                //Debug.Log(PhotonNetwork.room.customProperties["CountFF"]+","+maxPlayer);
                 //teamFull.SetActive(true);
                 StartCoroutine(fullMessage(teamFull));
                 return false;
@@ -518,6 +534,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			}
             else
             {
+                //Debug.Log(PhotonNetwork.room.customProperties["CountSF"] + "," + maxPlayer);
                 //teamFull.SetActive(true);
                 StartCoroutine(fullMessage(teamFull));
                 return false;
@@ -646,7 +663,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
 
         //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
-        GameObject player = PhotonNetwork.Instantiate("universalPlayer" , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
+        GameObject player = PhotonNetwork.Instantiate(playerPrefabName , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
@@ -699,7 +716,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnTrumpBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate(playerPrefabName, new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
@@ -714,7 +731,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnWholoBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate(playerPrefabName, new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
