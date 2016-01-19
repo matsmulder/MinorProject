@@ -2,8 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Analytics;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
+
+	Sprite image1;
+	Sprite image2;
+	Sprite image3;
+	Sprite image4;
+	Sprite image5;
+	Sprite image6;
+	Sprite image7;
+	public GameObject health;
 
     public float hitPoints;
     public float currentHitPoints;
@@ -18,11 +28,51 @@ public class Health : MonoBehaviour {
 		PhotonNetwork.player.customProperties["Deaths"] = 0;
 		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
+		image1 = Resources.Load<Sprite> ("HealthBar1");
+		image2 = Resources.Load<Sprite> ("HealthBar2");
+		image3 = Resources.Load<Sprite> ("HealthBar3");
+		image4 = Resources.Load<Sprite> ("HealthBar4");
+		image5 = Resources.Load<Sprite> ("HealthBar5");
+		image6 = Resources.Load<Sprite> ("HealthBar6");
+		image7 = Resources.Load<Sprite> ("HealthBar7");
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    
+		if (currentHitPoints == 201f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image1;
+			
+		};
+		if (currentHitPoints < 172f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image2;
+			
+		};
+		if (currentHitPoints < 144f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image3;
+			
+		};
+		if (currentHitPoints < 115f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image4;
+			
+		};
+		if (currentHitPoints < 85f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image5;
+			
+		};
+		if (currentHitPoints < 56f) {
+			Debug.Log ("minder dan 120");
+			health.GetComponent<Image>().sprite = image6;
+			
+		};
+		if (currentHitPoints < 28f) {
+			Debug.Log("minder dan 50");
+			health.GetComponent<Image>().sprite = image7;
+		};
 	}
 	
 	public float getHealthPoints(){
