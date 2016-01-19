@@ -33,11 +33,11 @@ public class Bot : MonoBehaviour{
     private playerShooting plsh;
 
     //State Value Equation constants
-    public double sightConstant = 15;
+    public double sightConstant = 30;
     private double playerConstant = 8;
     private double healthConstant = 1;
     private static double cGSV = 0.6;
-    private static double cLSV = 2;
+    private static double cLSV = 4;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
     private double cpGSV = 30;
