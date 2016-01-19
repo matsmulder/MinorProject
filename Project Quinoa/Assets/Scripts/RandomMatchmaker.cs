@@ -22,6 +22,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public static int numberOfBurgers, numberOfQuinoa;
     public bool playerKind;
 
+    public string playerPrefabName;
+
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
     public Text nameBox;
@@ -659,7 +661,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
 
         //mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
-        GameObject player = PhotonNetwork.Instantiate("universalPlayer" , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
+        GameObject player = PhotonNetwork.Instantiate(playerPrefabName , mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0); //local player spawned
         player.GetComponent<playerMovement>().enabled = true;
         player.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<playerShooting>().enabled = true;
@@ -712,7 +714,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnTrumpBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsFast[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate(playerPrefabName, new Vector3(46f,-30f,-52f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
@@ -727,7 +729,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     void SpawnWholoBot()
     {
         SpawnSpot mySpawnSpot = spawnSpotsSuper[UnityEngine.Random.Range(0, (int)(spawnSpots.Length * 0.5))];
-        GameObject bot = PhotonNetwork.Instantiate("universalPlayer", new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
+        GameObject bot = PhotonNetwork.Instantiate(playerPrefabName, new Vector3(-25f,-30f,25f), mySpawnSpot.transform.rotation, 0); //bot spawned
         bot.GetComponent<SphereCollider>().enabled = true;
         bot.GetComponent<playerShooting>().enabled = true;
         bot.GetComponent<Bot>().enabled = true;
