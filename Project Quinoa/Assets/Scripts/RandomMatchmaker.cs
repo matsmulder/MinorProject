@@ -86,6 +86,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public Slider numberOfBots;
     private int realNumberOfBots;
     private scoreManager sm;
+    private Toggle_play tp;
 
     private Calculator calc;
 
@@ -170,6 +171,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
 
         sm = GetComponent<scoreManager>();
+        tp = GameObject.Find("Canvassen").GetComponentInChildren<Toggle_play>();
 
         if (offlineMode)
         {
@@ -199,7 +201,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     //override
     public void JoinRoom(string name)
     {
-        PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
+        PhotonNetwork.JoinRoom(name);
+        //PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
 
     // Update is called once per frame
@@ -419,10 +422,18 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     public void onLobbyButtonClicked(int button)
     {
-        JoinRoom(lobbyNames[button].text);
-        panel_joininputfield.SetActive(false);
-        panel_Setready.SetActive(true);
-        inRoom = true;
+        if (!activeRooms[button])
+        {
+            tp.selectScreen(2);
+        }
+        else
+        {
+            JoinRoom(lobbyNames[button].text);
+            panel_joininputfield.SetActive(false);
+            panel_Setready.SetActive(true);
+            inRoom = true;
+        }
+        
     }
 
 	public void onNotReadyClicked(){
@@ -508,6 +519,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             }
             else
             {
+                //Debug.Log(PhotonNetwork.room.customProperties["CountFF"]+","+maxPlayer);
                 //teamFull.SetActive(true);
                 StartCoroutine(fullMessage(teamFull));
                 return false;
@@ -522,6 +534,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			}
             else
             {
+                //Debug.Log(PhotonNetwork.room.customProperties["CountSF"] + "," + maxPlayer);
                 //teamFull.SetActive(true);
                 StartCoroutine(fullMessage(teamFull));
                 return false;
