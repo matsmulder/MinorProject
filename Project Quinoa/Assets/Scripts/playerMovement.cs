@@ -124,6 +124,10 @@ public class playerMovement : MonoBehaviour {
             AudioListener.volume = Mathf.Abs(AudioListener.volume - 1);
         }
 #endif
+
+        //freeze rotation in the vertical axis
+        rb.freezeRotation = true;
+
         if (pauseMenu.paused)
         {
             return;

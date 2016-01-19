@@ -15,7 +15,7 @@ public class scoreManager : Photon.MonoBehaviour {
 
 	public DataController dc;
     private AudioSource audio1;
-    public AudioClip victory;
+    public AudioClip victory, defeat;
     public int capturedBurgers, capturedQuinoa;
 
     public Text endGameText;
@@ -163,11 +163,13 @@ public class scoreManager : Photon.MonoBehaviour {
                 Debug.Log("Fast food won :D");
                 if (myTeamID == 1)
                 {
+                    audio1.PlayOneShot(victory, 1);
                     endGameText.text += " You gained more pickups :D";
                     PhotonNetwork.player.customProperties["Won"] = 1;
                 }
                 else
                 {
+                    audio1.PlayOneShot(defeat, 1);
                     endGameText.text += " The burgers took more pickups :(";
                     PhotonNetwork.player.customProperties["Lost"] = 1;
                 }
@@ -177,11 +179,13 @@ public class scoreManager : Photon.MonoBehaviour {
                 Debug.Log("Super food won :D");
                 if (myTeamID == 2)
                 {
+                    audio1.PlayOneShot(victory, 1);
                     endGameText.text += " You gained more pickups :D";
                     PhotonNetwork.player.customProperties["Won"] = 1;
                 }
                 else
                 {
+                    audio1.PlayOneShot(defeat, 1);
                     endGameText.text += " The hipsters took more pickups :(";
                     PhotonNetwork.player.customProperties["Lost"] = 1;
                 }
@@ -193,11 +197,13 @@ public class scoreManager : Photon.MonoBehaviour {
                     Debug.Log("Fast food won :D (by kills)");
                     if (myTeamID == 1)
                     {
+                        audio1.PlayOneShot(victory, 1);
                         endGameText.text += " You overkilled quinoa :D";
                         PhotonNetwork.player.customProperties["Won"] = 1;
                     }
                     else
                     {
+                        audio1.PlayOneShot(defeat, 1);
                         endGameText.text += " You died way more than those burgers :(";
                         PhotonNetwork.player.customProperties["Lost"] = 1;
                     }
@@ -207,11 +213,13 @@ public class scoreManager : Photon.MonoBehaviour {
                     Debug.Log("Super food won :D (by kills)");
                     if (myTeamID == 2)
                     {
+                        audio1.PlayOneShot(victory, 1);
                         endGameText.text += " You overkilled the burgers :D";
                         PhotonNetwork.player.customProperties["Won"] = 1;
                     }
                     else
                     {
+                        audio1.PlayOneShot(defeat, 1);
                         endGameText.text += " You died way more than those hipsters :(";
                         PhotonNetwork.player.customProperties["Lost"] = 1;
                     }
@@ -246,6 +254,7 @@ public class scoreManager : Photon.MonoBehaviour {
             else //you are in the losing team, display lose screen
             {
                 Debug.Log("lose");
+                audio1.PlayOneShot(defeat, 1);
                 if (myTeamID == 1) //member of team Trump, display losing screen
                 {
                     //endgameTextList[2].SetActive(true);
@@ -268,7 +277,7 @@ public class scoreManager : Photon.MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartCoroutine(Reboot(5));   
+        StartCoroutine(Reboot(7));   
     }
 
     IEnumerator Reboot(float waitingTime)

@@ -72,8 +72,17 @@ public class NetworkPickup : Photon.MonoBehaviour {
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        Debug.Log("serialize");
         if (stream.isWriting)
         {
+            if(pushing)
+            {
+                Debug.Log("pushing, sending data...");
+            }
+            else
+            {
+                Debug.Log("not pushing, sending data...");
+            }
             // this pickup, send other players our data
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
@@ -81,6 +90,14 @@ public class NetworkPickup : Photon.MonoBehaviour {
         }
         else
         {
+            if(pushing)
+            {
+                Debug.Log("pushing, receiving data...");
+            }
+            else
+            {
+                Debug.Log("not pushing, receiving data...");
+            }
             // Network pickup, receive data
             realPosition = (Vector3)stream.ReceiveNext();
             realRotation = (Quaternion)stream.ReceiveNext();
