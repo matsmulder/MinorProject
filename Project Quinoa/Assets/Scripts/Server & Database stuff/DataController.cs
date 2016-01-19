@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Net;
+using SimpleJSON;
 
 public class DataController{
 	public static string playerName;
@@ -24,12 +25,13 @@ public class DataController{
 
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/postStats");
-		httpWebRequest.ContentType = "text/json";
+		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
 
 		// write away to the node.js 
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
 		streamWriter.Write(json);
+		Debug.Log (json);
 		streamWriter.Flush();
 		streamWriter.Close();
 
@@ -44,7 +46,7 @@ public class DataController{
 
 		// write away to the node.js 
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-		string json = "{\"user\":" + name + "};";
+		string json = "{\"user\":\"" + name + "\"};";
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
@@ -88,16 +90,17 @@ public class DataController{
 
 	public bool checkCredentials(string name, string password){
 		// ini web
-		Debug.Log ("ik kom hier!");
-
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/checkLogin");
-		httpWebRequest.ContentType = "text/json";
+		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
 			
 		// write away to the node.js 
+		Debug.Log (name);
+		Debug.Log (password);
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-		string json = "{\"User\":" + name + ","
-					+ "\"Password\":" + password + "};";
+		string json = "{\"User\":\"" + name + "\","
+			+ "\"Password\":\"" + password + "\"}";
+
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
@@ -107,6 +110,7 @@ public class DataController{
 		var streamReader = new StreamReader (httpResponse.GetResponseStream());
 		string stream = streamReader.ReadToEnd ();
 		bool correctLogin = false;
+		Debug.Log (stream);
 		if (stream == "false") {
 			correctLogin = false;
 
@@ -125,8 +129,9 @@ public class DataController{
 
 		// write away to the node.js 
 		var streamWriter = new StreamWriter (httpWebRequest.GetRequestStream ());
-		string json = "{\"User\":" + name + ","
-					+ "\"Password\":" + password + "};";
+		string json = "{\"User\":\"" + name + "\","
+			+ "\"Password\":\"" + password + "\"}";
+
 		streamWriter.Write (json);
 		streamWriter.Flush ();
 		streamWriter.Close ();

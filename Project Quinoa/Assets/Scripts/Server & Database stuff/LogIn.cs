@@ -6,7 +6,8 @@ using System;
 public class LogIn : MonoBehaviour {
 	public DataController dc = new DataController();
 
-	public Text username, password;
+	public Text username;
+	public InputField password;
 
 	public GameObject WrongInput, NewAccount, LogInCanvas ;
 	
@@ -15,11 +16,10 @@ public class LogIn : MonoBehaviour {
 	
 		bool valid = dc.checkCredentials (username.text, password.text);
 
-		username.text = "";
-		password.text = "";
-
 		if (valid) {
 			Debug.Log ("log in credentials are correct");
+			// go to the main main menu and set PhotonPlayer.Name
+			// disable Log In screen.
 		} else {
 			Debug.Log ("Log in is not correct");
 			WrongInput.SetActive(true);
@@ -27,11 +27,10 @@ public class LogIn : MonoBehaviour {
 	}
 
 	public void addUser(){
-		WrongInput.SetActive (false);
 
+		Debug.Log (password.text);
 		dc.makeAccount (username.text, password.text);
 		Debug.Log ("Accout has been added to the database");
-
 		NewAccount.SetActive (true);
 	}
 }

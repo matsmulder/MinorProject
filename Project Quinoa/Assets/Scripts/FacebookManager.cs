@@ -13,7 +13,6 @@ public class FacebookManager : MonoBehaviour {
 
     public void ShareToFacebook()
     {
-	
 		string linkParameter = "http://drproject.twi.tudelft.nl:8082/home/"; 
 		string nameParameter = "Just played Project Quinoa, download the game here!";
 		string captionParameter = "Picture of the game"; 
