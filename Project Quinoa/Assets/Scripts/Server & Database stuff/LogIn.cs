@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine;
 using System;
 
 public class LogIn : MonoBehaviour {
@@ -18,8 +19,8 @@ public class LogIn : MonoBehaviour {
 
 		if (valid) {
 			Debug.Log ("log in credentials are correct");
-			// go to the main main menu and set PhotonPlayer.Name
-			// disable Log In screen.
+			Application.LoadLevel("MainMenu");
+			PlayerPrefs.SetString("Name",username.text);
 		} else {
 			Debug.Log ("Log in is not correct");
 			WrongInput.SetActive(true);

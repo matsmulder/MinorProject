@@ -22,16 +22,16 @@ public class DataController{
 		// initialisation
 		playerJson DBJSON = new playerJson(playerName, kills, deaths, won, lost);
 		string json = DBJSON.toJson();
+		Debug.Log ("PostStatsData: " + json);
 
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/postStats");
 		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
-
+		
 		// write away to the node.js 
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
 		streamWriter.Write(json);
-		Debug.Log (json);
 		streamWriter.Flush();
 		streamWriter.Close();
 
@@ -41,7 +41,7 @@ public class DataController{
 	public playerJson getDBData(string name){
 		// ini web
 		var httpWebRequest = (HttpWebRequest)WebRequest.Create ("http://drproject.twi.tudelft.nl:8082/getStats");
-		httpWebRequest.ContentType = "text/json";
+		httpWebRequest.ContentType = "application/json";
 		httpWebRequest.Method = "POST";
 
 		// write away to the node.js 
@@ -55,9 +55,10 @@ public class DataController{
 		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse ();
 		var streamReader = new StreamReader (httpResponse.GetResponseStream ());
 		string userStats = streamReader.ReadToEnd();
+		Debug.Log ("Userstats: " + userStats);
 		
 		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
-		JSONObject json2 = new JSONObject(userStats);
+		JSONObject json2 = new JSONObject();
 		for(int i = 0; i < json2.list.Count; i++){
 			string key = (string)json2.keys[i];
 
@@ -81,7 +82,6 @@ public class DataController{
 				break;
 			}
 		}
-
 		// make playerJson and return
 		playerJson playerStats = new playerJson (playerName, kills, deaths, won, lost);
 		resetData ();
@@ -113,7 +113,6 @@ public class DataController{
 		Debug.Log (stream);
 		if (stream == "false") {
 			correctLogin = false;
-
 		} else if (stream == "true") {
 			correctLogin = true;
 		}

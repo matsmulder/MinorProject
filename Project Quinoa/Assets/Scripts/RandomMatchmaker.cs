@@ -103,7 +103,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         numberOfQuinoa = 0;
 
         once = true;
-        DeletePlayerPrefs();
         stat = status.inMenu;
         PlayerPrefs.DeleteAll();
         
@@ -179,8 +178,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         else
         {
             PhotonNetwork.ConnectUsingSettings("0.5");
-        }
 
+			if(PlayerPrefs.HasKey("Name")){
+				PhotonNetwork.player.name = PlayerPrefs.GetString("Name");
+			}
+		}
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
     
@@ -232,7 +234,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 			StartCoroutine(Reboot(5));   
-			//Application.LoadLevel ("Game_Over");
+
 		} else if (restTimeMinDouble > (double)9.92) {
 			canvas_Objective.SetActive (true);
 		} else {
