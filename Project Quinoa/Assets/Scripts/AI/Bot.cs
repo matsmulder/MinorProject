@@ -36,11 +36,11 @@ public class Bot : MonoBehaviour{
     public double sightConstant = 15;
     private double playerConstant = 8;
     private double healthConstant = 1;
-    private static double cGSV = -0.30;
+    private static double cGSV = 0.6;
     private static double cLSV = 2;
     private double cPLSV = 1.5;
     private double cHLSV = 1;
-    private double cpGSV = 10;
+    private double cpGSV = 30;
     private Vector3 goal = new Vector3(13.5f,-30f,-7.5f);
     private List<GameObject> teamMates=new List<GameObject>();
     private List<GameObject> opponents=new List<GameObject>();
@@ -89,12 +89,12 @@ public class Bot : MonoBehaviour{
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
             {
-                PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant/2), 2));
+                PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (playerConstant), 2));
             }
         }
         foreach (GameObject obj in opponents)
         {
-            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / playerConstant, 2));
+            PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2));
         }
 
         return cPLSV * PLSV + cHLSV * HLSV;
