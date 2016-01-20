@@ -176,7 +176,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
         else
         {
-			PhotonNetwork.player.name = PlayerPrefs.GetString("Name");
+			PhotonNetwork.playerName = PlayerPrefs.GetString("Name");
             PhotonNetwork.ConnectUsingSettings("0.5");
 		}
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
@@ -226,7 +226,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			PhotonNetwork.player.customProperties["Won"] = 0;
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
-			dc.sentDBData(PhotonNetwork.player.name);
+			dc.sentDBData(PhotonNetwork.playerName);
 
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
