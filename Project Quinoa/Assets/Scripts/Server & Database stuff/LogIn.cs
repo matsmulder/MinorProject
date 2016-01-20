@@ -14,12 +14,15 @@ public class LogIn : MonoBehaviour {
 	
 	public void tryLogIn(){
 		NewAccount.SetActive (false);
-	
-		bool valid = dc.checkCredentials (username.text, password.text);
+
+		PlayerPrefs.SetString("Name",username.text);
+
+		Debug.Log (PlayerPrefs.GetString ("Name"));
+
+		bool valid = dc.checkCredentials(username.text, password.text);
 
 		if (valid) {
 			Debug.Log ("log in credentials are correct");
-			PlayerPrefs.SetString("Name",username.text);
 			Application.LoadLevel("MainMenu");
 		} else {
 			Debug.Log ("Log in is not correct");

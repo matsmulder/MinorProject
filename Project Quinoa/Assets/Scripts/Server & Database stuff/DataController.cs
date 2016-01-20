@@ -11,9 +11,9 @@ public class DataController{
 	public int won;
 	public int lost;
 
-	public void sentDBData(){
+	public void sentDBData(string name){
 		// retrieve data when calles from the playerCustomProperties
-		playerName = (string)PhotonNetwork.player.name;
+		playerName = name;
 		kills = (int)PhotonNetwork.player.customProperties ["Kills"];
 		deaths = (int)PhotonNetwork.player.customProperties ["Deaths"];
 		won = (int)PhotonNetwork.player.customProperties ["Won"];
@@ -95,8 +95,6 @@ public class DataController{
 		httpWebRequest.Method = "POST";
 			
 		// write away to the node.js 
-		Debug.Log (name);
-		Debug.Log (password);
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
 		string json = "{\"User\":\"" + name + "\","
 			+ "\"Password\":\"" + password + "\"}";

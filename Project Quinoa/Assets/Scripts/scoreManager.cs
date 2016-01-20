@@ -271,7 +271,7 @@ public class scoreManager : Photon.MonoBehaviour {
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
         }
 		Debug.Log ("Sent Data to DB");
-		dc.sentDBData();
+		dc.sentDBData(PhotonNetwork.player.name);
 
         endGameText.text += "\nreturning in 5 seconds";
 
