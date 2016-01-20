@@ -5,11 +5,11 @@ using System.Net;
 using SimpleJSON;
 
 public class DataController{
-	public static string playerName;
-	public static int kills;
-	public static int deaths;
-	public static int won;
-	public static int lost;
+	public string playerName;
+	public int kills;
+	public int deaths;
+	public int won;
+	public int lost;
 
 	public void sentDBData(){
 		// retrieve data when calles from the playerCustomProperties

@@ -19,8 +19,8 @@ public class LogIn : MonoBehaviour {
 
 		if (valid) {
 			Debug.Log ("log in credentials are correct");
-			Application.LoadLevel("MainMenu");
 			PlayerPrefs.SetString("Name",username.text);
+			Application.LoadLevel("MainMenu");
 		} else {
 			Debug.Log ("Log in is not correct");
 			WrongInput.SetActive(true);

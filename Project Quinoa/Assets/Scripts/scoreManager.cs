@@ -13,7 +13,7 @@ public class scoreManager : Photon.MonoBehaviour {
     private GameObject gameOverCanvas;
     private bool winFlag;
 
-	public DataController dc;
+	public DataController dc = new DataController();
     private AudioSource audio1;
     public AudioClip victory, defeat;
     public int capturedBurgers, capturedQuinoa;

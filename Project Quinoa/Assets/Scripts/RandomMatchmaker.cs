@@ -80,7 +80,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public GameObject teamFull;
 	public GameObject canvas_Objective;
 
-	public DataController dc;
+	public DataController dc = new DataController();
 
     public Text SliderText;
     public Slider numberOfBots;
@@ -179,11 +179,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings("0.5");
-
 			if(PlayerPrefs.HasKey("Name")){
 				PhotonNetwork.player.name = PlayerPrefs.GetString("Name");
 			}
+            PhotonNetwork.ConnectUsingSettings("0.5");
 		}
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
