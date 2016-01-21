@@ -157,7 +157,7 @@ public class Health : MonoBehaviour {
                     if(GetComponent<SphereCollider>().enabled == false) //only activate standby camera for real player upon dying
                     {
                         Debug.Log(rm.standby);
-                        rm.standby.SetActive(true);
+                        //rm.standby.SetActive(true);
                     }
                     rm.respawnTimer = 2; //set the respawn time to 2 sec
 
