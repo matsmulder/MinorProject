@@ -5,15 +5,15 @@ using System.Net;
 using SimpleJSON;
 
 public class DataController{
-	public static string playerName;
-	public static int kills;
-	public static int deaths;
-	public static int won;
-	public static int lost;
+	public string playerName;
+	public int kills;
+	public int deaths;
+	public int won;
+	public int lost;
 
-	public void sentDBData(){
+	public void sentDBData(string name){
 		// retrieve data when calles from the playerCustomProperties
-		playerName = (string)PhotonNetwork.player.name;
+		playerName = name;
 		kills = (int)PhotonNetwork.player.customProperties ["Kills"];
 		deaths = (int)PhotonNetwork.player.customProperties ["Deaths"];
 		won = (int)PhotonNetwork.player.customProperties ["Won"];
@@ -46,7 +46,7 @@ public class DataController{
 
 		// write away to the node.js 
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-		string json = "{\"user\":\"" + name + "\"};";
+		string json = "{\"Name\":\"" + name + "\"}";
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
@@ -58,30 +58,30 @@ public class DataController{
 		Debug.Log ("Userstats: " + userStats);
 		
 		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
-		JSONObject json2 = new JSONObject();
-		for(int i = 0; i < json2.list.Count; i++){
-			string key = (string)json2.keys[i];
-
-			switch(key){
-			case "Username":
-				Debug.Log("without .str: " + json2[i]);
-				Debug.Log("string: " + json2[i].str);
-				playerName = json2[i].str;
-				break;
-			case "AmountKills":
-				kills = (int)json2[i].n;
-				break;
-			case "AmountDeaths":
-				deaths = (int)json2[i].n;
-				break;
-			case "AmountWon":
-				won = (int)json2[i].n;
-				break;
-			case "AmountLost":
-				lost = (int)json2[i].n;
-				break;
-			}
-		}
+//		JSONArray array = new JSONArray(userStats);
+//		for(int i = 0; i < array.Count; i++){
+//			string key = (string)array[i];
+//
+//			switch(key){
+//			case "Username":
+//				Debug.Log("without .str: " + array[i]);
+//				Debug.Log("string: " + array[i]);
+//				playerName = array[i];
+//				break;
+//			case "AmountKills":
+//				kills = (int)array[i];
+//				break;
+//			case "AmountDeaths":
+//				deaths = (int)array[i];
+//				break;
+//			case "AmountWon":
+//				won = (int)array[i];
+//				break;
+//			case "AmountLost":
+//				lost = (int)array[i];
+//				break;
+//			}
+//		}
 		// make playerJson and return
 		playerJson playerStats = new playerJson (playerName, kills, deaths, won, lost);
 		resetData ();
@@ -95,8 +95,6 @@ public class DataController{
 		httpWebRequest.Method = "POST";
 			
 		// write away to the node.js 
-		Debug.Log (name);
-		Debug.Log (password);
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
 		string json = "{\"User\":\"" + name + "\","
 			+ "\"Password\":\"" + password + "\"}";

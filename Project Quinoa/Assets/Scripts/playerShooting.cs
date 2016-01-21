@@ -87,7 +87,6 @@ public class playerShooting : MonoBehaviour {
             Vector3 hitPoint; //the exact coordinates of the hit face; used as endpoint of 'laser beam' ray and for ricochets in the future
 
             hitTransform = FindClosestHitInfo(ray, out hitPoint);// find out which object was hit with raycasting; used for weapons with hitscan (instant fire weapons)
-            Debug.Log("hit!");
 
             //------------- apply health changes-------------------------------------------------------------
             if (hitTransform != null && !hitTransform.gameObject.CompareTag("fastfood") && !hitTransform.gameObject.CompareTag("superfood"))
@@ -99,7 +98,6 @@ public class playerShooting : MonoBehaviour {
                     hitTransform = hitTransform.parent;
                     h = hitTransform.GetComponent<Health>();
                 }
-                Debug.Log(h);
 
                 if (h != null) //only execute when the hit object has a health script
                 {
@@ -109,7 +107,6 @@ public class playerShooting : MonoBehaviour {
                     Debug.Log(myTm.teamID);
                     if (tm == null || tm.teamID == 0 || myTm == null || myTm.teamID == 0 || tm.teamID != myTm.teamID)
                     {
-                        Debug.Log("pass!");
                         Analytics.CustomEvent("Hit enemy!", new Dictionary<string, object>
                         {
                            {"teamID hit :", tm.teamID },
@@ -121,7 +118,6 @@ public class playerShooting : MonoBehaviour {
                         //this line is the equivalent of h.TakeDamage(damage) but synchronized
 
 						if(h.getHealthPoints() < weaponData.damage){
-                            Debug.Log("kill!");
                             if(Random.Range(0,1f) > 0.5f) //random chance of playing LOL NOOB!
                             {
                                 AudioSource.PlayClipAtPoint(noobSound, transform.position);

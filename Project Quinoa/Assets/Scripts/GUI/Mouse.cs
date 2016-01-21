@@ -4,7 +4,7 @@ using System.Collections;
 public class Mouse : MonoBehaviour {
 	public Texture cursorImage;
 	bool MouseChanged = false;
-
+	public GameObject Loadscreen;
 	public GameObject Button_hamburger;
 	public GameObject Button_meat;
 	public GameObject Button_blueberry;
@@ -14,12 +14,18 @@ public class Mouse : MonoBehaviour {
 	public GameObject Button_chicken;
 	public GameObject Button_wing;
 
+	void Start(){
+		Loadscreen.SetActive (false); 
+	}
+
 	public void PlayGame(){
 		if (MouseChanged == true) {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
-			Application.LoadLevel (1);
+			Loadscreen.SetActive(true);
+			Application.LoadLevel("Quinoa");
+			Cursor.visible = true;
 		}
 	}
 
@@ -29,6 +35,7 @@ public class Mouse : MonoBehaviour {
 			Button_shake.SetActive (true);
 		} else {
 			Application.LoadLevel (2);
+			Cursor.visible = true;
 		}
 	}
 
@@ -38,6 +45,7 @@ public class Mouse : MonoBehaviour {
 			Button_boon.SetActive (true);
 		} else {
 			Application.LoadLevel (3);
+			Cursor.visible = true;
 		}
 	}
 
@@ -47,6 +55,7 @@ public class Mouse : MonoBehaviour {
 			Button_wing.SetActive (true);
 		} else {
 			Application.Quit();
+			Cursor.visible = true;
 		}
 	}
 
@@ -55,6 +64,7 @@ public class Mouse : MonoBehaviour {
 		if (MouseChanged == false) {
 			Cursor.visible = false;
 			MouseChanged = true;
+			Debug.Log(MouseChanged);
 		} 
 		else {
 			Cursor.visible = true;

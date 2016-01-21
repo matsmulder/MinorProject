@@ -27,7 +27,6 @@ public class Pause_Menu : MonoBehaviour {
 
     public void togglePause()
     {
-        Debug.Log("Paused");
         if (paused)
         {
             Cursor.lockState = CursorLockMode.Locked;

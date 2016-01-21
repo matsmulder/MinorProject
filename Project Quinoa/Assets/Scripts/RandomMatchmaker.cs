@@ -80,7 +80,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public GameObject teamFull;
 	public GameObject canvas_Objective;
 
-	public DataController dc;
+	public DataController dc = new DataController();
 
     public Text SliderText;
     public Slider numberOfBots;
@@ -93,9 +93,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     public static bool inRoom = false;
 
     public Canvas crosshairCanvas;
-
-    public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
-
+	
     // Use this for initialization
     void Start() {
 
@@ -105,7 +103,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
         once = true;
         stat = status.inMenu;
-        PlayerPrefs.DeleteAll();
         
         //Put the buttons and text from the GameLobby in a 2D array.
         lobbyButtons = new Button[3];
@@ -179,11 +176,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
         else
         {
+			PhotonNetwork.playerName = PlayerPrefs.GetString("Name");
             PhotonNetwork.ConnectUsingSettings("0.5");
-
-			if(PlayerPrefs.HasKey("Name")){
-				PhotonNetwork.player.name = PlayerPrefs.GetString("Name");
-			}
 		}
         calc = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
     }
@@ -232,7 +226,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 			PhotonNetwork.player.customProperties["Won"] = 0;
 			PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
-			dc.sentDBData();
+			dc.sentDBData(PhotonNetwork.playerName);
 
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
@@ -413,6 +407,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         offlineMode = false;
         PhotonNetwork.ConnectUsingSettings("0.5");
         calc.enabled = false;
+
     }
 
     public void GetBotSliderValue()
@@ -433,7 +428,6 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             panel_Setready.SetActive(true);
             inRoom = true;
         }
-        
     }
 
 	public void onNotReadyClicked(){

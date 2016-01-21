@@ -23,10 +23,10 @@ public class Health : MonoBehaviour {
 #pragma warning disable 0414 // Type or member is obsolete
     // Use this for initialization
     void Start () {
+        PhotonNetwork.player.customProperties["Deaths"] = 0;
+        PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
         rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
-		PhotonNetwork.player.customProperties["Deaths"] = 0;
-		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
 		image1 = Resources.Load<Sprite> ("HealthBar1");
 		image2 = Resources.Load<Sprite> ("HealthBar2");
@@ -90,6 +90,7 @@ public class Health : MonoBehaviour {
             if (RandomMatchmaker.offlineMode)
             {
                 Debug.Log("calculator");
+                //apparently here Hugo got a nullreferenceexception after a double kill...
                 for (int i = 0; i != calculator.getAllTargets(); i++)
                 {
                     if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
@@ -136,7 +137,6 @@ public class Health : MonoBehaviour {
             if (GetComponent<PhotonView>().isMine) // this is MY player object
             {
                 //RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
-                Debug.Log("photonview ismine");
 					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
 					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
@@ -158,7 +158,7 @@ public class Health : MonoBehaviour {
                     if(GetComponent<SphereCollider>().enabled == false) //only activate standby camera for real player upon dying
                     {
                         Debug.Log(rm.standby);
-                        rm.standby.SetActive(true);
+                        //rm.standby.SetActive(true);
                     }
                     rm.respawnTimer = 2; //set the respawn time to 2 sec
 

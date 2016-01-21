@@ -43,52 +43,41 @@ public class WeaponSwitching : Photon.MonoBehaviour {
 
         //when a key for switching weapons is pressed,
         //deactivate all weapons and only activate the specified 
-        if(Input.GetKeyDown(sniperRifle) || Input.GetKeyDown(laserGun) || Input.GetKeyDown(plasmaGun) || Input.GetKeyDown(rocketLauncher) || Input.GetKeyDown(grenadeLauncher))
-        {
-           for(int i=0; i < weaponList.Length; i++)
-            {
-                weaponList[i].SetActive(false);
-            }
-        }
-
         
-
         if (Input.GetKeyDown(sniperRifle))
         {
-            weaponList[0].SetActive(true);
-
-            //pv.RPC("SwitchWeapon", PhotonTargets.Others, 1);
+            Chooser("sniperRifle");
         }
 
-        if (Input.GetKeyDown(laserGun))
+        else if (Input.GetKeyDown(laserGun))
         {
-            weaponList[1].SetActive(true);
+            Chooser("laserGun");
         }
 
-        if (Input.GetKeyDown(plasmaGun))
+        else if (Input.GetKeyDown(plasmaGun))
         {
-            weaponList[2].SetActive(true);
+            Chooser("plasmaGun");
         }
 
-        if (Input.GetKeyDown(rocketLauncher))
+        else if (Input.GetKeyDown(rocketLauncher))
         {
-
+            //Chooser("rocketLauncher");
         }
 
-        if (Input.GetKeyDown(grenadeLauncher))
+        else if (Input.GetKeyDown(grenadeLauncher))
         {
-
+            //Chooser("grenadeLauncher");
         }
-        //if (Input.GetKeyDown(sniperRifle) { to be continued...
+
+        //else if (Input.GetKeyDown(sniperRifle) { to be continued...
 
         //}
 
         //this may cause stuttering
-        for(int i=0; i<weaponList.Length; i++)
+        for (int i=0; i<weaponList.Length; i++)
         {
             //weaponList[i].SetActive(weaponStates[i]);
         }
-
     }
 
     [PunRPC]
@@ -121,4 +110,34 @@ public class WeaponSwitching : Photon.MonoBehaviour {
             }
         }
     }
+
+    public void Chooser(string gun)
+    {
+        int index = 0;
+        if(gun=="sniperRifle")
+        {
+            index = 0;
+        }
+        else if(gun=="laserGun")
+        {
+            index = 1;
+        }
+        else if(gun=="plasmaGun")
+        {
+            index = 2;
+        }
+        else if(gun=="rocketLauncher")
+        {
+            //index = 3;
+        }
+        else if(gun=="grenadeLauncher")
+        {
+            //index = 4;
+        }
+        for (int i = 0; i < weaponList.Length; i++)
+        {
+            weaponList[i].SetActive(false);
+        }
+        weaponList[index].SetActive(true);
+    } 
 }
