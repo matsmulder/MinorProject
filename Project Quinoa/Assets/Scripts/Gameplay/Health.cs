@@ -25,8 +25,6 @@ public class Health : MonoBehaviour {
     void Start () {
         rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
-		PhotonNetwork.player.customProperties["Deaths"] = 0;
-		PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
 		image1 = Resources.Load<Sprite> ("HealthBar1");
 		image2 = Resources.Load<Sprite> ("HealthBar2");
