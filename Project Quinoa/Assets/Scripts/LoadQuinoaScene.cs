@@ -19,6 +19,10 @@ public class LoadQuinoaScene : MonoBehaviour {
         Application.LoadLevel("Quinoa");
     }
 
+	public void LoadGameStats(){
+		Application.LoadLevel ("StatsMenu");
+	}
+
     public void Quit()
     {
 #if UNITY_EDITOR
