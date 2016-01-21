@@ -19,7 +19,6 @@ public class GameStats : MonoBehaviour {
 
 	void Start () {
 		// set the username to your username. 
-		PlayerPrefs.SetString ("Name", "laurens");
 		playerName.text = PlayerPrefs.GetString ("Name");
 
 		stats = dc.getDBData (PlayerPrefs.GetString ("Name"));
@@ -28,7 +27,12 @@ public class GameStats : MonoBehaviour {
 		int tempLost = stats.getLost();
 		int tempDeaths = stats.getDeaths();
 		int tempKills = stats.getKills();
-		float tempKD = stats.getKills() / stats.getKills();
+		float tempKD;
+		if (stats.getKills () == 0) {
+			tempKD = 999;
+		} else {
+			tempKD = stats.getKills() / stats.getKills();
+		}
 
 		// update the values of the
 		won.text = tempWon.ToString ();
