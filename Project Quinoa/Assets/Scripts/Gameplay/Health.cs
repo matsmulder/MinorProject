@@ -90,6 +90,7 @@ public class Health : MonoBehaviour {
             if (RandomMatchmaker.offlineMode)
             {
                 Debug.Log("calculator");
+                //apparently here Hugo got a nullreferenceexception after a double kill...
                 for (int i = 0; i != calculator.getAllTargets(); i++)
                 {
                     if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)

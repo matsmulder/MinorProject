@@ -58,14 +58,18 @@ public class cameraMovement : Photon.PunBehaviour
         }
 
         //follow the player movement
-        transform.position = playerMovement.rb.position;
+
+        if (playerMovement.rb != null)
+        {
+            transform.position = playerMovement.rb.position;
 
 
-        //lock rotation around y-axis to player rotation
-        tmp2 = playerMovement.rb.rotation.eulerAngles;
-        tmp2.x = transform.rotation.eulerAngles.x;
-        tmp2.z = 0;
-        transform.eulerAngles = tmp2;
+            //lock rotation around y-axis to player rotation
+            tmp2 = playerMovement.rb.rotation.eulerAngles;
+            tmp2.x = transform.rotation.eulerAngles.x;
+            tmp2.z = 0;
+            transform.eulerAngles = tmp2;
+        }
     }
 
 }
