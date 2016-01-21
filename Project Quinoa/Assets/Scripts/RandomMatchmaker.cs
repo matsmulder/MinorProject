@@ -783,8 +783,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
 	IEnumerator Reboot(float waitingTime)
 	{
-		PhotonNetwork.LeaveRoom();
-		yield return new WaitForSeconds(waitingTime);
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.player.customProperties["Ready"] = false;
+        yield return new WaitForSeconds(waitingTime);
 		Cursor.visible = true;
 		Debug.Log("testarossa");
         endedGame = false;
