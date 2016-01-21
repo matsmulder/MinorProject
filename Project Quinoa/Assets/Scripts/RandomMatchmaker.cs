@@ -91,6 +91,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     private Calculator calc;
 
     public static bool inRoom = false;
+    bool endedGame = false;
 
     public Canvas crosshairCanvas;
 	
@@ -201,7 +202,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if (endedGame)
+        {
+            return;
+        }
 
         // checks status 
         inLobbyScreen = panel_joininputfield.GetActive();
@@ -219,6 +223,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 		}
 
 		if (restTimeMinDouble < 0) {
+            endedGame = true;
 
 			sm.GetComponent<PhotonView> ().RPC ("EndGame", PhotonTargets.All, 0);
 
@@ -780,10 +785,11 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	{
 		PhotonNetwork.LeaveRoom();
 		yield return new WaitForSeconds(waitingTime);
-		Application.LoadLevel(Application.loadedLevel);
 		Cursor.visible = true;
 		Debug.Log("testarossa");
-	}
+        endedGame = false;
+        Application.LoadLevel(Application.loadedLevel);
+    }
 
     IEnumerator fullMessage(GameObject panel)
     {
