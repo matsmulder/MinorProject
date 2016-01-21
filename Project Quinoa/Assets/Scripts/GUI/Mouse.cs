@@ -4,7 +4,7 @@ using System.Collections;
 public class Mouse : MonoBehaviour {
 	public Texture cursorImage;
 	bool MouseChanged = false;
-
+	public GameObject Loadscreen;
 	public GameObject Button_hamburger;
 	public GameObject Button_meat;
 	public GameObject Button_blueberry;
@@ -14,11 +14,16 @@ public class Mouse : MonoBehaviour {
 	public GameObject Button_chicken;
 	public GameObject Button_wing;
 
+	void Start(){
+		Loadscreen.SetActive (false); 
+	}
+
 	public void PlayGame(){
 		if (MouseChanged == true) {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
+			Loadscreen.SetActive(true);
 			Application.LoadLevel("Quinoa");
 			Cursor.visible = true;
 		}
