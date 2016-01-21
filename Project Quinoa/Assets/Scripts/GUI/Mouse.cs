@@ -19,7 +19,8 @@ public class Mouse : MonoBehaviour {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
-			Application.LoadLevel (1);
+			Application.LoadLevel("Quinoa");
+			Cursor.visible = true;
 		}
 	}
 
@@ -29,6 +30,7 @@ public class Mouse : MonoBehaviour {
 			Button_shake.SetActive (true);
 		} else {
 			Application.LoadLevel (2);
+			Cursor.visible = true;
 		}
 	}
 
@@ -38,6 +40,7 @@ public class Mouse : MonoBehaviour {
 			Button_boon.SetActive (true);
 		} else {
 			Application.LoadLevel (3);
+			Cursor.visible = true;
 		}
 	}
 
@@ -47,6 +50,7 @@ public class Mouse : MonoBehaviour {
 			Button_wing.SetActive (true);
 		} else {
 			Application.Quit();
+			Cursor.visible = true;
 		}
 	}
 
@@ -55,6 +59,7 @@ public class Mouse : MonoBehaviour {
 		if (MouseChanged == false) {
 			Cursor.visible = false;
 			MouseChanged = true;
+			Debug.Log(MouseChanged);
 		} 
 		else {
 			Cursor.visible = true;
