@@ -23,6 +23,8 @@ public class Health : MonoBehaviour {
 #pragma warning disable 0414 // Type or member is obsolete
     // Use this for initialization
     void Start () {
+        PhotonNetwork.player.customProperties["Deaths"] = 0;
+        PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
         rm = GameObject.FindGameObjectWithTag("scripts").GetComponent<RandomMatchmaker>();
         currentHitPoints = hitPoints;
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
@@ -134,7 +136,6 @@ public class Health : MonoBehaviour {
             if (GetComponent<PhotonView>().isMine) // this is MY player object
             {
                 //RandomMatchmaker nm = GameObject.FindObjectOfType<RandomMatchmaker>();
-                Debug.Log("photonview ismine");
 					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
 					PhotonNetwork.player.SetCustomProperties (PhotonNetwork.player.customProperties);
 
