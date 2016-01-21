@@ -678,8 +678,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         //disable mesh renderer for local player
         if (player.GetComponent<PhotonView>().isMine)
         {
-            player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
-            player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
+            //TERUGplayer.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
+            //TERUGplayer.gameObject.transform.FindChild("human").gameObject.SetActive(false);
             //also parent WeaponHolder to the FP camera
             //Transform cam = player.gameObject.transform.FindChild("Main Camera");
             Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
