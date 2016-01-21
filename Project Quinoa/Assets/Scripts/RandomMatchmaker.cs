@@ -207,8 +207,23 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
             return;
         }
 
-        // checks status 
-        inLobbyScreen = panel_joininputfield.GetActive();
+        //debugging tumbling players
+        if (Input.GetKeyDown("m"))
+        {
+            Debug.Log("m down");
+            GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in playerList)
+            {
+                Debug.Log("player pass");
+                float rotationy = player.transform.rotation.eulerAngles.y;
+                float rotationx = player.transform.rotation.eulerAngles.x;
+                float rotationz = player.transform.rotation.eulerAngles.z;
+                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationy));
+            }
+        }
+
+            // checks status 
+            inLobbyScreen = panel_joininputfield.GetActive();
 		inCreateGameScreen = panel_createinputfield.GetActive();
 		inGameScreen = panel_Setready.GetActive();
 		inReadyScreen = canvas_Ready.GetActive();
