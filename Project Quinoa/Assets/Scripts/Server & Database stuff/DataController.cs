@@ -58,30 +58,30 @@ public class DataController{
 		Debug.Log ("Userstats: " + userStats);
 		
 		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
-		JSONArray array = new JSONArray(userStats);
-		for(int i = 0; i < array.Count; i++){
-			string key = (string)array[i];
-
-			switch(key){
-			case "Username":
-				Debug.Log("without .str: " + array[i]);
-				Debug.Log("string: " + array[i]);
-				playerName = array[i];
-				break;
-			case "AmountKills":
-				kills = (int)array[i];
-				break;
-			case "AmountDeaths":
-				deaths = (int)array[i];
-				break;
-			case "AmountWon":
-				won = (int)array[i];
-				break;
-			case "AmountLost":
-				lost = (int)array[i];
-				break;
-			}
-		}
+//		JSONArray array = new JSONArray(userStats);
+//		for(int i = 0; i < array.Count; i++){
+//			string key = (string)array[i];
+//
+//			switch(key){
+//			case "Username":
+//				Debug.Log("without .str: " + array[i]);
+//				Debug.Log("string: " + array[i]);
+//				playerName = array[i];
+//				break;
+//			case "AmountKills":
+//				kills = (int)array[i];
+//				break;
+//			case "AmountDeaths":
+//				deaths = (int)array[i];
+//				break;
+//			case "AmountWon":
+//				won = (int)array[i];
+//				break;
+//			case "AmountLost":
+//				lost = (int)array[i];
+//				break;
+//			}
+//		}
 		// make playerJson and return
 		playerJson playerStats = new playerJson (playerName, kills, deaths, won, lost);
 		resetData ();
