@@ -9,7 +9,7 @@ public class Plotter : MonoBehaviour
 
     //private static double cpGSV = 30;
     //private static double cGSV = 0.6;
-    //private static double cLSV = 5;
+    //private static double cLSV = 4;
 
     public void Start()
     {

@@ -252,7 +252,7 @@ public class playerMovement : MonoBehaviour {
 
         //velocity is set to zero upon collision with walls; add the tags of pickups, bullets etc as: !gameObject.CompareTag(tag)
         //this fixes the dodge bug
-        if (!col.gameObject.CompareTag("bullet") && !col.gameObject.CompareTag("ramp"))
+        if (!col.gameObject.CompareTag("bullet") && !col.gameObject.CompareTag("ramp") && rb != null)
         {
             rb.velocity = Vector3.zero;
         }

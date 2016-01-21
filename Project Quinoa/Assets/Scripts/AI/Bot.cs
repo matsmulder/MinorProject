@@ -8,38 +8,32 @@ public class Bot : MonoBehaviour{
     private Calculator calculator;
     private SphereCollider col;
     private List<Vector3> points;
-    private float maxHealth = 100;
-    public int health;
     private int team;
     private int index;
     private Rigidbody rb;
 
     //Bot Moving variables
     private float fieldofViewAngle = 190f;
-    public float sensitivity;// = 0.75f;
-    private bool[] moveBool;// = new bool[25];
+    private float sensitivity = 0.5f;
+    private bool[] moveBool;
     private Vector3[] bestPoints;
     private float[] bestPointsSV;
     private Vector3 bestPoint;
 
     //Bot Shooting variables
     private float rotateToTargetSpeed = 10;
-    private float fireRate = 1;//0.5f;
     private bool playerInSight;
-    public Rigidbody prefabBullet;
     private bool shootFlag;
     private List<GameObject> targets;// = new List<GameObject>();
     private GameObject minTarget;
     private playerShooting plsh;
 
     //State Value Equation constants
-    public double sightConstant = 30;
+    private double sightConstant = 30;//70;
     private double playerConstant = 8;
-    private double healthConstant = 1;
     private static double cGSV = 0.6;
     private static double cLSV = 4;
     private double cPLSV = 1.5;
-    private double cHLSV = 1;
     private double cpGSV = 30;
     private Vector3 goal = new Vector3(13.5f,-30f,-7.5f);
     private List<GameObject> teamMates=new List<GameObject>();
@@ -48,7 +42,7 @@ public class Bot : MonoBehaviour{
     public void Start()
     {
         plsh = GetComponent<playerShooting>();
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
         index = calculator.addBot(this);
@@ -56,7 +50,7 @@ public class Bot : MonoBehaviour{
         col.radius= (float)sightConstant;
         shootFlag = false;
         playerInSight = false;
-        moveBool = new bool[calculator.getMasterBoolCount()];
+        moveBool = new bool[calculator.getMasterBoolLength()];
         bestPoint = transform.position;
         bestPoints = new Vector3[moveBool.Length];
         bestPointsSV = new float[moveBool.Length];
@@ -75,16 +69,6 @@ public class Bot : MonoBehaviour{
     public double LSV(Vector3 point)
     {
         double PLSV = 0;
-        double HLSV = 0;
-
-        GameObject[] healths = GameObject.FindGameObjectsWithTag("health");
-
-        foreach (GameObject obj in healths)
-        {
-            //HLSV = HLSV+maxHealth*Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position-new Vector3(0,obj.transform.lossyScale.y/2,0))/healthConstant, 2)) / (health + 1);
-            HLSV = HLSV + ((maxHealth - health) / (health + 1)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / healthConstant, 2)) / (health + 1);
-        }
-
         foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
@@ -97,7 +81,7 @@ public class Bot : MonoBehaviour{
             PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2));
         }
 
-        return cPLSV * PLSV + cHLSV * HLSV;
+        return cPLSV * PLSV;
     }
 
     public double SV(Vector3 point)
@@ -139,7 +123,7 @@ public class Bot : MonoBehaviour{
                     minTarget = targets[0];
                     foreach (GameObject obj in targets)
                     {
-                        if (obj!=null && Vector3.Distance(this.transform.position, minTarget.transform.position) > Vector3.Distance(this.transform.position, obj.transform.position))
+                        if (obj!=null && minTarget!=null && Vector3.Distance(this.transform.position, minTarget.transform.position) > Vector3.Distance(this.transform.position, obj.transform.position))
                         {
                             minTarget = obj;
                         }
@@ -148,17 +132,6 @@ public class Bot : MonoBehaviour{
                 }
             }
         }
-        /*else
-        {
-            for (int i = 0; i != calculator.getAllTargets(); i++)
-            {
-                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
-                {
-                    //calculator.deleteTarget(index, this.gameObject);
-                }
-            }
-            Destroy(this.gameObject);
-        }*/
         
         if(transform.position.y<-42)
         {
@@ -182,15 +155,12 @@ public class Bot : MonoBehaviour{
         {
             if (Vector3.Distance(calculator.getMap()[i], this.transform.position - new Vector3(0, transform.lossyScale.y, 0)) < sightConstant)
             {
-                //if (Vector3.Angle(this.transform.forward,calculator.getMap()[i]-(transform.position-new Vector3(0,transform.lossyScale.y,0))) < fieldofViewAngle / 2)
-                //{
                 double tempSV = SV(calculator.getMap()[i]);
                 if (bestPointsSV[j] < tempSV)
                 {
                     bestPointsSV[j] = (float) tempSV;
                     bestPoints[j] = calculator.getMap()[i];
                 }
-                //}
             }
         }
     }
@@ -260,7 +230,6 @@ public class Bot : MonoBehaviour{
         {
             if (targets.IndexOf(other.gameObject) != -1)
             {
-                //targets.Remove(other.gameObject);
                 calculator.deleteTarget(index,other.gameObject);
             }
 
@@ -278,15 +247,15 @@ public class Bot : MonoBehaviour{
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (team == 2)
         {
-            foreach (GameObject player in players)
+            for(int i=0;i!=players.Length;i++)
             {
-                if (player.GetComponent<TeamMember>().teamID == 1)
+                if (players[i].GetComponent<TeamMember>().teamID == 1)
                 {
-                    opponents.Add(player);
+                    opponents.Add(players[i]);
                 }
-                else if (player.GetComponent<TeamMember>().teamID == 2)
+                else if (players[i].GetComponent<TeamMember>().teamID == 2)
                 {
-                    teamMates.Add(player);
+                    teamMates.Add(players[i]);
                 }
             }
         }
@@ -312,16 +281,6 @@ public class Bot : MonoBehaviour{
         yield return new WaitForSeconds(1/moveBool.Length);
     }
 
-    IEnumerator bullet()
-    {
-        shootFlag = false;
-        yield return new WaitForSeconds(fireRate);
-        if (playerInSight)
-        {
-            shootFlag = true;
-        }
-    }
-
     public void setMoveBool(int i)
     {
         if(i==moveBool.Length-1)
@@ -333,18 +292,6 @@ public class Bot : MonoBehaviour{
         {
             moveBool[i] = false;
             moveBool[i + 1] = true;
-        }
-    }
-
-    public void setHealth(int h)
-    {
-        if (health>h)
-        {
-            health = health - h;
-        }
-        else
-        {
-            health = 0;
         }
     }
 
