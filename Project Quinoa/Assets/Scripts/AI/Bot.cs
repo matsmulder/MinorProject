@@ -34,7 +34,7 @@ public class Bot : MonoBehaviour{
     private static double cGSV = 0.6;
     private static double cLSV = 4;
     private double cPLSV = 1.5;
-    private double cpGSV = 30;
+    private double cFLSV = 40;
     private Vector3 goal = new Vector3(13.5f,-30f,-7.5f);
     private List<GameObject> teamMates=new List<GameObject>();
     private List<GameObject> opponents=new List<GameObject>();
@@ -69,6 +69,26 @@ public class Bot : MonoBehaviour{
     public double LSV(Vector3 point)
     {
         double PLSV = 0;
+        double FLSV = 0;
+
+        GameObject[] foods;
+        if (team == 1)
+        {
+            foods = GameObject.FindGameObjectsWithTag("superfood");
+        }
+        else if(team == 2)
+        {
+            foods = GameObject.FindGameObjectsWithTag("fastfood");
+        }
+        else
+        {
+            foods = new GameObject[0];
+        }
+        foreach (GameObject food in foods)
+        {
+            FLSV = FLSV + (1 - Vector3.Distance(point, food.transform.position) / (123.458));
+        }
+
         foreach (GameObject obj in teamMates)
         {
             if (Vector3.Distance(obj.transform.position, this.transform.position) != 0)
@@ -81,12 +101,12 @@ public class Bot : MonoBehaviour{
             PLSV = PLSV - (1 - Math.Pow(1.9 * Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2)) * Math.Exp(-Math.Pow(Vector3.Distance(point, obj.transform.position - new Vector3(0, obj.transform.lossyScale.y / 2, 0)) / (2*playerConstant), 2));
         }
 
-        return cPLSV * PLSV;
+        return cPLSV * PLSV + cFLSV/cLSV * FLSV;
     }
 
     public double SV(Vector3 point)
     {
-        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point) + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
+        return cLSV * this.LSV(point) + cGSV * calculator.getGSV(point);// + cpGSV * (1-Vector3.Distance(point,goal)/(123.458));
     }
 
     public void FixedUpdate()
@@ -247,15 +267,15 @@ public class Bot : MonoBehaviour{
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (team == 2)
         {
-            for(int i=0;i!=players.Length;i++)
+            foreach (GameObject player in players)
             {
-                if (players[i].GetComponent<TeamMember>().teamID == 1)
+                if (player.GetComponent<TeamMember>().teamID == 1)
                 {
-                    opponents.Add(players[i]);
+                    opponents.Add(player);
                 }
-                else if (players[i].GetComponent<TeamMember>().teamID == 2)
+                else if (player.GetComponent<TeamMember>().teamID == 2)
                 {
-                    teamMates.Add(players[i]);
+                    teamMates.Add(player);
                 }
             }
         }
