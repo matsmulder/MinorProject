@@ -15,7 +15,7 @@ public class Mouse : MonoBehaviour {
 	public GameObject Button_wing;
 
 	void Start(){
-		Loadscreen.SetActive (false); 
+		//Loadscreen.SetActive (false); 
 	}
 
 	public void PlayGame(){
@@ -23,7 +23,7 @@ public class Mouse : MonoBehaviour {
 			Button_hamburger.SetActive (false);
 			Button_meat.SetActive (true);
 		} else {
-			Loadscreen.SetActive(true);
+			//Loadscreen.SetActive(true);
 			Application.LoadLevel("Quinoa");
 			Cursor.visible = true;
 		}

@@ -46,7 +46,7 @@ public class DataController{
 
 		// write away to the node.js 
 		var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-		string json = "{\"user\":\"" + name + "\"};";
+		string json = "{\"Name\":\"" + name + "\"}";
 		streamWriter.Write(json);
 		streamWriter.Flush();
 		streamWriter.Close();
@@ -58,32 +58,16 @@ public class DataController{
 		Debug.Log ("Userstats: " + userStats);
 		
 		// ini JSON parser with the help of the JSONobject from downloaded from unity asset store.
-		JSONObject json2 = new JSONObject();
-		for(int i = 0; i < json2.list.Count; i++){
-			string key = (string)json2.keys[i];
+		var N = JSON.Parse(userStats);
 
-			switch(key){
-			case "Username":
-				Debug.Log("without .str: " + json2[i]);
-				Debug.Log("string: " + json2[i].str);
-				playerName = json2[i].str;
-				break;
-			case "AmountKills":
-				kills = (int)json2[i].n;
-				break;
-			case "AmountDeaths":
-				deaths = (int)json2[i].n;
-				break;
-			case "AmountWon":
-				won = (int)json2[i].n;
-				break;
-			case "AmountLost":
-				lost = (int)json2[i].n;
-				break;
-			}
-		}
+		string playerName = N [0] ["Username"];
+		string kills = N [0] ["AmountKills"];
+		string deaths = N [0] ["AmountDeaths"];
+		string won = N [0] ["AmountWon"];
+		string lost = N [0] ["AmountLost"];
+
 		// make playerJson and return
-		playerJson playerStats = new playerJson (playerName, kills, deaths, won, lost);
+		playerJson playerStats = new playerJson (playerName, int.Parse(kills), int.Parse(deaths), int.Parse(won), int.Parse(lost));
 		resetData ();
 		return playerStats;
 	}

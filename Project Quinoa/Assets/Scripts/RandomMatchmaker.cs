@@ -91,6 +91,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     private Calculator calc;
 
     public static bool inRoom = false;
+    bool endedGame = false;
 
     public Canvas crosshairCanvas;
 	
@@ -201,20 +202,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        //debugging tumbling players
-        if(Input.GetKeyDown("m"))
+        if (endedGame)
         {
-            Debug.Log("m down");
-            GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
-            foreach(GameObject player in playerList)
-            {
-                Debug.Log("player pass");
-                float rotationy = player.transform.rotation.eulerAngles.y;
-                float rotationx = player.transform.rotation.eulerAngles.x;
-                float rotationz = player.transform.rotation.eulerAngles.z;
-                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationy));
-            }
+            return;
         }
 
         // checks status 
@@ -233,6 +223,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 		}
 
 		if (restTimeMinDouble < 0) {
+            endedGame = true;
 
 			sm.GetComponent<PhotonView> ().RPC ("EndGame", PhotonTargets.All, 0);
 
@@ -686,8 +677,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         //disable mesh renderer for local player
         if (player.GetComponent<PhotonView>().isMine)
         {
-            player.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
-            player.gameObject.transform.FindChild("human").gameObject.SetActive(false);
+            //TERUGplayer.gameObject.transform.FindChild("hipster").gameObject.SetActive(false);
+            //TERUGplayer.gameObject.transform.FindChild("human").gameObject.SetActive(false);
             //also parent WeaponHolder to the FP camera
             //Transform cam = player.gameObject.transform.FindChild("Main Camera");
             Transform wph = player.gameObject.transform.FindChild("WeaponHolder");
@@ -792,12 +783,14 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
 	IEnumerator Reboot(float waitingTime)
 	{
-		PhotonNetwork.LeaveRoom();
-		yield return new WaitForSeconds(waitingTime);
-		Application.LoadLevel(Application.loadedLevel);
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.player.customProperties["Ready"] = false;
+        yield return new WaitForSeconds(waitingTime);
 		Cursor.visible = true;
 		Debug.Log("testarossa");
-	}
+        endedGame = false;
+        Application.LoadLevel(Application.loadedLevel);
+    }
 
     IEnumerator fullMessage(GameObject panel)
     {
