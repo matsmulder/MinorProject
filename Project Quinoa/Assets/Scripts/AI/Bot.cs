@@ -163,14 +163,7 @@ public class Bot : MonoBehaviour{
         
         if(transform.position.y<-42)
         {
-            for (int i = 0; i != calculator.getAllTargets(); i++)
-            {
-                if (calculator.getTargets(i).IndexOf(this.gameObject) != -1)
-                {
-                    calculator.deleteTarget(i, this.gameObject);
-                }
-            }
-            Destroy(this.gameObject);
+            this.GetComponent<Health>().TakeDamage(9001);
         }
     }
 
