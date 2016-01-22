@@ -37,10 +37,12 @@ public class Calculator:MonoBehaviour
         {
             mapGSV[i] = GSV(map[i]);
         }
+
         masterMoveBool[masterMoveBool.Length-1] = true;
+
         sightConstant = (50 * slider.value + 130) * 0.1111f;
         fieldOfViewAngle = 30 * slider.value + 60;
-        sensitivity = slider.value * 0.1f;
+        sensitivity = (0.65f * slider.value + 0.25f) * 0.1111f;
         rotateToTargetSpeed = slider.value - 0.5f;
         sliderText.text = ((int)slider.value).ToString();
     }
@@ -184,9 +186,8 @@ public class Calculator:MonoBehaviour
     {
         sightConstant = (50 / 9) * slider.value + 130 / 9;
         fieldOfViewAngle = 30 * slider.value + 60;
-        sensitivity = slider.value * 0.1f;
+        sensitivity = (0.65f * slider.value + 0.25f) * 0.1111f;
         rotateToTargetSpeed = slider.value - 0.5f;
         sliderText.text = ((int)slider.value).ToString();
     }
-
 }
