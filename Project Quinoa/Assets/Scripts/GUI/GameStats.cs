@@ -32,9 +32,11 @@ public class GameStats : MonoBehaviour {
 		int tempKills = stats.getKills();
 		Debug.Log ("tempKills= " + tempKills);
 		float tempKD;
-		if (stats.getKills () == 0 || stats.getDeaths() == 0) {
+		if (stats.getDeaths() == 0) {
 			tempKD = Mathf.Infinity;
-		} else {
+		} else if(stats.getKills() == 0){
+			tempKD = 0;
+		} else{
 			tempKD = stats.getKills() / stats.getKills();
 		}
 
