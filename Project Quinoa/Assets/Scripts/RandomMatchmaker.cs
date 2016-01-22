@@ -94,6 +94,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     bool endedGame = false;
 
     public Canvas crosshairCanvas;
+
+    public Text connectionMessage;
 	
     // Use this for initialization
     void Start() {
@@ -463,7 +465,14 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	}
 	
 	public void onClickedCreateGame(){
-		if (!createGameName.text.Equals ("")) {
+        if (!PhotonNetwork.insideLobby)
+        {
+            Debug.LogError("Player not in lobby");
+            Debug.Log(connectionMessage);
+            connectionMessage.gameObject.SetActive(true);
+            return;
+        }
+        if (!createGameName.text.Equals ("")) {
             if (int.Parse(createGameMaxPlayers.text) < 2){
 				maxPlayer = 2;
 			}
