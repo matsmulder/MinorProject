@@ -467,9 +467,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	public void onClickedCreateGame(){
         if (!PhotonNetwork.insideLobby)
         {
-            Debug.LogError("Player not in lobby");
-            Debug.Log(connectionMessage);
-            connectionMessage.gameObject.SetActive(true);
+            //Debug.LogError("Player not in lobby");
+            //Debug.Log(connectionMessage);
+            //connectionMessage.gameObject.SetActive(true);
+            StartCoroutine(noConnectionMessage());
             return;
         }
         if (!createGameName.text.Equals ("")) {
@@ -821,6 +822,13 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         panel.SetActive(true);
         yield return new WaitForSeconds(3);
         panel.SetActive(false);
+    }
+
+    IEnumerator noConnectionMessage()
+    {
+        connectionMessage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        connectionMessage.gameObject.SetActive(false);
     }
 }
 
