@@ -43,7 +43,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
     private string roomName = "Room01";  // <- This should be a Random room name.
     private int maxPlayer;
     private Vector2 scrollPosition;
-	private bool gameStarted;
+    private bool gameStarted, resetRotationFlag;
 
     // GUI
     public Button createRoom;
@@ -210,8 +210,9 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
 
         //debugging tumbling players
-        if (Input.GetKeyDown("m"))
+        if (Input.GetKeyDown("m") || resetRotationFlag)
         {
+            resetRotationFlag = false;
             Debug.Log("m down");
             GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in playerList)
@@ -711,10 +712,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         }
         //GameObject camera1 = PhotonNetwork.Instantiate("MainCamera", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         standby.SetActive(false);
-
-        ///////KIJK UIT: BEUN///////////
-        //player.SetActive(true);
-        //////EINDE BEUN////////////////
+        StartCoroutine(ResetRotation());
     }
 
     void SpawnBot(int playerTeamID, int numberOfBots)
@@ -829,6 +827,12 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         connectionMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(3);
         connectionMessage.gameObject.SetActive(false);
+    }
+
+    IEnumerator ResetRotation()
+    {
+        yield return new WaitForSeconds(1);
+        resetRotationFlag = true;
     }
 }
 
