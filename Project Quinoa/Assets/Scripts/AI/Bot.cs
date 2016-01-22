@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Bot : MonoBehaviour{
     //Bot State variables
@@ -13,15 +14,15 @@ public class Bot : MonoBehaviour{
     private Rigidbody rb;
 
     //Bot Moving variables
-    private float fieldofViewAngle = 190f;
-    private float sensitivity = 0.5f;
+    public float fieldofViewAngle = 90;
+    public float sensitivity = 0.1f;
     private bool[] moveBool;
     private Vector3[] bestPoints;
     private float[] bestPointsSV;
     private Vector3 bestPoint;
 
     //Bot Shooting variables
-    private float rotateToTargetSpeed = 10;
+    public float rotateToTargetSpeed = 0.5f;
     private bool playerInSight;
     private bool shootFlag;
     private List<GameObject> targets;// = new List<GameObject>();
@@ -29,7 +30,7 @@ public class Bot : MonoBehaviour{
     private playerShooting plsh;
 
     //State Value Equation constants
-    private double sightConstant = 30;//70;
+    public double sightConstant = 20;
     private double playerConstant = 8;
     private static double cGSV = 0.6;
     private static double cLSV = 4;
@@ -45,6 +46,10 @@ public class Bot : MonoBehaviour{
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
         calculator = GameObject.FindGameObjectWithTag("scripts").GetComponent<Calculator>();
+        sightConstant = calculator.getSightConstant();
+        fieldofViewAngle = calculator.getFieldOfView();
+        sensitivity = calculator.getSensitivity();
+        rotateToTargetSpeed = calculator.getRotateSpeed();
         index = calculator.addBot(this);
         targets = calculator.getTargets(index);
         col.radius= (float)sightConstant;
@@ -319,4 +324,5 @@ public class Bot : MonoBehaviour{
     {
         return team;
     }
+
 }

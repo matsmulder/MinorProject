@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine.UI;
 
 public class Calculator:MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class Calculator:MonoBehaviour
     private static double stepsizeX = 3.01662;
     private static double stepsizeZ = 2.87266;
 
+    private float sightConstant;
+    private float fieldOfViewAngle;
+    private float sensitivity;
+    private float rotateToTargetSpeed;
+    public Text sliderText;
+    public Slider slider;
+
     public Calculator()
     {    }
 
@@ -30,6 +38,11 @@ public class Calculator:MonoBehaviour
             mapGSV[i] = GSV(map[i]);
         }
         masterMoveBool[masterMoveBool.Length-1] = true;
+        sightConstant = (50 * slider.value + 130) * 0.1111f;
+        fieldOfViewAngle = 30 * slider.value + 60;
+        sensitivity = slider.value * 0.1f;
+        rotateToTargetSpeed = slider.value - 0.5f;
+        sliderText.text = ((int)slider.value).ToString();
     }
 
     public void Update()
@@ -146,4 +159,34 @@ public class Calculator:MonoBehaviour
         botList.Add(bot);
         return allTargets.Count-1;
     }
+
+    public float getSightConstant()
+    {
+        return sightConstant;
+    }
+
+    public float getFieldOfView()
+    {
+        return fieldOfViewAngle;
+    }
+
+    public float getSensitivity()
+    {
+        return sensitivity;
+    }
+
+    public float getRotateSpeed()
+    {
+        return rotateToTargetSpeed;
+    }
+
+    public void OnSliderChanged()
+    {
+        sightConstant = (50 / 9) * slider.value + 130 / 9;
+        fieldOfViewAngle = 30 * slider.value + 60;
+        sensitivity = slider.value * 0.1f;
+        rotateToTargetSpeed = slider.value - 0.5f;
+        sliderText.text = ((int)slider.value).ToString();
+    }
+
 }
