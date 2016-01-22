@@ -34,7 +34,7 @@ public class Mouse : MonoBehaviour {
 			Button_blueberry.SetActive (false);
 			Button_shake.SetActive (true);
 		} else {
-			Application.LoadLevel (2);
+			Application.LoadLevel ("StatsMenu");
 			Cursor.visible = true;
 		}
 	}
