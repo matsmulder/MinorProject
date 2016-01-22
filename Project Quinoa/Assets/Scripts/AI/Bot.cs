@@ -25,7 +25,7 @@ public class Bot : MonoBehaviour{
     public float rotateToTargetSpeed = 0.5f;
     private bool playerInSight;
     private bool shootFlag;
-    private List<GameObject> targets;// = new List<GameObject>();
+    private List<GameObject> targets;
     private GameObject minTarget;
     private playerShooting plsh;
 
@@ -77,11 +77,14 @@ public class Bot : MonoBehaviour{
         double FLSV = 0;
 
         GameObject[] foods;
-        if (team == 1)
+        GameObject truePlayer = new GameObject();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        truePlayer = truePlayerFinder(players);
+        if (truePlayer.GetComponent<TeamMember>().teamID == 1)
         {
             foods = GameObject.FindGameObjectsWithTag("superfood");
         }
-        else if(team == 2)
+        else if(truePlayer.GetComponent<TeamMember>().teamID == 2)
         {
             foods = GameObject.FindGameObjectsWithTag("fastfood");
         }
@@ -323,6 +326,18 @@ public class Bot : MonoBehaviour{
     public int getTeam()
     {
         return team;
+    }
+
+    public GameObject truePlayerFinder(GameObject[] players)
+    {
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<Bot>().enabled == false)
+            {
+                return player;
+            }
+        }
+        return null;
     }
 
 }
