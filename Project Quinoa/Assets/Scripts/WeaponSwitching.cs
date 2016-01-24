@@ -56,7 +56,7 @@ public class WeaponSwitching : Photon.MonoBehaviour {
 
         else if (Input.GetKeyDown(plasmaGun))
         {
-            Chooser("plasmaGun");
+            //Chooser("plasmaGun");
         }
 
         else if (Input.GetKeyDown(rocketLauncher))

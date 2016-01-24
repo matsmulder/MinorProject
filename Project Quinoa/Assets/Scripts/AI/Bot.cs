@@ -161,10 +161,7 @@ public class Bot : MonoBehaviour{
             }
         }
         
-        if(transform.position.y<-42)
-        {
-            this.GetComponent<Health>().TakeDamage(9001);
-        }
+
     }
 
     public void CalculateBestPoint(int j)

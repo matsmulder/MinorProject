@@ -14,6 +14,7 @@ public class Health : MonoBehaviour {
 	Sprite image6;
 	Sprite image7;
 	public GameObject health;
+    private Rigidbody rb;
 
     public float hitPoints;
     public float currentHitPoints;
@@ -35,6 +36,7 @@ public class Health : MonoBehaviour {
 		image5 = Resources.Load<Sprite> ("HealthBar5");
 		image6 = Resources.Load<Sprite> ("HealthBar6");
 		image7 = Resources.Load<Sprite> ("HealthBar7");
+        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -73,7 +75,12 @@ public class Health : MonoBehaviour {
 			Debug.Log("minder dan 50");
 			health.GetComponent<Image>().sprite = image7;
 		};
-	}
+
+        if (rb.transform.position.y < -42)
+        {
+            GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, 9001f);
+        }
+    }
 	
 	public float getHealthPoints(){
 		return currentHitPoints;
