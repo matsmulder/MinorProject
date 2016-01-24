@@ -24,6 +24,8 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     public string playerPrefabName;
 
+    public GameObject masterCanvas;
+
     private int indNoTeam = 0, indFast = 0, indSuper = 0;
     string type = "Random";
     public Text nameBox;
@@ -99,6 +101,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 	
     // Use this for initialization
     void Start() {
+        masterCanvas = GameObject.FindGameObjectWithTag("canvas");
 
         crosshairCanvas.gameObject.SetActive(false);
         numberOfBurgers = 0;
@@ -668,6 +671,7 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
 
     void SpawnPlayer(int teamID)
     {
+        masterCanvas.SetActive(false);
         crosshairCanvas.gameObject.SetActive(true);
         Debug.Log("spawn with teamID" + teamID);
         this.teamID = teamID;
