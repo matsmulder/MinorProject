@@ -67,6 +67,7 @@ public class Toggle_play : MonoBehaviour {
         else
         {
             selectScreen(currentScreen - 1);
+            //Destroy(GameObject.FindGameObjectWithTag("MusicGameObject"));
         }
 	}
 
