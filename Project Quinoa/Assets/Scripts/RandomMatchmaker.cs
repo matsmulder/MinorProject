@@ -202,6 +202,10 @@ public class RandomMatchmaker : Photon.MonoBehaviour {
         //PhotonNetwork.JoinOrCreateRoom(name, new RoomOptions() { isVisible = true }, TypedLobby.Default);
     }
 
+	public int getTime(){
+		return restTimeMin;
+	}
+
     // Update is called once per frame
     void Update() {
         if (endedGame)
